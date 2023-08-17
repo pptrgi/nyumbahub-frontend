@@ -59,7 +59,7 @@ const LandPage = () => {
   }, []);
   return (
     <div className="relative min-h-screen w-[100%] flex justify-center items-center border-b-[1px] border-gray-100">
-      <div className="container flex flex-col gap-[10vh]">
+      <div className="container flex flex-col gap-[8vh]">
         <div className="flex flex-col items-center">
           <div className="flex flex-col gap-[0.75rem] items-start">
             <h1 className="capitalize font-poppinsBold text-[2rem] leading-tight text-darkThemeColor sm:text-h1 md:text-large">
@@ -155,7 +155,7 @@ const LandPage = () => {
       </div>
       <span>
         {/* <span className="absolute bottom-[3vh] -right-10 w-[25vw] sm:w-[20vw] md:w-[13vw]"> */}
-        <span className="absolute bottom-[3%] -right-10 w-[25%] sm:w-[20%] md:w-[13%]">
+        <span className="absolute bottom-[7%] -right-10 w-[25%] sm:w-[20%] md:w-[13%] md:bottom-[5%]">
           <img src="/images/house.png" className="w-full" />
         </span>
         {/* <span className="hidden absolute top-[40%] -left-10 lef sm:w-[20vw] md:w-[13vw] md:block"> */}
