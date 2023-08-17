@@ -48,7 +48,7 @@ const Register = () => {
   return (
     <div className="page container">
       <Breadcrumb pageTitle={"Register"} />
-      <div className="flex justify-center items-center w-full min-h-[70vh]">
+      <div className="flex justify-center items-center w-full min-h-[70vh] mt-[1.5rem] mb-[2rem]">
         <div className="flex flex-col gap-[2rem]">
           <h3 className="text-center font-poppinsRegular text-lightThemeColor text-default sm:text-h3">
             Create your Account

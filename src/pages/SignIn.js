@@ -18,7 +18,7 @@ const signinSchema = yup.object({
 const SignIn = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const userState = useSelector((state) => state.user.user);
+  const userState = useSelector((state) => state.user);
   console.log("user state", userState);
   // console.log(userState.user.user);
   // console.log(userState.user.accessToken);

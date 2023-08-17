@@ -34,7 +34,19 @@ export const addToWishlistAC = createAsyncThunk(
   }
 );
 
+export const addAReviewAC = createAsyncThunk(
+  "property/addAReview",
+  async (propertyId, reviewData) => {
+    try {
+      return await propertyService.addAReview(propertyId, reviewData);
+    } catch (error) {
+      return error;
+    }
+  }
+);
+
 const initialState = {
+  reviews: [],
   compareProperties: [],
   wishlisted: {},
   properties: [],
@@ -125,6 +137,27 @@ export const propertySlice = createSlice({
         state.message = action.error;
         if (state.isError === true) {
           toast.error("Problem adding item to the wishlist");
+        }
+      })
+      .addCase(addAReviewAC.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(addAReviewAC.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isError = false;
+        state.isSuccess = true;
+        state.reviews = action.payload;
+        if (state.isSuccess === true) {
+          toast.success("Review submitted successfully");
+        }
+      })
+      .addCase(addAReviewAC.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = false;
+        state.isError = true;
+        state.message = action.error;
+        if (state.isError === true) {
+          toast.error("Problem submitting review");
         }
       });
   },

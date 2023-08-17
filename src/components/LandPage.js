@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { PiCaretUp, PiCaretDown } from "react-icons/pi";
 import { toast } from "react-toastify";
@@ -12,6 +12,7 @@ const LandPage = () => {
   const [showTypeOptions, setShowTypeOptions] = useState(false);
   const [showError, setShowError] = useState(false);
   const navigate = useNavigate();
+  const typeOptionsRef = useRef();
 
   console.log(propertyType);
 
@@ -43,6 +44,19 @@ const LandPage = () => {
     // setPropetyType("");
     // setSelectedType(0);
   };
+
+  useEffect(() => {
+    const outsideClickListener = (event) => {
+      if (!typeOptionsRef.current.contains(event.target)) {
+        setShowTypeOptions(false);
+      }
+    };
+    document.addEventListener("mousedown", outsideClickListener);
+    return () => {
+      // investigate
+      document.removeEventListener("mousedown", outsideClickListener);
+    };
+  }, []);
   return (
     <div className="relative min-h-screen w-[100%] flex justify-center items-center border-b-[1px] border-gray-100">
       <div className="container flex flex-col gap-[10vh]">
@@ -66,7 +80,7 @@ const LandPage = () => {
               className=" flex flex-col space-y-[0.75rem] items-center bg-white px-[1.5rem] py-[1.25rem] md:flex-row md:space-x-[0.75rem] md:space-y-0 w-full"
             >
               {/* *********************************************************** */}
-              <div className="relative w-full md:w-5/12">
+              <div ref={typeOptionsRef} className="relative w-full md:w-5/12">
                 <div
                   className="flex justify-between items-center w-full border-[1px] border-gray-200 px-[1.5rem] py-[0.75rem] rounded-sm hover:border-lightThemeColor focus:border-lightThemeColor"
                   onClick={(e) =>

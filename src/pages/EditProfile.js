@@ -4,8 +4,8 @@ import Breadcrumb from "../components/Breadcrumb";
 import { Link } from "react-router-dom";
 
 const EditProfile = () => {
-  const userData = useSelector((state) => state.user);
-  console.log("edit profile", userData);
+  const userData = useSelector((state) => state.user.user);
+
   return (
     <div className="page container mb-[5rem]">
       <Breadcrumb pageTitle={"Edit Profile"} />
@@ -21,6 +21,7 @@ const EditProfile = () => {
             <span className="w-7/12 sm:w-8/12 md:w-9/12">
               <input
                 type="text"
+                value={userData?.firstName}
                 className="w-full border-[1.5px] border-gray-200 rounded-md px-[0.5rem] py-[0.5rem] hover:outline-none focus:outline-none focus:border-gray-300"
               />
             </span>
@@ -32,6 +33,7 @@ const EditProfile = () => {
             <span className="w-7/12 sm:w-8/12 md:w-9/12">
               <input
                 type="text"
+                value={userData?.lastName}
                 className="w-full border-[1.5px] border-gray-200 rounded-md px-[0.5rem] py-[0.5rem] hover:outline-none focus:outline-none focus:border-gray-300"
               />
             </span>
@@ -43,6 +45,7 @@ const EditProfile = () => {
             <span className="w-7/12 sm:w-8/12 md:w-9/12">
               <input
                 type="email"
+                value={userData?.email}
                 className="w-full border-[1.5px] border-gray-200 rounded-md px-[0.5rem] py-[0.5rem] hover:outline-none focus:outline-none focus:border-gray-300"
               />
             </span>
@@ -54,6 +57,7 @@ const EditProfile = () => {
             <span className="w-7/12 sm:w-8/12 md:w-9/12">
               <input
                 type="number"
+                value={userData?.phone}
                 className="w-full border-[1.5px] border-gray-200 rounded-md px-[0.5rem] py-[0.5rem] hover:outline-none focus:outline-none focus:border-gray-300"
               />
             </span>

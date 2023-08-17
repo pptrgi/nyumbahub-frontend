@@ -31,6 +31,7 @@ export const getUserWishlistAC = createAsyncThunk("user/wishlist", async () => {
 });
 
 const initialState = {
+  userWishlist: [],
   user: {},
   registeredUser: {},
   isError: false,
@@ -95,7 +96,7 @@ export const userSlice = createSlice({
         state.isError = false;
         state.isLoading = false;
         state.isSuccess = true;
-        state.wishlist = action.payload;
+        state.userWishlist = action.payload;
       })
       .addCase(getUserWishlistAC.rejected, (state, action) => {
         state.isError = true;

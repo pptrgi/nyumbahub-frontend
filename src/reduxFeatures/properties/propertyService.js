@@ -31,9 +31,20 @@ const addPropertyToWishlist = async (propertyId) => {
     return response.data;
   }
 };
+const addAReview = async (propertyId, reviewData) => {
+  const response = await axios.put(
+    `${baseURL}/property/add-review/${propertyId}`,
+    reviewData,
+    headersConfig
+  );
+  if (response.data) {
+    return response.data;
+  }
+};
 
 export const propertyService = {
   getAllProperties,
   getOneProperty,
   addPropertyToWishlist,
+  addAReview,
 };

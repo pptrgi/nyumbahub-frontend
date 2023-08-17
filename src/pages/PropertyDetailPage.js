@@ -1,8 +1,13 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getOnePropertyAC } from "../reduxFeatures/properties/propertySlice";
+import {
+  getOnePropertyAC,
+  getAllProperties,
+  addAReviewAC,
+} from "../reduxFeatures/properties/propertySlice";
 import Breadcrumb from "../components/Breadcrumb";
+import GeneralCard from "../components/propertyCards/GeneralCard";
 import WishlistCard from "../components/wishlist/WishlistCard";
 import {
   PiHeart,
@@ -17,122 +22,65 @@ import test2 from "../static/images/test2.jpg";
 import test3 from "../static/images/test3.jpg";
 import city from "../static/images/testImage.jpg";
 
+import * as yup from "yup";
+import { useFormik } from "formik";
+
+const reviewSchema = yup.object({
+  name: yup.string().required("Please enter your name"),
+  review: yup.string().required("You can't send an empty review body"),
+});
+
 const PropertyDetailPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const property = useSelector((state) => state.property.property);
+  const allProperties = useSelector((state) => state.property.properties);
+  const similarProperties = allProperties?.filter(
+    (propty) =>
+      propty?.type?.typeName == property?.type?.typeName &&
+      propty.nameSlug !== property.nameSlug
+  );
+  const navigate = useNavigate();
+  const propertyReviews = useSelector((state) => state.property.reviews);
+  console.log("reviews", propertyReviews);
+
+  // useEffect(() => {
+  //   getOnePropertyNow();
+  //   getallPropertiesNow();
+  // }, []);
+
+  // const getOnePropertyNow = () => {
+  //   dispatch(getOnePropertyAC(id));
+  // };
+  // const getallPropertiesNow = () => {
+  //   dispatch(getAllProperties());
+  // };
 
   useEffect(() => {
-    getOnePropertyNow();
+    dispatch(getOnePropertyAC(id));
+    dispatch(getAllProperties());
   }, [dispatch]);
 
-  const getOnePropertyNow = () => {
-    dispatch(getOnePropertyAC(id));
-  };
-  // const [property, setProperties] = useState([
-  //   {
-  //     name: "Airbnb Lamu KES 7000 Best Experience",
-  //     description:
-  //       "Like your pastor always says, you need a tranquil serene environment a day before or after travels and tours or when you just wanna stay and chill. They mean at our place.\nNow let's talk convenience\nEach and every one of your 7 girlfriends brought their own cars? You  drove them by bus? Our ample parking knows no bounds.\nHow would cinema experience feel like when brought to your room, from the tv screen size to the seating sets... and free popcorns. You'll tell us.\nBath tub or shower? Hot or cold? Inside or outside?\nTumbo kwanza. Putting that into consideration, we'll serve you what want, when you want it and wherever you want it. Also try our new recipes.\nYou know how long it'll take you to get to the beach? 3mins, for Kipchoge that'll be 1min:59sec.\nLet's take a tour\nThe interior is well lit, and the walls wallmastered/ Has a 6 by 6 bed, dining area, coffee table inside and outside. The rooms second door opens to a balcony that gives access to a panoramic view of Indian Ocean while still enjoying the breeze that comes from it. There's a lift in the establishment and telephone service.\nOn top of all these, you'll enjoy a remarkable service. You're welcome",
-  //     price: 7000,
-  //     type: {
-  //       typeName: "Airbnb",
-  //       typeId: "64b23e093567c004de3bf4a1",
-  //     },
-  //     category: [
-  //       {
-  //         categoryName: "For Rent",
-  //         categoryId: "64b23f6f3567c004de3bf4c3",
-  //       },
-  //       {
-  //         categoryName: "Reduced Price",
-  //         categoryId: "64b23f983567c004de3bf4cf",
-  //       },
-  //       {
-  //         categoryName: "Featured",
-  //         categoryId: "64b23f843567c004de3bf4c9",
-  //       },
-  //       {
-  //         categoryName: "Top Seller",
-  //         categoryId: "64b23fa93567c004de3bf4d2",
-  //       },
-  //     ],
-  //     location: {
-  //       place: "antana beach",
-  //       town: "lamu",
-  //       county: "lamu",
-  //       country: "Kenya",
-  //       postalCode: 2003,
-  //     },
-  //     bedrooms: 1,
-  //     bathrooms: 2,
-  //     features: [
-  //       "Bathtub",
-  //       "Parking space",
-  //       "24hr manned security",
-  //       "Lift",
-  //       "Telephone service",
-  //       "Balcony",
-  //       "Dining area",
-  //       "Controlled access",
-  //     ],
-  //     reviews: [
-  //       {
-  //         reviewerName: "Anita Mluyha",
-  //         reviewBody: "Damn this is good, buying soon",
-  //       },
-  //       {
-  //         reviewerName: "Bob Mkanaj",
-  //         reviewBody:
-  //           "Damn this is good, buying soon. Damn this is good, buying soon. Damn this is good, buying soon",
-  //       },
-  //       {
-  //         reviewerName: "Janita Worker",
-  //         reviewBody:
-  //           "Damn this is good, buying soon. Damn this is good, buying soon",
-  //       },
-  //       {
-  //         reviewerName: "Olover Admin",
-  //         reviewBody:
-  //           "Damn this is good, buying soon. Damn this is good, buying soon. Damn this is good, buying soon. Damn this is good, buying soon",
-  //       },
-  //       {
-  //         reviewerName: "Jackline Greens",
-  //         reviewBody: "Damn this is good, buying soon. Damn this is good.",
-  //       },
-  //       {
-  //         reviewerName: "Janita Worker",
-  //         reviewBody:
-  //           "Damn this is good, buying soon. Damn this is good, buying soon",
-  //       },
-  //     ],
-  //   },
-  // ]);
-
-  // const [reviews, setReviews] = useState([
-  //   {
-  //     reviewerName: "Anita Mluyha",
-  //     reviewBody: "Damn this is good, buying soon",
-  //   },
-  //   {
-  //     reviewerName: "Bob Mkanaj",
-  //     reviewBody:
-  //       "Damn this is good, buying soon. Damn this is good, buying soon. Damn this is good, buying soon",
-  //   },
-  //   {
-  //     reviewerName: "Olover Admin",
-  //     reviewBody:
-  //       "Damn this is good, buying soon. Damn this is good, buying soon. Damn this is good, buying soon. Damn this is good, buying soon",
-  //   },
-  //   {
-  //     reviewerName: "Jackline Greens",
-  //     reviewBody: "Damn this is good, buying soon. Damn this is good.",
-  //   },
-  // ]);
-
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      review: "",
+    },
+    validationSchema: reviewSchema,
+    onSubmit: (values) => {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        setTimeout(() => {
+          navigate("/signin");
+        }, 2000);
+      } else {
+        dispatch(addAReviewAC({ propertyId: id, reviewData: values }));
+      }
+    },
+  });
   return (
     <div className="page container mb-[10rem]">
-      <span className="text-tiny truncate sm:text-default">
+      <span className="text-smaller truncate sm:text-default">
         <Breadcrumb pageTitle={`${property?.name}`} />
       </span>
       <div className="flex justify-center items-center w-[100%] sm:mt-[1rem]">
@@ -378,10 +326,10 @@ const PropertyDetailPage = () => {
                           className="flex flex-col items-start w-full text-gray-200 font-poppinsLight"
                         >
                           <span className="w-full bg-lightThemeColor py-[0.125rem] px-[0.5rem] rounded-tr-lg">
-                            {review?.reviewerName}
+                            {review?.name}
                           </span>
                           <span className="w-full bg-lightGrayCTA py-[1rem] px-[0.5rem] rounded-bl-lg text-lightThemeColor">
-                            {review?.reviewBody}
+                            {review?.review}
                           </span>
                         </div>
                       );
@@ -392,20 +340,34 @@ const PropertyDetailPage = () => {
                   <h4 className="font-poppinsLight text-default mb-[1rem] sm:text-h3">
                     Write a Review
                   </h4>
-                  <form className="max-w-[80vw] flex flex-col gap-[1.25rem] bg-white px-[1rem] pt-[2rem] pb-[1.75rem] rounded-lg sm:max-w-[40vw] sm:px-[1.5rem]">
+                  <form
+                    onSubmit={formik.handleSubmit}
+                    className="max-w-[80vw] flex flex-col gap-[1.25rem] bg-white px-[1rem] pt-[2rem] pb-[1.75rem] rounded-lg sm:max-w-[40vw] sm:px-[1.5rem]"
+                  >
                     <div className="flex flex-col space-y-[0.5rem] w-full">
                       <input
                         type="text"
+                        value={formik.values.name}
+                        onChange={formik.handleChange("name")}
+                        onBlur={formik.handleBlur("name")}
                         placeholder="full name"
-                        className="hover:outline-none   focus:outline-none px-[1rem] py-[0.6rem] border-[1px] border-gray-200     hover:border-thirtyColor focus:border-thirtyColor rounded-md"
-                        required
+                        className="hover:outline-none font-poppinsLight focus:outline-none px-[1rem] py-[0.6rem] border-[1px] border-gray-200     hover:border-lightThemeColor focus:border-lightThemeColor rounded-md"
                       />
+                      <span className="text-smaller font-poppinsLight text-red-300 px-[0.5rem] sm:text-small">
+                        {formik.touched.name && formik.errors.name}
+                      </span>
+
                       <textarea
                         rows={5}
-                        className="hover:outline-none focus:outline-none px-[1rem] py-[0.6rem] border-[1px] border-gray-200 hover:border-thirtyColor focus:border-thirtyColor rounded-md resize-none"
-                        placeholder="hi, this an example of a review"
-                        required
+                        value={formik.values.review}
+                        onChange={formik.handleChange("review")}
+                        onBlur={formik.handleBlur("review")}
+                        className="hover:outline-none font-poppinsLight focus:outline-none px-[1rem] py-[0.6rem] border-[1px] border-gray-200 hover:border-lightThemeColor focus:lightThemeColor rounded-md resize-none"
+                        placeholder="Hi, this an example of a review"
                       />
+                      <span className="text-smaller font-poppinsLight text-red-300 px-[0.5rem] sm:text-small">
+                        {formik.touched.review && formik.errors.review}
+                      </span>
                     </div>
                     <button
                       type="submit"
@@ -426,9 +388,9 @@ const PropertyDetailPage = () => {
           Related Properties
         </h2>
         <div className="grid grid-cols-1 items-center gap-2 sm:grid-cols-2 md:grid-cols-2 md:gap-4 lg:grid-cols-3 xl:grid-cols-3">
-          <WishlistCard />
-          <WishlistCard />
-          <WishlistCard />
+          {similarProperties?.slice(0, 3).map((property, index) => {
+            return <GeneralCard key={index} property={property} />;
+          })}
         </div>
       </div>
 
