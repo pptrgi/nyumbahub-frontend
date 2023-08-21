@@ -54,7 +54,7 @@ const SpecificCard = ({ property, specificVal }) => {
               return (
                 <img
                   key={index}
-                  src={image}
+                  src={image?.imageUrl}
                   className={`${
                     imageSlide === index
                       ? "object-cover h-full w-full"

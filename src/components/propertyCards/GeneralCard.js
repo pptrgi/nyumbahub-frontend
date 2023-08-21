@@ -44,7 +44,7 @@ const GeneralCard = ({ property }) => {
               return (
                 <img
                   key={index}
-                  src={file}
+                  src={file?.imageUrl}
                   className={`${
                     imageSlide === index
                       ? "object-cover h-full w-full"

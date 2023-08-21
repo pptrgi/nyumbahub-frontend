@@ -164,7 +164,10 @@ const PropertyDetailPage = () => {
                     return (
                       <img
                         key={index}
-                        src={image !== property?.images[0] && image}
+                        src={
+                          image?.imageUrl !== property?.images[0]?.imageUrl &&
+                          image?.imageUrl
+                        }
                         className="h-full object-cover"
                       />
                     );

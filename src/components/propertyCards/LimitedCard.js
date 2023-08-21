@@ -28,7 +28,7 @@ const LimitedCard = ({ property }) => {
         <img
           src={
             property?.images?.length > 0
-              ? property?.images[0]
+              ? property?.images[0]?.imageUrl
               : "/images/no-image.png"
           }
           className="object-cover h-full w-full"
