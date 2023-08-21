@@ -22,6 +22,9 @@ import {
 } from "react-icons/pi";
 import { toast } from "react-toastify";
 import imagePlaceholder from "../../static/images/no-image.png";
+import test2 from "../../static/images/test2.jpg";
+import test3 from "../../static/images/test3.jpg";
+import city from "../../static/images/testImage.jpg";
 
 const SpecificCard = ({ property, specificVal }) => {
   const compareArray = useSelector((state) => state.property.compareProperties);
@@ -41,16 +44,17 @@ const SpecificCard = ({ property, specificVal }) => {
     );
   };
 
+  let images = [test2, test3, city, test3, test2, city];
   return (
     <div className="flex flex-col gap-[1rem] flex-shrink-0 bg-white w-full h-[400px] max-w-[310px]">
-      <div className="relative w-full h-3/5 overflow-hidden bg-lightGrayCTA">
+      <div className="relative w-full h-6/12 overflow-hidden bg-lightThemeColor">
         <Link to={`property/${property?._id}`} className="flex w-full h-full">
           {property?.images?.length > 0 ? (
-            property?.images?.map((file, index) => {
+            property?.images?.map((image, index) => {
               return (
                 <img
                   key={index}
-                  src={file}
+                  src={image}
                   className={`${
                     imageSlide === index
                       ? "object-cover h-full w-full"
@@ -97,11 +101,11 @@ const SpecificCard = ({ property, specificVal }) => {
         )}
         <div className="absolute bottom-0 left-0 pl-4 pb-2">
           <span className="font-poppinsBold text-bodyColor font-semibolded">
-            {`KES ${property?.price}`}
+            {`KES ${property?.price.toLocaleString("en-US")}`}
           </span>
         </div>
       </div>
-      <div className="w-full h-2/5 px-4">
+      <div className="w-full h-6/12 px-4">
         <h3 className="truncate font-poppinsSemibold mb-[0.125rem] text-lightThemeColor">
           {property?.name}
         </h3>
@@ -123,7 +127,7 @@ const SpecificCard = ({ property, specificVal }) => {
                 <PiBedLight />
               </span>
             </div>
-            <span className="text-tiny font-poppinsLight text-textColor sm:text-smaller md:text-smaller lg:text-smaller xl:text-smaller">
+            <span className="font-poppinsLight text-textColor text-small">
               Bedrooms
             </span>
           </div>
@@ -136,7 +140,7 @@ const SpecificCard = ({ property, specificVal }) => {
                 <PiBathtubLight />
               </span>
             </div>
-            <span className="text-tiny font-poppinsLight text-textColor sm:text-smaller md:text-smaller lg:text-smaller xl:text-smaller">
+            <span className="font-poppinsLight text-textColor text-small">
               Bathrooms
             </span>
           </div>
@@ -144,7 +148,7 @@ const SpecificCard = ({ property, specificVal }) => {
         <div className="flex justify-between items-center mt-[2rem]">
           <Link
             to={`property/${property?._id}`}
-            className="font-poppinsLight text-ctaColor text-smaller sm:text-small md:text-small lg:text-small xl:text-small"
+            className="font-poppinsLight text-ctaColor text-smaller sm:text-small"
           >
             View Property
           </Link>
@@ -158,10 +162,14 @@ const SpecificCard = ({ property, specificVal }) => {
               <PiArrowsClockwise />
             </span>
             <span>
-              <PiPhone />
+              <a href="tel:254700119134">
+                <PiPhone />
+              </a>
             </span>
             <span>
-              <PiWhatsappLogo />
+              <a href="https://wa.me/254700119134">
+                <PiWhatsappLogo />
+              </a>
             </span>
           </div>
         </div>

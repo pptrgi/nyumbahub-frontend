@@ -17,7 +17,6 @@ const registerSchema = yup.object({
     .required("Email address field is required"),
   phone: yup.string().required("Phone number field is required"),
   password: yup.string().required("Password field is required"),
-  confirmPassword: yup.string().required("Please confirm your password"),
 });
 
 const Register = () => {
@@ -33,7 +32,6 @@ const Register = () => {
       email: "",
       phone: "",
       password: "",
-      confirmPassword: "",
     },
     validationSchema: registerSchema,
     onSubmit: (values) => {
@@ -59,7 +57,7 @@ const Register = () => {
                 onSubmit={formik.handleSubmit}
                 className="flex flex-col items-center text-textColor w-full sm:w-3/4"
               >
-                <div className="flex flex-col space-y-[0.75rem] w-full">
+                <div className="flex flex-col space-y-[0.5rem] w-full">
                   <AuthInputTemplate
                     type="text"
                     name="firstName"
@@ -119,20 +117,6 @@ const Register = () => {
                   <span className="text-smaller font-poppinsLight text-red-300 px-[0.5rem] sm:text-small">
                     {formik.touched.password && formik.errors.password}
                   </span>
-
-                  <AuthInputTemplate
-                    type="password"
-                    name="confirmPassword"
-                    value={formik.values.confirmPassword}
-                    onChange={formik.handleChange("confirmPassword")}
-                    onBlur={formik.handleBlur("confirmPassword")}
-                    placeholder="confirm password"
-                  />
-                  <span className="text-smaller font-poppinsLight text-red-300 px-[0.5rem] sm:text-small">
-                    {formik.touched.confirmPassword &&
-                      formik.errors.confirmPassword}
-                  </span>
-
                   {/* <input
                     type="text"
                     placeholder="last name"

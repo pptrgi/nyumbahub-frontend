@@ -12,8 +12,9 @@ import test2 from "../static/images/test2.jpg";
 import test3 from "../static/images/test3.jpg";
 import SpecificCard from "../components/propertyCards/SpecificCard";
 import SortOptions from "../components/SortOptions";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getOneCategory } from "../reduxFeatures/categories/categorySlice";
+import { IoOptionsOutline } from "react-icons/io5";
 
 const OneCategory = () => {
   const dispatch = useDispatch();
@@ -34,62 +35,6 @@ const OneCategory = () => {
     properties.push(propertyDetails);
   });
 
-  // const [properties, setProperties] = useState([
-  //   {
-  //     image: [image, test2, test3],
-  //     title: "3 Bedroom Apartment Ruiru",
-  //     category: "featured",
-  //     price: "KES 8,000,000",
-  //     bathrooms: 4,
-  //     bedrooms: 3,
-  //     location: "Ruiru Police Station, Thika Road",
-  //   },
-  //   {
-  //     image: [test2, image, test3],
-  //     title: "Villa Beach Mombasa Next to Beach",
-  //     category: "top seller",
-  //     price: "KES 12,000,000",
-  //     bathrooms: 3,
-  //     bedrooms: 3,
-  //     location: "Nyali Beach, Nyali, Mombasa County, Kenya",
-  //   },
-  //   {
-  //     image: [test3, image, test2],
-  //     title: "Very Beautiful Mansion for the Rich Kenya",
-  //     category: "for rent",
-  //     price: "KES 48,500,000",
-  //     bathrooms: 5,
-  //     bedrooms: 5,
-  //     location: "Kiambu Next to Thika Next Around",
-  //   },
-  //   {
-  //     image: [test3, test2, image],
-  //     title: "Very Beautiful Mansion for the Rich Kenya",
-  //     category: "top seller",
-  //     price: "KES 48,500,000",
-  //     bathrooms: 5,
-  //     bedrooms: 5,
-  //     location: "Kiambu Next to Thika Next Around",
-  //   },
-  //   {
-  //     image: [test2, test3, image],
-  //     title: "Villa Beach Mombasa Next to Beach",
-  //     category: ["reduced price"],
-  //     price: "KES 12,000,000",
-  //     bathrooms: 3,
-  //     bedrooms: 3,
-  //     location: "Nyali Beach, Nyali, Mombasa County, Kenya",
-  //   },
-  //   {
-  //     image: [image, test2, test3],
-  //     title: "3 Bedroom Apartment Ruiru",
-  //     category: ["for rent"],
-  //     price: "KES 8,000,000",
-  //     bathrooms: 4,
-  //     bedrooms: 3,
-  //     location: "Ruiru Police Station, Thika Road",
-  //   },
-  // ]);
   return (
     <div className="page container">
       <Breadcrumb pageTitle={"Category"} />
@@ -133,14 +78,14 @@ const OneCategory = () => {
               Other Links
             </span>
             <div className="flex flex-col space-y-[0.5rem] font-poppinsLight text-small px-[0.25rem]">
-              <span>Home</span>
-              <span>Contact</span>
-              <span>Wishlist</span>
+              <Link to="/">Home</Link>
+              <Link to="/contact">Contact</Link>
+              <Link to="/wishlist">Wishlist</Link>
             </div>
           </div>
           <div className="flex justify-start items-start pt-[0.75rem] sm:hidden">
-            <span className="px-[0.125rem] bg-gray-100 rounded-md text-h3 text-titleColor">
-              <PiSortAscending />
+            <span className="px-[0.5rem] py-[0.25rem] bg-gray-100 rounded-sm text-[1.75rem] text-textColor">
+              <IoOptionsOutline />
             </span>
           </div>
         </div>

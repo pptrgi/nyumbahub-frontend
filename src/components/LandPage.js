@@ -58,12 +58,13 @@ const LandPage = () => {
     };
   }, []);
   return (
-    <div className="relative min-h-screen w-[100%] flex justify-center items-center border-b-[1px] border-gray-100">
+    <div className="relative min-h-screen w-[100%] flex justify-center items-center border-b-[1px] border-gray-100 py-[4.5rem] sm:py-[4.5rem] md:py-[10rem] lg:py-0">
+      {/* paddings because the header is overlaying on content. Remove later */}
       <div className="container flex flex-col gap-[8vh]">
         <div className="flex flex-col items-center">
           <div className="flex flex-col gap-[0.75rem] items-start">
             <h1 className="capitalize font-poppinsBold text-[2rem] leading-tight text-darkThemeColor sm:text-h1 md:text-large">
-              for rent? to buy? <br /> NyumbaHub it.
+              feel at home, <br /> in your home.
             </h1>
             <p className="font-poppinsLight text-textColor text-small max-w-[300px] md:text-default md:max-w-md">
               You get a place, you are happy we are happy the world is happy
@@ -72,12 +73,12 @@ const LandPage = () => {
         </div>
         <div className="flex flex-col items-center w-full">
           <div className="w-full">
-            <p className="bg-white px-[1.5rem] py-[1.25rem] font-poppinsLight text-titleColor text-default w-full md:text-center md:text-h3">
+            <p className="bg-white px-[1.5rem] py-[1.25rem] font-poppinsLight text-titleColor rounded-t-sm text-default w-full md:text-center md:text-h3">
               Search for a Property
             </p>
             <form
               onSubmit={handleSearch}
-              className=" flex flex-col space-y-[0.75rem] items-center bg-white px-[1.5rem] py-[1.25rem] md:flex-row md:space-x-[0.75rem] md:space-y-0 w-full"
+              className=" flex flex-col space-y-[0.75rem] items-center bg-white px-[1.5rem] py-[1.25rem] rounded-b-sm md:flex-row md:space-x-[0.75rem] md:space-y-0 w-full"
             >
               {/* *********************************************************** */}
               <div ref={typeOptionsRef} className="relative w-full md:w-5/12">

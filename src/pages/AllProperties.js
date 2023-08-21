@@ -5,7 +5,10 @@ import {
   PiTextColumns,
   PiTextAlignJustify,
   PiSortAscending,
+  PiFunnel,
 } from "react-icons/pi";
+import { BiSlider, BiSliderAlt } from "react-icons/bi";
+import { IoOptionsOutline } from "react-icons/io5";
 import SearchResultCard from "../components/searchResult/SearchResultCard";
 
 import image from "../static/images/testImage.jpg";
@@ -16,6 +19,7 @@ import DropdownMenu from "../components/DropdownMenu";
 import SortOptions from "../components/SortOptions";
 import { getAllProperties } from "../reduxFeatures/properties/propertySlice";
 import FilterPanelMobile from "../components/FilterPanelMobile";
+import { Link } from "react-router-dom";
 
 const AllProperties = () => {
   const [propertyType, setPropertyType] = useState("");
@@ -34,338 +38,6 @@ const AllProperties = () => {
   const getAllPropertiesNow = () => {
     dispatch(getAllProperties({ minPrice, maxPrice, propertyType, sort }));
   };
-  // const [properties, setProperties] = useState([
-  //   {
-  //     image: [image, test2, test3],
-  //     title: "3 Bedroom Apartment Ruiru",
-  //     category: ["new listing", "featured", "for rent"],
-  //     price: "KES 8,000,000",
-  //     bathrooms: 4,
-  //     bedrooms: 3,
-  //     location: "Ruiru Police Station, Thika Road",
-  //   },
-  //   {
-  //     image: [test2, image, test3],
-  //     title: "Villa Beach Mombasa Next to Beach",
-  //     category: ["reduced price", "top seller", "for sale"],
-  //     price: "KES 12,000,000",
-  //     bathrooms: 3,
-  //     bedrooms: 3,
-  //     location: "Nyali Beach, Nyali, Mombasa County, Kenya",
-  //   },
-  //   {
-  //     image: [test3, image, test2],
-  //     title: "Very Beautiful Mansion for the Rich Kenya",
-  //     category: ["featured", "for rent", "reduced price", "top seller"],
-  //     price: "KES 48,500,000",
-  //     bathrooms: 5,
-  //     bedrooms: 5,
-  //     location: "Kiambu Next to Thika Next Around",
-  //   },
-  //   {
-  //     image: [test3, test2, image],
-  //     title: "Very Beautiful Mansion for the Rich Kenya",
-  //     category: ["for sale", "new listing", "featured", "top seller"],
-  //     price: "KES 48,500,000",
-  //     bathrooms: 5,
-  //     bedrooms: 5,
-  //     location: "Kiambu Next to Thika Next Around",
-  //   },
-  //   {
-  //     image: [test2, test3, image],
-  //     title: "Villa Beach Mombasa Next to Beach",
-  //     category: [
-  //       "new listing",
-  //       "featured",
-  //       "reduced price",
-  //       "top seller",
-  //       "for sale",
-  //     ],
-  //     price: "KES 12,000,000",
-  //     bathrooms: 3,
-  //     bedrooms: 3,
-  //     location: "Nyali Beach, Nyali, Mombasa County, Kenya",
-  //   },
-  //   {
-  //     image: [image, test2, test3],
-  //     title: "3 Bedroom Apartment Ruiru",
-  //     category: [
-  //       "new listing",
-  //       "featured",
-  //       "for rent",
-  //       "reduced price",
-  //       "top seller",
-  //     ],
-  //     price: "KES 8,000,000",
-  //     bathrooms: 4,
-  //     bedrooms: 3,
-  //     location: "Ruiru Police Station, Thika Road",
-  //   },
-  //   {
-  //     image: [image, test2, test3],
-  //     title: "3 Bedroom Apartment Ruiru",
-  //     category: ["new listing", "featured", "for rent"],
-  //     price: "KES 8,000,000",
-  //     bathrooms: 4,
-  //     bedrooms: 3,
-  //     location: "Ruiru Police Station, Thika Road",
-  //   },
-  //   {
-  //     image: [test2, image, test3],
-  //     title: "Villa Beach Mombasa Next to Beach",
-  //     category: ["reduced price", "top seller", "for sale"],
-  //     price: "KES 12,000,000",
-  //     bathrooms: 3,
-  //     bedrooms: 3,
-  //     location: "Nyali Beach, Nyali, Mombasa County, Kenya",
-  //   },
-  //   {
-  //     image: [test3, image, test2],
-  //     title: "Very Beautiful Mansion for the Rich Kenya",
-  //     category: ["featured", "for rent", "reduced price", "top seller"],
-  //     price: "KES 48,500,000",
-  //     bathrooms: 5,
-  //     bedrooms: 5,
-  //     location: "Kiambu Next to Thika Next Around",
-  //   },
-  //   {
-  //     image: [test3, test2, image],
-  //     title: "Very Beautiful Mansion for the Rich Kenya",
-  //     category: ["for sale", "new listing", "featured", "top seller"],
-  //     price: "KES 48,500,000",
-  //     bathrooms: 5,
-  //     bedrooms: 5,
-  //     location: "Kiambu Next to Thika Next Around",
-  //   },
-  //   {
-  //     image: [test2, test3, image],
-  //     title: "Villa Beach Mombasa Next to Beach",
-  //     category: [
-  //       "new listing",
-  //       "featured",
-  //       "reduced price",
-  //       "top seller",
-  //       "for sale",
-  //     ],
-  //     price: "KES 12,000,000",
-  //     bathrooms: 3,
-  //     bedrooms: 3,
-  //     location: "Nyali Beach, Nyali, Mombasa County, Kenya",
-  //   },
-  //   {
-  //     image: [image, test2, test3],
-  //     title: "3 Bedroom Apartment Ruiru",
-  //     category: [
-  //       "new listing",
-  //       "featured",
-  //       "for rent",
-  //       "reduced price",
-  //       "top seller",
-  //     ],
-  //     price: "KES 8,000,000",
-  //     bathrooms: 4,
-  //     bedrooms: 3,
-  //     location: "Ruiru Police Station, Thika Road",
-  //   },
-  //   {
-  //     image: [image, test2, test3],
-  //     title: "3 Bedroom Apartment Ruiru",
-  //     category: ["new listing", "featured", "for rent"],
-  //     price: "KES 8,000,000",
-  //     bathrooms: 4,
-  //     bedrooms: 3,
-  //     location: "Ruiru Police Station, Thika Road",
-  //   },
-  //   {
-  //     image: [test2, image, test3],
-  //     title: "Villa Beach Mombasa Next to Beach",
-  //     category: ["reduced price", "top seller", "for sale"],
-  //     price: "KES 12,000,000",
-  //     bathrooms: 3,
-  //     bedrooms: 3,
-  //     location: "Nyali Beach, Nyali, Mombasa County, Kenya",
-  //   },
-  //   {
-  //     image: [test3, image, test2],
-  //     title: "Very Beautiful Mansion for the Rich Kenya",
-  //     category: ["featured", "for rent", "reduced price", "top seller"],
-  //     price: "KES 48,500,000",
-  //     bathrooms: 5,
-  //     bedrooms: 5,
-  //     location: "Kiambu Next to Thika Next Around",
-  //   },
-  //   {
-  //     image: [test3, test2, image],
-  //     title: "Very Beautiful Mansion for the Rich Kenya",
-  //     category: ["for sale", "new listing", "featured", "top seller"],
-  //     price: "KES 48,500,000",
-  //     bathrooms: 5,
-  //     bedrooms: 5,
-  //     location: "Kiambu Next to Thika Next Around",
-  //   },
-  //   {
-  //     image: [test2, test3, image],
-  //     title: "Villa Beach Mombasa Next to Beach",
-  //     category: [
-  //       "new listing",
-  //       "featured",
-  //       "reduced price",
-  //       "top seller",
-  //       "for sale",
-  //     ],
-  //     price: "KES 12,000,000",
-  //     bathrooms: 3,
-  //     bedrooms: 3,
-  //     location: "Nyali Beach, Nyali, Mombasa County, Kenya",
-  //   },
-  //   {
-  //     image: [image, test2, test3],
-  //     title: "3 Bedroom Apartment Ruiru",
-  //     category: [
-  //       "new listing",
-  //       "featured",
-  //       "for rent",
-  //       "reduced price",
-  //       "top seller",
-  //     ],
-  //     price: "KES 8,000,000",
-  //     bathrooms: 4,
-  //     bedrooms: 3,
-  //     location: "Ruiru Police Station, Thika Road",
-  //   },
-  //   {
-  //     image: [image, test2, test3],
-  //     title: "3 Bedroom Apartment Ruiru",
-  //     category: ["new listing", "featured", "for rent"],
-  //     price: "KES 8,000,000",
-  //     bathrooms: 4,
-  //     bedrooms: 3,
-  //     location: "Ruiru Police Station, Thika Road",
-  //   },
-  //   {
-  //     image: [test2, image, test3],
-  //     title: "Villa Beach Mombasa Next to Beach",
-  //     category: ["reduced price", "top seller", "for sale"],
-  //     price: "KES 12,000,000",
-  //     bathrooms: 3,
-  //     bedrooms: 3,
-  //     location: "Nyali Beach, Nyali, Mombasa County, Kenya",
-  //   },
-  //   {
-  //     image: [test3, image, test2],
-  //     title: "Very Beautiful Mansion for the Rich Kenya",
-  //     category: ["featured", "for rent", "reduced price", "top seller"],
-  //     price: "KES 48,500,000",
-  //     bathrooms: 5,
-  //     bedrooms: 5,
-  //     location: "Kiambu Next to Thika Next Around",
-  //   },
-  //   {
-  //     image: [test3, test2, image],
-  //     title: "Very Beautiful Mansion for the Rich Kenya",
-  //     category: ["for sale", "new listing", "featured", "top seller"],
-  //     price: "KES 48,500,000",
-  //     bathrooms: 5,
-  //     bedrooms: 5,
-  //     location: "Kiambu Next to Thika Next Around",
-  //   },
-  //   {
-  //     image: [test2, test3, image],
-  //     title: "Villa Beach Mombasa Next to Beach",
-  //     category: [
-  //       "new listing",
-  //       "featured",
-  //       "reduced price",
-  //       "top seller",
-  //       "for sale",
-  //     ],
-  //     price: "KES 12,000,000",
-  //     bathrooms: 3,
-  //     bedrooms: 3,
-  //     location: "Nyali Beach, Nyali, Mombasa County, Kenya",
-  //   },
-  //   {
-  //     image: [image, test2, test3],
-  //     title: "3 Bedroom Apartment Ruiru",
-  //     category: [
-  //       "new listing",
-  //       "featured",
-  //       "for rent",
-  //       "reduced price",
-  //       "top seller",
-  //     ],
-  //     price: "KES 8,000,000",
-  //     bathrooms: 4,
-  //     bedrooms: 3,
-  //     location: "Ruiru Police Station, Thika Road",
-  //   },
-  //   {
-  //     image: [image, test2, test3],
-  //     title: "3 Bedroom Apartment Ruiru",
-  //     category: ["new listing", "featured", "for rent"],
-  //     price: "KES 8,000,000",
-  //     bathrooms: 4,
-  //     bedrooms: 3,
-  //     location: "Ruiru Police Station, Thika Road",
-  //   },
-  //   {
-  //     image: [test2, image, test3],
-  //     title: "Villa Beach Mombasa Next to Beach",
-  //     category: ["reduced price", "top seller", "for sale"],
-  //     price: "KES 12,000,000",
-  //     bathrooms: 3,
-  //     bedrooms: 3,
-  //     location: "Nyali Beach, Nyali, Mombasa County, Kenya",
-  //   },
-  //   {
-  //     image: [test3, image, test2],
-  //     title: "Very Beautiful Mansion for the Rich Kenya",
-  //     category: ["featured", "for rent", "reduced price", "top seller"],
-  //     price: "KES 48,500,000",
-  //     bathrooms: 5,
-  //     bedrooms: 5,
-  //     location: "Kiambu Next to Thika Next Around",
-  //   },
-  //   {
-  //     image: [test3, test2, image],
-  //     title: "Very Beautiful Mansion for the Rich Kenya",
-  //     category: ["for sale", "new listing", "featured", "top seller"],
-  //     price: "KES 48,500,000",
-  //     bathrooms: 5,
-  //     bedrooms: 5,
-  //     location: "Kiambu Next to Thika Next Around",
-  //   },
-  //   {
-  //     image: [test2, test3, image],
-  //     title: "Villa Beach Mombasa Next to Beach",
-  //     category: [
-  //       "new listing",
-  //       "featured",
-  //       "reduced price",
-  //       "top seller",
-  //       "for sale",
-  //     ],
-  //     price: "KES 12,000,000",
-  //     bathrooms: 3,
-  //     bedrooms: 3,
-  //     location: "Nyali Beach, Nyali, Mombasa County, Kenya",
-  //   },
-  //   {
-  //     image: [image, test2, test3],
-  //     title: "3 Bedroom Apartment Ruiru",
-  //     category: [
-  //       "new listing",
-  //       "featured",
-  //       "for rent",
-  //       "reduced price",
-  //       "top seller",
-  //     ],
-  //     price: "KES 8,000,000",
-  //     bathrooms: 4,
-  //     bedrooms: 3,
-  //     location: "Ruiru Police Station, Thika Road",
-  //   },
-  // ]);
 
   return (
     <div className="page container">
@@ -454,14 +126,6 @@ const AllProperties = () => {
                   </div>
                 </div>
               </div>
-              {/* <div className="flex justify-end items-end w-full mt-[0.75rem]">
-                <button
-                  type="submit"
-                  className="font-poppinsRegular text-small font-semibolded text-ctaColor tracking-wider"
-                >
-                  Filter
-                </button>
-              </div> */}
             </form>
           </div>
           <div className="hidden flex-col items-start bg-white border-[1.5px] border-gray-200 my-[1rem] pt-[1.5rem] pb-[1rem] px-[0.75rem] rounded-lg sm:flex">
@@ -469,9 +133,9 @@ const AllProperties = () => {
               Other Links
             </span>
             <div className="flex flex-col space-y-[0.5rem] font-poppinsLight text-small px-[0.25rem]">
-              <span>Home</span>
-              <span>Contact</span>
-              <span>Wishlist</span>
+              <Link to="/">Home</Link>
+              <Link to="/contact">Contact</Link>
+              <Link to="/wishlist">Wishlist</Link>
             </div>
           </div>
           <div className="relative flex justify-start items-start pt-[0.75rem] sm:hidden">
@@ -479,9 +143,9 @@ const AllProperties = () => {
               onClick={(e) =>
                 setShowFilterPanel(showFilterPanel ? false : true)
               }
-              className="px-[0.125rem] bg-gray-100 rounded-md text-h3 text-titleColor"
+              className="px-[0.5rem] py-[0.25rem] bg-gray-100 rounded-sm text-[1.75rem] text-textColor"
             >
-              <PiSortAscending />
+              <IoOptionsOutline />
             </span>
             {showFilterPanel && (
               <div className="absolute top-[2.75rem] left-0 z-30 sm:hidden">

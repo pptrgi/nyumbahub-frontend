@@ -5,28 +5,29 @@ import * as yup from "yup";
 import { useFormik } from "formik";
 import { Link } from "react-router-dom";
 
-const resetPassSchema = yup.object({
+const changePassSchema = yup.object({
   password: yup.string().required("Please enter your new password"),
   confirmPassword: yup.string().required("Please confirm your new password"),
 });
-const ResetPassword = () => {
+
+const ChangePassword = () => {
   const formik = useFormik({
     initialValues: {
       password: "",
       confirmPassword: "",
     },
-    validationSchema: resetPassSchema,
+    validationSchema: changePassSchema,
     onSubmit: (values) => {},
   });
   return (
     <div className="page container">
-      <Breadcrumb pageTitle={"Reset Password"} />
+      <Breadcrumb pageTitle={"Change Password"} />
       <div className="flex justify-center items-center w-full min-h-[70vh]">
         <div className="flex flex-col gap-[2rem]">
           <div className="w-[300px] bg-white rounded-sm sm:w-[400px] md:w-[500px] pt-[3rem] pb-[2rem]">
             <div className="flex flex-col items-center gap-[2.5rem] px-[1rem] sm:col-span-3 w-full">
               <h3 className="text-center font-poppinsRegular text-lightThemeColor text-default sm:text-h3">
-                Reset your Forgotten Password
+                Change your Current Password
               </h3>
               <form
                 onSubmit={formik.handleSubmit}
@@ -67,7 +68,7 @@ const ResetPassword = () => {
                       type="submit"
                       className="bg-ctaColor text-bodyColor w-full py-[0.5rem] px-[1.25rem] rounded-md"
                     >
-                      Reset
+                      Change
                     </button>
                   </div>
                 </div>
@@ -80,4 +81,4 @@ const ResetPassword = () => {
   );
 };
 
-export default ResetPassword;
+export default ChangePassword;

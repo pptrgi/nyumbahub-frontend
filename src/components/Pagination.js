@@ -30,23 +30,19 @@ const Pagination = ({ properties, itemsPerPage, wrapperStyling }) => {
       <div className="flex justify-center items-center w-full">
         <ReactPaginate
           breakLabel=".."
-          nextLabel={
-            <PiCaretRightFill className="text-bodyColor text-default sm:text-h3" />
-          }
-          previousLabel={
-            <PiCaretLeftFill className="text-ctaColor text-default sm:text-h3" />
-          }
+          nextLabel="next" // } //   <PiCaretRightFill className="text-white text-h3 sm:text-h2" /> // {
+          previousLabel="prev" // {<PiCaretLeftFill className="text-h3 sm:text-h2" />}
           onPageChange={handlePageClick}
           pageRangeDisplayed={2}
           pageCount={pageCount}
           renderOnZeroPageCount={null}
           containerClassName="flex items-center space-x-[1rem] my-[4rem]"
           //   pageLinkClassName="font-poppinsRegular text-textColor font-semibolded"
-          previousLinkClassName="font-poppinsRegular text-textColor font-semibolded"
-          activeLinkClassName="font-poppinsRegular text-ctaColor font-semibolded"
-          nextLinkClassName="font-poppinsRegular text-textColor font-semibolded"
-          nextClassName="px-[1rem] py-[0.5rem] bg-ctaColor text-white rounded-sm border-[1.5px] border-ctaColor"
-          previousClassName="px-[1rem] py-[0.5rem] bg-bodyColor border-[1.5px] border-ctaColor rounded-sm"
+          previousLinkClassName="font-poppinsSemibold text-lightThemeColor tracking-wide group-hover:text-ctaColor"
+          activeLinkClassName="font-poppinsRegular text-ctaColor font-semibolded text-default sm:text-h3"
+          nextLinkClassName="font-poppinsRegular text-bodyColor tracking-wide"
+          nextClassName="px-[0.8rem] py-[0.3rem] bg-lightThemeColor rounded-sm border-[1.5px] border-lightThemeColor hover:border-ctaColor hover:bg-ctaColor"
+          previousClassName="group px-[0.8rem] py-[0.3rem] bg-bodyColor border-[1.5px] border-lightThemeColor rounded-sm hover:border-ctaColor"
         />
       </div>
     </div>

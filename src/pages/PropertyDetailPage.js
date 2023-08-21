@@ -9,6 +9,7 @@ import {
 import Breadcrumb from "../components/Breadcrumb";
 import GeneralCard from "../components/propertyCards/GeneralCard";
 import WishlistCard from "../components/wishlist/WishlistCard";
+import { formatDate } from "../utils/dateFormatter";
 import {
   PiHeart,
   PiMapPin,
@@ -16,7 +17,15 @@ import {
   PiPhone,
   PiWhatsappLogo,
   PiEnvelope,
+  PiPhoneFill,
+  PiWhatsappLogoFill,
+  PiEnvelopeFill,
 } from "react-icons/pi";
+import {
+  IoPaperPlaneSharp,
+  IoCallSharp,
+  IoLogoWhatsapp,
+} from "react-icons/io5";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 import test2 from "../static/images/test2.jpg";
 import test3 from "../static/images/test3.jpg";
@@ -59,7 +68,7 @@ const PropertyDetailPage = () => {
   useEffect(() => {
     dispatch(getOnePropertyAC(id));
     dispatch(getAllProperties());
-  }, [dispatch]);
+  }, []); // removed dispatch as dependency
 
   const formik = useFormik({
     initialValues: {
@@ -78,6 +87,7 @@ const PropertyDetailPage = () => {
       }
     },
   });
+
   return (
     <div className="page container mb-[10rem]">
       <span className="text-smaller truncate sm:text-default">
@@ -89,7 +99,7 @@ const PropertyDetailPage = () => {
 
           <div className="flex flex-col-reverse gap-[3rem] items-start w-full sm:flex-col">
             {/* titles and images container */}
-            <div className="flex flex-col space-y-[1.5rem] w-full">
+            <section className="flex flex-col space-y-[1.5rem] w-full">
               {/* titles */}
               <div className="flex flex-col space-y-[0.5rem]">
                 <h3 className="text-darkThemeColor font-poppinsSemibold text-default truncate sm:text-h3">
@@ -121,49 +131,59 @@ const PropertyDetailPage = () => {
               </div>
 
               <div className="flex justify-between w-full items-center">
-                <h3 className="text-darkThemeColor font-poppinsBold text-default font-semibolded sm:text-h3">{`KES ${property?.price},000`}</h3>
+                <h3 className="text-darkThemeColor font-poppinsBold text-default font-semibolded sm:text-h3">{`KES ${property?.price?.toLocaleString(
+                  "en-US"
+                )}`}</h3>
                 <span className="text-darkThemeColor text-h2 font-semibolded">
                   <PiHeart />
                 </span>
               </div>
               <div className="flex space-x-[1.25rem]">
                 <span className="font-poppinsRegular">Date Added:</span>
-                <span className="font-poppinsLight">March 2nd, 2023</span>
+                <span className="font-poppinsLight">
+                  {formatDate(`${property?.createdAt}`)}
+                </span>
               </div>
-            </div>
+            </section>
 
             {property?.images?.length > 0 ? (
-              <div className="relative flex flex-col gap-[2px] w-full max-h-[45vh] items-center overflow-hidden">
+              <section className="relative flex flex-col gap-[2px] w-full items-center overflow-hidden h-[300px] sm:h-[280px] md:h-[300px]">
                 {/* images */}
-                <div className="flex items-center gap-[2px] w-full h-11/12">
+                <div className="flex items-center gap-[2px] w-full h-[250px] sm:h-[230px] md:h-[240px]">
                   <img
-                    src={test3}
+                    src={property?.images[0]}
                     className="w-full h-full object-cover sm:w-1/2"
                   />
                   <img
-                    src={city}
+                    src={property?.images[1]}
                     className="hidden w-1/2 h-full object-cover sm:block"
                   />
                 </div>
-                <div className="flex gap-[2px] items-center w-full h-1/12">
-                  <img src={test3} className="w-1/3 h-full object-cover" />
-                  <img src={city} className="w-1/3 h-full object-cover" />
-                  <img src={test2} className="w-1/3 h-full object-cover" />
+                <div className="flex gap-[2px] items-center w-full h-[50px] sm:h-[50px] overflow-x-auto scroll-smooth md:h-[60px]">
+                  {property?.images?.map((image, index) => {
+                    return (
+                      <img
+                        key={index}
+                        src={image !== property?.images[0] && image}
+                        className="h-full object-cover"
+                      />
+                    );
+                  })}
                 </div>
-              </div>
+              </section>
             ) : (
-              <div className="w-full h-[30vh] overflow-hidden lg:h-[40vh]">
+              <section className="w-full h-[200px] overflow-hidden sm:h-[250px] lg:h-[300px]">
                 <img
-                  src="/images/no-image.png"
+                  src="/images/banner_light.jpg"
                   className="w-full h-full object-cover"
                 />
-              </div>
+              </section>
             )}
           </div>
 
           <div className="flex flex-col gap-[2rem] mt-[3rem]">
             {/* all other property details */}
-            <div>
+            <section>
               <h3 className="font-poppinsSemibold text-lightThemeColor font-semibolded border-b-[1px] border-gray-200 mb-[1rem] pb-[0.25rem]">
                 Basic Info
               </h3>
@@ -209,9 +229,9 @@ const PropertyDetailPage = () => {
                   </span>
                 </div>
               </div>
-            </div>
+            </section>
 
-            <div>
+            <section>
               <h3 className="font-poppinsSemibold text-lightThemeColor font-semibolded border-b-[1px] border-gray-200 mb-[1rem] pb-[0.25rem]">
                 Description
               </h3>
@@ -228,9 +248,9 @@ const PropertyDetailPage = () => {
                   );
                 })}
               </div>
-            </div>
+            </section>
 
-            <div>
+            <section>
               <h3 className="font-poppinsSemibold text-lightThemeColor font-semibolded border-b-[1px] border-gray-200 mb-[1rem] pb-[0.25rem]">
                 Features
               </h3>
@@ -251,13 +271,13 @@ const PropertyDetailPage = () => {
                   );
                 })}
               </div>
-            </div>
+            </section>
 
-            <div className="">
+            <section className="">
               <h3 className="font-poppinsSemibold text-lightThemeColor font-semibolded border-b-[1px] border-gray-200 mb-[1rem] pb-[0.25rem]">
                 Location
               </h3>
-              <div className="flex flex-col justify-between w-full gap-[2rem] sm:gap-0 sm:items-start sm:flex-row pb-[0.25rem]">
+              <div className="flex flex-col justify-between w-full gap-[2rem] pb-[0.25rem] sm:gap-0 sm:items-start sm:flex-row">
                 <div className="sm:w-1/2">
                   <div className="grid grid-cols-1 items-start gap-3 w-full truncate">
                     <div className="flex items-start gap-[1rem]">
@@ -302,12 +322,14 @@ const PropertyDetailPage = () => {
                     </div>
                   </div>
                 </div>
-                <div className="sm:w-1/2 flex justify-center items-center mx-[0.5rem] h-[20vh] sm:mx-[1rem]">
-                  <div className="bg-orange-300 w-full h-full">Map</div>
+                <div className="flex justify-center items-center mx-[0.5rem] h-[20vh] sm:mx-[1rem] sm:w-1/2">
+                  <div className="bg-orange-300 w-full h-full rounded-sm">
+                    Map
+                  </div>
                 </div>
               </div>
-            </div>
-            <div>
+            </section>
+            <section>
               <h3 className="font-poppinsSemibold text-lightThemeColor font-semibolded border-b-[1px] border-gray-200 mb-[1rem] pb-[0.25rem]">
                 Reviews
               </h3>
@@ -378,7 +400,7 @@ const PropertyDetailPage = () => {
                   </form>
                 </div>
               </div>
-            </div>
+            </section>
           </div>
         </div>
       </div>
@@ -400,7 +422,9 @@ const PropertyDetailPage = () => {
             <div className="flex justify-between items-center py-[0.4rem] bg-ctaColor mx-[1rem] rounded-lg sm:py-[1rem]">
               <div className="flex flex-col justify-center items-center gap-[0.125rem] border-r-[1px] border-gray-200 w-1/3 sm:flex-row sm:gap-4">
                 <span className="text-h3 sm:text-h2">
-                  <PiPhone />
+                  <a href="tel:254700119134">
+                    <IoCallSharp />
+                  </a>
                 </span>
                 <span className="font-poppinsLight text-smaller sm:text-small">
                   Call
@@ -408,7 +432,9 @@ const PropertyDetailPage = () => {
               </div>
               <div className="flex flex-col justify-center items-center gap-[0.125rem] border-r-[1px] border-gray-200 w-1/3 sm:flex-row sm:gap-4">
                 <span className="text-h3 sm:text-h2">
-                  <PiWhatsappLogo />
+                  <a href="https://wa.me/254700119134">
+                    <IoLogoWhatsapp />
+                  </a>
                 </span>
                 <span className="font-poppinsLight text-smaller sm:text-small">
                   Whatsapp
@@ -416,7 +442,9 @@ const PropertyDetailPage = () => {
               </div>
               <div className="flex flex-col justify-center items-center gap-[0.125rem] w-1/3 sm:flex-row sm:gap-4">
                 <span className="text-h3 sm:text-h2">
-                  <PiEnvelope />
+                  <a href="mailto:lifencreatives@gmail.com">
+                    <IoPaperPlaneSharp />
+                  </a>
                 </span>
                 <span className="font-poppinsLight text-smaller sm:text-small">
                   Email

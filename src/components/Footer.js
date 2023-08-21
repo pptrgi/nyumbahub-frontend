@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   PiWhatsappLogo,
   PiLinkedinLogo,
@@ -23,7 +24,9 @@ const Footer = () => {
             </div>
             <div className="flex justify-center items-center w-full sm:justify-end sm:items-end sm:w-1/2">
               <span className="text-bodyColor bg-ctaColor py-[0.8rem] px-[1.5rem] rounded-md font-poppinsRegular font-mediumWeight tracking-wide">
-                See the NyumbaHub API
+                <a href="https://nyumbahub.netlify.app">
+                  See the NyumbaHub API
+                </a>
               </span>
             </div>
           </div>
@@ -31,53 +34,57 @@ const Footer = () => {
         <div className="container">
           <div className="grid grid-cols-12 items-start gap-2">
             <div className="flex flex-col space-y-[0.5rem] items-start col-span-6 sm:col-span-3">
-              <span className="font-poppinsRegular text-bodyColor">
+              <span className="font-poppinsRegular text-bodyColor font-mediumWeight">
                 Quick Links
               </span>
               <div className="flex flex-col space-y-[0.25rem] font-poppinsLight text-lightGrayCTA text-smaller sm:text-small sm:pb-[1rem] md:pb-0">
-                <span>Home</span>
-                <span>Contact</span>
-                <span>All Properties</span>
-                <span>Wishlist</span>
-                <span>Compare</span>
-                <span>Account</span>
+                <Link to="/">Home</Link>
+                <Link to="/contact">Contact</Link>
+                <Link to="/all-properties">All Properties</Link>
+                <Link to="/wishlist">Wishlist</Link>
+                <Link to="/compare">Compare</Link>
+                <Link to="/register">Account</Link>
               </div>
             </div>
 
             <div className="flex flex-col space-y-[0.5rem] items-start col-span-6 sm:col-span-4 md:col-span-3">
-              <span className="font-poppinsRegular text-bodyColor">
+              <span className="font-poppinsRegular text-bodyColor font-mediumWeight">
                 Type Properties
               </span>
               <div className="flex flex-col space-y-[0.25rem] font-poppinsLight text-lightGrayCTA text-smaller sm:text-small pb-[1rem] sm:pb-0">
-                <span>Apartment</span>
-                <span>Maisonette</span>
-                <span>Villa</span>
-                <span>Airbnb</span>
-                <span>Mansion</span>
-                <span>Bungalow</span>
+                <Link to="/type/64b23dfd3567c004de3bf49e">Apartment</Link>
+                <Link to="/type/64b23de73567c004de3bf498">Maisonette</Link>
+                <Link to="/type/64b23df23567c004de3bf49b">Villa</Link>
+                <Link to="/">Airbnb</Link>
+                <Link to="/type/64afeefd919371933061ddb4">Mansion</Link>
+                <Link to="/type/64b23bd62051ecc3babb05fb">Bungalow</Link>
               </div>
             </div>
             <div className="flex flex-col space-y-[0.5rem] items-start col-span-6 sm:col-span-4 md:col-span-3">
-              <span className="font-poppinsRegular text-bodyColor">
+              <span className="font-poppinsRegular text-bodyColor font-mediumWeight">
                 Category Properties
               </span>
               <div className="flex flex-col space-y-[0.25rem] font-poppinsLight text-lightGrayCTA text-smaller sm:text-small">
-                <span>Featured</span>
-                <span>For Rent</span>
-                <span>For Sale</span>
-                <span>New Listings</span>
-                <span>Top Seller</span>
-                <span>Reduced Price</span>
+                <Link to="/category/64b23f843567c004de3bf4c9">Featured</Link>
+                <Link to="/category/64b23f6f3567c004de3bf4c3">For Rent</Link>
+                <Link to="/category/64b23f783567c004de3bf4c6">For Sale</Link>
+                <Link to="/category/64b23f8f3567c004de3bf4cc">
+                  New Listings
+                </Link>
+                <Link to="/category/64b23fa93567c004de3bf4d2">Top Seller</Link>
+                <Link to="/category/64b23f983567c004de3bf4cf">
+                  Reduced Price
+                </Link>
               </div>
             </div>
             <div className="flex flex-col space-y-[0.5rem] items-start col-span-6 sm:col-span-4 md:col-span-3">
-              <span className="font-poppinsRegular text-bodyColor">
+              <span className="font-poppinsRegular text-bodyColor font-mediumWeight">
                 Contact Us
               </span>
               <div className="flex flex-col space-y-[1.5rem] text-bodyColor font-poppinsLight text-smaller sm:text-small">
-                <span className="font-poppinsLight text-ctaColor">
+                <Link to="/contact" className="font-poppinsLight text-ctaColor">
                   Write me a Message
-                </span>
+                </Link>
                 {/* <div className="flex space-x-3 items-center">
                   <span className="text-default sm:text-h3">
                     <PiMapPin />
@@ -117,18 +124,26 @@ const Footer = () => {
                     </div>
                   </div>
                 </div>
-                <div className="flex items-center space-x-[1rem] text-default text-bodyColor pb-[1rem] sm:pb-0 sm:text-h3">
+                <div className="flex items-center space-x-[1rem] text-h3 text-bodyColor pb-[1rem] sm:pb-0 sm:text-h2">
                   <span>
-                    <PiLinkedinLogo />
+                    <a href="https://www.linkedin.com/in/petergitonga">
+                      <PiLinkedinLogo />
+                    </a>
                   </span>
                   <span>
-                    <PiTwitterLogo />
+                    <a href="https://twitter.com/ptrgitonga">
+                      <PiTwitterLogo />
+                    </a>
                   </span>
                   <span>
-                    <PiWhatsappLogo />
+                    <a href="https://wa.me/254700119134">
+                      <PiWhatsappLogo />
+                    </a>
                   </span>
                   <span>
-                    <PiFacebookLogo />
+                    <a href="https://www.facebook.com/pptrgitonga">
+                      <PiFacebookLogo />
+                    </a>
                   </span>
                 </div>
               </div>
@@ -147,8 +162,8 @@ const Footer = () => {
               </div>
               <div className="flex justify-center items-center w-full sm:justify-end sm:items-end sm:w-1/3">
                 <div className="flex justify-between items-center w-full">
-                  <span>Terms of Service</span>
-                  <span>Privacy Policy</span>
+                  <Link to="/terms-of-service">Terms of Service</Link>
+                  <Link to="/privacy-policy">Privacy Policy</Link>
                 </div>
               </div>
             </div>

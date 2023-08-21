@@ -1,5 +1,8 @@
 import React from "react";
 import image from "../../static/images/testImage.jpg";
+import { toast } from "react-toastify";
+import { addToCompare } from "../../reduxFeatures/properties/propertySlice";
+import { useDispatch, useSelector } from "react-redux";
 import {
   PiWhatsappLogo,
   PiArrowsClockwise,
@@ -14,11 +17,14 @@ import {
   PiCaretRight,
   PiX,
 } from "react-icons/pi";
+import { Link } from "react-router-dom";
 
 const LimitedCard = ({ property }) => {
+  const dispatch = useDispatch();
+  const compareArray = useSelector((state) => state.property.compareProperties);
   return (
     <div className="flex flex-col gap-[1rem] bg-white w-full h-[400px] max-w-[320px]">
-      <div className="relative w-full h-3/5 overflow-hidden bg-lightGrayCTA">
+      <div className="relative w-full h-3/5 overflow-hidden bg-lightThemeColor">
         <img
           src={
             property?.images?.length > 0
@@ -34,19 +40,20 @@ const LimitedCard = ({ property }) => {
         <div className="flex items-center gap-1 absolute bottom-0 left-0 p-4 z-10 flex-wrap">
           {property?.category?.map((item, idx) => {
             return (
-              <span
+              <Link
                 key={idx}
+                to={`category/${item.categoryId}`}
                 className="uppercase font-poppinsLight text-tiny bg-lightGrayCTA text-black px-[0.125rem] rounded-sm"
               >
                 {item.categoryName}
-              </span>
+              </Link>
             );
           })}
         </div>
       </div>
       <div className="w-full h-2/5 px-4">
         <h3 className="font-poppinsBold text-darkThemeColor font-semibolded mb-[1rem]">
-          {`KES ${property?.price}`}
+          {`KES ${property?.price.toLocaleString("en-US")}`}
         </h3>
         <h3 className="truncate font-poppinsSemibold mb-[0.125rem] text-lightThemeColor">
           {property?.name}
@@ -75,14 +82,23 @@ const LimitedCard = ({ property }) => {
             </div>
           </div>
           <div className="flex items-center space-x-[1rem] text-h3 text-textColor">
-            <span>
+            <span
+              onClick={(e) =>
+                dispatch(addToCompare({ ...property })) &
+                toast.success("Property added to compare")
+              }
+            >
               <PiArrowsClockwise />
             </span>
             <span>
-              <PiPhone />
+              <a href="tel:254700119134">
+                <PiPhone />
+              </a>
             </span>
             <span>
-              <PiWhatsappLogo />
+              <a href="https://wa.me/254700119134">
+                <PiWhatsappLogo />
+              </a>
             </span>
           </div>
         </div>

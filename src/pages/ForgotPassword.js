@@ -1,8 +1,24 @@
 import React from "react";
 import Breadcrumb from "../components/Breadcrumb";
 import { Link } from "react-router-dom";
+import AuthInputTemplate from "../components/AuthInputTemplate";
+import * as yup from "yup";
+import { useFormik } from "formik";
 
+const forgotPassSchema = yup.object({
+  emailForgot: yup
+    .string()
+    .email("Please enter a valid email")
+    .required("Email is required resetting forgotten password"),
+});
 const ForgotPassword = () => {
+  const formik = useFormik({
+    initialValues: {
+      emailForgot: "",
+    },
+    validationSchema: forgotPassSchema,
+    onSubmit: (values) => {},
+  });
   return (
     <div className="page container">
       <Breadcrumb pageTitle={"Forgot Password"} />
@@ -14,19 +30,27 @@ const ForgotPassword = () => {
             </h3>
             <p className="font-poppinsLight text-center leading-tight text-textColor text-smaller sm:text-small max-w-sm">
               A link to reset your password will be sent to the email you
-              provide. Please visit the link
+              provide. Please visit that link
             </p>
           </div>
-          <div className="w-[300px] bg-white rounded-sm sm:w-[400px] md:w-[500px] pt-[4rem] pb-[2rem]">
+          <div className="w-[300px] bg-white rounded-sm pt-[4rem] pb-[2rem] sm:w-[400px] md:w-[500px]">
             <div className="flex flex-col items-center gap-[2.5rem] px-[1rem] sm:col-span-3 w-full">
-              <form className="flex flex-col items-center text-textColor w-full sm:w-3/4">
+              <form
+                onSubmit={formik.handleSubmit}
+                className="flex flex-col items-center text-textColor w-full sm:w-3/4"
+              >
                 <div className="flex flex-col space-y-[0.75rem] w-full">
-                  <input
+                  <AuthInputTemplate
                     type="email"
+                    name="emailForgot"
+                    value={formik.values.emailForgot}
+                    onChange={formik.handleChange("emailForgot")}
+                    onBlur={formik.handleBlur("emailForgot")}
                     placeholder="example@email.com"
-                    className="hover:outline-none focus:outline-none px-[1rem] py-[0.6rem] border-[1px] border-gray-200 hover:border-thirtyColor focus:border-thirtyColor rounded-sm"
-                    required
                   />
+                  <span className="text-smaller font-poppinsLight text-red-300 px-[0.5rem] sm:text-small">
+                    {formik.touched.emailForgot && formik.errors.emailForgot}
+                  </span>
                 </div>
                 <div className="flex justify-end items-end mt-[3rem] w-full">
                   <div className="flex items-center space-x-4">

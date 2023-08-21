@@ -3,6 +3,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { removeFromCompare } from "../reduxFeatures/properties/propertySlice";
+import { formatDate } from "../utils/dateFormatter";
 import imagePlaceholder from "../static/images/no-image.png";
 import { PiTrash } from "react-icons/pi";
 
@@ -13,6 +14,7 @@ const CompareProperties = () => {
   );
 
   console.log("CP", compareProperties);
+
   // const properties = [];
   // const properties = [
   //   {
@@ -230,46 +232,49 @@ const CompareProperties = () => {
       </h2>
       {compareProperties?.length > 0 ? (
         <div className="">
-          <table className="flex space-x-[1rem] items-start">
-            <thead className="w-[40%] sm:w-[30%]">
-              <tr className="flex flex-col gap-4 justify-end items-end w-full">
+          <table className="flex space-x-[1rem] items-start mb-[3rem]">
+            {/* <thead className="w-[40%] sm:w-[30%]"> */}
+            <thead className="w-[400px] sm:w-[450px]">
+              <tr className="flex flex-col justify-end items-end w-full">
                 <th className="w-full h-[15vh] flex justify-end items-center">
                   <span className="">Image</span>
                 </th>
-                <th className="h-[5vh]">Name</th>
+                {/* change them to px */}
+                <th className="h-[7vh]">Name</th>
                 <th className="h-[5vh]">Price</th>
                 <th className="h-[5vh]">Location</th>
                 <th className="h-[5vh]">Date Added</th>
                 <th className="h-[5vh]">Property Type</th>
                 <th className="h-[5vh]">Bedrooms</th>
                 <th className="h-[5vh]">Bathrooms</th>
-                <th className="h-[10vh]">Features</th>
-                <th className="h-[2vh]">Remove</th>
+                <th className="h-[10vh] md:h-[15vh]">Features</th>
+                <th className="h-[5vh]">Remove</th>
               </tr>
             </thead>
-            <tbody className="flex space-x-8 items-start overflow-x-auto scroll-smooth">
+            <tbody className="flex space-x-[1rem] items-start overflow-x-auto scroll-smooth font-poppinsLight">
               {compareProperties?.map((property, index) => {
                 return (
-                  <tr className="flex flex-col gap-4 justify-start items-start w-[60%] flex-shrink-0 sm:w-[40%] md:w-[30%]">
-                    <td className="min-h-[15vh] max-h-[15vh] overflow-hidden">
+                  <tr className="flex flex-col justify-start items-start w-[200px] flex-shrink-0 sm:w-[300px]">
+                    <td className="h-[15vh] w-full overflow-hidden ">
                       <img
-                        src={compareProperties[index]?.images}
-                        className="w-full h-full object-cover"
+                        src={"/images/no-image.png"}
+                        className="w-full h-full object-cover bg-lightGrayCTA"
                       />
                     </td>
-                    <td className="min-h-[5vh] max-h-[5vh]">
+                    <td className="min-h-[7vh] max-h-[7vh] capitalize">
                       {compareProperties[index]?.name}
                     </td>
                     <td className="min-h-[5vh] max-h-[5vh]">
-                      KES {compareProperties[index]?.price}
+                      KES{" "}
+                      {compareProperties[index]?.price.toLocaleString("en-US")}
                     </td>
-                    <td className="min-h-[5vh] max-h-[5vh]">
+                    <td className="min-h-[5vh] max-h-[5vh] capitalize">
                       {compareProperties[index]?.location.place}
                     </td>
                     <td className="min-h-[5vh] max-h-[5vh]">
-                      {compareProperties[index]?.createdAt}
+                      {formatDate(`${compareProperties[index]?.createdAt}`)}
                     </td>
-                    <td className="min-h-[5vh] max-h-[5vh]">
+                    <td className="min-h-[5vh] max-h-[5vh] capitalize">
                       {compareProperties[index]?.type.typeName}
                     </td>
                     <td className="min-h-[5vh] max-h-[5vh]">
@@ -278,10 +283,21 @@ const CompareProperties = () => {
                     <td className="min-h-[5vh] max-h-[5vh]">
                       {compareProperties[index]?.bathrooms}
                     </td>
-                    <td className="min-h-[10vh] max-h-[10vh] overflow-y-auto scroll-smooth">
-                      {compareProperties[index]?.features}
+                    <td className="h-[10vh] overflow-y-auto scroll-smooth border-[1px] border-gray-200 px-[0.25rem] md:h-[15vh]">
+                      {compareProperties[index]?.features?.map(
+                        (feature, indx) => {
+                          return (
+                            <span key={indx} className="capitalize">{`${
+                              indx ==
+                              compareProperties[index]?.features?.length - 1
+                                ? feature
+                                : `${feature}, `
+                            }`}</span>
+                          );
+                        }
+                      )}
                     </td>
-                    <td className="w-full h-[2vh] flex justify-center items-center">
+                    <td className="w-full h-[5vh] flex justify-center items-center">
                       <span
                         onClick={(e) =>
                           dispatch(removeFromCompare(compareProperties[index]))

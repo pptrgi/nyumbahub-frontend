@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import { toast } from "react-toastify";
+import { addToCompare } from "../../reduxFeatures/properties/propertySlice";
+import { addToWishlistAC } from "../../reduxFeatures/properties/propertySlice";
+import { useDispatch, useSelector } from "react-redux";
 import {
   PiWhatsappLogo,
   PiArrowsClockwise,
@@ -11,10 +15,14 @@ import {
   PiPhone,
   PiCaretLeft,
   PiCaretRight,
+  PiHeartDuotone,
 } from "react-icons/pi";
 import imagePlaceholder from "../../static/images/no-image.png";
+import { Link } from "react-router-dom";
 
 const GeneralCard = ({ property }) => {
+  const dispatch = useDispatch();
+  const compareArray = useSelector((state) => state.property.compareProperties);
   const [imageSlide, setImageSlide] = useState(0);
 
   const nextImage = () => {
@@ -28,8 +36,8 @@ const GeneralCard = ({ property }) => {
     );
   };
   return (
-    <div className="flex flex-col flex-shrink-0 gap-[1rem] bg-white w-full h-[400px] max-w-[310px]">
-      <div className="relative w-full h-3/5 overflow-hidden bg-lightGrayCTA">
+    <div className="flex flex-col flex-shrink-0 gap-[1rem] bg-white w-full h-[415px] max-w-[310px]">
+      <div className="relative w-full h-6/12 overflow-hidden bg-lightThemeColor">
         <div className="flex w-full h-full">
           {property?.images?.length > 0 ? (
             property?.images?.map((file, index) => {
@@ -52,18 +60,22 @@ const GeneralCard = ({ property }) => {
             />
           )}
         </div>
-        <span className="absolute top-0 right-0 p-4 text-[1.75rem] text-bodyColor z-20">
-          <PiHeart />
+        <span
+          onClick={(e) => dispatch(addToWishlistAC(property?._id))}
+          className="absolute top-0 right-0 p-4 text-[1.75rem] text-bodyColor z-20"
+        >
+          <PiHeartDuotone />
         </span>
         <div className="flex gap-1 flex-wrap absolute top-0 left-0 p-4 z-10">
           {property.category.map((tag, idx) => {
             return (
-              <span
+              <Link
                 key={idx}
+                to={`category/${tag.categoryId}`}
                 className="uppercase font-poppinsLight text-tiny bg-lightGrayCTA text-black px-[0.125rem] rounded-sm"
               >
                 {tag.categoryName}
-              </span>
+              </Link>
             );
           })}
         </div>
@@ -88,11 +100,11 @@ const GeneralCard = ({ property }) => {
         )}
         <div className="absolute bottom-0 left-0 pl-4 pb-2">
           <span className="font-poppinsBold text-bodyColor font-semibolded">
-            {`KES ${property?.price}`}
+            {`KES ${property?.price.toLocaleString("en-US")}`}
           </span>
         </div>
       </div>
-      <div className="w-full h-2/5 px-4">
+      <div className="w-full h-6/12 px-4">
         <h3 className="truncate font-poppinsSemibold mb-[0.125rem] text-lightThemeColor">
           {property?.name}
         </h3>
@@ -114,7 +126,7 @@ const GeneralCard = ({ property }) => {
                 <PiBedLight />
               </span>
             </div>
-            <span className="text-tiny font-poppinsLight text-textColor sm:text-smaller md:text-smaller lg:text-smaller xl:text-smaller">
+            <span className="font-poppinsLight text-textColor text-smaller">
               Bedrooms
             </span>
           </div>
@@ -127,24 +139,36 @@ const GeneralCard = ({ property }) => {
                 <PiBathtubLight />
               </span>
             </div>
-            <span className="text-tiny font-poppinsLight text-textColor sm:text-smaller md:text-smaller lg:text-smaller xl:text-smaller">
+            <span className="font-poppinsLight text-textColor text-smaller">
               Bathrooms
             </span>
           </div>
         </div>
         <div className="flex justify-between items-center mt-[2rem]">
-          <span className="font-poppinsLight text-ctaColor text-smaller sm:text-small md:text-small lg:text-small xl:text-small">
+          <Link
+            to={`property/${property?._id}`}
+            className="font-poppinsLight text-ctaColor text-smaller sm:text-small"
+          >
             View Property
-          </span>
+          </Link>
           <div className="flex items-center space-x-[1rem] text-h3 text-textColor">
-            <span>
+            <span
+              onClick={(e) =>
+                dispatch(addToCompare({ ...property })) &
+                toast.success("Property added to compare")
+              }
+            >
               <PiArrowsClockwise />
             </span>
             <span>
-              <PiPhone />
+              <a href="tel:254700119134">
+                <PiPhone />
+              </a>
             </span>
             <span>
-              <PiWhatsappLogo />
+              <a href="https://wa.me/254700119134">
+                <PiWhatsappLogo />
+              </a>
             </span>
           </div>
         </div>

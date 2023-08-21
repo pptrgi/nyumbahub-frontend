@@ -27,62 +27,6 @@ const NewListings = () => {
   const getNewListingCategoryNow = () => {
     dispatch(getNewListingCategory());
   };
-  // const [properties, setProperties] = useState([
-  //   {
-  //     image: [image, test2, test3],
-  //     name: "3 Bedroom Apartment Ruiru",
-  //     category: "new listing",
-  //     price: "KES 8,000,000",
-  //     bathrooms: 4,
-  //     bedrooms: 3,
-  //     location: "Ruiru Police Station, Thika Road",
-  //   },
-  //   {
-  //     image: [test2, image, test3],
-  //     name: "Villa Beach Mombasa Next to Beach",
-  //     category: "new listing",
-  //     price: "KES 12,000,000",
-  //     bathrooms: 3,
-  //     bedrooms: 3,
-  //     location: "Nyali Beach, Nyali, Mombasa County, Kenya",
-  //   },
-  //   {
-  //     image: [test3, image, test2],
-  //     name: "Very Beautiful Mansion for the Rich Kenya",
-  //     category: "new listing",
-  //     price: "KES 48,500,000",
-  //     bathrooms: 5,
-  //     bedrooms: 5,
-  //     location: "Kiambu Next to Thika Next Around",
-  //   },
-  //   {
-  //     image: [test3, test2, image],
-  //     name: "Very Beautiful Mansion for the Rich Kenya",
-  //     category: "new listing",
-  //     price: "KES 48,500,000",
-  //     bathrooms: 5,
-  //     bedrooms: 5,
-  //     location: "Kiambu Next to Thika Next Around",
-  //   },
-  //   {
-  //     image: [test2, test3, image],
-  //     name: "Villa Beach Mombasa Next to Beach",
-  //     category: "new listing",
-  //     price: "KES 12,000,000",
-  //     bathrooms: 3,
-  //     bedrooms: 3,
-  //     location: "Nyali Beach, Nyali, Mombasa County, Kenya",
-  //   },
-  //   {
-  //     image: [image, test2, test3],
-  //     name: "3 Bedroom Apartment Ruiru",
-  //     category: "new listing",
-  //     price: "KES 8,000,000",
-  //     bathrooms: 4,
-  //     bedrooms: 3,
-  //     location: "Ruiru Police Station, Thika Road",
-  //   },
-  // ]);
 
   const handleShowMore = () => {
     setVisible((prevVisible) => prevVisible + 3);
@@ -98,7 +42,7 @@ const NewListings = () => {
     document.getElementById("scrollNewListingCards").scrollLeft -= 320;
   };
   return (
-    <div className="section container mb-[10rem]">
+    <section className="section container">
       <div className="flex flex-col justify-between sm:flex-row sm:mb-[1.5rem]">
         <h3 className="font-poppinsSemibold text-h3 text-darkThemeColor mb-[1.5rem] sm:mb-0">
           The Most Recent Listings
@@ -144,7 +88,7 @@ const NewListings = () => {
           )}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

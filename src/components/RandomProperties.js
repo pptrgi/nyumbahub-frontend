@@ -11,7 +11,6 @@ import { getAllProperties } from "../reduxFeatures/properties/propertySlice";
 const RandomProperties = () => {
   const dispatch = useDispatch();
   const fetchedProperties = useSelector((state) => state.property.properties);
-  console.log(fetchedProperties);
 
   // randomize properties
   function shuffleArray(propertiesArray) {
@@ -26,7 +25,8 @@ const RandomProperties = () => {
     return propertiesArrayCopy;
   }
 
-  const shuffledProperties = shuffleArray(fetchedProperties);
+  const shuffledProperties =
+    fetchedProperties.length > 0 ? shuffleArray(fetchedProperties) : [];
 
   useEffect(() => {
     getAllPropertiesNow();
@@ -35,74 +35,6 @@ const RandomProperties = () => {
   const getAllPropertiesNow = () => {
     dispatch(getAllProperties());
   };
-  // const [properties, setProperties] = useState([
-  //   {
-  //     image: [image, test2, test3],
-  //     name: "3 Bedroom Apartment Ruiru",
-  //     category: ["new listing", "featured", "for rent"],
-  //     price: "KES 8,000,000",
-  //     bathrooms: 4,
-  //     bedrooms: 3,
-  //     location: "Ruiru Police Station, Thika Road",
-  //   },
-  //   {
-  //     image: [test2, image, test3],
-  //     name: "Villa Beach Mombasa Next to Beach",
-  //     category: ["reduced price", "top seller", "for sale"],
-  //     price: "KES 12,000,000",
-  //     bathrooms: 3,
-  //     bedrooms: 3,
-  //     location: "Nyali Beach, Nyali, Mombasa County, Kenya",
-  //   },
-  //   {
-  //     image: [test3, image, test2],
-  //     name: "Very Beautiful Mansion for the Rich Kenya",
-  //     category: ["featured", "for rent", "reduced price", "top seller"],
-  //     price: "KES 48,500,000",
-  //     bathrooms: 5,
-  //     bedrooms: 5,
-  //     location: "Kiambu Next to Thika Next Around",
-  //   },
-  //   {
-  //     image: [test3, test2, image],
-  //     name: "Very Beautiful Mansion for the Rich Kenya",
-  //     category: ["for sale", "new listing", "featured", "top seller"],
-  //     price: "KES 48,500,000",
-  //     bathrooms: 5,
-  //     bedrooms: 5,
-  //     location: "Kiambu Next to Thika Next Around",
-  //   },
-  //   {
-  //     image: [test2, test3, image],
-  //     name: "Villa Beach Mombasa Next to Beach",
-  //     category: [
-  //       "new listing",
-  //       "featured",
-  //       "reduced price",
-  //       "top seller",
-  //       "for sale",
-  //     ],
-  //     price: "KES 12,000,000",
-  //     bathrooms: 3,
-  //     bedrooms: 3,
-  //     location: "Nyali Beach, Nyali, Mombasa County, Kenya",
-  //   },
-  //   {
-  //     image: [image, test2, test3],
-  //     name: "3 Bedroom Apartment Ruiru",
-  //     category: [
-  //       "new listing",
-  //       "featured",
-  //       "for rent",
-  //       "reduced price",
-  //       "top seller",
-  //     ],
-  //     price: "KES 8,000,000",
-  //     bathrooms: 4,
-  //     bedrooms: 3,
-  //     location: "Ruiru Police Station, Thika Road",
-  //   },
-  // ]);
 
   const scrollRight = () => {
     document.getElementById("scrollRandomCards").scrollLeft += 320;
@@ -111,7 +43,7 @@ const RandomProperties = () => {
     document.getElementById("scrollRandomCards").scrollLeft -= 320;
   };
   return (
-    <div className="section container">
+    <section className="section container">
       <div className="flex flex-col justify-between sm:flex-row sm:mb-[1.5rem]">
         <h3 className="font-poppinsSemibold text-h3 mb-[1.5rem] text-darkThemeColor sm:mb-0">
           Randomly Selected Properties
@@ -141,7 +73,7 @@ const RandomProperties = () => {
           return <GeneralCard key={index} property={property} />;
         })}
       </div>
-    </div>
+    </section>
   );
 };
 

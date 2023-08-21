@@ -28,62 +28,7 @@ const Featured = () => {
     dispatch(getFeaturedCategory());
   };
   // 64d36c39632663f6a74fd5f8
-  // const [properties, setProperties] = useState([
-  //   {
-  //     image: [image, test2, test3],
-  //     name: "3 Bedroom Apartment Ruiru",
-  //     category: "featured",
-  //     price: "KES 8,000,000",
-  //     bathrooms: 4,
-  //     bedrooms: 3,
-  //     location: "Ruiru Police Station, Thika Road",
-  //   },
-  //   {
-  //     image: [test2, image, test3],
-  //     name: "Villa Beach Mombasa Next to Beach",
-  //     category: "featured",
-  //     price: "KES 12,000,000",
-  //     bathrooms: 3,
-  //     bedrooms: 3,
-  //     location: "Nyali Beach, Nyali, Mombasa County, Kenya",
-  //   },
-  //   {
-  //     image: [test3, image, test2],
-  //     name: "Very Beautiful Mansion for the Rich Kenya",
-  //     category: "featured",
-  //     price: "KES 48,500,000",
-  //     bathrooms: 5,
-  //     bedrooms: 5,
-  //     location: "Kiambu Next to Thika Next Around",
-  //   },
-  //   {
-  //     image: [test3, test2, image],
-  //     name: "Very Beautiful Mansion for the Rich Kenya",
-  //     category: "featured",
-  //     price: "KES 48,500,000",
-  //     bathrooms: 5,
-  //     bedrooms: 5,
-  //     location: "Kiambu Next to Thika Next Around",
-  //   },
-  //   {
-  //     image: [test2, test3, image],
-  //     name: "Villa Beach Mombasa Next to Beach",
-  //     category: "featured",
-  //     price: "KES 12,000,000",
-  //     bathrooms: 3,
-  //     bedrooms: 3,
-  //     location: "Nyali Beach, Nyali, Mombasa County, Kenya",
-  //   },
-  //   {
-  //     image: [image, test2, test3],
-  //     name: "3 Bedroom Apartment Ruiru",
-  //     category: "featured",
-  //     price: "KES 8,000,000",
-  //     bathrooms: 4,
-  //     bedrooms: 3,
-  //     location: "Ruiru Police Station, Thika Road",
-  //   },
-  // ]);
+
   const handleShowMore = () => {
     setVisible((prevVisible) => prevVisible + 3);
     if (properties.length === visible) {
@@ -99,7 +44,7 @@ const Featured = () => {
   };
 
   return (
-    <div className="section container">
+    <section className="section container">
       <div className="flex flex-col justify-between sm:flex-row sm:mb-[1.5rem]">
         <h3 className="font-poppinsSemibold text-h3 text-darkThemeColor mb-[1.5rem] sm:mb-0">
           Our Featured Properties
@@ -145,7 +90,7 @@ const Featured = () => {
           )}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

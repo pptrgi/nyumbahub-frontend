@@ -13,7 +13,7 @@ const EditProfile = () => {
         Manage your Account
       </h2>
       <div className="flex justify-center items-center">
-        <form className="w-[100%] flex flex-col space-y-[1rem] bg-white text-textColor px-[1rem] py-[3rem] md:max-w-[80%] sm:max-w-[90%] sm:px-[2rem]">
+        <form className="w-[100%] flex flex-col space-y-[1rem] bg-white text-textColor px-[0.5rem] py-[3rem] md:max-w-[80%] sm:max-w-[90%] sm:px-[2rem]">
           <div className="w-full flex space-x-[0.25rem] justify-start items-start sm:space-x-[1rem]">
             <label className="w-5/12 px-[0.5rem] py-[0.5rem] sm:w-4/12 md:w-3/12">
               First Name:

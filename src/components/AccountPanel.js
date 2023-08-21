@@ -12,14 +12,14 @@ const AccountPanel = ({ userDetails }) => {
   return (
     <>
       <div
-        className="absolute top-0 -right-4 z-30 flex flex-col items-start text-textColor font-poppinsRegular bg-white rounded-md mt-[2rem] w-[200px] px-[1rem] pt-[3rem] pb-[2rem] md:right-0"
+        className="absolute top-0 -right-4 z-30 flex flex-col items-start text-textColor font-poppinsRegular bg-white rounded-md mt-[2rem] w-[200px] px-[1rem] pt-[3rem] pb-[2rem] md:right-0 sm:w-[220px]"
         id="account-panel-tag"
       >
         {userDetails ? (
           <div className="flex flex-col w-full">
             <div className="flex justify-center items-center w-full">
               <div className="flex flex-col space-y-2">
-                <span>Hello, Jonathan</span>
+                <span className="capitalize">{`Hello ${userDetails?.firstName}`}</span>
               </div>
             </div>
             <div className="flex flex-col space-y-[0.75rem] mt-[2rem]">
@@ -29,14 +29,17 @@ const AccountPanel = ({ userDetails }) => {
                 </span>
                 <span className="text-smaller sm:text-small">Edit Profile</span>
               </Link>
-              <div className="flex items-center space-x-3">
+              <Link
+                to="/change-password"
+                className="flex items-center space-x-3"
+              >
                 <span className="text-default">
                   <PiEyeSlash />
                 </span>
                 <span className="text-smaller sm:text-small">
                   Change Password
                 </span>
-              </div>
+              </Link>
               <Link to="/contact" className="flex items-center space-x-3">
                 <span className="text-default">
                   <PiQuestion />
@@ -56,15 +59,16 @@ const AccountPanel = ({ userDetails }) => {
         ) : (
           <div className="flex flex-col w-full">
             <div className="flex justify-between items-center w-full font-mediumWeight">
-              <Link
-                to="/signin"
-                className="px-[1.25rem] py-[0.5rem] bg-ctaColor text-bodyColor rounded-md"
-              >
+              <Link to="/signin" className="font-poppinsBold tracking-wide">
                 Sign In
               </Link>
-              <Link to="/register" className="font-poppinsRegular">
+              <Link
+                to="/register"
+                className="px-[1.25rem] py-[0.6rem] bg-ctaColor text-bodyColor rounded-md sm:py-[0.75rem]"
+              >
                 Register
               </Link>
+              {/* ::::::::::: consider adding py-0.6rem to all auth buttons.. py-0.75 looks good on lg breakpoints :::::: */}
             </div>
             <div className="flex flex-col space-y-[0.75rem] mt-[2rem] text-textColor">
               <div className="flex items-center space-x-3 pointer-events-none opacity-30">

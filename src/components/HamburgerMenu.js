@@ -2,7 +2,7 @@ import React from "react";
 import ActiveHeaderLink from "./ActiveHeaderLink";
 import {
   PiArrowsClockwise,
-  PiHeartFill,
+  PiHeart,
   PiHouse,
   PiPhone,
   PiSquaresFour,
@@ -45,7 +45,7 @@ const HamburgerMenu = ({
             inactiveGroupStyle={
               "flex space-x-[0.75rem] items-center border-b-[1.5px] border-inherit w-full hover:text-ctaColor"
             }
-            icon={<PiHeartFill />}
+            icon={<PiHeart />}
             iconStyle={"text-h3"}
             linkTitle={"Wishlist"}
             linkTitleStyle={"font-poppinsRegular"}
