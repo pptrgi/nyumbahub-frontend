@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
@@ -20,86 +20,71 @@ import EditProfile from "./pages/EditProfile";
 import ChangePassword from "./pages/ChangePassword";
 import { PrivateRoute } from "./components/routeTypes/PrivateRoute";
 import { OpenRoute } from "./components/routeTypes/OpenRoute";
-
-import PreLoader from "./components/PreLoader";
 import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
-  // const [loading, setLoading] = useState(false);
-  // useEffect(() => {
-  //   setLoading(true);
-  //   setTimeout(() => {
-  //     setLoading(false);
-  //   }, 3000);
-  // }, []);
   return (
-    <>
-      {/* {loading ? (
-        <PreLoader />
-      ) : ( */}
-      <div className="font-poppinsRegular text-sm sm:text-default md:text-default lg:text-default xl:text-default">
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<Home />} />
-              <Route
-                path="/wishlist"
-                element={
-                  <PrivateRoute>
-                    <Wishlist />
-                  </PrivateRoute>
-                }
-              />
-              <Route path="/search-results" element={<SearchResults />} />
-              <Route
-                path="/signin"
-                element={
-                  <OpenRoute>
-                    <SignIn />
-                  </OpenRoute>
-                }
-              />
-              <Route
-                path="/register"
-                element={
-                  <OpenRoute>
-                    <Register />
-                  </OpenRoute>
-                }
-              />
-              <Route path="/forgot-password" element={<ForgotPassword />} />
-              <Route path="/reset-password" element={<ResetPassword />} />
-              <Route path="/all-properties" element={<AllProperties />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/compare" element={<CompareProperties />} />
-              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-              <Route path="/terms-of-service" element={<TermsOfService />} />
-              <Route
-                path="/edit-profile"
-                element={
-                  <PrivateRoute>
-                    <EditProfile />
-                  </PrivateRoute>
-                }
-              />
-              <Route
-                path="/change-password"
-                element={
-                  <PrivateRoute>
-                    <ChangePassword />
-                  </PrivateRoute>
-                }
-              />
-              <Route path="/type/:id" element={<OneType />} />
-              <Route path="/category/:id" element={<OneCategory />} />
-              <Route path="/property/:id" element={<PropertyDetailPage />} />
-              <Route path="*" element={<NotFoundPage />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
-      </div>
-      {/* )} */}
-    </>
+    <div className="font-poppinsRegular text-sm sm:text-default">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route
+              path="/wishlist"
+              element={
+                <PrivateRoute>
+                  <Wishlist />
+                </PrivateRoute>
+              }
+            />
+            <Route path="/search-results" element={<SearchResults />} />
+            <Route
+              path="/signin"
+              element={
+                <OpenRoute>
+                  <SignIn />
+                </OpenRoute>
+              }
+            />
+            <Route
+              path="/register"
+              element={
+                <OpenRoute>
+                  <Register />
+                </OpenRoute>
+              }
+            />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/reset-password" element={<ResetPassword />} />
+            <Route path="/all-properties" element={<AllProperties />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/compare" element={<CompareProperties />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-of-service" element={<TermsOfService />} />
+            <Route
+              path="/edit-profile"
+              element={
+                <PrivateRoute>
+                  <EditProfile />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/change-password"
+              element={
+                <PrivateRoute>
+                  <ChangePassword />
+                </PrivateRoute>
+              }
+            />
+            <Route path="/type/:id" element={<OneType />} />
+            <Route path="/category/:id" element={<OneCategory />} />
+            <Route path="/property/:id" element={<PropertyDetailPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 

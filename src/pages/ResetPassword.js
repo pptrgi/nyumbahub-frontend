@@ -1,9 +1,10 @@
 import React from "react";
-import Breadcrumb from "../components/Breadcrumb";
-import AuthInputTemplate from "../components/AuthInputTemplate";
+import { Link } from "react-router-dom";
 import * as yup from "yup";
 import { useFormik } from "formik";
-import { Link } from "react-router-dom";
+import Breadcrumb from "../components/Breadcrumb";
+import AuthInputTemplate from "../components/AuthInputTemplate";
+import PageTitler from "../components/PageTitler";
 
 const resetPassSchema = yup.object({
   password: yup.string().required("Please enter your new password"),
@@ -21,6 +22,7 @@ const ResetPassword = () => {
   return (
     <div className="page container">
       <Breadcrumb pageTitle={"Reset Password"} />
+      <PageTitler title={"Reset Password"} />
       <div className="flex justify-center items-center w-full min-h-[70vh]">
         <div className="flex flex-col gap-[2rem]">
           <div className="w-[300px] bg-white rounded-sm sm:w-[400px] md:w-[500px] pt-[3rem] pb-[2rem]">
@@ -40,6 +42,7 @@ const ResetPassword = () => {
                     onChange={formik.handleChange("password")}
                     onBlur={formik.handleBlur("password")}
                     placeholder="New password"
+                    maxLength={40}
                   />
                   <span className="text-smaller font-poppinsLight text-red-300 px-[0.5rem] sm:text-small">
                     {formik.touched.password && formik.errors.password}
@@ -52,6 +55,7 @@ const ResetPassword = () => {
                     onChange={formik.handleChange("confirmPassword")}
                     onBlur={formik.handleBlur("confirmPassword")}
                     placeholder="Confirm password"
+                    maxLength={40}
                   />
                   <span className="text-smaller font-poppinsLight text-red-300 px-[0.5rem] sm:text-small">
                     {formik.touched.confirmPassword &&
@@ -60,12 +64,15 @@ const ResetPassword = () => {
                 </div>
                 <div className="flex justify-end items-end mt-[3rem] w-full">
                   <div className="flex items-center space-x-4">
-                    <Link to="/" className="text-textColor w-full">
+                    <Link
+                      to="/"
+                      className="text-textColor w-full hover:text-darkThemeColor"
+                    >
                       Cancel
                     </Link>
                     <button
                       type="submit"
-                      className="bg-ctaColor text-bodyColor w-full py-[0.5rem] px-[1.25rem] rounded-md"
+                      className="bg-ctaColor text-bodyColor w-full py-[0.5rem] px-[1.25rem] rounded-md hover:bg-darkThemeColor"
                     >
                       Reset
                     </button>

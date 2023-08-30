@@ -1,9 +1,10 @@
 import React from "react";
-import Breadcrumb from "../components/Breadcrumb";
 import { Link } from "react-router-dom";
-import AuthInputTemplate from "../components/AuthInputTemplate";
 import * as yup from "yup";
 import { useFormik } from "formik";
+import Breadcrumb from "../components/Breadcrumb";
+import AuthInputTemplate from "../components/AuthInputTemplate";
+import PageTitler from "../components/PageTitler";
 
 const forgotPassSchema = yup.object({
   emailForgot: yup
@@ -22,6 +23,7 @@ const ForgotPassword = () => {
   return (
     <div className="page container">
       <Breadcrumb pageTitle={"Forgot Password"} />
+      <PageTitler title={"Forgot Password"} />
       <div className="flex justify-center items-center w-full min-h-[70vh]">
         <div className="flex flex-col gap-[2rem]">
           <div className="flex flex-col justify-center items-center gap-[0.5rem]">
@@ -47,6 +49,7 @@ const ForgotPassword = () => {
                     onChange={formik.handleChange("emailForgot")}
                     onBlur={formik.handleBlur("emailForgot")}
                     placeholder="example@email.com"
+                    maxLength="40"
                   />
                   <span className="text-smaller font-poppinsLight text-red-300 px-[0.5rem] sm:text-small">
                     {formik.touched.emailForgot && formik.errors.emailForgot}
@@ -54,12 +57,15 @@ const ForgotPassword = () => {
                 </div>
                 <div className="flex justify-end items-end mt-[3rem] w-full">
                   <div className="flex items-center space-x-4">
-                    <Link to="/" className="text-textColor w-full">
+                    <Link
+                      to="/"
+                      className="text-textColor w-full hover:text-darkThemeColor"
+                    >
                       Cancel
                     </Link>
                     <button
                       type="submit"
-                      className="bg-ctaColor text-bodyColor w-full py-[0.5rem] px-[1.25rem] rounded-md"
+                      className="bg-ctaColor text-bodyColor w-full py-[0.5rem] px-[1.25rem] rounded-md hover:bg-darkThemeColor"
                     >
                       Send
                     </button>

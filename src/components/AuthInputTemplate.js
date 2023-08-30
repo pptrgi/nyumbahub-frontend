@@ -1,7 +1,18 @@
 import React from "react";
 
 const AuthInputTemplate = (props) => {
-  const { type, name, placeholder, value, onChange, onBlur } = props;
+  const {
+    type,
+    name,
+    placeholder,
+    value,
+    onChange,
+    onBlur,
+    min = null,
+    max = null,
+    pattern = null,
+    maxLength = null,
+  } = props;
   return (
     <input
       type={type}
@@ -11,9 +22,12 @@ const AuthInputTemplate = (props) => {
       value={value}
       onChange={onChange}
       onBlur={onBlur}
+      min={min}
+      max={max}
+      pattern={pattern}
+      maxLength={maxLength}
     />
   );
 };
 
 export default AuthInputTemplate;
-// set outline none for inputs in the css file, on focus and hover and set borders

@@ -1,12 +1,13 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import Breadcrumb from "../components/Breadcrumb";
-import AuthInputTemplate from "../components/AuthInputTemplate";
 import { Link } from "react-router-dom";
 import * as yup from "yup";
 import { useFormik } from "formik";
+import Breadcrumb from "../components/Breadcrumb";
+import AuthInputTemplate from "../components/AuthInputTemplate";
 import { registerUserAC } from "../reduxFeatures/users/userSlice";
+import PageTitler from "../components/PageTitler";
 
 const registerSchema = yup.object({
   firstName: yup.string().required("First name field is required"),
@@ -46,6 +47,7 @@ const Register = () => {
   return (
     <div className="page container">
       <Breadcrumb pageTitle={"Register"} />
+      <PageTitler title={"Register"} />
       <div className="flex justify-center items-center w-full min-h-[70vh] mt-[1.5rem] mb-[2rem]">
         <div className="flex flex-col gap-[2rem]">
           <h3 className="text-center font-poppinsRegular text-lightThemeColor text-default sm:text-h3">
@@ -65,6 +67,7 @@ const Register = () => {
                     onChange={formik.handleChange("firstName")}
                     onBlur={formik.handleBlur("firstName")}
                     placeholder="first name"
+                    maxLength={20}
                   />
                   <span className="text-smaller font-poppinsLight text-red-300 px-[0.5rem] sm:text-small">
                     {formik.touched.firstName && formik.errors.firstName}
@@ -77,6 +80,7 @@ const Register = () => {
                     onChange={formik.handleChange("lastName")}
                     onBlur={formik.handleBlur("lastName")}
                     placeholder="last name"
+                    maxLength="20"
                   />
                   <span className="text-smaller font-poppinsLight text-red-300 px-[0.5rem] sm:text-small">
                     {formik.touched.lastName && formik.errors.lastName}
@@ -89,6 +93,7 @@ const Register = () => {
                     onChange={formik.handleChange("email")}
                     onBlur={formik.handleBlur("email")}
                     placeholder="example@email.com"
+                    maxLength="40"
                   />
                   <span className="text-smaller font-poppinsLight text-red-300 px-[0.5rem] sm:text-small">
                     {formik.touched.email && formik.errors.email}
@@ -113,76 +118,39 @@ const Register = () => {
                     onChange={formik.handleChange("password")}
                     onBlur={formik.handleBlur("password")}
                     placeholder="password"
+                    maxLength="40"
                   />
                   <span className="text-smaller font-poppinsLight text-red-300 px-[0.5rem] sm:text-small">
                     {formik.touched.password && formik.errors.password}
                   </span>
-                  {/* <input
-                    type="text"
-                    placeholder="last name"
-                    className="hover:outline-none focus:outline-none px-[1rem] py-[0.6rem] border-[1px] border-gray-200 hover:border-thirtyColor focus:border-thirtyColor rounded-sm"
-                    required
-                  />
-                  <input
-                    type="email"
-                    placeholder="example@email.com"
-                    className="hover:outline-none focus:outline-none px-[1rem] py-[0.6rem] border-[1px] border-gray-200 hover:border-thirtyColor focus:border-thirtyColor rounded-sm"
-                    required
-                  />
-                  <input
-                    type="number"
-                    placeholder="e.g. 0700119134"
-                    className="hover:outline-none focus:outline-none px-[1rem] py-[0.6rem] border-[1px] border-gray-200 hover:border-thirtyColor focus:border-thirtyColor rounded-sm"
-                    required
-                  />
-                  <input
-                    type="password"
-                    placeholder="password"
-                    className="hover:outline-none focus:outline-none px-[1rem] py-[0.6rem] border-[1px] border-gray-200 hover:border-thirtyColor focus:border-thirtyColor rounded-sm"
-                    required
-                  />
-                  <input
-                    type="password"
-                    placeholder="confirm password"
-                    className="hover:outline-none focus:outline-none px-[1rem] py-[0.6rem] border-[1px] border-gray-200 hover:border-thirtyColor focus:border-thirtyColor rounded-sm"
-                    required
-                  /> */}
                 </div>
                 <div className="flex justify-end items-end mt-[2rem] font-poppinsLight w-full text-smaller sm:text-small">
                   <div className="flex items-center space-x-1">
                     <span>Already have an account?</span>
-                    <Link to="/signin" className="text-ctaColor ">
+                    <Link
+                      to="/signin"
+                      className="text-ctaColor hover:text-lightThemeColor"
+                    >
                       Sign In
                     </Link>
                   </div>
                 </div>
                 <button
                   type="submit"
-                  className="bg-ctaColor text-bodyColor w-full py-[0.5rem] mt-[3rem]"
+                  className="bg-ctaColor text-bodyColor w-full py-[0.5rem] mt-[3rem] hover:bg-lightThemeColor"
                 >
                   Register
                 </button>
                 <p className="text-tiny text-textColor leading-tight font-poppinsLight mt-[0.75rem] sm:text-smaller">
                   By registering you accept our{" "}
-                  <span className="text-ctaColor">
+                  <span className="text-ctaColor hover:text-darkThemeColor">
                     <Link to="/privacy-policy">Terms of Service</Link>
                   </span>{" "}
                   and{" "}
-                  <span className="text-ctaColor">
+                  <span className="text-ctaColor hover:text-darkThemeColor">
                     <Link to="/privacy-policy">Privacy Policy</Link>
                   </span>
                 </p>
-                {/* <p className="text-tiny text-textColor leading-tight font-poppinsLight mt-[0.75rem] sm:text-smaller">
-                  By registering, you acknowledge that you have read, understood
-                  and agreed to our{" "}
-                  <span className="text-ctaColor">
-                    <Link to="/privacy-policy">Terms of Service</Link>
-                  </span>
-                  . You can also check our{" "}
-                  <span className="text-ctaColor">
-                    <Link to="/privacy-policy">Privacy Policy</Link>
-                  </span>
-                </p> */}
               </form>
             </div>
           </div>

@@ -1,3 +1,5 @@
+// Format the createdAt/updatedAt date strings from db
+
 const months = [
   "Jan",
   "Feb",
@@ -22,7 +24,7 @@ export const formatDate = (dateString) => {
   const hour = dateObject.getHours();
   const minute = dateObject.getMinutes();
 
-  const formattedDate = `${month} ${day}, ${year} ${hour}:${minute}`;
+  const formattedDate = `${day} ${month}, ${year} ${hour}:${minute}`;
 
   return formattedDate;
 };

@@ -1,17 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { addToWishlistAC } from "../../reduxFeatures/properties/propertySlice";
-import {
-  addToCompare,
-  removeFromCompare,
-} from "../../reduxFeatures/properties/propertySlice";
+import { addToCompare } from "../../reduxFeatures/properties/propertySlice";
 import {
   PiWhatsappLogo,
   PiArrowsClockwise,
-  PiArrowLeft,
-  PiArrowRight,
-  PiHeart,
   PiHeartDuotone,
   PiBedLight,
   PiBathtubLight,
@@ -19,19 +14,21 @@ import {
   PiPhone,
   PiCaretLeft,
   PiCaretRight,
+  PiArrowsClockwiseDuotone,
 } from "react-icons/pi";
-import { toast } from "react-toastify";
-import imagePlaceholder from "../../static/images/no-image.png";
-import test2 from "../../static/images/test2.jpg";
-import test3 from "../../static/images/test3.jpg";
-import city from "../../static/images/testImage.jpg";
 
 const SpecificCard = ({ property, specificVal }) => {
-  const compareArray = useSelector((state) => state.property.compareProperties);
-  console.log(compareArray);
-
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [imageSlide, setImageSlide] = useState(0);
+  const propertiesInCompare = useSelector(
+    (state) => state.property.compareProperties
+  );
+  const propertiesInWishlist = useSelector((state) => state.user.userWishlist);
+  const foundCategory = property?.category?.find(
+    (categry) =>
+      categry?.categoryName?.toLowerCase() == specificVal?.toLowerCase()
+  );
 
   const nextImage = () => {
     setImageSlide(
@@ -44,11 +41,28 @@ const SpecificCard = ({ property, specificVal }) => {
     );
   };
 
-  let images = [test2, test3, city, test3, test2, city];
+  const alreadyInWishlist = propertiesInWishlist?.find(
+    (house) => house?.propertyId?._id == property?._id
+  );
+  const alreadyInCompare = propertiesInCompare?.find(
+    (house) => house?._id == property?._id
+  );
+
+  const handleAddToWishlist = (propertyId) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      dispatch(addToWishlistAC(propertyId));
+    } else {
+      toast.error("Sign in to add property to wishlist");
+      setTimeout(() => {
+        navigate("/signin");
+      }, 1800);
+    }
+  };
   return (
     <div className="flex flex-col gap-[1rem] flex-shrink-0 bg-white w-full h-[400px] max-w-[310px]">
       <div className="relative w-full h-6/12 overflow-hidden bg-lightThemeColor">
-        <Link to={`property/${property?._id}`} className="flex w-full h-full">
+        <Link to={`/property/${property?._id}`} className="flex w-full h-full">
           {property?.images?.length > 0 ? (
             property?.images?.map((image, index) => {
               return (
@@ -60,39 +74,46 @@ const SpecificCard = ({ property, specificVal }) => {
                       ? "object-cover h-full w-full"
                       : "hidden"
                   }`}
-                ></img>
+                  alt="house-property-image"
+                />
               );
             })
           ) : (
             <img
               src="/images/no-image.png"
               className="object-cover h-full w-full"
+              alt="no-image-placeholder"
             />
           )}
         </Link>
         <span
-          onClick={(e) => dispatch(addToWishlistAC(property?._id))}
-          className="absolute top-0 right-0 p-4 text-[1.75rem] text-bodyColor z-20"
+          onClick={(e) => handleAddToWishlist(property?._id)}
+          className={`absolute top-0 right-0 p-4 text-[1.75rem] ${
+            alreadyInWishlist ? "text-ctaColor" : "text-bodyColor"
+          } z-20 cursor-pointer hover:text-ctaColor`}
         >
           <PiHeartDuotone />
         </span>
         <div className="absolute top-0 left-0 p-4 z-10">
-          <span className="uppercase font-poppinsLight text-tiny bg-lightGrayCTA text-black px-[0.125rem] rounded-sm">
+          <Link
+            to={`/category/${foundCategory?.categoryId}`}
+            className="uppercase font-poppinsLight text-tiny bg-lightGrayCTA text-black px-[0.125rem] rounded-sm cursor-pointer hover:text-ctaColor hover:bg-transparent"
+          >
             {specificVal}
-          </span>
+          </Link>
         </div>
         {property?.images?.length > 0 && (
           <div className="absolute top-1/2 px-4 w-full">
             <div className="flex justify-between items-center w-full">
               <span
                 onClick={prevImage}
-                className="p-2 bg-lightGrayCTA text-darkThemeColor rounded-full"
+                className="p-2 bg-lightGrayCTA text-darkThemeColor rounded-full hover:bg-transparent hover:text-black"
               >
                 <PiCaretLeft />
               </span>
               <span
                 onClick={nextImage}
-                className="p-2 bg-lightGrayCTA text-darkThemeColor rounded-full"
+                className="p-2 bg-lightGrayCTA text-darkThemeColor rounded-full hover:bg-transparent hover:text-black"
               >
                 <PiCaretRight />
               </span>
@@ -147,27 +168,31 @@ const SpecificCard = ({ property, specificVal }) => {
         </div>
         <div className="flex justify-between items-center mt-[2rem]">
           <Link
-            to={`property/${property?._id}`}
-            className="font-poppinsLight text-ctaColor text-smaller sm:text-small"
+            to={`/property/${property?._id}`}
+            className="font-poppinsLight text-ctaColor text-smaller hover:text-darkThemeColor sm:text-small"
           >
             View Property
           </Link>
           <div className="flex items-center space-x-[1rem] text-h3 text-textColor">
             <span
-              onClick={(e) =>
-                dispatch(addToCompare({ ...property })) &
-                toast.success("Property added to compare")
-              }
+              onClick={(e) => dispatch(addToCompare({ ...property }))}
+              className={`${
+                alreadyInCompare ? "text-ctaColor" : "text-textColor"
+              } hover:text-darkThemeColor`}
             >
-              <PiArrowsClockwise />
+              {alreadyInCompare ? (
+                <PiArrowsClockwiseDuotone />
+              ) : (
+                <PiArrowsClockwise />
+              )}
             </span>
-            <span>
+            <span className="hover:text-darkThemeColor">
               <a href="tel:254700119134">
                 <PiPhone />
               </a>
             </span>
-            <span>
-              <a href="https://wa.me/254700119134">
+            <span className="hover:text-darkThemeColor">
+              <a href="https://wa.me/254700119134?text=Hi,%20I%20am%20interested%20in%20this%20property">
                 <PiWhatsappLogo />
               </a>
             </span>

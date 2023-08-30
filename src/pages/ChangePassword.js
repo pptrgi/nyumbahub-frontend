@@ -1,27 +1,46 @@
 import React from "react";
-import Breadcrumb from "../components/Breadcrumb";
-import AuthInputTemplate from "../components/AuthInputTemplate";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import * as yup from "yup";
 import { useFormik } from "formik";
-import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import Breadcrumb from "../components/Breadcrumb";
+import AuthInputTemplate from "../components/AuthInputTemplate";
+import { changePasswordAC } from "../reduxFeatures/users/userSlice";
+import PageTitler from "../components/PageTitler";
 
 const changePassSchema = yup.object({
-  password: yup.string().required("Please enter your new password"),
+  newPassword: yup.string().required("Please enter your new password"),
   confirmPassword: yup.string().required("Please confirm your new password"),
 });
 
 const ChangePassword = () => {
+  const dispatch = useDispatch();
+  const userData = useSelector((state) => state.user.user.user);
+
   const formik = useFormik({
     initialValues: {
-      password: "",
+      newPassword: "",
       confirmPassword: "",
     },
     validationSchema: changePassSchema,
-    onSubmit: (values) => {},
+    onSubmit: (values) => {
+      if (formik.values.newPassword !== formik.values.confirmPassword) {
+        toast.error("Passwords do not match");
+      } else {
+        dispatch(
+          changePasswordAC({
+            userId: userData?.id,
+            values,
+          })
+        );
+      }
+    },
   });
   return (
     <div className="page container">
       <Breadcrumb pageTitle={"Change Password"} />
+      <PageTitler title={"Change Password"} />
       <div className="flex justify-center items-center w-full min-h-[70vh]">
         <div className="flex flex-col gap-[2rem]">
           <div className="w-[300px] bg-white rounded-sm sm:w-[400px] md:w-[500px] pt-[3rem] pb-[2rem]">
@@ -36,14 +55,15 @@ const ChangePassword = () => {
                 <div className="flex flex-col space-y-[0.5rem] w-full">
                   <AuthInputTemplate
                     type="password"
-                    name="password"
-                    value={formik.values.password}
-                    onChange={formik.handleChange("password")}
-                    onBlur={formik.handleBlur("password")}
+                    name="newPassword"
+                    value={formik.values.newPassword}
+                    onChange={formik.handleChange("newPassword")}
+                    onBlur={formik.handleBlur("newPassword")}
                     placeholder="New password"
+                    maxLength="40"
                   />
                   <span className="text-smaller font-poppinsLight text-red-300 px-[0.5rem] sm:text-small">
-                    {formik.touched.password && formik.errors.password}
+                    {formik.touched.newPassword && formik.errors.newPassword}
                   </span>
 
                   <AuthInputTemplate
@@ -53,6 +73,7 @@ const ChangePassword = () => {
                     onChange={formik.handleChange("confirmPassword")}
                     onBlur={formik.handleBlur("confirmPassword")}
                     placeholder="Confirm password"
+                    maxLength="40"
                   />
                   <span className="text-smaller font-poppinsLight text-red-300 px-[0.5rem] sm:text-small">
                     {formik.touched.confirmPassword &&
@@ -61,12 +82,15 @@ const ChangePassword = () => {
                 </div>
                 <div className="flex justify-end items-end mt-[3rem] w-full">
                   <div className="flex items-center space-x-4">
-                    <Link to="/" className="text-textColor w-full">
+                    <Link
+                      to="/"
+                      className="text-textColor w-full hover:text-darkThemeColor"
+                    >
                       Cancel
                     </Link>
                     <button
                       type="submit"
-                      className="bg-ctaColor text-bodyColor w-full py-[0.5rem] px-[1.25rem] rounded-md"
+                      className="bg-ctaColor text-bodyColor w-full py-[0.5rem] px-[1.25rem] rounded-md hover:bg-darkThemeColor"
                     >
                       Change
                     </button>

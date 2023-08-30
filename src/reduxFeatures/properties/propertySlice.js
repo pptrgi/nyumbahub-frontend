@@ -8,7 +8,7 @@ export const getAllProperties = createAsyncThunk(
     try {
       return await propertyService.getAllProperties(data);
     } catch (error) {
-      return error;
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
@@ -18,29 +18,29 @@ export const getOnePropertyAC = createAsyncThunk(
     try {
       return await propertyService.getOneProperty(propertyId);
     } catch (error) {
-      return error;
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
 
 export const addToWishlistAC = createAsyncThunk(
   "property/addToWishlist",
-  async (propertyId) => {
+  async (propertyId, thunkAPI) => {
     try {
       return await propertyService.addPropertyToWishlist(propertyId);
     } catch (error) {
-      return error;
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
 
 export const addAReviewAC = createAsyncThunk(
   "property/addAReview",
-  async (propertyId, reviewData) => {
+  async (reviewData, thunkAPI) => {
     try {
-      return await propertyService.addAReview(propertyId, reviewData);
+      return await propertyService.addAReview(reviewData);
     } catch (error) {
-      return error;
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
@@ -67,12 +67,13 @@ export const propertySlice = createSlice({
       );
       if (existingProperty) {
         state.compareProperties.pop(action.payload);
+        toast.info("Property removed from compare");
       } else {
         if (state.compareProperties.length >= 3) {
-          toast.info("Maximum number of properties to compare is 3");
+          toast.error("Maximum number of properties to compare is 3");
         } else {
           state.compareProperties.push(action.payload);
-          console.log(state.compareProperties);
+          toast.success("Property added to compare");
         }
       }
     },
@@ -82,7 +83,7 @@ export const propertySlice = createSlice({
       );
     },
     // resetCompare: (state) => {
-    //   state.compareProperties = state.compareProperties = [];
+    //   state.compareProperties = [];
     // },
   },
   extraReducers: (builder) => {
@@ -136,7 +137,7 @@ export const propertySlice = createSlice({
         state.isError = true;
         state.message = action.error;
         if (state.isError === true) {
-          toast.error("Problem adding item to the wishlist");
+          toast.error(action.error);
         }
       })
       .addCase(addAReviewAC.pending, (state) => {
@@ -157,7 +158,7 @@ export const propertySlice = createSlice({
         state.isError = true;
         state.message = action.error;
         if (state.isError === true) {
-          toast.error("Problem submitting review");
+          toast.error(action.error);
         }
       });
   },

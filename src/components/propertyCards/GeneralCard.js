@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import { addToCompare } from "../../reduxFeatures/properties/propertySlice";
 import { addToWishlistAC } from "../../reduxFeatures/properties/propertySlice";
-import { useDispatch, useSelector } from "react-redux";
 import {
   PiWhatsappLogo,
   PiArrowsClockwise,
-  PiArrowLeft,
-  PiArrowRight,
-  PiHeart,
   PiBedLight,
   PiBathtubLight,
   PiMapPinLight,
@@ -16,14 +14,17 @@ import {
   PiCaretLeft,
   PiCaretRight,
   PiHeartDuotone,
+  PiArrowsClockwiseDuotone,
 } from "react-icons/pi";
-import imagePlaceholder from "../../static/images/no-image.png";
-import { Link } from "react-router-dom";
 
 const GeneralCard = ({ property }) => {
   const dispatch = useDispatch();
-  const compareArray = useSelector((state) => state.property.compareProperties);
+  const navigate = useNavigate();
   const [imageSlide, setImageSlide] = useState(0);
+  const propertiesInCompare = useSelector(
+    (state) => state.property.compareProperties
+  );
+  const propertiesInWishlist = useSelector((state) => state.user.userWishlist);
 
   const nextImage = () => {
     setImageSlide(
@@ -35,10 +36,29 @@ const GeneralCard = ({ property }) => {
       imageSlide === 0 ? property?.images?.length - 1 : imageSlide - 1
     );
   };
+
+  const alreadyInWishlist = propertiesInWishlist?.find(
+    (house) => house?.propertyId?._id == property?._id
+  );
+  const alreadyInCompare = propertiesInCompare?.find(
+    (house) => house?._id == property?._id
+  );
+
+  const handleAddToWishlist = (propertyId) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      dispatch(addToWishlistAC(propertyId));
+    } else {
+      toast.error("Sign in to add property to wishlist");
+      setTimeout(() => {
+        navigate("/signin");
+      }, 1800);
+    }
+  };
   return (
     <div className="flex flex-col flex-shrink-0 gap-[1rem] bg-white w-full h-[415px] max-w-[310px]">
       <div className="relative w-full h-6/12 overflow-hidden bg-lightThemeColor">
-        <div className="flex w-full h-full">
+        <Link to={`/property/${property?._id}`} className="flex w-full h-full">
           {property?.images?.length > 0 ? (
             property?.images?.map((file, index) => {
               return (
@@ -50,31 +70,35 @@ const GeneralCard = ({ property }) => {
                       ? "object-cover h-full w-full"
                       : "hidden"
                   }`}
-                ></img>
+                  alt="house-property-image"
+                />
               );
             })
           ) : (
             <img
               src="/images/no-image.png"
               className="object-cover h-full w-full"
+              alt="no-image-placeholder"
             />
           )}
-        </div>
+        </Link>
         <span
-          onClick={(e) => dispatch(addToWishlistAC(property?._id))}
-          className="absolute top-0 right-0 p-4 text-[1.75rem] text-bodyColor z-20"
+          onClick={(e) => handleAddToWishlist(property?._id)}
+          className={`absolute top-0 right-0 p-4 text-[1.75rem] ${
+            alreadyInWishlist ? "text-ctaColor" : "text-bodyColor"
+          } z-20  cursor-pointer hover:text-ctaColor`}
         >
           <PiHeartDuotone />
         </span>
         <div className="flex gap-1 flex-wrap absolute top-0 left-0 p-4 z-10">
-          {property.category.map((tag, idx) => {
+          {property?.category?.map((tag, idx) => {
             return (
               <Link
                 key={idx}
-                to={`category/${tag.categoryId}`}
-                className="uppercase font-poppinsLight text-tiny bg-lightGrayCTA text-black px-[0.125rem] rounded-sm"
+                to={`/category/${tag?.categoryId}`}
+                className="uppercase font-poppinsLight text-tiny bg-lightGrayCTA text-black px-[0.125rem] rounded-sm cursor-pointer hover:text-ctaColor hover:bg-transparent"
               >
-                {tag.categoryName}
+                {tag?.categoryName}
               </Link>
             );
           })}
@@ -146,27 +170,31 @@ const GeneralCard = ({ property }) => {
         </div>
         <div className="flex justify-between items-center mt-[2rem]">
           <Link
-            to={`property/${property?._id}`}
-            className="font-poppinsLight text-ctaColor text-smaller sm:text-small"
+            to={`/property/${property?._id}`}
+            className="font-poppinsLight text-ctaColor text-smaller hover:text-darkThemeColor sm:text-small"
           >
             View Property
           </Link>
           <div className="flex items-center space-x-[1rem] text-h3 text-textColor">
             <span
-              onClick={(e) =>
-                dispatch(addToCompare({ ...property })) &
-                toast.success("Property added to compare")
-              }
+              onClick={(e) => dispatch(addToCompare({ ...property }))}
+              className={`${
+                alreadyInCompare ? "text-ctaColor" : "text-textColor"
+              } hover:text-darkThemeColor`}
             >
-              <PiArrowsClockwise />
+              {alreadyInCompare ? (
+                <PiArrowsClockwiseDuotone />
+              ) : (
+                <PiArrowsClockwise />
+              )}
             </span>
-            <span>
+            <span className="hover:text-darkThemeColor">
               <a href="tel:254700119134">
                 <PiPhone />
               </a>
             </span>
-            <span>
-              <a href="https://wa.me/254700119134">
+            <span className="hover:text-darkThemeColor">
+              <a href="https://wa.me/254700119134?text=Hi,%20I%20am%20interested%20in%20this%20property">
                 <PiWhatsappLogo />
               </a>
             </span>

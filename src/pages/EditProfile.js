@@ -1,19 +1,47 @@
-import React from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Breadcrumb from "../components/Breadcrumb";
+import { editUserProfileAC } from "../reduxFeatures/users/userSlice";
 import { Link } from "react-router-dom";
+import PageTitler from "../components/PageTitler";
 
 const EditProfile = () => {
-  const userData = useSelector((state) => state.user.user);
+  const dispatch = useDispatch();
+  const userData = useSelector((state) => state.user.user.user);
+  const [firstName, setFirstName] = useState(userData?.firstName);
+  const [lastName, setLastName] = useState(userData?.lastName);
+  const [email, setEmail] = useState(userData?.email);
+  const [phone, setPhone] = useState(userData?.phone);
+  const userId = userData?.id;
+
+  console.log("ud", userData);
+
+  const handleProfileUpdate = (e) => {
+    e.preventDefault();
+
+    const changedDetails = {
+      firstName,
+      lastName,
+      email,
+      phone,
+    };
+    dispatch(editUserProfileAC({ userId, changedDetails }));
+
+    console.log(changedDetails);
+  };
 
   return (
     <div className="page container mb-[5rem]">
       <Breadcrumb pageTitle={"Edit Profile"} />
+      <PageTitler title={"Manage Account"} />
       <h2 className="font-poppinsSemibold text-darkThemeColor mt-[1.5rem] mb-[2rem] text-h3">
         Manage your Account
       </h2>
       <div className="flex justify-center items-center">
-        <form className="w-[100%] flex flex-col space-y-[1rem] bg-white text-textColor px-[0.5rem] py-[3rem] md:max-w-[80%] sm:max-w-[90%] sm:px-[2rem]">
+        <form
+          onSubmit={handleProfileUpdate}
+          className="w-[100%] flex flex-col space-y-[1rem] bg-white text-textColor px-[0.5rem] py-[3rem] md:max-w-[80%] sm:max-w-[90%] sm:px-[2rem]"
+        >
           <div className="w-full flex space-x-[0.25rem] justify-start items-start sm:space-x-[1rem]">
             <label className="w-5/12 px-[0.5rem] py-[0.5rem] sm:w-4/12 md:w-3/12">
               First Name:
@@ -21,7 +49,9 @@ const EditProfile = () => {
             <span className="w-7/12 sm:w-8/12 md:w-9/12">
               <input
                 type="text"
-                value={userData?.firstName}
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                maxLength={20}
                 className="w-full border-[1.5px] border-gray-200 rounded-md px-[0.5rem] py-[0.5rem] hover:outline-none focus:outline-none focus:border-gray-300"
               />
             </span>
@@ -33,7 +63,9 @@ const EditProfile = () => {
             <span className="w-7/12 sm:w-8/12 md:w-9/12">
               <input
                 type="text"
-                value={userData?.lastName}
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                maxLength={20}
                 className="w-full border-[1.5px] border-gray-200 rounded-md px-[0.5rem] py-[0.5rem] hover:outline-none focus:outline-none focus:border-gray-300"
               />
             </span>
@@ -45,7 +77,9 @@ const EditProfile = () => {
             <span className="w-7/12 sm:w-8/12 md:w-9/12">
               <input
                 type="email"
-                value={userData?.email}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                maxLength={40}
                 className="w-full border-[1.5px] border-gray-200 rounded-md px-[0.5rem] py-[0.5rem] hover:outline-none focus:outline-none focus:border-gray-300"
               />
             </span>
@@ -57,7 +91,8 @@ const EditProfile = () => {
             <span className="w-7/12 sm:w-8/12 md:w-9/12">
               <input
                 type="number"
-                value={userData?.phone}
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
                 className="w-full border-[1.5px] border-gray-200 rounded-md px-[0.5rem] py-[0.5rem] hover:outline-none focus:outline-none focus:border-gray-300"
               />
             </span>
@@ -65,10 +100,16 @@ const EditProfile = () => {
           <div className="pt-[1.25rem]">
             <div className="flex justify-end items-end">
               <div className="flex justify-center items-center space-x-[2rem]">
-                <Link to="/" className="font-poppinsSemibold font-mediumWeight">
+                <Link
+                  to="/"
+                  className="font-poppinsSemibold font-mediumWeight hover:text-darkThemeColor"
+                >
                   Cancel
                 </Link>
-                <button className="px-[1.5rem] py-[0.75rem] bg-ctaColor rounded-lg text-bodyColor">
+                <button
+                  type="submit"
+                  className="px-[1.5rem] py-[0.75rem] bg-ctaColor rounded-lg text-bodyColor hover:bg-darkThemeColor"
+                >
                   Update
                 </button>
               </div>

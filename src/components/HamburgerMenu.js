@@ -1,5 +1,5 @@
 import React from "react";
-import ActiveHeaderLink from "./ActiveHeaderLink";
+import { Link } from "react-router-dom";
 import {
   PiArrowsClockwise,
   PiHeart,
@@ -7,7 +7,7 @@ import {
   PiPhone,
   PiSquaresFour,
 } from "react-icons/pi";
-import { Link } from "react-router-dom";
+import ActiveHeaderLink from "./ActiveHeaderLink";
 
 const HamburgerMenu = ({
   showHamMenu,
@@ -23,16 +23,15 @@ const HamburgerMenu = ({
           : "hidden"
       }
     >
-      {/* include animation */}
       <div className="flex flex-col justify-start items-start mt-[2rem]">
         <div className="flex justify-center items-center w-full mb-[4rem]">
-          <h3 className="font-poppinsBold text-h2">NyumbaHub</h3>
+          <h3 className="font-poppinsBold text-h2 ">NyumbaHub</h3>
         </div>
         <div className="flex flex-col space-y-[1.5rem] w-full">
           <ActiveHeaderLink
             toWhere={""}
             inactiveGroupStyle={
-              "flex space-x-[0.75rem] items-center border-b-[1.5px] border-inherit w-full hover:text-ctaColor"
+              "flex space-x-[0.75rem] items-center border-b-[1px] border-gray-200 w-full hover:text-ctaColor"
             }
             icon={<PiHouse />}
             iconStyle={"text-h3"}
@@ -43,7 +42,7 @@ const HamburgerMenu = ({
           <ActiveHeaderLink
             toWhere={"wishlist"}
             inactiveGroupStyle={
-              "flex space-x-[0.75rem] items-center border-b-[1.5px] border-inherit w-full hover:text-ctaColor"
+              "flex space-x-[0.75rem] items-center border-b-[1px] border-gray-200 w-full hover:text-ctaColor"
             }
             icon={<PiHeart />}
             iconStyle={"text-h3"}
@@ -54,7 +53,7 @@ const HamburgerMenu = ({
           <ActiveHeaderLink
             toWhere={"contact"}
             inactiveGroupStyle={
-              "flex space-x-[0.75rem] items-center border-b-[1.5px] border-inherit w-full hover:text-ctaColor"
+              "flex space-x-[0.75rem] items-center border-b-[1px] border-gray-200 w-full hover:text-ctaColor"
             }
             icon={<PiPhone />}
             iconStyle={"text-h3"}
@@ -65,7 +64,7 @@ const HamburgerMenu = ({
           <ActiveHeaderLink
             toWhere={"all-properties"}
             inactiveGroupStyle={
-              "flex space-x-[0.75rem] items-center border-b-[1.5px] border-inherit w-full hover:text-ctaColor"
+              "flex space-x-[0.75rem] items-center border-b-[1px] border-gray-200 w-full hover:text-ctaColor"
             }
             icon={<PiSquaresFour />}
             iconStyle={"text-h3"}
@@ -76,7 +75,7 @@ const HamburgerMenu = ({
           <ActiveHeaderLink
             toWhere={"compare"}
             inactiveGroupStyle={
-              "flex space-x-[0.75rem] items-center border-b-[1.5px] border-inherit w-full hover:text-ctaColor"
+              "flex space-x-[0.75rem] items-center border-b-[1px] border-gray-200 w-full hover:text-ctaColor"
             }
             icon={<PiArrowsClockwise />}
             iconStyle={"text-h3"}
@@ -84,8 +83,8 @@ const HamburgerMenu = ({
             linkTitleStyle={"font-poppinsRegular"}
             optionalMenuSetter={setShowHamMenu}
           />
-          <div className="flex flex-col space-y-[0.75rem] ">
-            <span className="border-b-[1.5px] border-inherit w-full">
+          <div className="flex flex-col space-y-[0.75rem] group">
+            <span className="border-b-[1px] border-gray-200 w-full group-hover:text-ctaColor">
               Properties by Type
             </span>
             <div className="flex flex-col space-y-[0.5rem] items-start px-[0.75rem]">
@@ -103,8 +102,8 @@ const HamburgerMenu = ({
               })}
             </div>
           </div>
-          <div className="flex flex-col space-y-[0.75rem]">
-            <span className="border-b-[1.5px] border-inherit w-full">
+          <div className="flex flex-col space-y-[0.75rem] group">
+            <span className="border-b-[1px] border-gray-200 w-full group-hover:text-ctaColor">
               Properties by Category
             </span>
             <div className="flex flex-col space-y-[0.5rem] items-start px-[0.75rem]">

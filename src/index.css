@@ -63,15 +63,3 @@ input {
   background-color: white;
   transform: rotate(45deg);
 }
-/* @media only screen and (min-width: 577px){
-  #account-panel-tag ::before {
-  content: "";
-  position: absolute;
-  top: -5px;
-  right: 10%;
-  height: 20px;
-  width: 20px;
-  background-color: white;
-  transform: rotate(45deg);
-}
-} */

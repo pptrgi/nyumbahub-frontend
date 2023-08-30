@@ -7,27 +7,27 @@ export const getOneCategory = createAsyncThunk(
     try {
       return await categoryService.getOneCategory(categoryId);
     } catch (error) {
-      return error;
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
 export const getFeaturedCategory = createAsyncThunk(
   "category/getFeaturedCategory",
-  async (thunkAPI) => {
+  async (firstArg, thunkAPI) => {
     try {
       return await categoryService.getFeaturedCategory();
     } catch (error) {
-      return error;
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
 export const getNewListingCategory = createAsyncThunk(
   "category/getNewListingCategory",
-  async (thunkAPI) => {
+  async (firstArg, thunkAPI) => {
     try {
       return await categoryService.getNewListingCategory();
     } catch (error) {
-      return error;
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );

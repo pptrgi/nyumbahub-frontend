@@ -1,5 +1,5 @@
 import React from "react";
-import { CircleLoader, BeatLoader, PuffLoader } from "react-spinners";
+import { PuffLoader } from "react-spinners";
 
 const PreLoader = () => {
   return (

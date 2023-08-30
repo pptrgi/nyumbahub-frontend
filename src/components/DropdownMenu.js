@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
-import { PiCaretDown, PiCaretUp } from "react-icons/pi";
 import { Link } from "react-router-dom";
+import { PiCaretDown, PiCaretUp } from "react-icons/pi";
 
 const DropdownMenu = ({ title, items, titleStyle, itemsStyle }) => {
   const [openDropdown, setOpenDropdown] = useState(false);
@@ -19,13 +19,13 @@ const DropdownMenu = ({ title, items, titleStyle, itemsStyle }) => {
     };
   }, []);
   return (
-    <div ref={dropdownRef} className="flex flex-col space-y-[0.25rem]">
+    <div ref={dropdownRef} className="flex flex-col space-y-[0.25rem] group">
       <span
         onClick={(e) => setOpenDropdown(openDropdown ? false : true)}
         className="flex space-x-1 items-center"
       >
         <span className={titleStyle}>{title}</span>
-        <span className="font-semibolded">
+        <span className="group-hover:text-ctaColor">
           {openDropdown ? <PiCaretUp /> : <PiCaretDown />}
         </span>
       </span>
@@ -33,17 +33,14 @@ const DropdownMenu = ({ title, items, titleStyle, itemsStyle }) => {
         <div className={itemsStyle}>
           {items.map((item, index) => {
             return (
-              <span
-                className="capitalize hover:bg-darkLightGrayCTA w-full px-[1.5rem] py-[0.25rem]"
+              <Link
+                to={`${item.params}`}
                 key={index}
+                onClick={(e) => setOpenDropdown(false)}
+                className="capitalize w-full px-[1.5rem] py-[0.6rem] hover:bg-lightGrayCTA hover:text-lightThemeColor"
               >
-                <Link
-                  to={`${item.params}`}
-                  onClick={(e) => setOpenDropdown(false)}
-                >
-                  {item.name}
-                </Link>
-              </span>
+                {item.name}
+              </Link>
             );
           })}
         </div>

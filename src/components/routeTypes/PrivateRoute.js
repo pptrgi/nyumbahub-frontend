@@ -7,16 +7,17 @@ export const PrivateRoute = ({ children }) => {
   console.log("stored token", storedToken);
 
   const timeRightNow = new Date().getTime();
-  const tokenExpiryTime = 30 * 60 * 1000; //30 minutes
+  const tokenExpiryTime = 30 * 60 * 1000;
 
   if (timeRightNow - storedTokenTimestamp >= tokenExpiryTime) {
     localStorage.removeItem("token");
     localStorage.removeItem("tokenTimestamp");
   }
 
-  return storedToken !== null ? (
-    children
-  ) : (
-    <Navigate to="/signin" replace={true} />
-  );
+  // problem with toast, rectify
+  return storedToken !== null
+    ? children
+    : toast.info("Please sign in to your account") && (
+        <Navigate to="/signin" replace={true} />
+      );
 };

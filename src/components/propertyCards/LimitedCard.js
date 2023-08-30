@@ -1,39 +1,50 @@
 import React from "react";
-import image from "../../static/images/testImage.jpg";
 import { toast } from "react-toastify";
-import { addToCompare } from "../../reduxFeatures/properties/propertySlice";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { addToCompare } from "../../reduxFeatures/properties/propertySlice";
+import { addToWishlistAC } from "../../reduxFeatures/properties/propertySlice";
 import {
   PiWhatsappLogo,
   PiArrowsClockwise,
-  PiArrowLeft,
-  PiArrowRight,
   PiHeart,
   PiBedLight,
   PiBathtubLight,
-  PiMapPinLight,
   PiPhone,
-  PiCaretLeft,
-  PiCaretRight,
   PiX,
+  PiArrowsClockwiseDuotone,
 } from "react-icons/pi";
-import { Link } from "react-router-dom";
 
 const LimitedCard = ({ property }) => {
   const dispatch = useDispatch();
-  const compareArray = useSelector((state) => state.property.compareProperties);
+  const propertiesInCompare = useSelector(
+    (state) => state.property.compareProperties
+  );
+
+  const alreadyInCompare = propertiesInCompare?.find(
+    (house) => house?._id == property?._id
+  );
   return (
     <div className="flex flex-col gap-[1rem] bg-white w-full h-[400px] max-w-[320px]">
       <div className="relative w-full h-3/5 overflow-hidden bg-lightThemeColor">
-        <img
-          src={
-            property?.images?.length > 0
-              ? property?.images[0]?.imageUrl
-              : "/images/no-image.png"
+        <Link to={`/property/${property?._id}`}>
+          <img
+            src={
+              property?.images?.length > 0
+                ? property?.images[0]?.imageUrl
+                : "/images/no-image.png"
+            }
+            className="object-cover h-full w-full"
+            alt="image"
+          />
+        </Link>
+        <span
+          onClick={(e) =>
+            dispatch(addToWishlistAC(property?._id)) &&
+            toast.info("Property removed from the wishlist")
           }
-          className="object-cover h-full w-full"
-        ></img>
-        <span className="absolute top-0 right-0 p-4 text-h3 text-bodyColor z-20">
+          className="absolute top-0 right-0 p-4 text-h3 text-bodyColor z-20 hover:text-red-500"
+        >
           <PiX />
         </span>
 
@@ -42,8 +53,8 @@ const LimitedCard = ({ property }) => {
             return (
               <Link
                 key={idx}
-                to={`category/${item.categoryId}`}
-                className="uppercase font-poppinsLight text-tiny bg-lightGrayCTA text-black px-[0.125rem] rounded-sm"
+                to={`/category/${item.categoryId}`}
+                className="uppercase font-poppinsLight text-tiny bg-lightGrayCTA text-black px-[0.125rem] rounded-sm hover:text-ctaColor hover:bg-transparent"
               >
                 {item.categoryName}
               </Link>
@@ -83,20 +94,24 @@ const LimitedCard = ({ property }) => {
           </div>
           <div className="flex items-center space-x-[1rem] text-h3 text-textColor">
             <span
-              onClick={(e) =>
-                dispatch(addToCompare({ ...property })) &
-                toast.success("Property added to compare")
-              }
+              onClick={(e) => dispatch(addToCompare({ ...property }))}
+              className={`${
+                alreadyInCompare ? "text-ctaColor" : "text-textColor"
+              } hover:text-darkThemeColor`}
             >
-              <PiArrowsClockwise />
+              {alreadyInCompare ? (
+                <PiArrowsClockwiseDuotone />
+              ) : (
+                <PiArrowsClockwise />
+              )}
             </span>
-            <span>
+            <span className="hover:text-darkThemeColor">
               <a href="tel:254700119134">
                 <PiPhone />
               </a>
             </span>
-            <span>
-              <a href="https://wa.me/254700119134">
+            <span className="hover:text-darkThemeColor">
+              <a href="https://wa.me/254700119134?text=Hi,%20I%20am%20interested%20in%20this%20property">
                 <PiWhatsappLogo />
               </a>
             </span>

@@ -1,4 +1,6 @@
 import { useState, useRef, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { signOutUserAC } from "../reduxFeatures/users/userSlice";
 import {
   PiUser,
   PiQuestion,
@@ -8,7 +10,12 @@ import {
 } from "react-icons/pi";
 import { Link } from "react-router-dom";
 
-const AccountPanel = ({ userDetails }) => {
+const AccountPanel = ({ userDetails, setShowAccountPanel }) => {
+  const dispatch = useDispatch();
+
+  const handleVisitPage = () => {
+    setShowAccountPanel(false);
+  };
   return (
     <>
       <div
@@ -23,48 +30,78 @@ const AccountPanel = ({ userDetails }) => {
               </div>
             </div>
             <div className="flex flex-col space-y-[0.75rem] mt-[2rem]">
-              <Link to="/edit-profile" className="flex items-center space-x-3">
-                <span className="text-default">
-                  <PiNotePencil />
-                </span>
-                <span className="text-smaller sm:text-small">Edit Profile</span>
-              </Link>
-              <Link
-                to="/change-password"
-                className="flex items-center space-x-3"
-              >
-                <span className="text-default">
-                  <PiEyeSlash />
-                </span>
-                <span className="text-smaller sm:text-small">
-                  Change Password
-                </span>
-              </Link>
-              <Link to="/contact" className="flex items-center space-x-3">
-                <span className="text-default">
-                  <PiQuestion />
-                </span>
-                <span className="text-smaller sm:text-small">
-                  Help & Support
-                </span>
-              </Link>
-              <div className="flex items-center space-x-3 text-ctaColor">
-                <span className="text-default">
-                  <PiSignOut />
-                </span>
-                <span className="text-smaller sm:text-small ">Sign Out</span>
+              <div className="group">
+                <Link
+                  to="/edit-profile"
+                  onClick={(e) => handleVisitPage}
+                  className="flex items-center space-x-3 group-hover:text-ctaColor"
+                >
+                  <span className="text-default">
+                    <PiNotePencil />
+                  </span>
+                  <span className="text-smaller sm:text-small">
+                    Edit Profile
+                  </span>
+                </Link>
+              </div>
+
+              <div className="group">
+                <Link
+                  to="/change-password"
+                  onClick={(e) => handleVisitPage}
+                  className="flex items-center space-x-3 group-hover:text-ctaColor"
+                >
+                  <span className="text-default">
+                    <PiEyeSlash />
+                  </span>
+                  <span className="text-smaller sm:text-small">
+                    Change Password
+                  </span>
+                </Link>
+              </div>
+
+              <div className="group">
+                <Link
+                  to="/contact"
+                  onClick={(e) => handleVisitPage}
+                  className="flex items-center space-x-3 group-hover:text-ctaColor"
+                >
+                  <span className="text-default">
+                    <PiQuestion />
+                  </span>
+                  <span className="text-smaller sm:text-small">
+                    Help & Support
+                  </span>
+                </Link>
+              </div>
+
+              <div className="group">
+                <div
+                  onClick={(e) => dispatch(signOutUserAC())}
+                  className="flex items-center space-x-3 text-ctaColor group-hover:text-red-500 cursor-pointer"
+                >
+                  <span className="text-default">
+                    <PiSignOut />
+                  </span>
+                  <span className="text-smaller sm:text-small ">Sign Out</span>
+                </div>
               </div>
             </div>
           </div>
         ) : (
           <div className="flex flex-col w-full">
             <div className="flex justify-between items-center w-full font-mediumWeight">
-              <Link to="/signin" className="font-poppinsBold tracking-wide">
+              <Link
+                to="/signin"
+                onClick={(e) => handleVisitPage}
+                className="font-poppinsBold tracking-wide hover:text-darkThemeColor"
+              >
                 Sign In
               </Link>
               <Link
                 to="/register"
-                className="px-[1.25rem] py-[0.6rem] bg-ctaColor text-bodyColor rounded-md sm:py-[0.75rem]"
+                onClick={(e) => handleVisitPage}
+                className="px-[1.25rem] py-[0.6rem] bg-ctaColor text-bodyColor rounded-md sm:py-[0.75rem] hover:bg-darkThemeColor"
               >
                 Register
               </Link>

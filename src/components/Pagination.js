@@ -1,12 +1,20 @@
 import { useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
+import { useLocation } from "react-router-dom";
 import GeneralCard from "./propertyCards/GeneralCard";
-import { PiCaretLeftFill, PiCaretRightFill } from "react-icons/pi";
+import SpecificCard from "./propertyCards/SpecificCard";
 
-const Pagination = ({ properties, itemsPerPage, wrapperStyling }) => {
+const Pagination = ({
+  properties,
+  itemsPerPage,
+  wrapperStyling,
+  specificVal = null,
+}) => {
   const [currentItems, setCurrentItems] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
+  const { pathname } = useLocation();
+  const fromCategory = pathname.includes("category");
 
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;
@@ -23,21 +31,28 @@ const Pagination = ({ properties, itemsPerPage, wrapperStyling }) => {
     <div>
       <div className={wrapperStyling}>
         {currentItems?.map((property, index) => {
-          return <GeneralCard key={index} property={property} />;
+          return fromCategory ? (
+            <SpecificCard
+              key={index}
+              property={property}
+              specificVal={specificVal}
+            />
+          ) : (
+            <GeneralCard key={index} property={property} />
+          );
         })}
       </div>
 
       <div className="flex justify-center items-center w-full">
         <ReactPaginate
           breakLabel=".."
-          nextLabel="next" // } //   <PiCaretRightFill className="text-white text-h3 sm:text-h2" /> // {
-          previousLabel="prev" // {<PiCaretLeftFill className="text-h3 sm:text-h2" />}
+          nextLabel="next"
+          previousLabel="prev"
           onPageChange={handlePageClick}
           pageRangeDisplayed={2}
           pageCount={pageCount}
           renderOnZeroPageCount={null}
           containerClassName="flex items-center space-x-[1rem] my-[4rem]"
-          //   pageLinkClassName="font-poppinsRegular text-textColor font-semibolded"
           previousLinkClassName="font-poppinsSemibold text-lightThemeColor tracking-wide group-hover:text-ctaColor"
           activeLinkClassName="font-poppinsRegular text-ctaColor font-semibolded text-default sm:text-h3"
           nextLinkClassName="font-poppinsRegular text-bodyColor tracking-wide"

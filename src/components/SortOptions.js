@@ -1,21 +1,32 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { PiCaretDown, PiCaretUp } from "react-icons/pi";
 
 const SortOptions = ({ setSort }) => {
   const [selectedSort, setSelectedSort] = useState(0);
   const [showSortOptions, setShowSortOptions] = useState(false);
+  const sortRef = useRef();
   const sortArray = [
     { sortName: "Default", value: "" },
     { sortName: "High Price First", value: "-price" },
     { sortName: "Low Price First", value: "price" },
     { sortName: "Name (A-Z)", value: "nameSlug" },
     { sortName: "Name (Z-A)", value: "-nameSlug" },
-    { sortName: "Newest First", value: "-createdAt" },
     { sortName: "Oldest First", value: "createdAt" },
   ];
 
+  useEffect(() => {
+    const outsideClickListener = (event) => {
+      if (!sortRef.current.contains(event.target)) {
+        setShowSortOptions(false);
+      }
+    };
+    document.addEventListener("mousedown", outsideClickListener);
+    return () => {
+      document.removeEventListener("mousedown", outsideClickListener);
+    };
+  }, []);
   return (
-    <div className="relative w-[60%] flex flex-col">
+    <div ref={sortRef} className="relative w-[60%] flex flex-col">
       <div
         onClick={(e) => setShowSortOptions(showSortOptions ? false : true)}
         className="flex justify-between items-center w-full rounded-md bg-white border-[1px] border-gray-200 px-[0.5rem]"
@@ -35,7 +46,7 @@ const SortOptions = ({ setSort }) => {
             return (
               <span
                 key={index}
-                className={`px-[0.5rem] py-[0.5rem] w-full hover:bg-ctaColor ${
+                className={`px-[0.5rem] py-[0.5rem] w-full hover:bg-ctaColor hover:text-bodyColor ${
                   index == sortArray.length - 1 && "hover:rounded-b-md"
                 } ${index == 0 && "hover:rounded-t-md"}`}
                 onClick={(e) =>

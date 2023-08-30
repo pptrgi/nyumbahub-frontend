@@ -1,6 +1,4 @@
-import axios from "axios";
-
-// create the base URL for the API
+// create the base URL for the API requests
 // export const baseURL = "http://localhost:3535/api";
 export const baseURL = "https://nyumbahub.netlify.app/.netlify/functions/api";
 

@@ -1,3 +1,4 @@
+import { useRef, useEffect } from "react";
 const FilterPanelMobile = ({
   setPropertyType,
   setMinPrice,
@@ -8,12 +9,26 @@ const FilterPanelMobile = ({
   setShowTypeOptions,
   showTypeOptions,
 }) => {
+  const filterPanelRef = useRef();
+
+  useEffect(() => {
+    const outsideClickListener = (event) => {
+      if (!filterPanelRef.current.contains(event.target)) {
+        setShowFilterPanel(false);
+      }
+    };
+    document.addEventListener("mousedown", outsideClickListener);
+    return () => {
+      document.removeEventListener("mousedown", outsideClickListener);
+    };
+  }, []);
+
   return (
-    <div className="flex flex-col items-start w-[170px] bg-white border-[1.5px] border-gray-200 pt-[1.5rem] pb-[1rem] px-[0.75rem] rounded-lg">
+    <div className="flex flex-col items-start w-[180px] bg-white border-[1.5px] border-gray-200 pt-[1.5rem] pb-[1rem] px-[0.75rem] rounded-lg">
       <span className="font-poppinsRegular text-lightThemeColor mb-[0.5rem] font-semibolded">
         Filter By
       </span>
-      <form className="px-[0.25rem]">
+      <form ref={filterPanelRef} className="px-[0.25rem]">
         <div className="flex flex-col space-y-[1rem] font-poppinsLight text-small">
           {showTypeOptions && (
             <div>
@@ -88,16 +103,20 @@ const FilterPanelMobile = ({
               <input
                 type="number"
                 placeholder="min price"
-                className="hover:outline-none focus:outline-none px-[1rem] py-[0.25rem] border-[1px] border-gray-200 hover:border-thirtyColor focus:border-thirtyColor rounded-sm w-full"
+                className="hover:outline-none focus:outline-none px-[1rem] py-[0.25rem] border-[1px] border-gray-200 hover:border-lightThemeColor focus:border-lightThemeColor rounded-sm w-full"
                 value={minPrice}
                 onChange={(e) => setMinPrice(e.target.value)}
+                min={1}
+                max={5e8}
               />
               <input
                 type="number"
                 placeholder="max price"
-                className="hover:outline-none focus:outline-none px-[1rem] py-[0.25rem] border-[1px] border-gray-200 hover:border-thirtyColor focus:border-thirtyColor rounded-sm w-full"
+                className="hover:outline-none focus:outline-none px-[1rem] py-[0.25rem] border-[1px] border-gray-200 hover:border-lightThemeColor focus:border-lightThemeColor rounded-sm w-full"
                 value={maxPrice}
                 onChange={(e) => setMaxPrice(e.target.value)}
+                min={1}
+                max={5e8}
               />
             </div>
           </div>

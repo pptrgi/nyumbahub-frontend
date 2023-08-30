@@ -1,11 +1,12 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import * as yup from "yup";
+import { useFormik } from "formik";
 import Breadcrumb from "../components/Breadcrumb";
 import AuthInputTemplate from "../components/AuthInputTemplate";
 import { signinUserAC } from "../reduxFeatures/users/userSlice";
-import * as yup from "yup";
-import { useFormik } from "formik";
+import PageTitler from "../components/PageTitler";
 
 const signinSchema = yup.object({
   email: yup
@@ -20,8 +21,6 @@ const SignIn = () => {
   const navigate = useNavigate();
   const userState = useSelector((state) => state.user);
   console.log("user state", userState);
-  // console.log(userState.user.user);
-  // console.log(userState.user.accessToken);
 
   const formik = useFormik({
     initialValues: {
@@ -41,6 +40,7 @@ const SignIn = () => {
   return (
     <div className="page container">
       <Breadcrumb pageTitle={"Sign In"} />
+      <PageTitler title={"Sign In"} />
       <div className="flex justify-center items-center w-full min-h-[70vh]">
         <div className="w-[300px] bg-white rounded-sm sm:w-[400px] md:w-[500px]">
           <div className="flex flex-col items-center gap-[2.5rem] px-[1rem] py-[2rem] sm:col-span-3 w-full">
@@ -59,6 +59,7 @@ const SignIn = () => {
                   onChange={formik.handleChange("email")}
                   onBlur={formik.handleBlur("email")}
                   placeholder="example@email.com"
+                  maxLength="40"
                 />
                 <span className="text-smaller font-poppinsLight text-red-300 px-[0.5rem] sm:text-small">
                   {formik.touched.email && formik.errors.email}
@@ -71,18 +72,26 @@ const SignIn = () => {
                   onChange={formik.handleChange("password")}
                   onBlur={formik.handleBlur("password")}
                   placeholder="password"
+                  maxLength="40"
                 />
                 <span className="text-smaller font-poppinsLight text-red-300 px-[0.5rem] sm:text-small">
                   {formik.touched.password && formik.errors.password}
                 </span>
               </div>
               <div className="flex justify-between items-center mt-[2rem] font-poppinsLight w-full text-smaller text-ctaColor sm:text-small">
-                <Link to="/forgot-password">Forgot Password</Link>
-                <Link to="/register">Register</Link>
+                <Link
+                  to="/forgot-password"
+                  className="hover:text-darkThemeColor"
+                >
+                  Forgot Password
+                </Link>
+                <Link to="/register" className="hover:text-darkThemeColor">
+                  Register
+                </Link>
               </div>
               <button
                 type="submit"
-                className="bg-ctaColor text-bodyColor w-full py-[0.5rem] mt-[3rem]"
+                className="bg-ctaColor text-bodyColor w-full py-[0.5rem] mt-[3rem] hover:bg-lightThemeColor"
               >
                 Signin
               </button>

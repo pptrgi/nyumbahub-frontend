@@ -1,27 +1,18 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import LandPage from "../components/LandPage";
-import Featured from "../components/featured/Featured";
-import NewListings from "../components/newListings/NewListings";
-import CTASection from "../components/CTASection";
-import BannersSection from "../components/BannersSection";
-import RandomProperties from "../components/RandomProperties";
+import Featured from "../components/homePageSections/Featured";
+import NewListings from "../components/homePageSections/NewListings";
+import CTASection from "../components/homePageSections/CTASection";
+import BannersSection from "../components/homePageSections/BannersSection";
+import RandomProperties from "../components/homePageSections/RandomProperties";
 import { getAllProperties } from "../reduxFeatures/properties/propertySlice";
-import PreLoader from "../components/PreLoader";
-import InformationSection from "../components/InformationSection";
+import InformationSection from "../components/homePageSections/InformationSection";
+import PageTitler from "../components/PageTitler";
 
 const Home = () => {
   const dispatch = useDispatch();
   const properties = useSelector((state) => state.property.property);
-  const propertyStatus = useSelector((state) => state.property.isLoading);
-  const featuredStatus = useSelector((state) => state.category.isLoading);
-  const newListingStatus = useSelector((state) => state.category.isLoading);
-  const truthy =
-    propertyStatus === true ||
-    featuredStatus === true ||
-    newListingStatus === true;
-  console.log("truthy", truthy);
-  // console.log(properties);
 
   useEffect(() => {
     getAllPropertiesNow();
@@ -30,22 +21,20 @@ const Home = () => {
   const getAllPropertiesNow = () => {
     dispatch(getAllProperties());
   };
+
   return (
-    // <>
-    //   {truthy == true ? (
-    //     <PreLoader />
-    //   ) : (
-    <div>
-      <LandPage />
-      <InformationSection />
-      <BannersSection />
-      <RandomProperties properties={properties} />
-      <Featured />
-      <NewListings />
-      <CTASection />
-    </div>
-    // )}
-    // </>
+    <>
+      <PageTitler title={""} />
+      <div>
+        <LandPage />
+        <InformationSection />
+        <BannersSection />
+        <RandomProperties properties={properties} />
+        <Featured />
+        <NewListings />
+        <CTASection />
+      </div>
+    </>
   );
 };
 

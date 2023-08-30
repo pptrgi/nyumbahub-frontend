@@ -7,7 +7,7 @@ export const getOneType = createAsyncThunk(
     try {
       return await typeService.getOneType(typeId);
     } catch (error) {
-      return error;
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );

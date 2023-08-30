@@ -2,7 +2,6 @@ import { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { PiCaretUp, PiCaretDown } from "react-icons/pi";
 import { toast } from "react-toastify";
-import house from "../static/images/house.png";
 
 const LandPage = () => {
   const [propertyType, setPropetyType] = useState("");
@@ -10,20 +9,17 @@ const LandPage = () => {
   const [maxPrice, setMaxPrice] = useState(null);
   const [selectedType, setSelectedType] = useState(0);
   const [showTypeOptions, setShowTypeOptions] = useState(false);
-  const [showError, setShowError] = useState(false);
   const navigate = useNavigate();
   const typeOptionsRef = useRef();
 
-  console.log(propertyType);
-
   const allProperyTypes = [
-    { name: "Select Property Type" },
-    { name: "Apartment" },
-    { name: "Maisonette" },
-    { name: "Villa" },
-    { name: "Bungalow" },
-    { name: "Mansion" },
-    { name: "Bedsitter" },
+    { name: "Select Property Type", value: "" },
+    { name: "Apartment", value: "Apartment" },
+    { name: "Maisonette", value: "Maisonette" },
+    { name: "Villa", value: "Villa" },
+    { name: "Bungalow", value: "Bungalow" },
+    { name: "Mansion", value: "Mansion" },
+    { name: "Bedsitter", value: "Bedsitter" },
   ];
 
   const handleSearch = (e) => {
@@ -41,8 +37,8 @@ const LandPage = () => {
     }
     setMaxPrice(null);
     setMinPrice(null);
-    // setPropetyType("");
-    // setSelectedType(0);
+    setPropetyType("");
+    setSelectedType(0);
   };
 
   useEffect(() => {
@@ -63,11 +59,12 @@ const LandPage = () => {
       <div className="container flex flex-col gap-[8vh]">
         <div className="flex flex-col items-center">
           <div className="flex flex-col gap-[0.75rem] items-start">
-            <h1 className="capitalize font-poppinsBold text-[2rem] leading-tight text-darkThemeColor sm:text-h1 md:text-large">
-              feel at home, <br /> in your home.
+            <h1 className="capitalize font-poppinsBold text-[1.85rem] leading-tight text-darkThemeColor sm:text-h1 md:text-large">
+              home for homes, <br /> homes just for you.
             </h1>
             <p className="font-poppinsLight text-textColor text-small max-w-[300px] md:text-default md:max-w-md">
-              You get a place, you are happy we are happy the world is happy
+              We are happy to help you buy a home, rent a house and sell a
+              property. Let us.
             </p>
           </div>
         </div>
@@ -80,7 +77,6 @@ const LandPage = () => {
               onSubmit={handleSearch}
               className=" flex flex-col space-y-[0.75rem] items-center bg-white px-[1.5rem] py-[1.25rem] rounded-b-sm md:flex-row md:space-x-[0.75rem] md:space-y-0 w-full"
             >
-              {/* *********************************************************** */}
               <div ref={typeOptionsRef} className="relative w-full md:w-5/12">
                 <div
                   className="flex justify-between items-center w-full border-[1px] border-gray-200 px-[1.5rem] py-[0.75rem] rounded-sm hover:border-lightThemeColor focus:border-lightThemeColor"
@@ -111,12 +107,8 @@ const LandPage = () => {
                           } ${index == 0 && "hover:rounded-t-md"}`}
                           onClick={(e) =>
                             setSelectedType(index) &
-                            setShowTypeOptions(false) &
-                            setPropetyType(
-                              selectedType == 0
-                                ? ""
-                                : allProperyTypes[selectedType].name
-                            )
+                            setPropetyType(type.value) &
+                            setShowTypeOptions(false)
                           }
                         >
                           {type.name}
@@ -126,13 +118,14 @@ const LandPage = () => {
                   </div>
                 )}
               </div>
-              {/* *********************************************************** */}
 
               <div className="w-full flex justify-between items-center space-x-1 md:w-5/12">
                 <input
                   type="number"
                   value={minPrice}
                   onChange={(e) => setMinPrice(e.target.value)}
+                  min={1}
+                  max={5e8}
                   className="px-[1.5rem] py-[0.75rem] rounded-sm hover:outline-none focus:outline-none w-1/2 border-[1px] border-gray-200 hover:border-lightThemeColor focus:border-lightThemeColor"
                   placeholder="min price"
                 />
@@ -140,13 +133,15 @@ const LandPage = () => {
                   type="number"
                   value={maxPrice}
                   onChange={(e) => setMaxPrice(e.target.value)}
+                  min={1}
+                  max={5e8}
                   className="px-[1.5rem] py-[0.75rem] rounded-sm hover:outline-none focus:outline-none w-1/2 border-[1px] border-gray-200 hover:border-lightThemeColor focus:border-lightThemeColor"
                   placeholder="max price"
                 />
               </div>
               <button
                 type="submit"
-                className="bg-ctaColor px-[1.5rem] py-[0.75rem] rounded-[10px] text-bodyColor font-poppinsRegular w-full md:w-2/12"
+                className="bg-ctaColor px-[1.5rem] py-[0.75rem] rounded-[10px] text-bodyColor font-poppinsRegular hover:bg-darkThemeColor w-full md:w-2/12"
               >
                 Search
               </button>
@@ -157,11 +152,19 @@ const LandPage = () => {
       <span>
         {/* <span className="absolute bottom-[3vh] -right-10 w-[25vw] sm:w-[20vw] md:w-[13vw]"> */}
         <span className="absolute bottom-[7%] -right-10 w-[25%] sm:w-[20%] md:w-[13%] md:bottom-[5%]">
-          <img src="/images/house.png" className="w-full" />
+          <img
+            src="/images/outline-house.png"
+            className="w-full"
+            alt="outline-house-image"
+          />
         </span>
         {/* <span className="hidden absolute top-[40%] -left-10 lef sm:w-[20vw] md:w-[13vw] md:block"> */}
         <span className="hidden absolute top-[40%] -left-10 w-[13%] md:block">
-          <img src="/images/house.png" className="w-full" />
+          <img
+            src="/images/outline-house.png"
+            className="w-full"
+            alt="outline-house-image"
+          />
         </span>
       </span>
     </div>
