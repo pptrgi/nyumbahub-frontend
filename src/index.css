@@ -14,8 +14,13 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Remove horizontal scrollbar in Chrome, Safari and newer Edge */
 ::-webkit-scrollbar {
   display: none;
+}
+/* Remove horizontal scrollbar in Firefox */
+* {
+  scrollbar-width: none;
 }
 
 @font-face {
@@ -51,6 +56,20 @@ body {
 input {
   font-family: "PoppinsLight";
   color: #777777;
+}
+
+/* Remove the increment and decrement arrow buttons in the number input fields */
+/* In Chrome and Safari */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+input[type="number"] {
+  /* In Firefox */
+  -moz-appearance: none;
+
+  /* In Edge */
+  appearance: none;
 }
 
 #account-panel-tag ::before {
