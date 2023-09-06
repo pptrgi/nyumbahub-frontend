@@ -35,12 +35,13 @@ const Register = () => {
       password: "",
     },
     validationSchema: registerSchema,
-    onSubmit: (values) => {
+    onSubmit: (values, { resetForm }) => {
       dispatch(registerUserAC(values));
-      if (userState.isSuccess === true) {
+      if (userState.isSuccess == true) {
+        resetForm();
         setTimeout(() => {
           navigate("/signin");
-        }, 3000);
+        }, 2500);
       }
     },
   });
@@ -106,6 +107,7 @@ const Register = () => {
                     onChange={formik.handleChange("phone")}
                     onBlur={formik.handleBlur("phone")}
                     placeholder="e.g. 0700119134"
+                    maxLength="10"
                   />
                   <span className="text-smaller font-poppinsLight text-red-300 px-[0.5rem] sm:text-small">
                     {formik.touched.phone && formik.errors.phone}
@@ -142,7 +144,7 @@ const Register = () => {
                   Register
                 </button>
                 <p className="text-tiny text-textColor leading-tight font-poppinsLight mt-[0.75rem] sm:text-smaller">
-                  By registering you accept our{" "}
+                  By registering, you accept our{" "}
                   <span className="text-ctaColor hover:text-darkThemeColor">
                     <Link to="/privacy-policy">Terms of Service</Link>
                   </span>{" "}

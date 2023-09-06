@@ -28,12 +28,13 @@ const SignIn = () => {
       password: "",
     },
     validationSchema: signinSchema,
-    onSubmit: (values) => {
+    onSubmit: (values, { resetForm }) => {
       dispatch(signinUserAC(values));
-      if (userState.isSuccess === true) {
+      if (userState.isSuccess == true) {
+        resetForm();
         setTimeout(() => {
           navigate("/");
-        }, 3000);
+        }, 2500);
       }
     },
   });

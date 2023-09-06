@@ -21,7 +21,7 @@ const SearchResults = () => {
     setTimeout(() => {
       searchPropertiesNow();
       setLoading(false);
-    }, 1500);
+    }, 1000);
   }, [propertyType, minPrice, maxPrice, dispatch]);
 
   const searchPropertiesNow = () => {

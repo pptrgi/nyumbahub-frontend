@@ -28,7 +28,7 @@ const AllProperties = () => {
     setTimeout(() => {
       getAllPropertiesNow();
       setLoading(false);
-    }, 1500);
+    }, 500);
   }, [minPrice, maxPrice, propertyType, sort]);
 
   const getAllPropertiesNow = () => {
@@ -48,15 +48,15 @@ const AllProperties = () => {
           </h2>
           <div className="flex justify-between gap-[1rem] items-start w-full">
             <div className="w-2/12 sm:w-3/12">
-              <div className="hidden flex-col items-start bg-white border-[1.5px] border-gray-200 pt-[1.5rem] pb-[1rem] px-[0.75rem] rounded-lg sm:flex">
+              <div className="hidden flex-col items-start bg-white border-[1.5px] border-gray-200 pt-[1.5rem] pb-[1rem] px-[0.75rem] rounded-lg w-full sm:flex">
                 <span className="font-poppinsRegular text-lightThemeColor mb-[0.5rem] font-semibolded">
                   Filter By
                 </span>
-                <form className="px-[0.25rem]">
+                <div className="px-[0.25rem] w-full">
                   <div className="flex flex-col space-y-[1rem] font-poppinsLight text-small">
                     <div>
                       <span>Property type</span>
-                      <div className="flex flex-col space-y-[1px] px-[0.25rem]">
+                      <form className="flex flex-col space-y-[1px] px-[0.25rem]">
                         <div className="flex items-center space-x-2">
                           <input
                             type="radio"
@@ -105,9 +105,9 @@ const AllProperties = () => {
                           />
                           <label>Bedsitter</label>
                         </div>
-                      </div>
+                      </form>
                     </div>
-                    <div>
+                    <div className="w-full">
                       <span>Price</span>
                       <form className="flex flex-col space-y-[3px] px-[0.25rem] w-full">
                         <input
@@ -131,7 +131,7 @@ const AllProperties = () => {
                       </form>
                     </div>
                   </div>
-                </form>
+                </div>
               </div>
               <div className="hidden flex-col items-start bg-white border-[1.5px] border-gray-200 my-[1rem] pt-[1.5rem] pb-[1rem] px-[0.75rem] rounded-lg sm:flex">
                 <span className="font-poppinsRegular text-lightThemeColor mb-[0.5rem] font-semibolded">

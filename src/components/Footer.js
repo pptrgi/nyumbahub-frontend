@@ -8,6 +8,7 @@ import {
   PiPhone,
   PiEnvelope,
 } from "react-icons/pi";
+import { FaExternalLinkAlt } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -21,11 +22,18 @@ const Footer = () => {
               </span>
             </div>
             <div className="flex justify-center items-center w-full sm:justify-end sm:items-end sm:w-1/2">
-              <span className="text-bodyColor bg-ctaColor py-[0.8rem] px-[1.5rem] rounded-md font-poppinsRegular font-mediumWeight tracking-wide hover:bg-bodyColor hover:text-ctaColor">
-                <a href="https://nyumbahub.netlify.app">
-                  See the NyumbaHub API
-                </a>
-              </span>
+              <div className="group">
+                <div className="flex space-x-2 items-center text-bodyColor bg-ctaColor py-[0.8rem] px-[1.5rem] rounded-md font-poppinsRegular font-mediumWeight tracking-wide group-hover:bg-bodyColor group-hover:text-ctaColor">
+                  <span>
+                    <a href="https://nyumbahub.netlify.app">
+                      See the NyumbaHub API
+                    </a>
+                  </span>
+                  <span>
+                    <FaExternalLinkAlt />
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </div>

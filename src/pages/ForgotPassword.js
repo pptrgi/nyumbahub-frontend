@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import * as yup from "yup";
 import { useFormik } from "formik";
+import { toast } from "react-toastify";
 import Breadcrumb from "../components/Breadcrumb";
 import AuthInputTemplate from "../components/AuthInputTemplate";
 import PageTitler from "../components/PageTitler";
@@ -18,7 +19,9 @@ const ForgotPassword = () => {
       emailForgot: "",
     },
     validationSchema: forgotPassSchema,
-    onSubmit: (values) => {},
+    onSubmit: (values) => {
+      toast.error("Forgot password functionality is under implementation");
+    },
   });
   return (
     <div className="page container">

@@ -1,21 +1,16 @@
-import { useState, useRef, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { signOutUserAC } from "../reduxFeatures/users/userSlice";
+import { Link } from "react-router-dom";
 import {
-  PiUser,
   PiQuestion,
   PiSignOut,
   PiNotePencil,
   PiEyeSlash,
 } from "react-icons/pi";
-import { Link } from "react-router-dom";
+import { signOutUserAC } from "../reduxFeatures/users/userSlice";
 
 const AccountPanel = ({ userDetails, setShowAccountPanel }) => {
   const dispatch = useDispatch();
 
-  const handleVisitPage = () => {
-    setShowAccountPanel(false);
-  };
   return (
     <>
       <div
@@ -33,7 +28,7 @@ const AccountPanel = ({ userDetails, setShowAccountPanel }) => {
               <div className="group">
                 <Link
                   to="/edit-profile"
-                  onClick={(e) => handleVisitPage}
+                  onClick={(e) => setShowAccountPanel(false)}
                   className="flex items-center space-x-3 group-hover:text-ctaColor"
                 >
                   <span className="text-default">
@@ -48,7 +43,7 @@ const AccountPanel = ({ userDetails, setShowAccountPanel }) => {
               <div className="group">
                 <Link
                   to="/change-password"
-                  onClick={(e) => handleVisitPage}
+                  onClick={(e) => setShowAccountPanel(false)}
                   className="flex items-center space-x-3 group-hover:text-ctaColor"
                 >
                   <span className="text-default">
@@ -63,7 +58,7 @@ const AccountPanel = ({ userDetails, setShowAccountPanel }) => {
               <div className="group">
                 <Link
                   to="/contact"
-                  onClick={(e) => handleVisitPage}
+                  onClick={(e) => setShowAccountPanel(false)}
                   className="flex items-center space-x-3 group-hover:text-ctaColor"
                 >
                   <span className="text-default">
@@ -77,7 +72,9 @@ const AccountPanel = ({ userDetails, setShowAccountPanel }) => {
 
               <div className="group">
                 <div
-                  onClick={(e) => dispatch(signOutUserAC())}
+                  onClick={(e) =>
+                    dispatch(signOutUserAC() && setShowAccountPanel(false))
+                  }
                   className="flex items-center space-x-3 text-ctaColor group-hover:text-red-500 cursor-pointer"
                 >
                   <span className="text-default">
@@ -93,14 +90,14 @@ const AccountPanel = ({ userDetails, setShowAccountPanel }) => {
             <div className="flex justify-between items-center w-full font-mediumWeight">
               <Link
                 to="/signin"
-                onClick={(e) => handleVisitPage}
+                onClick={(e) => setShowAccountPanel(false)}
                 className="font-poppinsBold tracking-wide hover:text-darkThemeColor"
               >
                 Sign In
               </Link>
               <Link
                 to="/register"
-                onClick={(e) => handleVisitPage}
+                onClick={(e) => setShowAccountPanel(false)}
                 className="px-[1.25rem] py-[0.6rem] bg-ctaColor text-bodyColor rounded-md sm:py-[0.75rem] hover:bg-darkThemeColor"
               >
                 Register

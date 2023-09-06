@@ -87,6 +87,8 @@ const PropertyDetailPage = () => {
     }
   };
 
+  // replace spaces with their encoded values
+  let encodedPropertyName = property?.name?.split(" ").join("%20");
   return (
     <>
       {loading ? (
@@ -162,11 +164,11 @@ const PropertyDetailPage = () => {
                     {/* images */}
                     <div className="flex items-center gap-[2px] w-full h-[250px] sm:h-[230px] md:h-[240px]">
                       <img
-                        src={property?.images[0]}
+                        src={property?.images[0]?.imageUrl}
                         className="w-full h-full object-cover sm:w-1/2"
                       />
                       <img
-                        src={property?.images[1]}
+                        src={property?.images[1]?.imageUrl}
                         className="hidden w-1/2 h-full object-cover sm:block"
                       />
                     </div>
@@ -436,17 +438,25 @@ const PropertyDetailPage = () => {
             <h2 className="text-lightThemeColor font-poppinsSemibold text-default truncate mb-[1rem] sm:text-h3">
               Related Properties
             </h2>
-            <div className="grid grid-cols-1 items-center gap-2 sm:grid-cols-2 md:grid-cols-2 md:gap-4 lg:grid-cols-3 xl:grid-cols-3">
-              {similarProperties?.slice(0, 3).map((property, index) => {
-                return <GeneralCard key={index} property={property} />;
-              })}
-            </div>
+            {similarProperties?.length !== 0 ? (
+              <div className="grid grid-cols-1 items-center gap-2 sm:grid-cols-2 md:grid-cols-2 md:gap-4 lg:grid-cols-3 xl:grid-cols-3">
+                {similarProperties?.slice(0, 3).map((property, index) => {
+                  return <GeneralCard key={index} property={property} />;
+                })}
+              </div>
+            ) : (
+              <div className="flex justify-start items-start">
+                <h3 className="font-poppinsLight text-default">
+                  There are no other properties of this kind
+                </h3>
+              </div>
+            )}
           </div>
 
           <div className="flex justify-center items-center w-full">
             <div className="fixed bottom-4 z-40 w-full ">
               <div className="container w-full text-bodyColor">
-                <div className="flex justify-between items-center bg-transparent border-[3px] border-solid border-ctaColor p-[0.25rem] rounded-lg gap-[0.35rem] shadow-lg sm:gap-2 sm:p-[0.35rem]">
+                <div className="flex justify-between items-center bg-transparent border-[3px] border-solid border-ctaColor p-[0.25rem] rounded-lg gap-[0.35rem] shadow-lg sm:gap-2 sm:p-[0.35rem] lg:border-[4px]">
                   <div className="group w-1/3 cursor-pointer">
                     <a
                       href="tel:254700119134"
@@ -463,7 +473,7 @@ const PropertyDetailPage = () => {
 
                   <div className="group w-1/3 cursor-pointer">
                     <a
-                      href="https://wa.me/254700119134?text=Hi,%20I%20am%20interested%20in%20this%20property"
+                      href={`https://wa.me/254700119134?text=Hi%20NyumbaHub%2C%0A%0AI%27m%20interested%20in%20property%20${encodedPropertyName}`}
                       className="flex flex-col justify-center items-center gap-[0.125rem] w-full bg-ctaColor py-[0.5rem] rounded-lg group-hover:bg-darkThemeColor sm:py-[1rem] sm:flex-row sm:gap-4"
                     >
                       <span className="hidden text-h2 sm:block">
@@ -477,7 +487,7 @@ const PropertyDetailPage = () => {
 
                   <div className="group w-1/3 cursor-pointer">
                     <a
-                      href="mailto:lifencreatives@gmail.com?subject=Property%20Enquiry&body=Hi,%20I%20am%20enquiring%20or%20interested%20in%20this%20property"
+                      href={`mailto:lifencreatives@gmail.com?subject=Enquiring%20About%20A%20Property&body=Hello NyumbaHub%2C%0A%0AI%20am%20enquiring%20about%20a%20property%20that%20I%27m%20interested%in%2E%0A%0AYou%20call%20it%20%${encodedPropertyName}%0A%0ARegards`}
                       className="flex flex-col justify-center items-center gap-[0.125rem] w-full bg-ctaColor py-[0.5rem] rounded-lg group-hover:bg-darkThemeColor sm:py-[1rem] sm:flex-row sm:gap-4"
                     >
                       <span className="hidden text-h2 sm:block">

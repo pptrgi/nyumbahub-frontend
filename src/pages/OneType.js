@@ -28,7 +28,7 @@ const OneType = () => {
     setTimeout(() => {
       getOneTypeNow();
       setLoading(false);
-    }, 1000);
+    }, 500);
   }, [dispatch, id]);
 
   const getOneTypeNow = () => {
@@ -64,10 +64,10 @@ const OneType = () => {
                 <span className="font-poppinsRegular text-darkThemeColor mb-[0.5rem] font-semibolded">
                   Filter By
                 </span>
-                <form className="px-[0.25rem] w-full">
+                <div className="px-[0.25rem] w-full">
                   <div className="flex flex-col space-y-[0.5rem] font-poppinsLight text-small">
                     <span>Price</span>
-                    <div className="flex flex-col space-y-[3px] px-[0.25rem] w-full">
+                    <form className="flex flex-col space-y-[3px] px-[0.25rem] w-full">
                       <input
                         type="number"
                         value={minPrice}
@@ -86,9 +86,9 @@ const OneType = () => {
                         min={1}
                         max={5e8}
                       />
-                    </div>
+                    </form>
                   </div>
-                </form>
+                </div>
               </div>
               <div className="hidden flex-col items-start bg-white border-[1.5px] border-gray-200 my-[1rem] pt-[1.5rem] pb-[1rem] px-[0.75rem] rounded-lg sm:flex">
                 <span className="font-poppinsRegular text-darkThemeColor mb-[0.5rem] font-semibolded">

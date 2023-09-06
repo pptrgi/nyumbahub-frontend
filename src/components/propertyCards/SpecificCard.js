@@ -59,6 +59,9 @@ const SpecificCard = ({ property, specificVal }) => {
       }, 1800);
     }
   };
+
+  // replace spaces with their encoded values
+  let encodedPropertyName = property?.name.split(" ").join("%20");
   return (
     <div className="flex flex-col gap-[1rem] flex-shrink-0 bg-white w-full h-[400px] max-w-[310px]">
       <div className="relative w-full h-6/12 overflow-hidden bg-lightThemeColor">
@@ -97,23 +100,23 @@ const SpecificCard = ({ property, specificVal }) => {
         <div className="absolute top-0 left-0 p-4 z-10">
           <Link
             to={`/category/${foundCategory?.categoryId}`}
-            className="uppercase font-poppinsLight text-tiny bg-lightGrayCTA text-black px-[0.125rem] rounded-sm cursor-pointer hover:text-ctaColor hover:bg-transparent"
+            className="uppercase font-poppinsLight text-tiny bg-lightGrayCTA text-black px-[0.25rem] rounded-sm cursor-pointer hover:text-darkThemeColor hover:font-poppinsSemibold hover:bg-transparent"
           >
             {specificVal}
           </Link>
         </div>
-        {property?.images?.length > 0 && (
+        {property?.images?.length > 1 && (
           <div className="absolute top-1/2 px-4 w-full">
             <div className="flex justify-between items-center w-full">
               <span
                 onClick={prevImage}
-                className="p-2 bg-lightGrayCTA text-darkThemeColor rounded-full hover:bg-transparent hover:text-black"
+                className="p-2 bg-lightGrayCTA text-darkThemeColor rounded-full hover:bg-lightThemeColor hover:text-bodyColor"
               >
                 <PiCaretLeft />
               </span>
               <span
                 onClick={nextImage}
-                className="p-2 bg-lightGrayCTA text-darkThemeColor rounded-full hover:bg-transparent hover:text-black"
+                className="p-2 bg-lightGrayCTA text-darkThemeColor rounded-full hover:bg-lightThemeColor hover:text-bodyColor"
               >
                 <PiCaretRight />
               </span>
@@ -192,7 +195,9 @@ const SpecificCard = ({ property, specificVal }) => {
               </a>
             </span>
             <span className="hover:text-darkThemeColor">
-              <a href="https://wa.me/254700119134?text=Hi,%20I%20am%20interested%20in%20this%20property">
+              <a
+                href={`https://wa.me/254700119134?text=Hi%20NyumbaHub%2C%0A%0AI%27m%20interested%20in%20property%20${encodedPropertyName}`}
+              >
                 <PiWhatsappLogo />
               </a>
             </span>

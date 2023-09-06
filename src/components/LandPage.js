@@ -101,7 +101,7 @@ const LandPage = () => {
                       return (
                         <span
                           key={index}
-                          className={`px-[1rem] py-[0.5rem] w-full hover:bg-ctaColor font-poppinsLight text-textColor ${
+                          className={`px-[1rem] py-[0.5rem] w-full font-poppinsLight text-textColor hover:bg-ctaColor hover:text-bodyColor ${
                             index == allProperyTypes.length - 1 &&
                             "hover:rounded-b-md"
                           } ${index == 0 && "hover:rounded-t-md"}`}
@@ -126,6 +126,7 @@ const LandPage = () => {
                   onChange={(e) => setMinPrice(e.target.value)}
                   min={1}
                   max={5e8}
+                  maxLength={9}
                   className="px-[1.5rem] py-[0.75rem] rounded-sm hover:outline-none focus:outline-none w-1/2 border-[1px] border-gray-200 hover:border-lightThemeColor focus:border-lightThemeColor"
                   placeholder="min price"
                 />
@@ -135,6 +136,7 @@ const LandPage = () => {
                   onChange={(e) => setMaxPrice(e.target.value)}
                   min={1}
                   max={5e8}
+                  maxLength={9}
                   className="px-[1.5rem] py-[0.75rem] rounded-sm hover:outline-none focus:outline-none w-1/2 border-[1px] border-gray-200 hover:border-lightThemeColor focus:border-lightThemeColor"
                   placeholder="max price"
                 />
@@ -150,7 +152,6 @@ const LandPage = () => {
         </div>
       </div>
       <span>
-        {/* <span className="absolute bottom-[3vh] -right-10 w-[25vw] sm:w-[20vw] md:w-[13vw]"> */}
         <span className="absolute bottom-[7%] -right-10 w-[25%] sm:w-[20%] md:w-[13%] md:bottom-[5%]">
           <img
             src="/images/outline-house.png"
@@ -158,7 +159,6 @@ const LandPage = () => {
             alt="outline-house-image"
           />
         </span>
-        {/* <span className="hidden absolute top-[40%] -left-10 lef sm:w-[20vw] md:w-[13vw] md:block"> */}
         <span className="hidden absolute top-[40%] -left-10 w-[13%] md:block">
           <img
             src="/images/outline-house.png"

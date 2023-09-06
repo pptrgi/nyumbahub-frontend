@@ -24,7 +24,7 @@ const ChangePassword = () => {
       confirmPassword: "",
     },
     validationSchema: changePassSchema,
-    onSubmit: (values) => {
+    onSubmit: (values, { resetForm }) => {
       if (formik.values.newPassword !== formik.values.confirmPassword) {
         toast.error("Passwords do not match");
       } else {
@@ -35,6 +35,7 @@ const ChangePassword = () => {
           })
         );
       }
+      // Remember to reset the form fields
     },
   });
   return (

@@ -17,7 +17,7 @@ export const PrivateRoute = ({ children }) => {
   // problem with toast, rectify
   return storedToken !== null
     ? children
-    : toast.info("Please sign in to your account") && (
+    : toast.info("Please sign in to your account first") && (
         <Navigate to="/signin" replace={true} />
       );
 };

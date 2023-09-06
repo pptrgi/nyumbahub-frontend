@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import * as yup from "yup";
 import { useFormik } from "formik";
+import { toast } from "react-toastify";
 import Breadcrumb from "../components/Breadcrumb";
 import AuthInputTemplate from "../components/AuthInputTemplate";
 import PageTitler from "../components/PageTitler";
@@ -17,7 +18,9 @@ const ResetPassword = () => {
       confirmPassword: "",
     },
     validationSchema: resetPassSchema,
-    onSubmit: (values) => {},
+    onSubmit: (values) => {
+      toast.info("Reset password functionality is under implementation");
+    },
   });
   return (
     <div className="page container">
