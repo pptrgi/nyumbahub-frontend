@@ -23,6 +23,26 @@ html {
   scrollbar-width: none;
 }
 
+/* Remove the increment and decrement arrow buttons in the number input fields */
+/* In Chrome and Safari */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+input[type="number"] {
+  /* In Firefox */
+  -moz-appearance: none;
+
+  /* In Edge */
+  appearance: none;
+}
+
+/* Change the text-highlighting color */
+::selection {
+  background-color: #00aeff;
+  color: #fafafa;
+}
+
 @font-face {
   font-family: "PoppinsRegular";
   src: url("./static/fonts/Poppins-Regular.ttf");
@@ -56,20 +76,6 @@ body {
 input {
   font-family: "PoppinsLight";
   color: #777777;
-}
-
-/* Remove the increment and decrement arrow buttons in the number input fields */
-/* In Chrome and Safari */
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-}
-input[type="number"] {
-  /* In Firefox */
-  -moz-appearance: none;
-
-  /* In Edge */
-  appearance: none;
 }
 
 #account-panel-tag ::before {
