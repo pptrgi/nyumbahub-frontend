@@ -7,8 +7,8 @@ const PageTitler = ({ title }) => {
         <meta charSet="utf-8" />
         <title className="capitalize">
           {title === ""
-            ? "NyumbaHub - Vacant Houses Finder"
-            : `${title} | NyumbaHub`}
+            ? "NyumbaHub - A Vacant Houses Finding Service Kenya"
+            : `${title} | NyumbaHub Vacant Houses Finder`}
         </title>
       </Helmet>
     </div>

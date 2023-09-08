@@ -72,9 +72,7 @@ const AccountPanel = ({ userDetails, setShowAccountPanel }) => {
 
               <div className="group">
                 <div
-                  onClick={(e) =>
-                    dispatch(signOutUserAC() && setShowAccountPanel(false))
-                  }
+                  onClick={(e) => dispatch(signOutUserAC())}
                   className="flex items-center space-x-3 text-ctaColor group-hover:text-red-500 cursor-pointer"
                 >
                   <span className="text-default">

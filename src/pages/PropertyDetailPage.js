@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import * as yup from "yup";
+import { useFormik } from "formik";
 import { PiHeart, PiMapPin, PiHeartDuotone } from "react-icons/pi";
 import {
   IoPaperPlaneSharp,
@@ -8,9 +11,6 @@ import {
   IoLogoWhatsapp,
 } from "react-icons/io5";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
-import { toast } from "react-toastify";
-import * as yup from "yup";
-import { useFormik } from "formik";
 import Breadcrumb from "../components/Breadcrumb";
 import GeneralCard from "../components/propertyCards/GeneralCard";
 import {
@@ -128,7 +128,7 @@ const PropertyDetailPage = () => {
                         <Link
                           key={index}
                           to={`/category/${categ.categoryId}`}
-                          className="font-poppinsLight text-tiny px-[0.125rem] bg-textColor text-white rounded-sm tracking-wide hover:bg-transparent hover:text-ctaColor"
+                          className="font-poppinsLight text-tiny px-[0.25rem] bg-textColor text-white rounded-sm tracking-wide hover:bg-transparent hover:text-ctaColor hover:font-poppinsSemibold"
                         >
                           {categ?.categoryName}
                         </Link>
@@ -166,10 +166,12 @@ const PropertyDetailPage = () => {
                       <img
                         src={property?.images[0]?.imageUrl}
                         className="w-full h-full object-cover sm:w-1/2"
+                        alt="NyumbaHub House Image"
                       />
                       <img
                         src={property?.images[1]?.imageUrl}
                         className="hidden w-1/2 h-full object-cover sm:block"
+                        alt="NyumbaHub House Image"
                       />
                     </div>
                     <div className="flex gap-[2px] items-center w-full h-[50px] sm:h-[50px] overflow-x-auto scroll-smooth md:h-[60px]">
@@ -182,7 +184,7 @@ const PropertyDetailPage = () => {
                                 property?.images[0]?.imageUrl && image?.imageUrl
                             }
                             className="h-full object-cover"
-                            alt="house-property-image"
+                            alt="NyumbaHub House Image"
                           />
                         );
                       })}
@@ -193,7 +195,7 @@ const PropertyDetailPage = () => {
                     <img
                       src="/images/banner_light.jpg"
                       className="w-full h-full object-cover"
-                      alt="no-image-placeholder"
+                      alt="No-image Placeholder"
                     />
                   </section>
                 )}
@@ -487,7 +489,7 @@ const PropertyDetailPage = () => {
 
                   <div className="group w-1/3 cursor-pointer">
                     <a
-                      href={`mailto:lifencreatives@gmail.com?subject=Enquiring%20About%20A%20Property&body=Hello NyumbaHub%2C%0A%0AI%20am%20enquiring%20about%20a%20property%20that%20I%27m%20interested%in%2E%0A%0AYou%20call%20it%20%${encodedPropertyName}%0A%0ARegards`}
+                      href={`mailto:lifencreatives@gmail.com?subject=Enquiring%20About%20A%20Property&body=Hello%20NyumbaHub%2C%0A%0AI%20am%20enquiring%20about%20a%20property%20that%20I%27m%20interested%20in%2E%0A%0AYou%20call%20it%20${encodedPropertyName}%0A%0ARegards`}
                       className="flex flex-col justify-center items-center gap-[0.125rem] w-full bg-ctaColor py-[0.5rem] rounded-lg group-hover:bg-darkThemeColor sm:py-[1rem] sm:flex-row sm:gap-4"
                     >
                       <span className="hidden text-h2 sm:block">

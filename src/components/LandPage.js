@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { PiCaretUp, PiCaretDown } from "react-icons/pi";
 import { toast } from "react-toastify";
+import { PiCaretUp, PiCaretDown } from "react-icons/pi";
 
 const LandPage = () => {
   const [propertyType, setPropetyType] = useState("");
@@ -54,7 +54,7 @@ const LandPage = () => {
     };
   }, []);
   return (
-    <div className="relative min-h-screen w-[100%] flex justify-center items-center border-b-[1px] border-gray-100 py-[4.5rem] sm:py-[4.5rem] md:py-[10rem] lg:py-0">
+    <div className="relative min-h-screen w-[100%] flex justify-center items-center border-b-[1px] border-gray-100 py-[4.5rem] sm:py-[6rem] md:py-[11rem]">
       {/* paddings because the header is overlaying on content. Remove later */}
       <div className="container flex flex-col gap-[8vh]">
         <div className="flex flex-col items-center">
@@ -156,14 +156,16 @@ const LandPage = () => {
           <img
             src="/images/outline-house.png"
             className="w-full"
-            alt="outline-house-image"
+            loading="eager"
+            alt="NyumbaHub Outline House Image"
           />
         </span>
         <span className="hidden absolute top-[40%] -left-10 w-[13%] md:block">
           <img
             src="/images/outline-house.png"
             className="w-full"
-            alt="outline-house-image"
+            loading="eager"
+            alt="NyumbaHub Outline House Image"
           />
         </span>
       </span>

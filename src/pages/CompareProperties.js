@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 import { PiTrash } from "react-icons/pi";
 import Breadcrumb from "../components/Breadcrumb";
 import { removeFromCompare } from "../reduxFeatures/properties/propertySlice";
 import { formatDate } from "../utils/dateFormatter";
-import { toast } from "react-toastify";
 import PageTitler from "../components/PageTitler";
 
 const CompareProperties = () => {
@@ -48,8 +48,13 @@ const CompareProperties = () => {
                   <tr className="flex flex-col justify-start items-start w-[200px] flex-shrink-0 sm:w-[300px]">
                     <td className="h-[15vh] min-h-[150px] w-full overflow-hidden ">
                       <img
-                        src={"/images/no-image.png"}
+                        src={
+                          compareProperties[index]?.images?.length > 0
+                            ? compareProperties[index]?.images[0]?.imageUrl
+                            : "/images/no-image.png"
+                        }
                         className="w-full h-full object-cover bg-lightGrayCTA"
+                        alt="NyumbaHub House Image"
                       />
                     </td>
                     <td className="h-[7vh] min-h-[50px] max-h-[7vh] capitalize">

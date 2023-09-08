@@ -1,4 +1,5 @@
 import { useRef, useEffect } from "react";
+
 const FilterPanelMobile = ({
   setPropertyType,
   setMinPrice,

@@ -1,10 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   PiEnvelopeFill,
   PiWhatsappLogoFill,
   PiPhoneFill,
 } from "react-icons/pi";
-import { Link } from "react-router-dom";
 
 const CTASection = () => {
   return (

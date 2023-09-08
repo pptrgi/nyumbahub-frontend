@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { addToCompare } from "../../reduxFeatures/properties/propertySlice";
-import { addToWishlistAC } from "../../reduxFeatures/properties/propertySlice";
 import {
   PiWhatsappLogo,
   PiArrowsClockwise,
@@ -16,6 +14,9 @@ import {
   PiHeartDuotone,
   PiArrowsClockwiseDuotone,
 } from "react-icons/pi";
+import { IoPaperPlaneOutline } from "react-icons/io5";
+import { addToCompare } from "../../reduxFeatures/properties/propertySlice";
+import { addToWishlistAC } from "../../reduxFeatures/properties/propertySlice";
 
 const GeneralCard = ({ property }) => {
   const dispatch = useDispatch();
@@ -59,8 +60,8 @@ const GeneralCard = ({ property }) => {
   // replace spaces with their encoded values
   let encodedPropertyName = property?.name.split(" ").join("%20");
   return (
-    <div className="flex flex-col flex-shrink-0 gap-[1rem] bg-white w-full h-[420px] max-w-[310px]">
-      <div className="relative w-full h-6/12 overflow-hidden bg-lightThemeColor">
+    <div className="flex flex-col flex-shrink-0 gap-[1rem] bg-white w-full h-[400px] max-w-[310px]">
+      <div className="relative w-full h-1/2 max-h-1/2 overflow-hidden bg-lightThemeColor">
         <Link to={`/property/${property?._id}`} className="flex w-full h-full">
           {property?.images?.length > 0 ? (
             property?.images?.map((image, index) => {
@@ -73,7 +74,7 @@ const GeneralCard = ({ property }) => {
                       ? "object-cover h-full w-full"
                       : "hidden"
                   }`}
-                  alt="house-property-image"
+                  alt="NyumbaHub House Image"
                 />
               );
             })
@@ -81,7 +82,7 @@ const GeneralCard = ({ property }) => {
             <img
               src="/images/no-image.png"
               className="object-cover h-full w-full"
-              alt="no-image-placeholder"
+              alt="No-image Placeholder"
             />
           )}
         </Link>
@@ -131,7 +132,7 @@ const GeneralCard = ({ property }) => {
           </span>
         </div>
       </div>
-      <div className="w-full h-6/12 px-4">
+      <div className="w-full h-1/2 px-4">
         <h3 className="truncate font-poppinsSemibold mb-[0.125rem] text-lightThemeColor">
           {property?.name}
         </h3>
@@ -171,7 +172,7 @@ const GeneralCard = ({ property }) => {
             </span>
           </div>
         </div>
-        <div className="flex justify-between items-center mt-[2rem]">
+        <div className="flex justify-between items-center mt-[2.5rem]">
           <Link
             to={`/property/${property?._id}`}
             className="font-poppinsLight text-ctaColor text-smaller hover:text-darkThemeColor sm:text-small"
@@ -192,8 +193,10 @@ const GeneralCard = ({ property }) => {
               )}
             </span>
             <span className="hover:text-darkThemeColor">
-              <a href="tel:254700119134">
-                <PiPhone />
+              <a
+                href={`mailto:lifencreatives@gmail.com?subject=Enquiring%20About%20A%20Property&body=Hello%20NyumbaHub%2C%0A%0AI%20am%20enquiring%20about%20a%20property%20that%20I%27m%20interested%20in%2E%0A%0AYou%20call%20it%20${encodedPropertyName}%0A%0ARegards`}
+              >
+                <IoPaperPlaneOutline />
               </a>
             </span>
             <span className="hover:text-darkThemeColor">

@@ -12,7 +12,8 @@ const ImageCarousel = ({ imageArray }) => {
             className={`${
               imageSlide === index ? "object-cover h-full w-full" : "hidden"
             }`}
-          ></img>
+            alt="House Property, NyumbaHub"
+          />
         );
       })}
     </div>

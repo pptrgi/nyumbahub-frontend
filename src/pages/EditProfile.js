@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import Breadcrumb from "../components/Breadcrumb";
 import { editUserProfileAC } from "../reduxFeatures/users/userSlice";
-import { Link } from "react-router-dom";
 import PageTitler from "../components/PageTitler";
 
 const EditProfile = () => {

@@ -2,18 +2,17 @@ import React from "react";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCompare } from "../../reduxFeatures/properties/propertySlice";
-import { addToWishlistAC } from "../../reduxFeatures/properties/propertySlice";
 import {
   PiWhatsappLogo,
   PiArrowsClockwise,
-  PiHeart,
   PiBedLight,
   PiBathtubLight,
-  PiPhone,
   PiX,
   PiArrowsClockwiseDuotone,
 } from "react-icons/pi";
+import { IoPaperPlaneOutline } from "react-icons/io5";
+import { addToCompare } from "../../reduxFeatures/properties/propertySlice";
+import { addToWishlistAC } from "../../reduxFeatures/properties/propertySlice";
 
 const LimitedCard = ({ property }) => {
   const dispatch = useDispatch();
@@ -38,7 +37,7 @@ const LimitedCard = ({ property }) => {
                 : "/images/no-image.png"
             }
             className="object-cover h-full w-full"
-            alt="image"
+            alt="NyumbaHub House Image"
           />
         </Link>
         <span
@@ -76,7 +75,7 @@ const LimitedCard = ({ property }) => {
           {`${property?.location?.place}, ${property?.location?.town}, ${property?.location?.county} County`}
         </p>
 
-        <div className="flex justify-between items-center mt-[2rem]">
+        <div className="flex justify-between items-center mt-[2.5rem]">
           <div className="flex items-center space-x-[0.75rem]">
             <div className="flex items-center gap-[4px]">
               <span className="font-poppinsRegular text-lightThemeColor">
@@ -109,8 +108,10 @@ const LimitedCard = ({ property }) => {
               )}
             </span>
             <span className="hover:text-darkThemeColor">
-              <a href="tel:254700119134">
-                <PiPhone />
+              <a
+                href={`mailto:lifencreatives@gmail.com?subject=Enquiring%20About%20A%20Property&body=Hello%20NyumbaHub%2C%0A%0AI%20am%20enquiring%20about%20a%20property%20that%20I%27m%20interested%20in%2E%0A%0AYou%20call%20it%20${encodedPropertyName}%0A%0ARegards`}
+              >
+                <IoPaperPlaneOutline />
               </a>
             </span>
             <span className="hover:text-darkThemeColor">
