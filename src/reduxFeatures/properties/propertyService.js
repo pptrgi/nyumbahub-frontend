@@ -1,6 +1,9 @@
 import axios from "axios";
-import { baseURL } from "../../utils/AxiosConfig";
-import { headersConfig } from "../../utils/AxiosConfig";
+import {
+  baseURL,
+  headersConfig,
+  renderNonGetBaseUrl,
+} from "../../utils/AxiosConfig";
 
 // The server couples status code with json body for all responses(successful and unsuccessful requests).
 // The returned status code defines if the request was successful or not. Thus createAsyncThunk() will accept even unsuccessful request's response data as payload without its knowledge
@@ -8,6 +11,7 @@ import { headersConfig } from "../../utils/AxiosConfig";
 // What isn't achieved yet is, if the status isn't within 200, createAsyncThunk() needs to have the thrown error as action's error. ATM it is rejecting the promise and showing "rejected" as the action.error. But the thrown error message needs to be shown
 // There will be changes upon finding solution
 
+// Using Render for non-GET requests
 const getAllProperties = async (data = {}) => {
   const response = await axios.get(
     `${baseURL}/property/all-properties/?${
@@ -34,7 +38,7 @@ const getOneProperty = async (propertyId) => {
 
 const addPropertyToWishlist = async (propertyId) => {
   const response = await axios.put(
-    `${baseURL}/property/wishlist/${propertyId}`,
+    `${renderNonGetBaseUrl}/property/wishlist/${propertyId}`,
     null,
     headersConfig
   );
@@ -51,7 +55,7 @@ const addPropertyToWishlist = async (propertyId) => {
 
 const addAReview = async (reviewData) => {
   const response = await axios.put(
-    `${baseURL}/property/add-review/${reviewData?.propertyId}`,
+    `${renderNonGetBaseUrl}/property/add-review/${reviewData?.propertyId}`,
     reviewData.reviewInfo,
     headersConfig
   );
