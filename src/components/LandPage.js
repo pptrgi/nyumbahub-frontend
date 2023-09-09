@@ -58,11 +58,11 @@ const LandPage = () => {
       {/* paddings because the header is overlaying on content. Remove later */}
       <div className="container flex flex-col gap-[8vh]">
         <div className="flex flex-col items-center">
-          <div className="flex flex-col gap-[0.75rem] items-start">
-            <h1 className="capitalize font-poppinsBold text-[1.85rem] leading-tight text-darkThemeColor sm:text-h1 md:text-large">
+          <div className="flex flex-col gap-[0.9rem] items-start sm:gap-[1.125rem]">
+            <h1 className="capitalize font-poppinsBold text-[1.85rem] leading-tight text-darkThemeColor sm:text-large">
               home for homes, <br /> homes just for you.
             </h1>
-            <p className="font-poppinsLight text-textColor text-small max-w-[300px] md:text-default md:max-w-md">
+            <p className="font-poppinsLight text-textColor text-small max-w-[300px] sm:text-default sm:max-w-md">
               We are happy to help you buy a home, rent a house and sell a
               property. Let us.
             </p>
