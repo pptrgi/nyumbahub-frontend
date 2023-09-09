@@ -26,7 +26,7 @@ const Footer = () => {
                 <div className="flex space-x-2 items-center text-bodyColor bg-ctaColor py-[0.8rem] px-[1.5rem] rounded-md font-poppinsRegular font-mediumWeight tracking-wide group-hover:bg-bodyColor group-hover:text-ctaColor">
                   <span>
                     <a href="https://nyumbahub.netlify.app">
-                      See the NyumbaHub API
+                      Visit NyumbaHub API
                     </a>
                   </span>
                   <span>
