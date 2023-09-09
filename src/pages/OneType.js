@@ -14,7 +14,7 @@ import PageTitler from "../components/PageTitler";
 const OneType = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const type = useSelector((state) => state.type.type);
+  const type = useSelector((state) => state.type);
   const [minPrice, setMinPrice] = useState(1);
   const [maxPrice, setMaxPrice] = useState(5e8);
   const [showFilterPanel, setShowFilterPanel] = useState(false);
@@ -23,19 +23,14 @@ const OneType = () => {
   let properties = [];
 
   useEffect(() => {
-    setLoading(true);
-
-    setTimeout(() => {
-      getOneTypeNow();
-      setLoading(false);
-    }, 500);
+    getOneTypeNow();
   }, [dispatch, id]);
 
   const getOneTypeNow = () => {
     dispatch(getOneType(id));
   };
 
-  type?.properties?.map((property) => {
+  type?.type?.properties?.map((property) => {
     const propertyDetails = property.propertyId;
     properties.push(propertyDetails);
   });
@@ -49,7 +44,7 @@ const OneType = () => {
 
   return (
     <>
-      {loading ? (
+      {type.isLoading == true ? (
         <PreLoader />
       ) : (
         <div className="page container">
