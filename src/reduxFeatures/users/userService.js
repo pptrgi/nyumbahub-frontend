@@ -11,12 +11,8 @@ import {
 // What isn't achieved yet is, if the status isn't within 200, createAsyncThunk() needs to have the thrown error as action's error. ATM it is rejecting the promise and showing "rejected" as the action.error. But the thrown error message needs to be shown
 // There will be changes upon finding solution
 
-// Using Render for non-GET requests
 const registerUser = async (userDetails) => {
-  const response = await axios.post(
-    `${renderNonGetBaseUrl}/user/register`,
-    userDetails
-  );
+  const response = await axios.post(`${baseURL}/user/register`, userDetails);
   if (String(response?.status).charAt(0) == "2") {
     return response.data;
   } else {
@@ -25,10 +21,7 @@ const registerUser = async (userDetails) => {
 };
 
 const signinUser = async (userDetails) => {
-  const response = await axios.post(
-    `${renderNonGetBaseUrl}/user/login`,
-    userDetails
-  );
+  const response = await axios.post(`${baseURL}/user/login`, userDetails);
   if (String(response?.status).charAt(0) == "2") {
     return response.data;
   } else {
@@ -51,12 +44,12 @@ const getUserWishlist = async () => {
 };
 
 const signOutUser = async () => {
-  await axios.put(`${renderNonGetBaseUrl}/user/logout`, null, headersConfig);
+  await axios.put(`${baseURL}/user/logout`, null, headersConfig);
 };
 
 const editUserProfile = async (userInfo) => {
   const response = await axios.put(
-    `${renderNonGetBaseUrl}/user/update/${userInfo.userId}`,
+    `${baseURL}/user/update/${userInfo.userId}`,
     userInfo.changedDetails,
     headersConfig
   );
@@ -69,7 +62,7 @@ const editUserProfile = async (userInfo) => {
 
 const changePassword = async (userInfo) => {
   const response = await axios.put(
-    `${renderNonGetBaseUrl}/user/change-password/${userInfo.userId}`,
+    `${baseURL}/user/change-password/${userInfo.userId}`,
     userInfo.values,
     headersConfig
   );

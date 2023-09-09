@@ -11,7 +11,6 @@ import {
 // What isn't achieved yet is, if the status isn't within 200, createAsyncThunk() needs to have the thrown error as action's error. ATM it is rejecting the promise and showing "rejected" as the action.error. But the thrown error message needs to be shown
 // There will be changes upon finding solution
 
-// Using Render for non-GET requests
 const getAllProperties = async (data = {}) => {
   const response = await axios.get(
     `${baseURL}/property/all-properties/?${
@@ -38,7 +37,7 @@ const getOneProperty = async (propertyId) => {
 
 const addPropertyToWishlist = async (propertyId) => {
   const response = await axios.put(
-    `${renderNonGetBaseUrl}/property/wishlist/${propertyId}`,
+    `${baseURL}/property/wishlist/${propertyId}`,
     null,
     headersConfig
   );
@@ -55,7 +54,7 @@ const addPropertyToWishlist = async (propertyId) => {
 
 const addAReview = async (reviewData) => {
   const response = await axios.put(
-    `${renderNonGetBaseUrl}/property/add-review/${reviewData?.propertyId}`,
+    `${baseURL}/property/add-review/${reviewData?.propertyId}`,
     reviewData.reviewInfo,
     headersConfig
   );
