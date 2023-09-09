@@ -14,22 +14,16 @@ import PageTitler from "../components/PageTitler";
 const OneCategory = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const category = useSelector((state) => state.category.category);
-  console.log(category);
+  const categoryState = useSelector((state) => state.category);
+  const category = categoryState?.category;
   const [minPrice, setMinPrice] = useState(1);
   const [maxPrice, setMaxPrice] = useState(5e8);
   const [showFilterPanel, setShowFilterPanel] = useState(false);
   const [sort, setSort] = useState("");
-  const [loading, setLoading] = useState(false);
   let properties = [];
 
   useEffect(() => {
-    setLoading(true);
-
-    setTimeout(() => {
-      getOneCategoryNow();
-      setLoading(false);
-    }, 500);
+    getOneCategoryNow();
   }, [dispatch, id]);
 
   const getOneCategoryNow = () => {
@@ -50,7 +44,7 @@ const OneCategory = () => {
 
   return (
     <>
-      {loading ? (
+      {categoryState?.isLoading == true ? (
         <PreLoader />
       ) : (
         <div className="page container">

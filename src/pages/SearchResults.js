@@ -11,17 +11,12 @@ const SearchResults = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const [sort, setSort] = useState("");
-  const [loading, setLoading] = useState(false);
   const { propertyType, minPrice, maxPrice } = location.state;
-  const foundProperties = useSelector((state) => state.property.properties);
+  const foundPropertiesState = useSelector((state) => state.property);
+  const foundProperties = foundPropertiesState?.properties;
 
   useEffect(() => {
-    setLoading(true);
-
-    setTimeout(() => {
-      searchPropertiesNow();
-      setLoading(false);
-    }, 1000);
+    searchPropertiesNow();
   }, [propertyType, minPrice, maxPrice, dispatch]);
 
   const searchPropertiesNow = () => {
@@ -31,7 +26,7 @@ const SearchResults = () => {
   return (
     <>
       <PageTitler title={"Search Results"} />
-      {loading ? (
+      {foundPropertiesState?.isLoading == true ? (
         <Preloader />
       ) : (
         <div className="page container">

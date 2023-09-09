@@ -31,7 +31,8 @@ const PropertyDetailPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const property = useSelector((state) => state.property.property);
+  const propertyState = useSelector((state) => state.property);
+  const property = propertyState?.property;
   const allProperties = useSelector((state) => state.property.properties);
   const similarProperties = allProperties?.filter(
     (propty) =>
@@ -40,17 +41,11 @@ const PropertyDetailPage = () => {
   );
   const propertiesInWishlist = useSelector((state) => state.user.userWishlist);
   const propertyReviews = useSelector((state) => state.property.reviews);
-  const [loading, setLoading] = useState(false);
 
   console.log("reviews", propertyReviews);
 
   useEffect(() => {
-    setLoading(true);
-
-    setTimeout(() => {
-      dispatch(getOnePropertyAC(id));
-      setLoading(false);
-    }, 1000);
+    dispatch(getOnePropertyAC(id));
   }, [dispatch, id]);
 
   const formik = useFormik({
@@ -91,7 +86,7 @@ const PropertyDetailPage = () => {
   let encodedPropertyName = property?.name?.split(" ").join("%20");
   return (
     <>
-      {loading ? (
+      {propertyState?.isLoading == true ? (
         <PreLoader />
       ) : (
         <div className="page container mb-[10rem]">
@@ -178,7 +173,7 @@ const PropertyDetailPage = () => {
                       {property?.images?.map((image, index) => {
                         return (
                           <img
-                            key={index}
+                            key={index !== 0 && index}
                             src={
                               image?.imageUrl !==
                                 property?.images[0]?.imageUrl && image?.imageUrl

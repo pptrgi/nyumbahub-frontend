@@ -18,17 +18,12 @@ const AllProperties = () => {
   const [sort, setSort] = useState("");
   const [showFilterPanel, setShowFilterPanel] = useState(false);
   const [showTypeOptions, setShowTypeOptions] = useState(true);
-  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
-  const properties = useSelector((state) => state.property.properties);
+  const propertiesState = useSelector((state) => state.property);
+  const properties = propertiesState?.properties;
 
   useEffect(() => {
-    setLoading(true);
-
-    setTimeout(() => {
-      getAllPropertiesNow();
-      setLoading(false);
-    }, 500);
+    getAllPropertiesNow();
   }, [minPrice, maxPrice, propertyType, sort]);
 
   const getAllPropertiesNow = () => {
@@ -37,7 +32,7 @@ const AllProperties = () => {
 
   return (
     <>
-      {loading ? (
+      {propertiesState?.isLoading == true ? (
         <PreLoader />
       ) : (
         <div className="page container">
