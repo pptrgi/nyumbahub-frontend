@@ -12,7 +12,7 @@ export const getOneType = async (typeId) => {
   if (String(response?.status).charAt(0) == "2") {
     return response.data;
   } else {
-    return new Error("Problem fetching Type properties");
+    return;
   }
 };
 

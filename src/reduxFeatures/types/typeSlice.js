@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { typeService } from "./typeService";
 
+// GETs the property type with the given id
 export const getOneType = createAsyncThunk(
   "type/getOneType",
   async (typeId, thunkAPI) => {

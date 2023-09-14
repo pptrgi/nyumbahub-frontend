@@ -13,20 +13,20 @@ const getOneCategory = async (categoryId) => {
   if (String(response?.status).charAt(0) == "2") {
     return response.data;
   } else {
-    return new Error("Couldn't get category properties");
+    return;
   }
 };
 
 const getFeaturedCategory = async () => {
   const response = await axios.get(
-    `${baseURL}/category/64b23f843567c004de3bf4c9`
+    `${baseURL}/category/64d36c39632663f6a74fd5f8`
   );
-  // 64d36c39632663f6a74fd5f8
+  // 64b23f843567c004de3bf4c9 ...
 
   if (String(response?.status).charAt(0) == "2") {
     return response.data;
   } else {
-    return new Error("Couldn't get Featured properties");
+    return;
   }
 };
 
@@ -39,7 +39,7 @@ const getNewListingCategory = async () => {
   if (String(response?.status).charAt(0) == "2") {
     return response.data;
   } else {
-    return new Error("Couldn't get New Listing properties");
+    return;
   }
 };
 

@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { propertyService } from "./propertyService";
 import { toast } from "react-toastify";
 
+// GETs properties according to the set criteria. Returns all properties if no criteria is set
 export const getAllProperties = createAsyncThunk(
   "property/getAllProperties",
   async (data, thunkAPI) => {
@@ -12,6 +13,8 @@ export const getAllProperties = createAsyncThunk(
     }
   }
 );
+
+// GETs the property with the given id
 export const getOnePropertyAC = createAsyncThunk(
   "property/getOneProperty",
   async (propertyId, thunkAPI) => {
@@ -23,6 +26,7 @@ export const getOnePropertyAC = createAsyncThunk(
   }
 );
 
+// PUTs given property to the user's wishlist
 export const addToWishlistAC = createAsyncThunk(
   "property/addToWishlist",
   async (propertyId, thunkAPI) => {
@@ -34,6 +38,7 @@ export const addToWishlistAC = createAsyncThunk(
   }
 );
 
+// PUTs a review to the property's reviews array
 export const addAReviewAC = createAsyncThunk(
   "property/addAReview",
   async (reviewData, thunkAPI) => {
@@ -82,9 +87,6 @@ export const propertySlice = createSlice({
         (property) => property._id !== action.payload._id
       );
     },
-    // resetCompare: (state) => {
-    //   state.compareProperties = [];
-    // },
   },
   extraReducers: (builder) => {
     builder
@@ -137,7 +139,7 @@ export const propertySlice = createSlice({
         state.isError = true;
         state.message = action.error;
         if (state.isError === true) {
-          toast.error(action.error);
+          toast.error("Couldn't add property to wishlist. Try again");
         }
       })
       .addCase(addAReviewAC.pending, (state) => {
@@ -149,7 +151,7 @@ export const propertySlice = createSlice({
         state.isSuccess = true;
         state.reviews = action.payload;
         if (state.isSuccess === true) {
-          toast.success("Review submitted successfully");
+          toast.success("Your Review has been submitted");
         }
       })
       .addCase(addAReviewAC.rejected, (state, action) => {
@@ -158,7 +160,7 @@ export const propertySlice = createSlice({
         state.isError = true;
         state.message = action.error;
         if (state.isError === true) {
-          toast.error(action.error);
+          toast.error("Failed to submit this review");
         }
       });
   },

@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { userService } from "./userService";
 import { toast } from "react-toastify";
 
+// CREATEs user account
 export const registerUserAC = createAsyncThunk(
   "user/registerUser",
   async (userDetails, thunkAPI) => {
@@ -13,6 +14,7 @@ export const registerUserAC = createAsyncThunk(
   }
 );
 
+// POSTs the user's signin credentials
 export const signinUserAC = createAsyncThunk(
   "user/signinUser",
   async (userDetails, thunkAPI) => {
@@ -23,6 +25,8 @@ export const signinUserAC = createAsyncThunk(
     }
   }
 );
+
+// GETs the user's wishlist items
 export const getUserWishlistAC = createAsyncThunk(
   "user/wishlist",
   async (firstArg, thunkAPI) => {
@@ -34,6 +38,7 @@ export const getUserWishlistAC = createAsyncThunk(
   }
 );
 
+// UPDATEs the refreshToken value to empty
 export const signOutUserAC = createAsyncThunk(
   "user/signOut",
   async (firstArg, thunkAPI) => {
@@ -45,6 +50,7 @@ export const signOutUserAC = createAsyncThunk(
   }
 );
 
+// UPDATEs the user's profile details
 export const editUserProfileAC = createAsyncThunk(
   "user/editProfile",
   async (userInfo, thunkAPI) => {
@@ -55,6 +61,8 @@ export const editUserProfileAC = createAsyncThunk(
     }
   }
 );
+
+// UPDATEs the user's password
 export const changePasswordAC = createAsyncThunk(
   "user/changePassword",
   async (userInfo, thunkAPI) => {
@@ -90,7 +98,7 @@ export const userSlice = createSlice({
         state.isSuccess = true;
         state.registeredUser = action.payload;
         if (state.isSuccess === true) {
-          toast.success("Account registered successfully");
+          toast.success("Congratulations! Account registered successfully");
         }
       })
       .addCase(registerUserAC.rejected, (state, action) => {
@@ -113,6 +121,7 @@ export const userSlice = createSlice({
         if (state.isSuccess === true) {
           localStorage.setItem("token", action.payload.accessToken);
           localStorage.setItem("tokenTimestamp", new Date().getTime());
+
           toast.success("You have signed in to your account");
         }
       })
@@ -122,7 +131,7 @@ export const userSlice = createSlice({
         state.isSuccess = false;
         state.message = action.error;
         if (state.isError === true) {
-          toast.error(action.error);
+          toast.error("Couldn't sign you in. Please check your credentials");
         }
       })
       .addCase(getUserWishlistAC.pending, (state) => {
@@ -140,7 +149,7 @@ export const userSlice = createSlice({
         state.isSuccess = false;
         state.message = action.error;
         if (state.isError === true) {
-          toast.error(action.error);
+          toast.error("Didn't find your wishlist items? Refresh the page");
         }
       })
       .addCase(signOutUserAC.pending, (state) => {
@@ -154,7 +163,9 @@ export const userSlice = createSlice({
         if (state.isSuccess === true) {
           localStorage.removeItem("token");
           localStorage.removeItem("tokenTimestamp");
-          toast.info("Signed Out successfully");
+          localStorage.removeItem("persist:root");
+
+          toast.info("You Signed out. See you later");
         }
       })
       .addCase(signOutUserAC.rejected, (state, action) => {
@@ -184,7 +195,7 @@ export const userSlice = createSlice({
         state.isSuccess = false;
         state.message = action.error;
         if (state.isError === true) {
-          toast.error(action.error);
+          toast.error("Failed to update your profile. Re-submit");
         }
       })
       .addCase(changePasswordAC.pending, (state) => {
@@ -195,7 +206,7 @@ export const userSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         if (state.isSuccess === true) {
-          toast.info("Use your new password on the next logon");
+          toast.success("Successful. Use your new password on the next logon");
         }
       })
       .addCase(changePasswordAC.rejected, (state, action) => {
@@ -204,7 +215,7 @@ export const userSlice = createSlice({
         state.isSuccess = false;
         state.message = action.error;
         if (state.isError === true) {
-          toast.error(action.error);
+          toast.error("Failed to change password. Try again");
         }
       });
   },

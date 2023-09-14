@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { categoryService } from "./categoryService";
 
+// GETs category with the given id
 export const getOneCategory = createAsyncThunk(
   "category/getOneCategory",
   async (categoryId, thunkAPI) => {
@@ -11,6 +12,8 @@ export const getOneCategory = createAsyncThunk(
     }
   }
 );
+
+// GETs the Featured category
 export const getFeaturedCategory = createAsyncThunk(
   "category/getFeaturedCategory",
   async (firstArg, thunkAPI) => {
@@ -21,6 +24,8 @@ export const getFeaturedCategory = createAsyncThunk(
     }
   }
 );
+
+// GETs the New-Listing category
 export const getNewListingCategory = createAsyncThunk(
   "category/getNewListingCategory",
   async (firstArg, thunkAPI) => {
