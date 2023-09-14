@@ -8,6 +8,7 @@ import AuthInputTemplate from "../components/AuthInputTemplate";
 import { signinUserAC } from "../reduxFeatures/users/userSlice";
 import PageTitler from "../components/PageTitler";
 
+// Define the schema for the signin form input fields
 const signinSchema = yup.object({
   email: yup
     .string()
@@ -20,8 +21,10 @@ const SignIn = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userState = useSelector((state) => state.user);
-  console.log("user state", userState);
 
+  // Consume the defined schema
+  // Define the initial values for the input fields
+  // Handle form submit
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -34,10 +37,11 @@ const SignIn = () => {
         resetForm();
         setTimeout(() => {
           navigate("/");
-        }, 2500);
+        }, 2000);
       }
     },
   });
+
   return (
     <div className="page container">
       <Breadcrumb pageTitle={"Sign In"} />

@@ -9,6 +9,7 @@ import AuthInputTemplate from "../components/AuthInputTemplate";
 import { changePasswordAC } from "../reduxFeatures/users/userSlice";
 import PageTitler from "../components/PageTitler";
 
+// Define the schema for the change-password form input fields
 const changePassSchema = yup.object({
   newPassword: yup.string().required("Please enter your new password"),
   confirmPassword: yup.string().required("Please confirm your new password"),
@@ -18,6 +19,9 @@ const ChangePassword = () => {
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.user.user.user);
 
+  // Consume the defined schema
+  // Define the initial values for the input fields
+  // Handle form submit
   const formik = useFormik({
     initialValues: {
       newPassword: "",

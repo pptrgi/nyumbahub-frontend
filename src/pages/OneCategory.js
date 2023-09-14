@@ -10,6 +10,7 @@ import Pagination from "../components/Pagination";
 import FilterPanelMobile from "../components/FilterPanelMobile";
 import PreLoader from "../components/PreLoader";
 import PageTitler from "../components/PageTitler";
+import { sortProperties } from "../utils/sortProperties";
 
 const OneCategory = () => {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ const OneCategory = () => {
   const [sort, setSort] = useState("");
   let properties = [];
 
+  // Fetch the properties in category with the given id on page mount/refresh/id change
   useEffect(() => {
     getOneCategoryNow();
   }, [dispatch, id]);
@@ -30,6 +32,7 @@ const OneCategory = () => {
     dispatch(getOneCategory(id));
   };
 
+  // Extract individual properties in this category and append them to the properties array
   category?.properties?.map((property) => {
     const propertyDetails = property.propertyId;
     properties.push(propertyDetails);
@@ -40,7 +43,8 @@ const OneCategory = () => {
     (property) => property?.price >= minPrice && property?.price <= maxPrice
   );
 
-  // Sort still pending
+  // Sort the filtered properties and modify the properties array
+  properties = sortProperties(sort, properties);
 
   return (
     <>

@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import Breadcrumb from "../components/Breadcrumb";
 import PageTitler from "../components/PageTitler";
 
+// Define the schema for the contact form input fields
 const contactFormSchema = yup.object({
   name: yup.string().required("Your full name is required"),
   email: yup
@@ -20,6 +21,9 @@ const contactFormSchema = yup.object({
 const Contact = () => {
   const contactFormRef = useRef();
 
+  // Consume the defined schema
+  // Define the initial values for the input fields
+  // Handle form submit
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -29,7 +33,7 @@ const Contact = () => {
     },
     validationSchema: contactFormSchema,
     onSubmit: (values, { resetForm }) => {
-      // Send message to Lifen Creatives' email
+      // Sends message to Lifen Creatives' email
 
       sendForm(
         `${process.env.REACT_APP_SERVICE_ID}`,
@@ -127,60 +131,6 @@ const Contact = () => {
               <span className="absolute -top-2 left-[1rem] bg-inherit px-[0.25rem] text-smaller sm:text-small">
                 Message
               </span>
-              {/* <input
-                type="text"
-                name="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                className="w-full bg-inherit border-[1.5px] border-gray-200 py-[0.75rem] hover:outline-none focus:outline-none focus:border-gray-400 rounded-md px-[0.75rem] text-lightThemeColor font font-poppinsSemibold text-smaller sm:text-small"
-                maxLength={40}
-                required
-              />
-              <span className="absolute -top-2 left-[1rem] bg-inherit px-[0.25rem] text-smaller sm:text-small">
-                Full Name
-              </span>
-            </div>
-
-            <div className="relative bg-inherit rounded-md">
-              <input
-                type="email"
-                name="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full bg-inherit border-[1.5px] border-gray-200 py-[0.75rem] hover:outline-none focus:outline-none focus:border-gray-400 rounded-md px-[0.75rem] text-lightThemeColor font font-poppinsSemibold text-smaller sm:text-small"
-                maxLength={40}
-                required
-              />
-              <span className="absolute -top-2 left-[1rem] bg-inherit px-[0.25rem] text-smaller sm:text-small">
-                Email Address
-              </span>
-            </div>
-            <div className="relative bg-inherit rounded-md">
-              <input
-                type="text"
-                name="subject"
-                value={subject}
-                onChange={(e) => setSubject(e.target.value)}
-                className="w-full bg-inherit border-[1.5px] border-gray-200 py-[0.75rem] hover:outline-none focus:outline-none focus:border-gray-400 rounded-md px-[0.75rem] text-lightThemeColor font font-poppinsSemibold text-smaller sm:text-small"
-                maxLength={70}
-                required
-              />
-              <span className="absolute -top-2 left-[1rem] bg-inherit px-[0.25rem] text-smaller sm:text-small">
-                Subject
-              </span>
-            </div>
-            <div className="relative bg-inherit rounded-md">
-              <textarea
-                rows={4}
-                name="message"
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                className="w-full bg-inherit border-[1.5px] border-gray-200 py-[0.75rem] hover:outline-none focus:outline-none focus:border-gray-400 rounded-md px-[0.75rem] text-lightThemeColor font font-poppinsSemibold resize-none text-smaller sm:text-small"
-                required
-              />
-              <span className="absolute -top-2 left-[1rem] bg-inherit px-[0.25rem] text-smaller sm:text-small">
-                Message
-              </span> */}
             </div>
             <span className="text-smaller font-poppinsLight text-red-300 px-[0.5rem] sm:text-small">
               {formik.touched.message && formik.errors.message}

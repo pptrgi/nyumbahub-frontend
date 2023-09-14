@@ -7,11 +7,16 @@ import Breadcrumb from "../components/Breadcrumb";
 import AuthInputTemplate from "../components/AuthInputTemplate";
 import PageTitler from "../components/PageTitler";
 
+// Define the schema for the reset-password form input fields
 const resetPassSchema = yup.object({
   password: yup.string().required("Please enter your new password"),
   confirmPassword: yup.string().required("Please confirm your new password"),
 });
+
 const ResetPassword = () => {
+  // Consume the defined schema
+  // Define the initial values for the input fields
+  // ******************** SUBMIT PENDING ***********************
   const formik = useFormik({
     initialValues: {
       password: "",

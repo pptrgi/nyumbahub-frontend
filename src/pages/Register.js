@@ -9,6 +9,7 @@ import AuthInputTemplate from "../components/AuthInputTemplate";
 import { registerUserAC } from "../reduxFeatures/users/userSlice";
 import PageTitler from "../components/PageTitler";
 
+// Define the schema for the user register form input fields
 const registerSchema = yup.object({
   firstName: yup.string().required("First name field is required"),
   lastName: yup.string().required("Last name field is required"),
@@ -24,8 +25,10 @@ const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userState = useSelector((state) => state.user.user);
-  console.log("register user state", userState);
 
+  // Consume the defined schema
+  // Define the initial values for the input fields
+  // Handle form submit
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -41,7 +44,7 @@ const Register = () => {
         resetForm();
         setTimeout(() => {
           navigate("/signin");
-        }, 2500);
+        }, 2000);
       }
     },
   });
@@ -144,11 +147,11 @@ const Register = () => {
                   Register
                 </button>
                 <p className="text-tiny text-textColor leading-tight font-poppinsLight mt-[0.75rem] sm:text-smaller">
-                  By registering, you accept our{" "}
+                  By creating an account, you accept our{" "}
                   <span className="text-ctaColor hover:text-darkThemeColor">
                     <Link to="/privacy-policy">Terms of Service</Link>
                   </span>{" "}
-                  and{" "}
+                  and acknowledge our{" "}
                   <span className="text-ctaColor hover:text-darkThemeColor">
                     <Link to="/privacy-policy">Privacy Policy</Link>
                   </span>

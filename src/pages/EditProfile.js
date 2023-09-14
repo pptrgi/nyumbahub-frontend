@@ -14,8 +14,7 @@ const EditProfile = () => {
   const [phone, setPhone] = useState(userData?.phone);
   const userId = userData?.id;
 
-  console.log("ud", userData);
-
+  // Submit the user's modified profile
   const handleProfileUpdate = (e) => {
     e.preventDefault();
 
@@ -26,8 +25,6 @@ const EditProfile = () => {
       phone,
     };
     dispatch(editUserProfileAC({ userId, changedDetails }));
-
-    console.log(changedDetails);
   };
 
   return (

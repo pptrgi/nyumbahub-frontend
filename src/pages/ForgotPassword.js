@@ -7,13 +7,18 @@ import Breadcrumb from "../components/Breadcrumb";
 import AuthInputTemplate from "../components/AuthInputTemplate";
 import PageTitler from "../components/PageTitler";
 
+// Define the schema for the forgot-password form input fields
 const forgotPassSchema = yup.object({
   emailForgot: yup
     .string()
     .email("Please enter a valid email")
     .required("Email is required resetting forgotten password"),
 });
+
 const ForgotPassword = () => {
+  // Consume the defined schema
+  // Define the initial values for the input fields
+  // ******************** SUBMIT PENDING ***********************
   const formik = useFormik({
     initialValues: {
       emailForgot: "",

@@ -6,6 +6,7 @@ import SortOptions from "../components/SortOptions";
 import { getAllProperties } from "../reduxFeatures/properties/propertySlice";
 import Preloader from "../components/PreLoader";
 import PageTitler from "../components/PageTitler";
+import { sortProperties } from "../utils/sortProperties";
 
 const SearchResults = () => {
   const dispatch = useDispatch();
@@ -15,6 +16,8 @@ const SearchResults = () => {
   const foundPropertiesState = useSelector((state) => state.property);
   const foundProperties = foundPropertiesState?.properties;
 
+  // Fetch properties according to the search criteria
+  // Re-fetch when the criteria changes
   useEffect(() => {
     searchPropertiesNow();
   }, [propertyType, minPrice, maxPrice, dispatch]);
@@ -22,6 +25,9 @@ const SearchResults = () => {
   const searchPropertiesNow = () => {
     dispatch(getAllProperties({ propertyType, minPrice, maxPrice }));
   };
+
+  // Sort the found properties
+  const sortedProperties = sortProperties(sort, [...foundProperties]); // making a copy of foundProperties array because foundProperties itself is read-only
 
   return (
     <>
@@ -43,7 +49,7 @@ const SearchResults = () => {
             </div>
           </div>
           <Pagination
-            properties={foundProperties}
+            properties={sortedProperties}
             itemsPerPage={3}
             wrapperStyling={
               "grid grid-cols-1 items-center gap-2 mt-[1.5rem] mb-[3rem] sm:grid-cols-2 md:grid-cols-2 md:gap-4 lg:grid-cols-3 xl:grid-cols-3"

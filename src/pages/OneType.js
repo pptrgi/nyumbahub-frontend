@@ -10,6 +10,7 @@ import Pagination from "../components/Pagination";
 import FilterPanelMobile from "../components/FilterPanelMobile";
 import PreLoader from "../components/PreLoader";
 import PageTitler from "../components/PageTitler";
+import { sortProperties } from "../utils/sortProperties";
 
 const OneType = () => {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ const OneType = () => {
   const [sort, setSort] = useState("");
   let properties = [];
 
+  // Fetch all the properties of the type given by id on page mount/refresh/id change
   useEffect(() => {
     getOneTypeNow();
   }, [dispatch, id]);
@@ -30,6 +32,7 @@ const OneType = () => {
     dispatch(getOneType(id));
   };
 
+  // Extract individual properties of this type and append them to the properties array
   type?.properties?.map((property) => {
     const propertyDetails = property.propertyId;
     properties.push(propertyDetails);
@@ -40,7 +43,8 @@ const OneType = () => {
     (property) => property?.price >= minPrice && property?.price <= maxPrice
   );
 
-  // Sort still pending
+  // Sort the filtered properties and modify the properties array
+  properties = sortProperties(sort, properties);
 
   return (
     <>

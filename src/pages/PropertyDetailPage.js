@@ -22,6 +22,7 @@ import { formatDate } from "../utils/dateFormatter";
 import PreLoader from "../components/PreLoader";
 import PageTitler from "../components/PageTitler";
 
+// Define the schema for the review form input fields
 const reviewSchema = yup.object({
   name: yup.string().required("Please enter your name"),
   review: yup.string().required("You can't send an empty review body"),
@@ -42,34 +43,40 @@ const PropertyDetailPage = () => {
   const propertiesInWishlist = useSelector((state) => state.user.userWishlist);
   const propertyReviews = useSelector((state) => state.property.reviews);
 
-  console.log("reviews", propertyReviews);
-
+  // Fetch the property with the extracted id (from the URL params)
   useEffect(() => {
     dispatch(getOnePropertyAC(id));
-  }, [dispatch, id]);
+  }, [dispatch, id, propertyReviews]);
 
+  // Consume the defined schema
+  // Define the initial values for the input fields
+  // Handle form submit - Dispatch addAReviewAC() action creator only when the user is signed in
   const formik = useFormik({
     initialValues: {
       name: "",
       review: "",
     },
     validationSchema: reviewSchema,
-    onSubmit: (values) => {
+    onSubmit: (values, { resetForm }) => {
       const token = localStorage.getItem("token");
       if (!token) {
+        toast.error("Sign in to add a review to this property");
         setTimeout(() => {
           navigate("/signin");
-        }, 2000);
+        }, 1800);
       } else {
-        dispatch(addAReviewAC({ propertyId: id, reviewInfo: values }));
+        dispatch(addAReviewAC({ propertyId: id, reviewInfo: values })) &&
+          resetForm();
       }
     },
   });
 
+  // Check if this property already exists in the wishlist array in state for conditional styling
   const alreadyInWishlist = propertiesInWishlist?.find(
     (house) => house?.propertyId?._id == property?._id
   );
 
+  // Allow the user to dispatch the addToWishlistAC() action creator to make add-to-wishlist API request only if they are signed in
   const handleAddToWishlist = (propertyId) => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -82,8 +89,9 @@ const PropertyDetailPage = () => {
     }
   };
 
-  // replace spaces with their encoded values
+  // replace the spaces in the property's name with their encoded values
   let encodedPropertyName = property?.name?.split(" ").join("%20");
+
   return (
     <>
       {propertyState?.isLoading == true ? (
@@ -178,7 +186,7 @@ const PropertyDetailPage = () => {
                               image?.imageUrl !==
                                 property?.images[0]?.imageUrl && image?.imageUrl
                             }
-                            className="h-full object-cover"
+                            className="h-full object-cover min-w-[70px] sm:min-w-[85px] md:min-w-[100px] lg:min-w-[120px]"
                             alt="NyumbaHub House Image"
                           />
                         );
@@ -251,7 +259,7 @@ const PropertyDetailPage = () => {
                     Description
                   </h3>
                   <div>
-                    {/* split the decription into an array paragraphs */}
+                    {/* split the decription into an array of paragraphs */}
                     {property?.description
                       ?.split("\n")
                       .map((paragraph, index) => {

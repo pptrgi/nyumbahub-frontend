@@ -22,6 +22,7 @@ const AllProperties = () => {
   const propertiesState = useSelector((state) => state.property);
   const properties = propertiesState?.properties;
 
+  // Fetch all properties on page mount amd when there are changes in price, sort and propertyType states
   useEffect(() => {
     getAllPropertiesNow();
   }, [minPrice, maxPrice, propertyType, sort]);
