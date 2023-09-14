@@ -19,9 +19,8 @@ const getOneCategory = async (categoryId) => {
 
 const getFeaturedCategory = async () => {
   const response = await axios.get(
-    `${baseURL}/category/64d36c39632663f6a74fd5f8`
+    `${baseURL}/category/ 64b23f843567c004de3bf4c9`
   );
-  // 64b23f843567c004de3bf4c9 ...
 
   if (String(response?.status).charAt(0) == "2") {
     return response.data;
@@ -34,7 +33,6 @@ const getNewListingCategory = async () => {
   const response = await axios.get(
     `${baseURL}/category/64b23f8f3567c004de3bf4cc`
   );
-  // 64d4a9e82ae9a7c96dba268c
 
   if (String(response?.status).charAt(0) == "2") {
     return response.data;
