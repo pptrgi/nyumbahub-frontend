@@ -1,5 +1,6 @@
 import React from "react";
 
+// Provide a template for all auth-related form input fields
 const AuthInputTemplate = (props) => {
   const {
     type,

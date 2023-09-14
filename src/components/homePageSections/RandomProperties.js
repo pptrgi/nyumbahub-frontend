@@ -8,7 +8,8 @@ const RandomProperties = () => {
   const dispatch = useDispatch();
   const fetchedProperties = useSelector((state) => state.property.properties);
 
-  // randomize properties
+  // Randomizes properties using the Fisher-Yates shuffle algorithm
+  // Accepts the array to be shuffled, makes it's copy then returns a shuffled array(the copy)
   function shuffleArray(propertiesArray) {
     const propertiesArrayCopy = propertiesArray?.slice();
     for (let index = propertiesArrayCopy.length - 1; index > 0; index--) {
@@ -21,9 +22,11 @@ const RandomProperties = () => {
     return propertiesArrayCopy;
   }
 
+  // Shuffle the fetched properties, if any
   const shuffledProperties =
     fetchedProperties?.length > 0 ? shuffleArray(fetchedProperties) : [];
 
+  // Fetch all properties on page mount/refresh
   useEffect(() => {
     getAllPropertiesNow();
   }, [dispatch]);
@@ -32,12 +35,14 @@ const RandomProperties = () => {
     dispatch(getAllProperties());
   };
 
+  // Define step when using the scroll buttons to scroll horizontally
   const scrollRight = () => {
     document.getElementById("scrollRandomCards").scrollLeft += 320;
   };
   const scrollLeft = () => {
     document.getElementById("scrollRandomCards").scrollLeft -= 320;
   };
+
   return (
     <section className="section container">
       <div className="flex flex-col justify-between sm:flex-row sm:mb-[1.5rem]">

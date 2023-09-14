@@ -8,7 +8,6 @@ import {
   PiBedLight,
   PiBathtubLight,
   PiMapPinLight,
-  PiPhone,
   PiCaretLeft,
   PiCaretRight,
   PiHeartDuotone,
@@ -27,6 +26,7 @@ const GeneralCard = ({ property }) => {
   );
   const propertiesInWishlist = useSelector((state) => state.user.userWishlist);
 
+  // Infinite slide images
   const nextImage = () => {
     setImageSlide(
       imageSlide === property?.images?.length - 1 ? 0 : imageSlide + 1
@@ -38,6 +38,7 @@ const GeneralCard = ({ property }) => {
     );
   };
 
+  // Check if this property already exists in the wishlist/compare array in state for conditional styling
   const alreadyInWishlist = propertiesInWishlist?.find(
     (house) => house?.propertyId?._id == property?._id
   );
@@ -45,6 +46,7 @@ const GeneralCard = ({ property }) => {
     (house) => house?._id == property?._id
   );
 
+  // Allow the user to dispatch the addToWishlistAC() action creator to make add-to-wishlist API request only if they have an access token
   const handleAddToWishlist = (propertyId) => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -57,11 +59,12 @@ const GeneralCard = ({ property }) => {
     }
   };
 
-  // replace spaces with their encoded values
+  // replace the spaces in property's name with their encoded values
   let encodedPropertyName = property?.name.split(" ").join("%20");
+
   return (
     <div className="flex flex-col flex-shrink-0 gap-[1rem] bg-white w-full h-[400px] max-w-[310px]">
-      <div className="relative w-full h-1/2 max-h-1/2 overflow-hidden bg-lightThemeColor">
+      <div className="relative w-full h-1/2 max-h-1/2 overflow-hidden bg-[#d7d7d7]">
         <Link to={`/property/${property?._id}`} className="flex w-full h-full">
           {property?.images?.length > 0 ? (
             property?.images?.map((image, index) => {
@@ -100,7 +103,7 @@ const GeneralCard = ({ property }) => {
               <Link
                 key={idx}
                 to={`/category/${tag?.categoryId}`}
-                className="uppercase font-poppinsLight text-tiny bg-lightGrayCTA text-black px-[0.25rem] rounded-sm cursor-pointer hover:text-darkThemeColor hover:font-poppinsSemibold hover:bg-transparent"
+                className="uppercase font-poppinsLight text-tiny bg-lightGrayCTA text-black px-[0.25rem] rounded-sm cursor-pointer hover:text-darkThemeColor hover:font-poppinsSemibold hover:bg-transparent sm:tracking-wide"
               >
                 {tag?.categoryName}
               </Link>

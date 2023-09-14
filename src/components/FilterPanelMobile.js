@@ -1,4 +1,5 @@
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
+import useClickOutsideToClose from "./ClickOutsideToClose";
 
 const FilterPanelMobile = ({
   setPropertyType,
@@ -12,17 +13,8 @@ const FilterPanelMobile = ({
 }) => {
   const filterPanelRef = useRef();
 
-  useEffect(() => {
-    const outsideClickListener = (event) => {
-      if (!filterPanelRef.current.contains(event.target)) {
-        setShowFilterPanel(false);
-      }
-    };
-    document.addEventListener("mousedown", outsideClickListener);
-    return () => {
-      document.removeEventListener("mousedown", outsideClickListener);
-    };
-  }, []);
+  // Close the filter panel upon clicking outside in mobile devices
+  useClickOutsideToClose(filterPanelRef, () => setShowFilterPanel(false));
 
   return (
     <div className="flex flex-col items-start w-[180px] bg-white border-[1.5px] border-gray-200 pt-[1.5rem] pb-[1rem] px-[0.75rem] rounded-lg">

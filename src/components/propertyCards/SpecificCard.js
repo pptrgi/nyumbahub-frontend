@@ -9,7 +9,6 @@ import {
   PiBedLight,
   PiBathtubLight,
   PiMapPinLight,
-  PiPhone,
   PiCaretLeft,
   PiCaretRight,
   PiArrowsClockwiseDuotone,
@@ -31,6 +30,7 @@ const SpecificCard = ({ property, specificVal }) => {
       categry?.categoryName?.toLowerCase() == specificVal?.toLowerCase()
   );
 
+  // Infinitely slide images
   const nextImage = () => {
     setImageSlide(
       imageSlide === property?.images?.length - 1 ? 0 : imageSlide + 1
@@ -42,6 +42,7 @@ const SpecificCard = ({ property, specificVal }) => {
     );
   };
 
+  // Check if this property already exists in the wishlist/compare array in state for conditional styling
   const alreadyInWishlist = propertiesInWishlist?.find(
     (house) => house?.propertyId?._id == property?._id
   );
@@ -49,6 +50,7 @@ const SpecificCard = ({ property, specificVal }) => {
     (house) => house?._id == property?._id
   );
 
+  // Allow the user to dispatch the addToWishlistAC() action creator to make add-to-wishlist API request only if they have an access token
   const handleAddToWishlist = (propertyId) => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -61,11 +63,12 @@ const SpecificCard = ({ property, specificVal }) => {
     }
   };
 
-  // replace spaces with their encoded values
+  // replace the spaces in property's name with their encoded values
   let encodedPropertyName = property?.name.split(" ").join("%20");
+
   return (
     <div className="flex flex-col gap-[1rem] flex-shrink-0 bg-white w-full h-[400px] max-w-[310px]">
-      <div className="relative w-full h-1/2 overflow-hidden bg-lightThemeColor">
+      <div className="relative w-full h-1/2 overflow-hidden bg-[#d7d7d7]">
         <Link to={`/property/${property?._id}`} className="flex w-full h-full">
           {property?.images?.length > 0 ? (
             property?.images?.map((image, index) => {
@@ -101,7 +104,7 @@ const SpecificCard = ({ property, specificVal }) => {
         <div className="absolute top-0 left-0 p-4 z-10">
           <Link
             to={`/category/${foundCategory?.categoryId}`}
-            className="uppercase font-poppinsLight text-tiny bg-lightGrayCTA text-black px-[0.25rem] rounded-sm cursor-pointer hover:text-darkThemeColor hover:font-poppinsSemibold hover:bg-transparent"
+            className="uppercase font-poppinsLight text-tiny bg-lightGrayCTA text-black px-[0.25rem] py-[0.125rem] rounded-sm cursor-pointer hover:text-darkThemeColor hover:font-poppinsSemibold hover:bg-transparent sm:tracking-wide"
           >
             {specificVal}
           </Link>

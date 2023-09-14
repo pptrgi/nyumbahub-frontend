@@ -1,10 +1,13 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { PiCaretDown, PiCaretUp } from "react-icons/pi";
+import useClickOutsideToClose from "./ClickOutsideToClose";
 
 const SortOptions = ({ setSort }) => {
   const [selectedSort, setSelectedSort] = useState(0);
   const [showSortOptions, setShowSortOptions] = useState(false);
   const sortRef = useRef();
+
+  // Define sort options to include in sort menu
   const sortArray = [
     { sortName: "Default", value: "" },
     { sortName: "High Price First", value: "-price" },
@@ -14,17 +17,9 @@ const SortOptions = ({ setSort }) => {
     { sortName: "Oldest First", value: "createdAt" },
   ];
 
-  useEffect(() => {
-    const outsideClickListener = (event) => {
-      if (!sortRef.current.contains(event.target)) {
-        setShowSortOptions(false);
-      }
-    };
-    document.addEventListener("mousedown", outsideClickListener);
-    return () => {
-      document.removeEventListener("mousedown", outsideClickListener);
-    };
-  }, []);
+  // Close the sortOptions menu on clicking outside it
+  useClickOutsideToClose(sortRef, () => setShowSortOptions(false));
+
   return (
     <div ref={sortRef} className="relative w-[60%] flex flex-col">
       <div
@@ -46,7 +41,7 @@ const SortOptions = ({ setSort }) => {
             return (
               <span
                 key={index}
-                className={`px-[0.5rem] py-[0.5rem] w-full hover:bg-ctaColor hover:text-bodyColor ${
+                className={`px-[0.5rem] py-[0.5rem] w-full cursor-pointer hover:bg-ctaColor hover:text-bodyColor ${
                   index == sortArray.length - 1 && "hover:rounded-b-md"
                 } ${index == 0 && "hover:rounded-t-md"}`}
                 onClick={(e) =>

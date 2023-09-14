@@ -1,7 +1,8 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { PiCaretUp, PiCaretDown } from "react-icons/pi";
+import useClickOutsideToClose from "./ClickOutsideToClose";
 
 const LandPage = () => {
   const [propertyType, setPropetyType] = useState("");
@@ -12,6 +13,7 @@ const LandPage = () => {
   const navigate = useNavigate();
   const typeOptionsRef = useRef();
 
+  // Define property types to include in the property type options
   const allProperyTypes = [
     { name: "Select Property Type", value: "" },
     { name: "Apartment", value: "Apartment" },
@@ -22,6 +24,7 @@ const LandPage = () => {
     { name: "Bedsitter", value: "Bedsitter" },
   ];
 
+  // Passes state to the search-results page via route
   const handleSearch = (e) => {
     e.preventDefault();
     if (propertyType === "") {
@@ -41,18 +44,9 @@ const LandPage = () => {
     setSelectedType(0);
   };
 
-  useEffect(() => {
-    const outsideClickListener = (event) => {
-      if (!typeOptionsRef.current.contains(event.target)) {
-        setShowTypeOptions(false);
-      }
-    };
-    document.addEventListener("mousedown", outsideClickListener);
-    return () => {
-      // investigate
-      document.removeEventListener("mousedown", outsideClickListener);
-    };
-  }, []);
+  // Close the property type options menu upon clicking outside the menu
+  useClickOutsideToClose(typeOptionsRef, () => setShowTypeOptions(false));
+
   return (
     <div className="relative min-h-screen w-[100%] flex justify-center items-center border-b-[1px] border-gray-100 py-[4.5rem] sm:py-[6rem] md:py-[11rem]">
       {/* paddings because the header is overlaying on content. Remove later */}
@@ -157,7 +151,7 @@ const LandPage = () => {
             src="/images/outline-house.png"
             className="w-full"
             loading="eager"
-            alt="NyumbaHub Outline House Image"
+            alt="NyumbaHub Outline House"
           />
         </span>
         <span className="hidden absolute top-[40%] -left-10 w-[13%] md:block">
@@ -165,7 +159,7 @@ const LandPage = () => {
             src="/images/outline-house.png"
             className="w-full"
             loading="eager"
-            alt="NyumbaHub Outline House Image"
+            alt="NyumbaHub Outline House"
           />
         </span>
       </span>

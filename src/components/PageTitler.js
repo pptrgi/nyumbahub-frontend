@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet";
 
+// Dynamically title pages
 const PageTitler = ({ title }) => {
   return (
     <div>

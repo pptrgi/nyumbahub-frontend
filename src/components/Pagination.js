@@ -14,14 +14,16 @@ const Pagination = ({
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
   const { pathname } = useLocation();
-  const fromCategory = pathname.includes("category");
+  const fromCategory = pathname.includes("category"); // enables use specificCard property cards for categories properties. Others will have generalCard property cards
 
+  // Paginate
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;
     setCurrentItems(properties?.slice(itemOffset, endOffset));
     setPageCount(Math.ceil(properties?.length / itemsPerPage));
   }, [itemOffset, itemsPerPage, properties]);
 
+  // Update offset
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % properties?.length;
     setItemOffset(newOffset);

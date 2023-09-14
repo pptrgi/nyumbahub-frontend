@@ -11,11 +11,13 @@ const Featured = () => {
   const category = useSelector((state) => state.category.featuredCategory);
   const properties = [];
 
+  // Extract individual featured properties and append them to the properties array
   category?.properties?.map((property) => {
     const propertyDetails = property.propertyId;
     properties.push(propertyDetails);
   });
 
+  // Fetch the properties in Featured category on page mount/refresh
   useEffect(() => {
     getFeaturedCategoryNow();
   }, [dispatch]);
@@ -24,6 +26,8 @@ const Featured = () => {
     dispatch(getFeaturedCategory());
   };
 
+  // Display 3 additional properties and remove the "More" button if there no more properties
+  // Hide the 'More' button if the properties in the array are 3 or less
   const handleShowMore = () => {
     if (properties?.length > 3) {
       setShowButton(true);
@@ -32,6 +36,7 @@ const Featured = () => {
     setShowButton(false);
   };
 
+  // Define step when using the scroll buttons to scroll horizontally
   const scrollRight = () => {
     document.getElementById("scrollFeaturedCards").scrollLeft += 320;
   };

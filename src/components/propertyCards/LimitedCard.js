@@ -20,15 +20,17 @@ const LimitedCard = ({ property }) => {
     (state) => state.property.compareProperties
   );
 
+  // Check if this property already exists in the compare array in state for conditional styling
   const alreadyInCompare = propertiesInCompare?.find(
     (house) => house?._id == property?._id
   );
 
-  // replace spaces with their encoded values
+  // replace the spaces in property's name with their encoded values
   let encodedPropertyName = property?.name.split(" ").join("%20");
+
   return (
     <div className="flex flex-col gap-[1rem] bg-white w-full h-[400px] max-w-[320px]">
-      <div className="relative w-full h-3/5 overflow-hidden bg-lightThemeColor">
+      <div className="relative w-full h-3/5 overflow-hidden bg-[#d7d7d7]">
         <Link to={`/property/${property?._id}`}>
           <img
             src={
@@ -56,7 +58,7 @@ const LimitedCard = ({ property }) => {
               <Link
                 key={idx}
                 to={`/category/${item.categoryId}`}
-                className="uppercase font-poppinsLight text-tiny bg-lightGrayCTA text-black px-[0.25rem] rounded-sm cursor-pointer hover:text-darkThemeColor hover:font-poppinsSemibold hover:bg-transparent"
+                className="uppercase font-poppinsLight text-tiny bg-lightGrayCTA text-black px-[0.25rem] rounded-sm cursor-pointer hover:text-darkThemeColor hover:font-poppinsSemibold hover:bg-transparent sm:tracking-wide"
               >
                 {item.categoryName}
               </Link>

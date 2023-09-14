@@ -11,11 +11,13 @@ const NewListings = () => {
   const category = useSelector((state) => state.category.newListingCategory);
   const properties = [];
 
+  // Extract individual newly-listed properties and append them to the properties array
   category?.properties?.map((property) => {
     const propertyDetails = property.propertyId;
     properties.push(propertyDetails);
   });
 
+  // Fetch the properties in New Listing category on page mount/refresh
   useEffect(() => {
     getNewListingCategoryNow();
   }, [dispatch]);
@@ -24,6 +26,8 @@ const NewListings = () => {
     dispatch(getNewListingCategory());
   };
 
+  // Display 3 additional properties and remove the "More" button if there no more properties
+  // Hide the 'More' button if the properties in the array are 3 or less
   const handleShowMore = () => {
     if (properties?.length > 3) {
       setShowButton(true);
@@ -32,12 +36,14 @@ const NewListings = () => {
     setShowButton(false);
   };
 
+  // Define step when using the scroll buttons to scroll horizontally
   const scrollRight = () => {
     document.getElementById("scrollNewListingCards").scrollLeft += 320;
   };
   const scrollLeft = () => {
     document.getElementById("scrollNewListingCards").scrollLeft -= 320;
   };
+
   return (
     <section className="section container">
       <div className="flex flex-col justify-between sm:flex-row sm:mb-[1.5rem]">

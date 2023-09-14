@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import { useSelector } from "react-redux";
 import {
   PiWhatsappLogo,
@@ -14,6 +14,7 @@ import DropdownMenu from "./DropdownMenu";
 import ActiveHeaderLink from "./ActiveHeaderLink";
 import HamburgerMenu from "./HamburgerMenu";
 import AccountPanel from "./AccountPanel";
+import useClickOutsideToClose from "./ClickOutsideToClose";
 
 const Header = () => {
   const [showHamMenu, setShowHamMenu] = useState(false);
@@ -22,55 +23,43 @@ const Header = () => {
   const accountRef = useRef();
   const accountMobileRef = useRef();
   const userDetails = useSelector((state) => state.user.user.user);
-  console.log(userDetails);
 
-  // listen for events that are outside the menu panel while it is open to close it
-  useEffect(() => {
-    const outsideClickListener = (event) => {
-      if (!menuRef.current.contains(event.target)) {
-        setShowHamMenu(false);
-      }
-    };
-    document.addEventListener("mousedown", outsideClickListener);
-    return () => {
-      // investigate
-      document.removeEventListener("mousedown", outsideClickListener);
-    };
-  }, []);
-
-  const typeDropdownItems = [
-    { name: "apartment", params: "type/64b23dfd3567c004de3bf49e" },
-    { name: "maisonette", params: "type/64b23de73567c004de3bf498" },
-    { name: "villa", params: "type/64b23df23567c004de3bf49b" },
-    { name: "bungalow", params: "type/64b23bd62051ecc3babb05fb" },
-    { name: "mansion", params: "type/64afeefd919371933061ddb4" },
-    { name: "bedsitter", params: "type/64afeefd919371933061ddb4" },
-  ];
-  const categoryDropdownItems = [
-    { name: "for rent", params: "category/64b23f6f3567c004de3bf4c3" },
-    { name: "featured", params: "category/64b23f843567c004de3bf4c9" },
-    { name: "for sale", params: "category/64b23f783567c004de3bf4c6" },
-    { name: "new listing", params: "category/64b23f8f3567c004de3bf4cc" },
-    { name: "top seller", params: "category/64b23fa93567c004de3bf4d2" },
-    { name: "reduced price", params: "category/64b23f983567c004de3bf4cf" },
-  ];
+  // listen for click events that are outside the ham menu while it is open to close it
+  useClickOutsideToClose(menuRef, () => setShowHamMenu(false));
 
   // const typeDropdownItems = [
-  //   { name: "apartment", params: "type/64d4a97b2ae9a7c96dba2674" },
-  //   { name: "maisonette", params: "type/64d4a9862ae9a7c96dba2678" },
-  //   { name: "villa", params: "type/64b64816ebd5fd40c0f3d665" },
-  //   { name: "bungalow", params: "type/64d4a9732ae9a7c96dba2670" },
-  //   { name: "mansion", params: "type/64d4a98c2ae9a7c96dba267c" },
-  //   { name: "bedsitter", params: "type/64d4a9972ae9a7c96dba2680" },
+  //   { name: "apartment", params: "type/64b23dfd3567c004de3bf49e" },
+  //   { name: "maisonette", params: "type/64b23de73567c004de3bf498" },
+  //   { name: "villa", params: "type/64b23df23567c004de3bf49b" },
+  //   { name: "bungalow", params: "type/64b23bd62051ecc3babb05fb" },
+  //   { name: "mansion", params: "type/64afeefd919371933061ddb4" },
+  //   { name: "bedsitter", params: "type/64afeefd919371933061ddb4" },
   // ];
   // const categoryDropdownItems = [
-  //   { name: "for rent", params: "category/64d36c24632663f6a74fd5f6" },
-  //   { name: "featured", params: "category/64d36c39632663f6a74fd5f8" },
-  //   { name: "for sale", params: "category/64d36c24632663f6a74fd5f6" },
-  //   { name: "new listing", params: "category/64d4a9e82ae9a7c96dba268c" },
-  //   { name: "top seller", params: "category/64d4a9df2ae9a7c96dba2688" },
-  //   { name: "reduced price", params: "category/64d4aa192ae9a7c96dba2690" },
+  //   { name: "for rent", params: "category/64b23f6f3567c004de3bf4c3" },
+  //   { name: "featured", params: "category/64b23f843567c004de3bf4c9" },
+  //   { name: "for sale", params: "category/64b23f783567c004de3bf4c6" },
+  //   { name: "new listing", params: "category/64b23f8f3567c004de3bf4cc" },
+  //   { name: "top seller", params: "category/64b23fa93567c004de3bf4d2" },
+  //   { name: "reduced price", params: "category/64b23f983567c004de3bf4cf" },
   // ];
+
+  const typeDropdownItems = [
+    { name: "apartment", params: "type/64d4a97b2ae9a7c96dba2674" },
+    { name: "maisonette", params: "type/64d4a9862ae9a7c96dba2678" },
+    { name: "villa", params: "type/64b64816ebd5fd40c0f3d665" },
+    { name: "bungalow", params: "type/64d4a9732ae9a7c96dba2670" },
+    { name: "mansion", params: "type/64d4a98c2ae9a7c96dba267c" },
+    { name: "bedsitter", params: "type/64d4a9972ae9a7c96dba2680" },
+  ];
+  const categoryDropdownItems = [
+    { name: "for rent", params: "category/64d36c24632663f6a74fd5f6" },
+    { name: "featured", params: "category/64d36c39632663f6a74fd5f8" },
+    { name: "for sale", params: "category/64d36c24632663f6a74fd5f6" },
+    { name: "new listing", params: "category/64d4a9e82ae9a7c96dba268c" },
+    { name: "top seller", params: "category/64d4a9df2ae9a7c96dba2688" },
+    { name: "reduced price", params: "category/64d4aa192ae9a7c96dba2690" },
+  ];
   return (
     <div className="fixed top-0 w-[100%] z-50 h-auto" id="nav">
       <nav className="hidden flex-col md:flex sm:hidden">

@@ -25,7 +25,9 @@ const HamburgerMenu = ({
     >
       <div className="flex flex-col justify-start items-start mt-[2rem]">
         <div className="flex justify-center items-center w-full mb-[4rem]">
-          <h3 className="font-poppinsBold text-h2 ">NyumbaHub</h3>
+          <h3 className="font-poppinsBold text-h2 text-lightThemeColor">
+            NyumbaHub
+          </h3>
         </div>
         <div className="flex flex-col space-y-[1.5rem] w-full">
           <ActiveHeaderLink

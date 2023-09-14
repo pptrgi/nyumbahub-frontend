@@ -1,23 +1,15 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { PiCaretDown, PiCaretUp } from "react-icons/pi";
+import useClickOutsideToClose from "./ClickOutsideToClose";
 
 const DropdownMenu = ({ title, items, titleStyle, itemsStyle }) => {
   const [openDropdown, setOpenDropdown] = useState(false);
   const dropdownRef = useRef();
 
-  useEffect(() => {
-    const outsideClickListener = (event) => {
-      if (!dropdownRef.current.contains(event.target)) {
-        setOpenDropdown(false);
-      }
-    };
-    document.addEventListener("mousedown", outsideClickListener);
-    return () => {
-      // investigate
-      document.removeEventListener("mousedown", outsideClickListener);
-    };
-  }, []);
+  // Close the drop down menu upon clicking outside
+  useClickOutsideToClose(dropdownRef, () => setOpenDropdown(false));
+
   return (
     <div ref={dropdownRef} className="flex flex-col space-y-[0.25rem] group">
       <span
