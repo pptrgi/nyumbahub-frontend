@@ -45,19 +45,19 @@ input[type="number"] {
 
 @font-face {
   font-family: "PoppinsRegular";
-  src: url("./static/fonts/Poppins-Regular.ttf");
+  src: url("/public/fonts/Poppins-Regular.ttf");
 }
 @font-face {
   font-family: "PoppinsLight";
-  src: url("./static/fonts/Poppins-Light.ttf");
+  src: url("/public/fonts/Poppins-Light.ttf");
 }
 @font-face {
   font-family: "PoppinsSemibold";
-  src: url("./static/fonts/Poppins-SemiBold.ttf");
+  src: url("/public/fonts/Poppins-SemiBold.ttf");
 }
 @font-face {
   font-family: "PoppinsBold";
-  src: url("./static/fonts/Poppins-Bold.ttf");
+  src: url("/public/fonts/Poppins-Bold.ttf");
 }
 
 body {
