@@ -1,16 +1,18 @@
 // create the base URL for the API requests
-// export const baseURL = "http://localhost:3535/api";
 export const baseURL = "https://nyumbahub.netlify.app/.netlify/functions/api";
-// export const renderNonGetBaseUrl = "https://nyumbahub.onrender.com/api"; // Render for non-GET requests
 
-const token = localStorage.getItem("token")
-  ? localStorage.getItem("token")
-  : null;
-console.log("headers", token);
+// Without a function, earlier you'd need to refresh a page(any) for the token to be accessed from storage
+// Failure to refresh page you'd make an API request with the access token missing
+// As a result, for better user experience and prevent errors returned by API... a function call to assign headers
+export const assignHeaders = () => {
+  const token = localStorage.getItem("token")
+    ? localStorage.getItem("token")
+    : null;
 
-export const headersConfig = {
-  headers: {
-    Authorization: `Bearer ${token !== null ? token : ""}`,
-    Accept: "Application/json",
-  },
+  return {
+    headers: {
+      Authorization: `Bearer ${token !== null ? token : ""}`,
+      Accept: "Application/json",
+    },
+  };
 };
