@@ -19,7 +19,7 @@ const getOneCategory = async (categoryId) => {
 
 const getFeaturedCategory = async () => {
   const response = await axios.get(
-    `${baseURL}/category/ 64b23f843567c004de3bf4c9`
+    `${baseURL}/category/64b23f843567c004de3bf4c9`
   );
 
   if (String(response?.status).charAt(0) == "2") {
