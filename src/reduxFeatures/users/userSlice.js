@@ -161,6 +161,7 @@ export const userSlice = createSlice({
         state.isSuccess = true;
         state.user = {};
         if (state.isSuccess === true) {
+          state.isSuccess = false;
           localStorage.removeItem("token");
           localStorage.removeItem("tokenTimestamp");
           localStorage.removeItem("persist:root");
