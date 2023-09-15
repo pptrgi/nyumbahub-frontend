@@ -173,7 +173,7 @@ const Contact = () => {
               </span>
             </a>
             <a
-              href="mailto:pptrgitonga@gmail.com"
+              href="mailto:lifencreatives@gmail.com"
               className="flex items-center space-x-[0.25rem] hover:text-ctaColor sm:space-x-[0.5rem]"
             >
               <span className="text-h3 sm:text-h2">
