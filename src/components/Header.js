@@ -24,9 +24,10 @@ const Header = () => {
   const accountMobileRef = useRef();
   const userDetails = useSelector((state) => state.user.user.user);
 
-  // listen for click events that are outside the ham menu while it is open to close it
+  // Listen for click events that are outside the ham menu while it is open to close it
   useClickOutsideToClose(menuRef, () => setShowHamMenu(false));
 
+  // Define property types and categories to be used in the hamburger and View by Type / View by Category dropdown menus
   const typeDropdownItems = [
     { name: "apartment", params: "type/64b23dfd3567c004de3bf49e" },
     { name: "maisonette", params: "type/64b23de73567c004de3bf498" },
