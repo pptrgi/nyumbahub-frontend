@@ -24,7 +24,6 @@ const registerSchema = yup.object({
 const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const userState = useSelector((state) => state.user.user);
 
   // Consume the defined schema
   // Define the initial values for the input fields
@@ -40,12 +39,10 @@ const Register = () => {
     validationSchema: registerSchema,
     onSubmit: (values, { resetForm }) => {
       dispatch(registerUserAC(values));
-      if (userState.isSuccess == true) {
-        resetForm();
-        setTimeout(() => {
-          navigate("/signin");
-        }, 2000);
-      }
+      resetForm();
+      setTimeout(() => {
+        navigate("/signin");
+      }, 2000);
     },
   });
   return (
