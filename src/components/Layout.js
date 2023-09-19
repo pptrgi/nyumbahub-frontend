@@ -1,12 +1,13 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, ScrollRestoration } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import Header from "./Header";
 import Footer from "./Footer";
-import { ToastContainer } from "react-toastify";
 
 const Layout = () => {
   return (
     <div className="overflow-hidden">
       <Header />
+      <ScrollRestoration />
       <Outlet />
       <Footer />
       <ToastContainer
