@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Wishlist from "./pages/Wishlist";
@@ -23,67 +23,112 @@ import { OpenRoute } from "./components/routeTypes/OpenRoute";
 import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
+  // Create the application's data router
+  // This way the application can use ScrollRestoration component
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Layout />,
+      children: [
+        {
+          path: "/",
+          element: <Home />,
+        },
+        {
+          path: "/wishlist",
+          element: (
+            <PrivateRoute>
+              <Wishlist />
+            </PrivateRoute>
+          ),
+        },
+        {
+          path: "/search-results",
+          element: <SearchResults />,
+        },
+        {
+          path: "/signin",
+          element: (
+            <OpenRoute>
+              <SignIn />
+            </OpenRoute>
+          ),
+        },
+        {
+          path: "/register",
+          element: (
+            <OpenRoute>
+              <Register />
+            </OpenRoute>
+          ),
+        },
+        {
+          path: "/forgot-password",
+          element: <ForgotPassword />,
+        },
+        {
+          path: "/reset-password",
+          element: <ResetPassword />,
+        },
+        {
+          path: "/all-properties",
+          element: <AllProperties />,
+        },
+        {
+          path: "/contact",
+          element: <Contact />,
+        },
+        {
+          path: "/compare",
+          element: <CompareProperties />,
+        },
+        {
+          path: "/privacy-policy",
+          element: <PrivacyPolicy />,
+        },
+        {
+          path: "/terms-of-service",
+          element: <TermsOfService />,
+        },
+        {
+          path: "/edit-profile",
+          element: (
+            <PrivateRoute>
+              <EditProfile />
+            </PrivateRoute>
+          ),
+        },
+        {
+          path: "/change-password",
+          element: (
+            <PrivateRoute>
+              <ChangePassword />
+            </PrivateRoute>
+          ),
+        },
+        {
+          path: "/type/:id",
+          element: <OneType />,
+        },
+        {
+          path: "/category/:id",
+          element: <OneCategory />,
+        },
+        {
+          path: "/property/:id",
+          element: <PropertyDetailPage />,
+        },
+        {
+          path: "*",
+          element: <NotFoundPage />,
+        },
+      ],
+    },
+  ]);
+
   return (
     <div className="font-poppinsRegular text-sm sm:text-default">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route
-              path="/wishlist"
-              element={
-                <PrivateRoute>
-                  <Wishlist />
-                </PrivateRoute>
-              }
-            />
-            <Route path="/search-results" element={<SearchResults />} />
-            <Route
-              path="/signin"
-              element={
-                <OpenRoute>
-                  <SignIn />
-                </OpenRoute>
-              }
-            />
-            <Route
-              path="/register"
-              element={
-                <OpenRoute>
-                  <Register />
-                </OpenRoute>
-              }
-            />
-            <Route path="/forgot-password" element={<ForgotPassword />} />
-            <Route path="/reset-password" element={<ResetPassword />} />
-            <Route path="/all-properties" element={<AllProperties />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/compare" element={<CompareProperties />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/terms-of-service" element={<TermsOfService />} />
-            <Route
-              path="/edit-profile"
-              element={
-                <PrivateRoute>
-                  <EditProfile />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/change-password"
-              element={
-                <PrivateRoute>
-                  <ChangePassword />
-                </PrivateRoute>
-              }
-            />
-            <Route path="/type/:id" element={<OneType />} />
-            <Route path="/category/:id" element={<OneCategory />} />
-            <Route path="/property/:id" element={<PropertyDetailPage />} />
-            <Route path="*" element={<NotFoundPage />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+      <RouterProvider router={router} />
     </div>
   );
 }
