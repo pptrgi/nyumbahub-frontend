@@ -23,7 +23,6 @@ module.exports = {
         bodyColor: "#fafafa",
         ctaColor: "#00aeff",
         textColor: "#777777",
-        ctaHoverColor: "#004274",
         lightThemeColor: "#383f51",
         darkThemeColor: "#2a3445",
         lightGrayCTA: "#f3f5f7",
