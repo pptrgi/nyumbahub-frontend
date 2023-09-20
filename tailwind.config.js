@@ -27,6 +27,7 @@ module.exports = {
         darkThemeColor: "#2a3445",
         lightGrayCTA: "#f3f5f7",
         darkLightGrayCTA: "#b8c2cc",
+        wishlistHeartColor: "#DC143C",
       },
       container: {
         center: true,
