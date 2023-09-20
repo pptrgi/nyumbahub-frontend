@@ -132,6 +132,6 @@ To contribute to this project, open a pull request
 
 ### Acknowledments
 
-Special thanks to [Perfect Hideaways Invest](https://perfecthideawaysforsale.co.za) for the images used in this application.
+Special thanks to [Unsplash](https://unsplash.com) and [Perfect Hideaways Invest](https://perfecthideawaysforsale.co.za) for the images used in this application.
 
 I want to exclusively and abundantly thank all the creators of the packages that this application depend on to make it work, as their creations have brought NyumbaHub to life. Thank you.
