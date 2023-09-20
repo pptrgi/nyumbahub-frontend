@@ -98,9 +98,9 @@ const SpecificCard = ({ property, specificVal }) => {
           onClick={(e) => handleAddToWishlist(property?._id)}
           className={`absolute top-0 right-0 p-4 text-[1.75rem] ${
             alreadyInWishlist
-              ? "text-[#DC143C] hover:text-bodyColor"
+              ? "text-wishlistHeartColor hover:text-bodyColor"
               : "text-bodyColor"
-          } z-20  cursor-pointer hover:text-[#DC143C]`}
+          } z-20  cursor-pointer hover:text-wishlistHeartColor`}
         >
           {alreadyInWishlist ? <PiHeartFill /> : <PiHeartDuotone />}
         </span>
