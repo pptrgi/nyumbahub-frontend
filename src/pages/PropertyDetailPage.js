@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import * as yup from "yup";
 import { useFormik } from "formik";
-import { PiHeart, PiMapPin, PiHeartDuotone } from "react-icons/pi";
+import { PiHeart, PiMapPin, PiHeartFill } from "react-icons/pi";
 import {
   IoPaperPlaneSharp,
   IoCallSharp,
@@ -147,11 +147,11 @@ const PropertyDetailPage = () => {
                       onClick={(e) => handleAddToWishlist(property?._id)}
                       className={`${
                         alreadyInWishlist
-                          ? "text-ctaColor"
+                          ? "text-wishlistHeartColor hover:text-darkThemeColor"
                           : "text-darkThemeColor"
-                      } text-h2 hover:text-ctaColor sm:text-[2rem]`}
+                      } text-h2 hover:text-wishlistHeartColor sm:text-[2rem]`}
                     >
-                      {alreadyInWishlist ? <PiHeartDuotone /> : <PiHeart />}
+                      {alreadyInWishlist ? <PiHeartFill /> : <PiHeart />}
                     </span>
                   </div>
                   <div className="flex space-x-[1.25rem]">
@@ -224,7 +224,7 @@ const PropertyDetailPage = () => {
                         Price:
                       </span>
                       <span className="text-textColor font-poppinsLight">
-                        {property?.price}
+                        {property?.price?.toLocaleString("en-US")}
                       </span>
                     </div>
                     <div className="flex w-1/2 items-start gap-[6px]">
