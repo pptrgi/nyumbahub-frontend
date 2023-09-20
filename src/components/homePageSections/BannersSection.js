@@ -89,7 +89,9 @@ const BannersSection = () => {
             </div>
             <div>
               <span className="px-[2rem] py-[0.75rem] border-[1.8px] border-lightGrayCTA rounded-md font-poppinsLight hover:text-textColor hover:bg-lightGrayCTA sm:px-[1.25rem] md:px-[1.75rem] lg:px-[2rem]">
-                <a href="https://ptrgitonga.vercel.app">Explore Services</a>
+                <a href="https://ptrgitonga.vercel.app#services">
+                  Explore Services
+                </a>
               </span>
             </div>
           </div>
