@@ -29,15 +29,16 @@ module.exports = {
         darkLightGrayCTA: "#b8c2cc",
         wishlistHeartColor: "#DC143C",
       },
-      container: {
-        center: true,
-        padding: "1rem",
-        screens: {
-          sm: { min: "350px", max: "576px" },
-          md: { min: "577px", max: "768px" },
-          lg: { min: "769px", max: "1024px" },
-          xl: { min: "1025px" },
-        },
+      screens: {
+        xs320: { max: "320px" },
+        xs360: { max: "360px" },
+        sm361: "361px",
+        md480: "480px",
+        md800: "800px",
+        lg1023: "1023px",
+        lg1120: "1120px",
+        xl1300: "1300px",
+        xl2048: "2048px",
       },
       fontWeight: {
         normalWeight: "400",
