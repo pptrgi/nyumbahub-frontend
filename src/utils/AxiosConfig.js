@@ -1,5 +1,6 @@
 // create the base URL for the API requests
 export const baseURL = "https://nyumbahub.netlify.app/.netlify/functions/api";
+// export const baseURL = "http://localhost:3535/api";
 
 // Without a function, earlier you'd need to refresh a page(any) for the token to be accessed from storage
 // Failure to refresh page you'd make an API request with the access token missing
