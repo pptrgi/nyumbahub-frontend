@@ -29,7 +29,7 @@ const SortOptions = ({ setSort }) => {
       >
         <input
           value={sortArray[selectedSort].sortName}
-          className="bg-inherit w-full py-[0.5rem] hover:outline-none focus:outline-none"
+          className="bg-inherit w-full py-[0.5rem] cursor-pointer hover:outline-none focus:outline-none"
           readOnly
         />
         <span className="py-[0.5rem] text-default">
