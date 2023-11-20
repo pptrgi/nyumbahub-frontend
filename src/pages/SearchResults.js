@@ -35,11 +35,11 @@ const SearchResults = () => {
       {foundPropertiesState?.isLoading == true ? (
         <Preloader />
       ) : (
-        <div className="page container">
-          <h3 className="font-poppinsLight text-default mt-[5rem] mb-[1.5rem] text-center text-lightThemeColor sm:text-h3 sm:pt-[1rem]">
+        <div className="custom_container pt-[5rem] pb-[3rem] md800:pt-[11rem]">
+          <h3 className="font-poppinsLight text-default  text-center text-lightThemeColor md480:text-h3">
             Search results
           </h3>
-          <div className="grid grid-cols-4 items-center sm:px-[2rem]">
+          <div className="grid grid-cols-4 items-center md480:px-[2rem]">
             <p className="font-poppinsLight text-textColor col-span-2">{`${foundProperties?.length} properties found`}</p>
             <div className="flex justify-center items-center space-x-2 col-span-2">
               <span className="font-poppinsLight text-lightThemeColor">
@@ -52,7 +52,7 @@ const SearchResults = () => {
             properties={sortedProperties}
             itemsPerPage={3}
             wrapperStyling={
-              "grid grid-cols-1 items-center gap-2 mt-[1.5rem] mb-[3rem] sm:grid-cols-2 md:grid-cols-2 md:gap-4 lg:grid-cols-3 xl:grid-cols-3"
+              "grid grid-cols-1 items-center gap-2 mt-[1.5rem] mb-[3rem] md480:grid-cols-2 md800:grid-cols-2 md800:gap-4 lg1023:grid-cols-3"
             }
           />
         </div>

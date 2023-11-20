@@ -8,13 +8,13 @@ import {
 } from "react-icons/pi";
 import { signOutUserAC } from "../reduxFeatures/users/userSlice";
 
-const AccountPanel = ({ userDetails, setShowAccountPanel }) => {
+const AccountPanel = ({ userDetails, closeAccountPanel = () => {} }) => {
   const dispatch = useDispatch();
 
   return (
     <>
       <div
-        className="absolute top-0 -right-4 z-30 flex flex-col items-start text-textColor font-poppinsRegular bg-white rounded-md mt-[2rem] w-[200px] px-[1rem] pt-[3rem] pb-[2rem] md:right-0 sm:w-[220px]"
+        className="absolute top-0 -right-4 z-30 flex flex-col items-start text-textColor font-poppinsRegular shadow-md bg-white rounded-md mt-[2rem] w-[200px] px-[1rem] pt-[2.5rem] pb-[1.5rem] md800:right-0 md480:w-[220px]"
         id="account-panel-tag"
       >
         {userDetails ? (
@@ -28,13 +28,13 @@ const AccountPanel = ({ userDetails, setShowAccountPanel }) => {
               <div className="group">
                 <Link
                   to="/edit-profile"
-                  onClick={(e) => setShowAccountPanel(false)}
+                  onClick={(e) => closeAccountPanel()}
                   className="flex items-center space-x-3 group-hover:text-ctaColor"
                 >
                   <span className="text-default">
                     <PiNotePencil />
                   </span>
-                  <span className="text-smaller sm:text-small">
+                  <span className="text-smaller md480:text-small">
                     Edit Profile
                   </span>
                 </Link>
@@ -43,13 +43,13 @@ const AccountPanel = ({ userDetails, setShowAccountPanel }) => {
               <div className="group">
                 <Link
                   to="/change-password"
-                  onClick={(e) => setShowAccountPanel(false)}
+                  onClick={(e) => closeAccountPanel()}
                   className="flex items-center space-x-3 group-hover:text-ctaColor"
                 >
                   <span className="text-default">
                     <PiEyeSlash />
                   </span>
-                  <span className="text-smaller sm:text-small">
+                  <span className="text-smaller md480:text-small">
                     Change Password
                   </span>
                 </Link>
@@ -58,13 +58,13 @@ const AccountPanel = ({ userDetails, setShowAccountPanel }) => {
               <div className="group">
                 <Link
                   to="/contact"
-                  onClick={(e) => setShowAccountPanel(false)}
+                  onClick={(e) => closeAccountPanel()}
                   className="flex items-center space-x-3 group-hover:text-ctaColor"
                 >
                   <span className="text-default">
                     <PiQuestion />
                   </span>
-                  <span className="text-smaller sm:text-small">
+                  <span className="text-smaller md480:text-small">
                     Help & Support
                   </span>
                 </Link>
@@ -72,13 +72,15 @@ const AccountPanel = ({ userDetails, setShowAccountPanel }) => {
 
               <div className="group">
                 <div
-                  onClick={(e) => dispatch(signOutUserAC())}
+                  onClick={(e) => closeAccountPanel()}
                   className="flex items-center space-x-3 text-ctaColor group-hover:text-red-500 cursor-pointer"
                 >
                   <span className="text-default">
                     <PiSignOut />
                   </span>
-                  <span className="text-smaller sm:text-small ">Sign Out</span>
+                  <span className="text-smaller md480:text-small ">
+                    Sign Out
+                  </span>
                 </div>
               </div>
             </div>
@@ -88,32 +90,33 @@ const AccountPanel = ({ userDetails, setShowAccountPanel }) => {
             <div className="flex justify-between items-center w-full font-mediumWeight">
               <Link
                 to="/signin"
-                onClick={(e) => setShowAccountPanel(false)}
+                onClick={(e) => closeAccountPanel()}
                 className="font-poppinsBold tracking-wide hover:text-darkThemeColor"
               >
                 Sign In
               </Link>
               <Link
                 to="/register"
-                onClick={(e) => setShowAccountPanel(false)}
-                className="px-[1.25rem] py-[0.6rem] bg-ctaColor text-bodyColor rounded-md sm:py-[0.75rem] hover:bg-darkThemeColor"
+                onClick={(e) => closeAccountPanel()}
+                className="px-[1.25rem] py-[0.6rem] bg-ctaColor text-bodyColor rounded-md hover:bg-darkThemeColor md480:py-[0.75rem]"
               >
                 Register
               </Link>
-              {/* ::::::::::: consider adding py-0.6rem to all auth buttons.. py-0.75 looks good on lg breakpoints :::::: */}
             </div>
             <div className="flex flex-col space-y-[0.75rem] mt-[2rem] text-textColor">
               <div className="flex items-center space-x-3 pointer-events-none opacity-30">
                 <span className="text-h3">
                   <PiNotePencil />
                 </span>
-                <span className="text-smaller sm:text-small">Edit Profile</span>
+                <span className="text-smaller md480:text-small">
+                  Edit Profile
+                </span>
               </div>
               <div className="flex items-center space-x-3 pointer-events-none opacity-30">
                 <span className="text-h3">
                   <PiEyeSlash />
                 </span>
-                <span className="text-smaller sm:text-small">
+                <span className="text-smaller md480:text-small">
                   Change Password
                 </span>
               </div>
@@ -121,7 +124,7 @@ const AccountPanel = ({ userDetails, setShowAccountPanel }) => {
                 <span className="text-h3">
                   <PiQuestion />
                 </span>
-                <span className="text-smaller sm:text-small">
+                <span className="text-smaller md480:text-small">
                   Help & Support
                 </span>
               </div>
@@ -129,7 +132,7 @@ const AccountPanel = ({ userDetails, setShowAccountPanel }) => {
                 <span className="text-h3">
                   <PiSignOut />
                 </span>
-                <span className="text-smaller sm:text-small">Sign Out</span>
+                <span className="text-smaller md480:text-small">Sign Out</span>
               </div>
             </div>
           </div>

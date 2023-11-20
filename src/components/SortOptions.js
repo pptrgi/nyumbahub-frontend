@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { PiCaretDown, PiCaretUp } from "react-icons/pi";
-import useClickOutsideToClose from "./ClickOutsideToClose";
+
+import useClickOutsideToClose from "../hooks/useClickOutsideToClose";
 
 const SortOptions = ({ setSort }) => {
   const [selectedSort, setSelectedSort] = useState(0);
@@ -36,7 +37,7 @@ const SortOptions = ({ setSort }) => {
         </span>
       </div>
       {showSortOptions && (
-        <div className="absolute top-[2.125rem] right-0 z-30 flex flex-col items-start bg-white rounded-md shadow-md mt-[0.5rem] w-[150px] sm:w-full">
+        <div className="absolute top-[2.125rem] right-0 z-30 flex flex-col items-start bg-white rounded-md shadow-md mt-[0.5rem] w-[150px] md480:w-full">
           {sortArray.map((sort, index) => {
             return (
               <span

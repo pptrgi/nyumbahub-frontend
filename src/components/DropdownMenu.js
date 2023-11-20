@@ -1,7 +1,8 @@
 import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { PiCaretDown, PiCaretUp } from "react-icons/pi";
-import useClickOutsideToClose from "./ClickOutsideToClose";
+
+import useClickOutsideToClose from "../hooks/useClickOutsideToClose";
 
 const DropdownMenu = ({ title, items, titleStyle, itemsStyle }) => {
   const [openDropdown, setOpenDropdown] = useState(false);

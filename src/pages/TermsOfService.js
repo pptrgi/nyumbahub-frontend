@@ -1,21 +1,22 @@
-import React from "react";
 import { Link } from "react-router-dom";
+
 import PageTitler from "../components/PageTitler";
+import FadeInAnimation from "../components/FadeInAnimation";
 
 const TermsOfService = () => {
   return (
     <>
       <PageTitler title={"Terms of Service"} />
-      <div className="page pt-[2rem] pb-[4rem]">
-        <div className="flex justify-center items-center mb-[3rem]">
-          <h2 className="font-poppinsSemibold text-h3 text-darkThemeColor sm:text-h2">
-            Terms of Service for NyumbaHub
-          </h2>
-        </div>
-        <div className="container">
-          <div className="flex flex-col space-y-[2rem] mt-[2rem] sm:space-y-[2.5rem]">
+      <FadeInAnimation>
+        <div className="custom_container pt-[5rem] pb-[3rem] md800:pt-[11rem]">
+          <div className="flex justify-center items-center mb-[3rem]">
+            <h2 className="font-poppinsSemibold text-h3 text-darkThemeColor text-center md480:text-h2">
+              Terms of Service for NyumbaHub
+            </h2>
+          </div>
+          <div className="flex flex-col space-y-[2rem] mt-[2rem] md480:space-y-[2.5rem]">
             <div className="flex flex-col space-y-[0.75rem]">
-              <h4 className="text-lightThemeColor font-poppinsSemibold font-mediumWeight text-default sm:text-h3">
+              <h4 className="text-lightThemeColor font-poppinsSemibold font-mediumWeight text-default md480:text-h3">
                 Introduction
               </h4>
               <p className="text-textColor">
@@ -25,7 +26,7 @@ const TermsOfService = () => {
               </p>
             </div>
             <div className="flex flex-col space-y-[0.75rem]">
-              <h4 className="text-lightThemeColor font-poppinsSemibold font-mediumWeight text-default sm:text-h3">
+              <h4 className="text-lightThemeColor font-poppinsSemibold font-mediumWeight text-default md480:text-h3">
                 Acceptance of Terms
               </h4>
               <p className="text-textColor">
@@ -35,7 +36,7 @@ const TermsOfService = () => {
               </p>
             </div>
             <div className="flex flex-col space-y-[0.75rem]">
-              <h4 className="text-lightThemeColor font-poppinsSemibold font-mediumWeight text-default sm:text-h3">
+              <h4 className="text-lightThemeColor font-poppinsSemibold font-mediumWeight text-default md480:text-h3">
                 User Responsibilities
               </h4>
               <p className="text-textColor">
@@ -46,7 +47,7 @@ const TermsOfService = () => {
               </p>
             </div>
             <div className="flex flex-col space-y-[0.75rem]">
-              <h4 className="text-lightThemeColor font-poppinsSemibold font-mediumWeight text-default sm:text-h3">
+              <h4 className="text-lightThemeColor font-poppinsSemibold font-mediumWeight text-default md480:text-h3">
                 Property Listings
               </h4>
               <p className="text-textColor">
@@ -58,7 +59,7 @@ const TermsOfService = () => {
               </p>
             </div>
             <div className="flex flex-col space-y-[0.75rem]">
-              <h4 className="text-lightThemeColor font-poppinsSemibold font-mediumWeight text-default sm:text-h3">
+              <h4 className="text-lightThemeColor font-poppinsSemibold font-mediumWeight text-default md480:text-h3">
                 Use of Information
               </h4>
               <p className="text-textColor">
@@ -69,7 +70,7 @@ const TermsOfService = () => {
               </p>
             </div>
             <div className="flex flex-col space-y-[0.75rem]">
-              <h4 className="text-lightThemeColor font-poppinsSemibold font-mediumWeight text-default sm:text-h3">
+              <h4 className="text-lightThemeColor font-poppinsSemibold font-mediumWeight text-default md480:text-h3">
                 User Conduct
               </h4>
               <p className="text-textColor">
@@ -79,7 +80,7 @@ const TermsOfService = () => {
               </p>
             </div>
             <div className="flex flex-col space-y-[0.75rem]">
-              <h4 className="text-lightThemeColor font-poppinsSemibold font-mediumWeight text-default sm:text-h3">
+              <h4 className="text-lightThemeColor font-poppinsSemibold font-mediumWeight text-default md480:text-h3">
                 Privacy
               </h4>
               <p className="text-textColor">
@@ -92,7 +93,7 @@ const TermsOfService = () => {
               </p>
             </div>
             <div className="flex flex-col space-y-[0.75rem]">
-              <h4 className="text-lightThemeColor font-poppinsSemibold font-mediumWeight text-default sm:text-h3">
+              <h4 className="text-lightThemeColor font-poppinsSemibold font-mediumWeight text-default md480:text-h3">
                 Limitation of Liability
               </h4>
               <p className="text-textColor">
@@ -104,7 +105,7 @@ const TermsOfService = () => {
               </p>
             </div>
             <div className="flex flex-col space-y-[0.75rem]">
-              <h4 className="text-lightThemeColor font-poppinsSemibold font-mediumWeight text-default sm:text-h3">
+              <h4 className="text-lightThemeColor font-poppinsSemibold font-mediumWeight text-default md480:text-h3">
                 Indemnification
               </h4>
               <p className="text-textColor">
@@ -114,7 +115,7 @@ const TermsOfService = () => {
               </p>
             </div>
             <div className="flex flex-col space-y-[0.75rem]">
-              <h4 className="text-lightThemeColor font-poppinsSemibold font-mediumWeight text-default sm:text-h3">
+              <h4 className="text-lightThemeColor font-poppinsSemibold font-mediumWeight text-default md480:text-h3">
                 Modification of Terms
               </h4>
               <p className="text-textColor">
@@ -125,7 +126,7 @@ const TermsOfService = () => {
               </p>
             </div>
             <div className="flex flex-col space-y-[0.75rem]">
-              <h4 className="text-lightThemeColor font-poppinsSemibold font-mediumWeight text-default sm:text-h3">
+              <h4 className="text-lightThemeColor font-poppinsSemibold font-mediumWeight text-default md480:text-h3">
                 Governing Law
               </h4>
               <p className="text-textColor">
@@ -136,7 +137,7 @@ const TermsOfService = () => {
               </p>
             </div>
             <div className="flex flex-col space-y-[0.75rem]">
-              <h4 className="text-lightThemeColor font-poppinsSemibold font-mediumWeight text-default sm:text-h3">
+              <h4 className="text-lightThemeColor font-poppinsSemibold font-mediumWeight text-default md480:text-h3">
                 Contact Information
               </h4>
               <p className="text-textColor">
@@ -153,7 +154,7 @@ const TermsOfService = () => {
             understood and agreed to these terms of service.
           </p>
         </div>
-      </div>
+      </FadeInAnimation>
     </>
   );
 };

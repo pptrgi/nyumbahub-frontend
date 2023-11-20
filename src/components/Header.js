@@ -10,11 +10,12 @@ import {
   PiUser,
   PiList,
 } from "react-icons/pi";
+
 import DropdownMenu from "./DropdownMenu";
 import ActiveHeaderLink from "./ActiveHeaderLink";
 import HamburgerMenu from "./HamburgerMenu";
 import AccountPanel from "./AccountPanel";
-import useClickOutsideToClose from "./ClickOutsideToClose";
+import useClickOutsideToClose from "../hooks/useClickOutsideToClose";
 
 const Header = () => {
   const [showHamMenu, setShowHamMenu] = useState(false);
@@ -47,9 +48,9 @@ const Header = () => {
 
   return (
     <div className="fixed top-0 w-[100%] z-50 h-auto" id="nav">
-      <nav className="hidden flex-col md:flex sm:hidden">
+      <nav className="hidden flex-col md800:flex">
         <div className="bg-darkThemeColor ">
-          <div className="container justify-between py-[0.5rem] tracking-wider md:flex md:px-[1rem]">
+          <div className="custom_container justify-between py-[0.5rem] tracking-wider md800:flex">
             <div className="flex items-center gap-[0.75rem] text-bodyColor text-tiny font-poppinsLight truncate">
               <span className="truncate group">
                 Phone:{" "}
@@ -96,11 +97,11 @@ const Header = () => {
           </div>
         </div>
         <div className="bg-darkThemeColor border-t-[1px] border-gray-400">
-          <div className="container flex justify-between py-[1.25rem] text-bodyColor sm:px-[1rem]">
+          <div className="custom_container flex justify-between py-[1.25rem] text-bodyColor">
             <span className="font-poppinsSemibold text-h2 font-mediumWeight">
               NyumbaHub
             </span>
-            <div className="flex items-center space-x-[1rem] tracking-wider lg:space-x-[1.5rem]">
+            <div className="flex items-center space-x-[1rem] tracking-wider lg1023:space-x-[1.5rem]">
               <ActiveHeaderLink
                 toWhere={"compare"}
                 inactiveGroupStyle={"flex items-center space-x-2 group"}
@@ -120,9 +121,7 @@ const Header = () => {
               <div className="relative flex flex-col">
                 <div
                   className="flex items-center space-x-2"
-                  onClick={(e) =>
-                    setShowAccountPanel(showAccountPanel ? false : true)
-                  }
+                  onClick={(e) => setShowAccountPanel(!showAccountPanel)}
                 >
                   <div className="relative cursor-pointer">
                     <span className="text-h2 font-semibolded">
@@ -146,7 +145,7 @@ const Header = () => {
           </div>
         </div>
         <div className="relative bg-lightThemeColor">
-          <div className="container flex justify-start space-x-[1.5rem] text-bodyColor text-small tracking-wider py-[0.75rem] md:px-[1rem]">
+          <div className="custom_container flex justify-start space-x-[1.5rem] text-bodyColor text-small tracking-wider py-[0.75rem]">
             <DropdownMenu
               title={"View by Type"}
               titleStyle={"truncate cursor-pointer group-hover:text-ctaColor"}
@@ -190,30 +189,30 @@ const Header = () => {
           </div>
         </div>
       </nav>
-      <nav className="relative bg-darkThemeColor py-[1.25rem] md:hidden">
-        <div className="container flex justify-between text-bodyColor">
+      <nav className="relative bg-darkThemeColor py-[1.25rem] md800:hidden">
+        <div className="custom_container flex justify-between text-bodyColor">
           <div className="flex items-center space-x-[1.5rem]">
             <span
               onClick={(e) => setShowHamMenu(true)}
-              className="text-[1.375rem] hover:text-ctaColor sm:text-h2"
+              className="text-[1.375rem] hover:text-ctaColor md480:text-h2"
             >
               <PiList />
             </span>
-            <span className="block text-default font-poppinsSemibold sm:hidden">
+            <span className="block text-default font-poppinsSemibold md480:hidden">
               NyumbaHub
             </span>
           </div>
 
           <span className="hidden text-h3 sm:block">NyumbaHub</span>
 
-          <div className="flex items-center space-x-[0.925rem] sm:space-x-[1rem]">
-            <div className="flex items-center space-x-[0.925rem] sm:space-x-[1rem]">
+          <div className="flex items-center space-x-[0.925rem] md480:space-x-[1rem]">
+            <div className="flex items-center space-x-[0.925rem] md480:space-x-[1rem]">
               <ActiveHeaderLink
                 toWhere={"compare"}
                 inactiveGroupStyle={"group"}
                 icon={<PiArrowsClockwise />}
                 iconStyle={
-                  "text-[1.375rem] group-hover:text-ctaColor sm:text-h2"
+                  "text-[1.375rem] group-hover:text-ctaColor md480:text-h2"
                 }
                 linkTitle={""}
                 linkTitleStyle={"hidden"}
@@ -223,7 +222,7 @@ const Header = () => {
                 inactiveGroupStyle={"group"}
                 icon={<PiHeart />}
                 iconStyle={
-                  "text-[1.375rem] group-hover:text-ctaColor sm:text-h2"
+                  "text-[1.375rem] group-hover:text-ctaColor md480:text-h2"
                 }
                 linkTitle={""}
                 linkTitleStyle={"hidden"}
@@ -231,12 +230,10 @@ const Header = () => {
             </div>
             <div className="relative flex flex-col">
               <div
-                onClick={(e) =>
-                  setShowAccountPanel(showAccountPanel ? false : true)
-                }
+                onClick={(e) => setShowAccountPanel(!showAccountPanel)}
                 className="relative"
               >
-                <span className="text-[1.375rem] sm:text-h2">
+                <span className="text-[1.375rem] md480:text-h2">
                   <PiUser />
                 </span>
                 {userDetails && (
@@ -247,7 +244,7 @@ const Header = () => {
                 {showAccountPanel && (
                   <AccountPanel
                     userDetails={userDetails}
-                    setShowAccountPanel={setShowAccountPanel}
+                    closeAccountPanel={() => setShowAccountPanel(false)}
                   />
                 )}
               </div>

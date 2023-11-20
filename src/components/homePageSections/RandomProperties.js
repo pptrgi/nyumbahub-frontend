@@ -1,12 +1,16 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { PiArrowLeft, PiArrowRight } from "react-icons/pi";
+
 import GeneralCard from "../propertyCards/GeneralCard";
 import { getAllProperties } from "../../reduxFeatures/properties/propertySlice";
+import FetchingSpinners from "../FetchingSpinners";
+import FadeInAnimation from "../FadeInAnimation";
 
 const RandomProperties = () => {
   const dispatch = useDispatch();
-  const fetchedProperties = useSelector((state) => state.property.properties);
+  const propertyState = useSelector((state) => state.property);
+  const fetchedProperties = propertyState.properties;
 
   // Randomizes properties using the Fisher-Yates shuffle algorithm
   // Accepts the array to be shuffled, makes it's copy then returns a shuffled array(the copy)
@@ -44,47 +48,55 @@ const RandomProperties = () => {
   };
 
   return (
-    <section className="section container">
-      <div className="flex flex-col justify-between sm:flex-row sm:mb-[1.5rem]">
-        <h3 className="font-poppinsSemibold text-h3 mb-[1.5rem] text-darkThemeColor sm:mb-0">
-          Randomly Selected Properties
-        </h3>
-        <div className="flex justify-end items-end mb-[0.75rem] sm:mb-0">
-          <div className="flex items-center space-x-3">
-            <span
-              className="px-[0.5rem] py-[0.25rem] bg-lightThemeColor text-bodyColor text-default rounded-md font-semibolded cursor-pointer group"
-              onClick={scrollLeft}
-            >
-              <PiArrowLeft className="group-hover:-translate-x-1" />
-            </span>
-            <span
-              className="px-[0.5rem] py-[0.25rem] bg-lightThemeColor text-bodyColor text-default rounded-md font-semibolded cursor-pointer group"
-              onClick={scrollRight}
-            >
-              <PiArrowRight className="group-hover:translate-x-1" />
-            </span>
+    <FadeInAnimation>
+      <section className="custom_container section">
+        <div className="flex flex-col justify-between md480:flex-row md480:mb-[1.5rem]">
+          <h3 className="font-poppinsSemibold text-h3 mb-[1.5rem] text-darkThemeColor md480:mb-0">
+            Randomly Selected Properties
+          </h3>
+          <div className="flex justify-end items-end mb-[0.75rem] md480:mb-0">
+            <div className="flex items-center space-x-3">
+              <span
+                className="px-[0.5rem] py-[0.25rem] bg-lightThemeColor text-bodyColor text-default rounded-md font-semibolded cursor-pointer group"
+                onClick={scrollLeft}
+              >
+                <PiArrowLeft className="group-hover:-translate-x-1" />
+              </span>
+              <span
+                className="px-[0.5rem] py-[0.25rem] bg-lightThemeColor text-bodyColor text-default rounded-md font-semibolded cursor-pointer group"
+                onClick={scrollRight}
+              >
+                <PiArrowRight className="group-hover:translate-x-1" />
+              </span>
+            </div>
           </div>
         </div>
-      </div>
-      {shuffledProperties?.length > 0 ? (
-        <div
-          id="scrollRandomCards"
-          className="flex items-center gap-2 overflow-x-auto w-full scroll-smooth md:gap-4"
-        >
-          {shuffledProperties?.slice(0, 5).map((property, index) => {
-            return <GeneralCard key={index} property={property} />;
-          })}
-        </div>
-      ) : (
-        <div className="flex justify-center items-center w-full h-[20vh]">
-          <div className="flex justify-center items-center">
-            <h3 className="font-poppinsLight text-h3 sm:text-h2">
-              No Selected Properties Yet
-            </h3>
-          </div>
-        </div>
-      )}
-    </section>
+        {propertyState.isLoading ? (
+          <FetchingSpinners />
+        ) : (
+          <>
+            {shuffledProperties?.length > 0 ? (
+              <div
+                id="scrollRandomCards"
+                className="flex items-center gap-2 overflow-x-auto w-full scroll-smooth md800:gap-4"
+              >
+                {shuffledProperties?.slice(0, 5).map((property, index) => {
+                  return <GeneralCard key={index} property={property} />;
+                })}
+              </div>
+            ) : (
+              <div className="flex justify-center items-center w-full h-[20vh]">
+                <div className="flex justify-center items-center">
+                  <h3 className="font-poppinsLight text-h3 md480:text-h2">
+                    No Selected Properties Yet
+                  </h3>
+                </div>
+              </div>
+            )}
+          </>
+        )}
+      </section>
+    </FadeInAnimation>
   );
 };
 

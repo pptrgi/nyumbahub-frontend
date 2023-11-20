@@ -94,23 +94,23 @@ const PropertyDetailPage = () => {
 
   return (
     <>
-      {propertyState?.isLoading == true ? (
+      {propertyState?.isLoading === true ? (
         <PreLoader />
       ) : (
-        <div className="page container mb-[10rem]">
-          <span className="text-smaller truncate sm:text-default">
+        <div className="custom_container page mb-[3rem]">
+          <span className="text-smaller truncate md480:text-default">
             <Breadcrumb pageTitle={`${property?.name}`} />
             <PageTitler title={"Property Detail Page"} />
           </span>
-          <div className="flex justify-center items-center w-[100%] sm:mt-[1rem]">
-            <div className="w-full py-[1rem] px-[0.5rem] sm:px-[1rem]">
+          <div className="flex justify-center items-center w-[100%] md480:mt-[1rem]">
+            <div className="w-full py-[1rem] px-[0.5rem] md480:px-[1rem] lg1023:px-[3rem] lg1120:px-[4rem]">
               {/* whole page container here */}
-              <div className="flex flex-col-reverse gap-[3rem] items-start w-full sm:flex-col">
+              <div className="flex flex-col-reverse gap-[3rem] items-start w-full md480:flex-col">
                 {/* titles and images container */}
                 <section className="flex flex-col space-y-[1.5rem] w-full">
                   {/* titles */}
                   <div className="flex flex-col space-y-[0.5rem]">
-                    <h3 className="text-darkThemeColor font-poppinsSemibold text-default truncate sm:text-h3">
+                    <h3 className="text-darkThemeColor font-poppinsSemibold text-default truncate md480:text-h3">
                       {property?.name}
                     </h3>
                     <div className="flex space-x-1 items-center">
@@ -140,7 +140,7 @@ const PropertyDetailPage = () => {
                   </div>
 
                   <div className="flex justify-between w-full items-center">
-                    <h3 className="text-darkThemeColor font-poppinsBold text-default font-semibolded sm:text-h3">{`KES ${property?.price?.toLocaleString(
+                    <h3 className="text-darkThemeColor font-poppinsBold text-default font-semibolded md480:text-h3">{`KES ${property?.price?.toLocaleString(
                       "en-US"
                     )}`}</h3>
                     <span
@@ -149,7 +149,7 @@ const PropertyDetailPage = () => {
                         alreadyInWishlist
                           ? "text-wishlistHeartColor hover:text-darkThemeColor"
                           : "text-darkThemeColor"
-                      } text-h2 hover:text-wishlistHeartColor sm:text-[2rem]`}
+                      } text-h2 hover:text-wishlistHeartColor md480:text-[2rem]`}
                     >
                       {alreadyInWishlist ? <PiHeartFill /> : <PiHeart />}
                     </span>
@@ -163,40 +163,43 @@ const PropertyDetailPage = () => {
                 </section>
 
                 {property?.images?.length > 0 ? (
-                  <section className="relative flex flex-col gap-[2px] w-full items-center overflow-hidden h-[300px] sm:h-[280px] md:h-[300px]">
+                  <section className="relative flex flex-col gap-[2px] w-full items-center overflow-hidden h-[300px] md480:h-[280px] md800:h-[300px]">
                     {/* images */}
-                    <div className="flex items-center gap-[2px] w-full h-[250px] sm:h-[230px] md:h-[240px]">
+                    <div className="flex items-center gap-[2px] w-full h-[250px] md480:h-[230px] md800:h-[240px]">
                       <img
                         src={property?.images[0]?.imageUrl}
-                        className="w-full h-full object-cover sm:w-1/2"
+                        className="w-full h-full object-cover md480:w-1/2"
                         alt="NyumbaHub House Image"
                       />
                       <img
                         src={property?.images[1]?.imageUrl}
-                        className="hidden w-1/2 h-full object-cover sm:block"
+                        className="hidden w-1/2 h-full object-cover md480:block"
                         alt="NyumbaHub House Image"
                       />
                     </div>
-                    <div className="flex gap-[2px] items-center w-full h-[50px] sm:h-[50px] overflow-x-auto scroll-smooth md:h-[60px]">
+                    <div className="flex gap-[2px] items-center w-full h-[50px] overflow-x-auto scroll-smooth md480:h-[70px] md800:h-[100px]">
                       {property?.images?.map((image, index) => {
                         return (
-                          <img
-                            key={index !== 0 && index}
-                            src={
-                              image?.imageUrl !==
-                                property?.images[0]?.imageUrl && image?.imageUrl
-                            }
-                            className="h-full object-cover min-w-[70px] sm:min-w-[85px] md:min-w-[100px] lg:min-w-[120px]"
-                            alt="NyumbaHub House Image"
-                          />
+                          <>
+                            {/* Don't show the already shown first image */}
+                            {image?.imageUrl !==
+                              property?.images[0]?.imageUrl && (
+                              <img
+                                key={index}
+                                src={image?.imageUrl}
+                                className="h-full object-cover min-w-[100px] md480:min-w-[120px] md800:min-w-[130px] lg1023:min-w-[150px]"
+                                alt="NyumbaHub House Image"
+                              />
+                            )}
+                          </>
                         );
                       })}
                     </div>
                   </section>
                 ) : (
-                  <section className="w-full h-[200px] overflow-hidden sm:h-[250px] lg:h-[300px]">
+                  <section className="w-full h-[200px] overflow-hidden md480:h-[250px] lg1023:h-[300px]">
                     <img
-                      src="/images/banner_light.jpg"
+                      src="/images/larger_no_image.jpg"
                       className="w-full h-full object-cover"
                       alt="No-image Placeholder"
                     />
@@ -302,8 +305,8 @@ const PropertyDetailPage = () => {
                   <h3 className="font-poppinsSemibold text-lightThemeColor font-semibolded border-b-[1px] border-gray-200 mb-[1rem] pb-[0.25rem]">
                     Location
                   </h3>
-                  <div className="flex flex-col justify-between w-full gap-[2rem] pb-[0.25rem] sm:gap-0 sm:items-start sm:flex-row">
-                    <div className="sm:w-1/2">
+                  <div className="flex flex-col justify-between w-full gap-[2rem] pb-[0.25rem] md480:gap-0 md480:items-start md480:flex-row">
+                    <div className="md480:w-1/2">
                       <div className="grid grid-cols-1 items-start gap-3 w-full truncate">
                         <div className="flex items-start gap-[1rem]">
                           <span className="text-textColor font-poppinsRegular">
@@ -347,7 +350,7 @@ const PropertyDetailPage = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="flex justify-center items-center mx-[0.5rem] h-[20vh] sm:mx-[1rem] sm:w-1/2">
+                    <div className="flex justify-center items-center mx-[0.5rem] h-[20vh] md480:mx-[1rem] md480:w-1/2">
                       <div className="bg-lightGrayCTA w-full h-full">
                         <iframe
                           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d255282.3586888474!2d36.68258738725812!3d-1.302860296634477!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1172d84d49a7%3A0xf7cf0254b297924c!2sNairobi!5e0!3m2!1sen!2ske!4v1692618133459!5m2!1sen!2ske"
@@ -364,9 +367,9 @@ const PropertyDetailPage = () => {
                   <h3 className="font-poppinsSemibold text-lightThemeColor font-semibolded border-b-[1px] border-gray-200 mb-[1rem] pb-[0.25rem]">
                     Reviews
                   </h3>
-                  <div className="flex flex-col justify-between w-full gap-[2rem] sm:px-[0.25rem] md:px-[0.5rem] sm:gap-[1rem] sm:items-start sm:flex-row pb-[0.25rem]">
-                    <div className="sm:w-1/2">
-                      <h4 className="font-poppinsLight text-default mb-[1rem] sm:text-h3">
+                  <div className="flex flex-col justify-between w-full gap-[2rem] pb-[0.25rem] md480:px-[0.25rem] md800:px-[0.5rem] md480:gap-[1rem] md480:items-start md480:flex-row">
+                    <div className="md480:w-1/2">
+                      <h4 className="font-poppinsLight text-default mb-[1rem] md480:text-h3">
                         {property?.reviews?.length >= 1
                           ? `${property?.reviews?.length} reviews`
                           : "No reviews yet"}
@@ -389,13 +392,13 @@ const PropertyDetailPage = () => {
                         })}
                       </div>
                     </div>
-                    <div className="sm:w-1/2">
-                      <h4 className="font-poppinsLight text-default mb-[1rem] sm:text-h3">
+                    <div className="md480:w-1/2">
+                      <h4 className="font-poppinsLight text-default mb-[1rem] md480:text-h3">
                         Write a Review
                       </h4>
                       <form
                         onSubmit={formik.handleSubmit}
-                        className="max-w-[80vw] flex flex-col gap-[1.25rem] bg-white px-[1rem] pt-[2rem] pb-[1.75rem] rounded-lg sm:max-w-[40vw] sm:px-[1.5rem]"
+                        className="max-w-[80vw] flex flex-col gap-[1.25rem] bg-white px-[1rem] pt-[2rem] pb-[1.75rem] rounded-lg md480:max-w-[40vw] md480:px-[1.5rem]"
                       >
                         <div className="flex flex-col space-y-[0.5rem] w-full">
                           <input
@@ -405,10 +408,10 @@ const PropertyDetailPage = () => {
                             onChange={formik.handleChange("name")}
                             onBlur={formik.handleBlur("name")}
                             placeholder="full name"
-                            className="hover:outline-none font-poppinsLight focus:outline-none px-[1rem] py-[0.6rem] border-[1px] border-gray-200     hover:border-lightThemeColor focus:border-lightThemeColor rounded-md"
+                            className="font-poppinsLight px-[1rem] py-[0.6rem] border-[1px] border-gray-200 hover:border-lightThemeColor focus:border-lightThemeColor rounded-md"
                             maxLength={40}
                           />
-                          <span className="text-smaller font-poppinsLight text-red-300 px-[0.5rem] sm:text-small">
+                          <span className="text-smaller font-poppinsLight text-red-300 px-[0.5rem] md480:text-small">
                             {formik.touched.name && formik.errors.name}
                           </span>
 
@@ -418,10 +421,10 @@ const PropertyDetailPage = () => {
                             value={formik.values.review}
                             onChange={formik.handleChange("review")}
                             onBlur={formik.handleBlur("review")}
-                            className="hover:outline-none font-poppinsLight focus:outline-none px-[1rem] py-[0.6rem] border-[1px] border-gray-200 hover:border-lightThemeColor focus:lightThemeColor rounded-md resize-none"
+                            className="font-poppinsLight px-[1rem] py-[0.6rem] border-[1px] border-gray-200 hover:border-lightThemeColor focus:lightThemeColor rounded-md resize-none"
                             placeholder="Hi, this an example of a review"
                           />
-                          <span className="text-smaller font-poppinsLight text-red-300 px-[0.5rem] sm:text-small">
+                          <span className="text-smaller font-poppinsLight text-red-300 px-[0.5rem] md480:text-small">
                             {formik.touched.review && formik.errors.review}
                           </span>
                         </div>
@@ -439,12 +442,12 @@ const PropertyDetailPage = () => {
             </div>
           </div>
 
-          <div className="mt-[3rem]">
-            <h2 className="text-lightThemeColor font-poppinsSemibold text-default truncate mb-[1rem] sm:text-h3">
+          <div className="mt-[3rem] lg1023:px-[3rem] lg1120:px-[4rem]">
+            <h2 className="text-lightThemeColor font-poppinsSemibold text-default truncate mb-[1rem] md480:text-h3">
               Related Properties
             </h2>
             {similarProperties?.length !== 0 ? (
-              <div className="grid grid-cols-1 items-center gap-2 sm:grid-cols-2 md:grid-cols-2 md:gap-4 lg:grid-cols-3 xl:grid-cols-3">
+              <div className="grid grid-cols-1 items-center gap-2 md480:grid-cols-2 md800:grid-cols-2 md800:gap-4 lg1023:grid-cols-3">
                 {similarProperties?.slice(0, 3).map((property, index) => {
                   return <GeneralCard key={index} property={property} />;
                 })}
@@ -459,18 +462,18 @@ const PropertyDetailPage = () => {
           </div>
 
           <div className="flex justify-center items-center w-full">
-            <div className="fixed bottom-4 z-40 w-full ">
-              <div className="container w-full text-bodyColor">
-                <div className="flex justify-between items-center bg-transparent border-[3px] border-solid border-ctaColor p-[0.25rem] rounded-lg gap-[0.35rem] shadow-lg sm:gap-2 sm:p-[0.35rem] lg:border-[4px]">
+            <div className="fixed bottom-4 z-40 w-full">
+              <div className="custom_container text-bodyColor lg1023:px-[3rem] lg1120:px-[4rem]">
+                <div className="flex justify-between items-center bg-transparent  p-[0.25rem] border-[1px] border-solid border-ctaColor/20 rounded-[1.25rem] gap-[0.35rem] md480:gap-2 md480:p-[0.35rem] md480:border-ctaColor/25">
                   <div className="group w-1/3 cursor-pointer">
                     <a
                       href="tel:254700119134"
-                      className="flex flex-col justify-center items-center gap-[0.125rem] w-full bg-ctaColor py-[0.5rem] rounded-lg group-hover:bg-darkThemeColor sm:py-[1rem] sm:flex-row sm:gap-4"
+                      className="flex flex-col justify-center items-center gap-[0.125rem] w-full bg-ctaColor py-[0.5rem] rounded-[1rem]  group-hover:bg-darkThemeColor md480:py-[1rem] md480:flex-row md480:gap-4 md480:rounded-[1.25rem]"
                     >
-                      <span className="hidden text-h2 sm:block">
+                      <span className="hidden text-h2 md480:block">
                         <IoCallSharp />
                       </span>
-                      <span className="font-poppinsLight text-smaller sm:text-default">
+                      <span className="font-poppinsLight text-smaller md480:text-default">
                         Call
                       </span>
                     </a>
@@ -479,12 +482,12 @@ const PropertyDetailPage = () => {
                   <div className="group w-1/3 cursor-pointer">
                     <a
                       href={`https://wa.me/254700119134?text=Hi%20NyumbaHub%2C%0A%0AI%27m%20interested%20in%20property%20${encodedPropertyName}`}
-                      className="flex flex-col justify-center items-center gap-[0.125rem] w-full bg-ctaColor py-[0.5rem] rounded-lg group-hover:bg-darkThemeColor sm:py-[1rem] sm:flex-row sm:gap-4"
+                      className="flex flex-col justify-center items-center gap-[0.125rem] w-full bg-ctaColor py-[0.5rem] rounded-[1rem]  group-hover:bg-darkThemeColor md480:py-[1rem] md480:flex-row md480:gap-4 md480:rounded-[1.25rem]"
                     >
-                      <span className="hidden text-h2 sm:block">
+                      <span className="hidden text-h2 md480:block">
                         <IoLogoWhatsapp />
                       </span>
-                      <span className="font-poppinsLight text-smaller sm:text-default">
+                      <span className="font-poppinsLight text-smaller md480:text-default">
                         Whatsapp
                       </span>
                     </a>
@@ -493,12 +496,12 @@ const PropertyDetailPage = () => {
                   <div className="group w-1/3 cursor-pointer">
                     <a
                       href={`mailto:lifencreatives@gmail.com?subject=Enquiring%20About%20A%20Property&body=Hello%20NyumbaHub%2C%0A%0AI%20am%20enquiring%20about%20a%20property%20that%20I%27m%20interested%20in%2E%0A%0AYou%20call%20it%20${encodedPropertyName}%0A%0ARegards`}
-                      className="flex flex-col justify-center items-center gap-[0.125rem] w-full bg-ctaColor py-[0.5rem] rounded-lg group-hover:bg-darkThemeColor sm:py-[1rem] sm:flex-row sm:gap-4"
+                      className="flex flex-col justify-center items-center gap-[0.125rem] w-full bg-ctaColor py-[0.5rem] rounded-[1rem]  group-hover:bg-darkThemeColor md480:py-[1rem] md480:flex-row md480:gap-4 md480:rounded-[1.25rem]"
                     >
-                      <span className="hidden text-h2 sm:block">
+                      <span className="hidden text-h2 md480:block">
                         <IoPaperPlaneSharp />
                       </span>
-                      <span className="font-poppinsLight text-smaller sm:text-default">
+                      <span className="font-poppinsLight text-smaller md480:text-default">
                         Email
                       </span>
                     </a>

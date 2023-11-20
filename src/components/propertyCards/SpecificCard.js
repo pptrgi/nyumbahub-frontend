@@ -107,7 +107,7 @@ const SpecificCard = ({ property, specificVal }) => {
         <div className="absolute top-0 left-0 p-4 z-10">
           <Link
             to={`/category/${foundCategory?.categoryId}`}
-            className="uppercase font-poppinsLight text-tiny bg-lightGrayCTA text-black px-[0.25rem] py-[0.125rem] rounded-sm cursor-pointer hover:text-darkThemeColor hover:font-poppinsSemibold hover:bg-transparent sm:tracking-wide"
+            className="uppercase font-poppinsLight text-tiny bg-lightGrayCTA text-black px-[0.25rem] py-[0.125rem] rounded-sm cursor-pointer hover:text-darkThemeColor hover:font-poppinsSemibold hover:bg-transparent md480:tracking-wide"
           >
             {specificVal}
           </Link>
@@ -144,7 +144,7 @@ const SpecificCard = ({ property, specificVal }) => {
           <span className="text-h3">
             <PiMapPinLight />
           </span>
-          <p className="truncate capitalize font-poppinsLight text-smaller text-textColor sm:text-small">
+          <p className="truncate capitalize font-poppinsLight text-smaller text-textColor md480:text-small">
             {`${property?.location?.place}, ${property?.location?.town}, ${property?.location?.county} County`}
           </p>
         </div>
@@ -179,7 +179,7 @@ const SpecificCard = ({ property, specificVal }) => {
         <div className="flex justify-between items-center mt-[2.5rem]">
           <Link
             to={`/property/${property?._id}`}
-            className="font-poppinsLight text-ctaColor text-smaller hover:text-darkThemeColor sm:text-small"
+            className="font-poppinsLight text-ctaColor text-smaller hover:text-darkThemeColor md480:text-small"
           >
             View Property
           </Link>

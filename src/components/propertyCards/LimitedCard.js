@@ -58,7 +58,7 @@ const LimitedCard = ({ property }) => {
               <Link
                 key={idx}
                 to={`/category/${item.categoryId}`}
-                className="uppercase font-poppinsLight text-tiny bg-lightGrayCTA text-black px-[0.25rem] rounded-sm cursor-pointer hover:text-darkThemeColor hover:font-poppinsSemibold hover:bg-transparent sm:tracking-wide"
+                className="uppercase font-poppinsLight text-tiny bg-lightGrayCTA text-black px-[0.25rem] rounded-sm cursor-pointer hover:text-darkThemeColor hover:font-poppinsSemibold hover:bg-transparent md480:tracking-wide"
               >
                 {item.categoryName}
               </Link>
@@ -73,7 +73,7 @@ const LimitedCard = ({ property }) => {
         <h3 className="truncate font-poppinsSemibold mb-[0.125rem] text-lightThemeColor">
           {property?.name}
         </h3>
-        <p className="truncate capitalize font-poppinsLight text-smaller text-textColor sm:text-small">
+        <p className="truncate capitalize font-poppinsLight text-smaller text-textColor md480:text-small">
           {`${property?.location?.place}, ${property?.location?.town}, ${property?.location?.county} County`}
         </p>
 

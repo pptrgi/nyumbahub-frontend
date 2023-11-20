@@ -15,6 +15,7 @@ import {
   PiArrowsClockwiseDuotone,
 } from "react-icons/pi";
 import { IoPaperPlaneOutline } from "react-icons/io5";
+
 import { addToCompare } from "../../reduxFeatures/properties/propertySlice";
 import { addToWishlistAC } from "../../reduxFeatures/properties/propertySlice";
 
@@ -106,7 +107,7 @@ const GeneralCard = ({ property }) => {
               <Link
                 key={idx}
                 to={`/category/${tag?.categoryId}`}
-                className="uppercase font-poppinsLight text-tiny bg-lightGrayCTA text-black px-[0.25rem] rounded-sm cursor-pointer hover:text-darkThemeColor hover:font-poppinsSemibold hover:bg-transparent sm:tracking-wide"
+                className="uppercase font-poppinsLight text-tiny bg-lightGrayCTA text-black px-[0.25rem] rounded-sm cursor-pointer hover:text-darkThemeColor hover:font-poppinsSemibold hover:bg-transparent md480:tracking-wide"
               >
                 {tag?.categoryName}
               </Link>
@@ -146,7 +147,7 @@ const GeneralCard = ({ property }) => {
           <span className="text-h3">
             <PiMapPinLight />
           </span>
-          <p className="truncate capitalize font-poppinsLight text-smaller text-textColor sm:text-small">
+          <p className="truncate capitalize font-poppinsLight text-smaller text-textColor md480:text-small">
             {`${property?.location?.place}, ${property?.location?.town}, ${property?.location?.county} County`}
           </p>
         </div>
@@ -181,7 +182,7 @@ const GeneralCard = ({ property }) => {
         <div className="flex justify-between items-center mt-[2.5rem]">
           <Link
             to={`/property/${property?._id}`}
-            className="font-poppinsLight text-ctaColor text-smaller hover:text-darkThemeColor sm:text-small"
+            className="font-poppinsLight text-ctaColor text-smaller hover:text-darkThemeColor md480:text-small"
           >
             View Property
           </Link>

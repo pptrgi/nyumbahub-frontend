@@ -1,7 +1,6 @@
-import { useState } from "react";
-
 const ImageCarousel = ({ imageArray }) => {
   const [imageSlide, setImageSlide] = useState(0);
+
   return (
     <div className="flex w-full h-full">
       {imageArray.map((image, index) => {

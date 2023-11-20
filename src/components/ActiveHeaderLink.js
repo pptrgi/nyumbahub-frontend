@@ -8,7 +8,7 @@ const ActiveHeaderLink = ({
   linkTitle,
   iconStyle,
   linkTitleStyle,
-  optionalMenuSetter = null,
+  optionalMenuSetter = () => {},
 }) => {
   // closes the ham menu on link visit
   const closeMenu = () => {

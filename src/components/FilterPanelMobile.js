@@ -1,5 +1,6 @@
 import { useRef } from "react";
-import useClickOutsideToClose from "./ClickOutsideToClose";
+
+import useClickOutsideToClose from "../hooks/useClickOutsideToClose";
 
 const FilterPanelMobile = ({
   setPropertyType,

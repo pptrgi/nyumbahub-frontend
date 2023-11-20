@@ -19,7 +19,7 @@ const AuthInputTemplate = (props) => {
       type={type}
       name={name}
       placeholder={placeholder}
-      className="hover:outline-none focus:outline-none px-[1rem] py-[0.6rem] border-[1px] border-gray-200 hover:border-lightThemeColor focus:border-lightThemeColor rounded-sm"
+      className="rounded-sm px-[1rem] py-[0.6rem] border-[1px] border-gray-200 hover:border-lightThemeColor focus:border-lightThemeColor"
       value={value}
       onChange={onChange}
       onBlur={onBlur}

@@ -51,15 +51,15 @@ const OneType = () => {
       {typeState.isLoading == true ? (
         <PreLoader />
       ) : (
-        <div className="page container">
+        <div className="custom_container page">
           <Breadcrumb pageTitle={`${type?.name} Type`} />
           <PageTitler title={`${type?.name} Type`} />
           <h2 className="font-poppinsSemibold text-darkThemeColor text-h3 mt-[1.5rem] mb-[2rem]">
             {`${type?.name} Properties`}
           </h2>
           <div className="flex justify-between gap-[1rem] items-start w-full">
-            <div className="w-2/12 sm:w-3/12">
-              <div className="hidden flex-col items-start bg-white border-[1.5px] border-gray-200 pt-[1.5rem] pb-[1rem] px-[0.75rem] rounded-lg sm:flex">
+            <div className="w-2/12 md480:w-3/12">
+              <div className="hidden flex-col items-start bg-white border-[1.5px] border-gray-200 pt-[1.5rem] pb-[1rem] px-[0.75rem] rounded-lg md480:flex">
                 <span className="font-poppinsRegular text-darkThemeColor mb-[0.5rem] font-semibolded">
                   Filter By
                 </span>
@@ -89,7 +89,7 @@ const OneType = () => {
                   </div>
                 </div>
               </div>
-              <div className="hidden flex-col items-start bg-white border-[1.5px] border-gray-200 my-[1rem] pt-[1.5rem] pb-[1rem] px-[0.75rem] rounded-lg sm:flex">
+              <div className="hidden flex-col items-start bg-white border-[1.5px] border-gray-200 my-[1rem] pt-[1.5rem] pb-[1rem] px-[0.75rem] rounded-lg md480:flex">
                 <span className="font-poppinsRegular text-darkThemeColor mb-[0.5rem] font-semibolded">
                   Other Links
                 </span>
@@ -105,7 +105,7 @@ const OneType = () => {
                   </Link>
                 </div>
               </div>
-              <div className="relative flex justify-start items-start pt-[0.75rem] sm:hidden">
+              <div className="relative flex justify-start items-start pt-[0.75rem] md480:hidden">
                 <span
                   onClick={(e) =>
                     setShowFilterPanel(showFilterPanel ? false : true)
@@ -116,7 +116,7 @@ const OneType = () => {
                 </span>
 
                 {showFilterPanel && (
-                  <div className="absolute top-[3.125rem] left-0 z-30 sm:hidden">
+                  <div className="absolute top-[3.125rem] left-0 z-30 md480:hidden">
                     <FilterPanelMobile
                       setPropertyType={null}
                       setMinPrice={setMinPrice}
@@ -131,14 +131,14 @@ const OneType = () => {
                 )}
               </div>
             </div>
-            <div className="w-10/12 sm:w-9/12">
+            <div className="w-10/12 md480:w-9/12">
               <div className="flex flex-col space-y-[1rem] items-center">
                 <div className="w-full py-[0.25rem] px-[0.5rem] bg-white flex justify-between items-center">
                   <div className="flex space-x-2 items-center">
                     <span className="">Sort By:</span>
                     <SortOptions setSort={setSort} />
                   </div>
-                  <div className="hidden space-x-2 items-center sm:flex">
+                  <div className="hidden space-x-2 items-center md480:flex">
                     <span>Arrange:</span>
                     <div className="flex items-center space-x-2">
                       <span className="px-[0.125rem] bg-gray-100 rounded-md text-h3">
@@ -156,13 +156,13 @@ const OneType = () => {
                       properties={properties}
                       itemsPerPage={4}
                       wrapperStyling={
-                        "grid grid-cols-1 items-center gap-4 md:grid-cols-2"
+                        "grid grid-cols-1 items-center gap-4 md800:grid-cols-2"
                       }
                     />
                   ) : (
                     <div className="flex justify-center items-center w-full h-[20vh]">
                       <div className="flex justify-center items-center">
-                        <h3 className="font-poppinsLight text-h3 sm:text-h2">
+                        <h3 className="font-poppinsLight text-h3 md480:text-h2">
                           No Properties Yet
                         </h3>
                       </div>
