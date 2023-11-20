@@ -1,5 +1,5 @@
-import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Wishlist from "./pages/Wishlist";
@@ -127,7 +127,7 @@ function App() {
   ]);
 
   return (
-    <div className="font-poppinsRegular text-sm sm:text-default">
+    <div>
       <RouterProvider router={router} />
     </div>
   );
