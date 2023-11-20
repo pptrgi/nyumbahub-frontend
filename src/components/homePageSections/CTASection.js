@@ -10,9 +10,9 @@ import FadeInAnimation from "../FadeInAnimation";
 const CTASection = () => {
   return (
     <FadeInAnimation>
-      <section className="section mb-[3rem]">
-        <div className="py-[2rem] bg-lightGrayCTA md480:py-[3rem] ">
-          <div className="custom_container flex justify-center items-center">
+      <section className="mt-[4rem mb-[3rem] lg1023:mx-[2rem]">
+        <div className="custom_container py-[2rem] px-[0.75rem] bg-lightGrayCTA md480:py-[3rem] lg1023:py-[3.5rem] lg1129:py-[3.75rem] md480:px-[1.5rem] lg1023:px-[2.25rem] lg1120:px-[2.5rem]">
+          <div className="flex justify-center items-center">
             <div className="flex flex-col justify-between items-center gap-[2rem] w-full md480:flex-row md480:gap-[0.75rem] lg1023:gap-[2rem]">
               <div className="flex flex-col justify-between items-center gap-[2rem] md480:flex-col-reverse lg1023:flex-row md480:w-8/12 lg1023:w-9/12 md480:justify-start md480:items-start lg1023:items-center lg1023:justify-between md480:gap-[2rem] lg1023:gap-0">
                 <div className="flex items-center gap-2 text-h2 text-lightThemeColor lg1023:w-3/12 md480:gap-3 lg1023:gap-2">
@@ -36,7 +36,7 @@ const CTASection = () => {
               <div className="flex sm:justify-end md480:items-end lg1023:w-3/12 md480:w-4/12 ">
                 <Link
                   to="/contact"
-                  className="bg-darkThemeColor px-[1.75rem] py-[1rem] rounded-md text-bodyColor font-poppinsRegular hover:bg-black"
+                  className="bg-darkThemeColor px-[1.75rem] py-[1rem] rounded-md text-bodyColor font-poppinsRegular truncate hover:bg-black"
                 >
                   Talk to Us NOW
                 </Link>

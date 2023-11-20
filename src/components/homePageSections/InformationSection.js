@@ -7,7 +7,7 @@ const InformationSection = () => {
     <FadeInAnimation>
       <div className="custom_container section">
         <div className="flex justify-center items-center w-full">
-          <div className="flex flex-col items-center space-y-[1rem] px-[0.75rem] py-[1rem] border-[1.5px] border-gray-200 rounded-md md480:flex-row md480:space-y-0 md480:space-x-[1rem] md480:py-[1.5rem]">
+          <div className="flex flex-col items-center space-y-[1rem] px-[0.75rem] py-[1rem] border-[1.5px] border-gray-200 rounded-md md480:flex-row md480:space-y-0 md480:space-x-[1rem] md480:py-[1.5rem] ">
             <span className="text-large text-textColor md480:text-[4rem]">
               <IoInformationCircleOutline />
             </span>
@@ -15,7 +15,7 @@ const InformationSection = () => {
               <h4 className="text-lightThemeColor font-poppinsSemibold text-center md800:text-h3">
                 We tour NyumbaHub website for your first tour
               </h4>
-              <p className="text-textColor font-poppinsLight text-smaller md480:text-small md800:leading-5">
+              <p className="text-textColor font-poppinsLight text-smaller max-w-2xl md480:text-small md800:leading-5">
                 NyumbaHub is a vacant houses finding service developed by Lifen
                 Creatives in 2023. Our goal is to actually help our users rent,
                 buy/sell properties, but as per now, be advised, the listed
