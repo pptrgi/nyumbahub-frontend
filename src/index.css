@@ -43,26 +43,31 @@ input[type="number"] {
   color: #fafafa;
 }
 
-@font-face {
-  font-family: "PoppinsRegular";
-  src: url("/public/fonts/Poppins-Regular.ttf");
-}
-@font-face {
-  font-family: "PoppinsLight";
-  src: url("/public/fonts/Poppins-Light.ttf");
-}
-@font-face {
-  font-family: "PoppinsSemibold";
-  src: url("/public/fonts/Poppins-SemiBold.ttf");
-}
-@font-face {
-  font-family: "PoppinsBold";
-  src: url("/public/fonts/Poppins-Bold.ttf");
+@layer base {
+  @font-face {
+    font-family: "PoppinsRegular";
+    src: url("/public/fonts/Poppins-Regular.ttf");
+  }
+  @font-face {
+    font-family: "PoppinsLight";
+    src: url("/public/fonts/Poppins-Light.ttf");
+  }
+  @font-face {
+    font-family: "PoppinsSemibold";
+    src: url("/public/fonts/Poppins-SemiBold.ttf");
+  }
+  @font-face {
+    font-family: "PoppinsBold";
+    src: url("/public/fonts/Poppins-Bold.ttf");
+  }
 }
 
 body {
-  background-color: #fafafa;
-  color: #777777;
+  @apply text-textColor bg-bodyColor font-poppinsRegular text-small md480:text-default;
+}
+
+.custom_container {
+  @apply max-w-[1120px] mx-[1.5rem] xs320:mx-[1rem] lg1120:mx-auto xl2048:max-w-[1300px];
 }
 
 .section {
@@ -70,12 +75,11 @@ body {
 }
 
 .page {
-  @apply mt-[3.5rem] md:mt-[9rem];
+  @apply pt-[3.75rem] md800:pt-[9rem];
 }
 
 input {
-  font-family: "PoppinsLight";
-  color: #777777;
+  @apply font-poppinsLight text-textColor focus:outline-none hover:outline-none;
 }
 
 #account-panel-tag ::before {
