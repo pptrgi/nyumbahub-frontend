@@ -1,6 +1,6 @@
 import { useReducedMotion, motion } from "framer-motion";
 
-const FadeInAnimation = (props) => {
+const FadeInAnimation = ({ delay = false, ...props }) => {
   const prefersReducedMotion = useReducedMotion();
 
   const viewport = { once: true, margin: "0px 0px -200px" };
@@ -15,6 +15,7 @@ const FadeInAnimation = (props) => {
       transition: {
         type: "tween",
         duration: 0.5,
+        delay: delay ? 0.2 : 0,
         ease: "easeInOut",
         when: "beforeChildren",
         staggerChildren: 0.2,
