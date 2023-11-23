@@ -191,7 +191,7 @@ const Header = () => {
       </nav>
       <nav className="relative bg-darkThemeColor py-[1.25rem] md800:hidden">
         <div className="custom_container flex justify-between text-bodyColor">
-          <div className="flex items-center space-x-[1.5rem]">
+          <div className="flex items-center gap-x-[1.5rem] md480:gap-x-[3rem]">
             <span
               onClick={(e) => setShowHamMenu(true)}
               className="text-[1.375rem] hover:text-ctaColor md480:text-h2"
@@ -201,12 +201,11 @@ const Header = () => {
             <span className="block text-default font-poppinsSemibold md480:hidden">
               NyumbaHub
             </span>
+            <span className="hidden text-h3 md480:block">NyumbaHub</span>
           </div>
 
-          <span className="hidden text-h3 sm:block">NyumbaHub</span>
-
-          <div className="flex items-center space-x-[0.925rem] md480:space-x-[1rem]">
-            <div className="flex items-center space-x-[0.925rem] md480:space-x-[1rem]">
+          <div className="flex items-center gap-x-[1rem] xs360:gap-x-[0.925rem] md480:gap-x-[1.25rem]">
+            <div className="flex items-center gap-x-[1rem] xs360:gap-x-[0.925rem] md480:gap-x-[1.25rem]">
               <ActiveHeaderLink
                 toWhere={"compare"}
                 inactiveGroupStyle={"group"}
