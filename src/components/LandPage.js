@@ -50,7 +50,7 @@ const LandPage = () => {
   useClickOutsideToClose(typeOptionsRef, () => setShowTypeOptions(false));
 
   return (
-    <FadeInAnimation>
+    <FadeInAnimation delay={true}>
       <div className="relative custom_container">
         <div className="min-h-screen w-[100%] flex justify-center items-center border-b-[1px] border-gray-100 pt-[4rem] pb-[1rem] xs320:mt-[2rem] md480:pt-[11rem]">
           <div className="flex flex-col gap-[8vh] w-full">
