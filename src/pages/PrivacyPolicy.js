@@ -7,7 +7,7 @@ const PrivacyPolicy = () => {
   return (
     <>
       <PageTitler title={"Privacy Policy"} />
-      <FadeInAnimation>
+      <FadeInAnimation delay={true}>
         <div className="custom_container pt-[5rem] pb-[3rem] md800:pt-[11rem]">
           <div className="flex justify-center items-center mb-[3rem]">
             <h2 className="font-poppinsSemibold text-h3 text-darkThemeColor text-center md480:text-h2">

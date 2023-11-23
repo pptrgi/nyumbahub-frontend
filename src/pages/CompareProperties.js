@@ -15,7 +15,7 @@ const CompareProperties = () => {
   );
 
   return (
-    <FadeInAnimation>
+    <FadeInAnimation delay={true}>
       <div className="custom_container page">
         <Breadcrumb pageTitle={"Compare"} />
         <PageTitler title={"Compare"} />

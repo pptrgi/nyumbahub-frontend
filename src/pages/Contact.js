@@ -54,7 +54,7 @@ const Contact = () => {
   });
 
   return (
-    <FadeInAnimation>
+    <FadeInAnimation delay={true}>
       <div className="custom_container page">
         <Breadcrumb pageTitle={"Contact"} />
         <PageTitler title={"Contact Us"} />
@@ -62,11 +62,11 @@ const Contact = () => {
           Get in Touch
         </h2>
         <div className="flex flex-col justify-center items-center gap-[1.5rem]">
-          <div className="flex flex-col gap-[2rem] w-[100%] md480:max-w-[70%] md800:max-w-[50%]">
+          <div className="flex flex-col gap-[2rem] w-[100%] md480:max-w-[65%] md800:max-w-[60%] lg1023:max-w-[45%] lg1120:max-w-[40%]">
             <form
               ref={contactFormRef}
               onSubmit={formik.handleSubmit}
-              className=" w-full bg-white flex flex-col space-y-[0.5rem] border-b-[1.5px] border-gray-100 px-[1rem] py-[3rem] rounded-md md480:px-[2rem]"
+              className="w-full bg-white flex flex-col space-y-[0.5rem] border-b-[1.5px] border-gray-100 px-[1rem] py-[3rem] rounded-md md480:px-[2rem]"
             >
               <div className="relative bg-inherit rounded-md">
                 <input
@@ -75,7 +75,7 @@ const Contact = () => {
                   value={formik.values.name}
                   onChange={formik.handleChange("name")}
                   onBlur={formik.handleBlur("name")}
-                  className="w-full bg-inherit border-[1.5px] border-gray-200 py-[0.75rem] hover:outline-none focus:outline-none focus:border-gray-400 rounded-md px-[0.75rem] text-lightThemeColor font font-poppinsSemibold text-smaller md480:text-small"
+                  className="w-full bg-inherit border-[1.5px] border-gray-200 py-[0.75rem] focus:border-gray-400 rounded-md px-[0.75rem] text-lightThemeColor font font-poppinsSemibold text-smaller md480:text-small"
                   maxLength={40}
                 />
                 <span className="absolute -top-2 left-[1rem] bg-inherit px-[0.25rem] text-smaller md480:text-small">
@@ -93,7 +93,7 @@ const Contact = () => {
                   value={formik.values.email}
                   onChange={formik.handleChange("email")}
                   onBlur={formik.handleBlur("email")}
-                  className="w-full bg-inherit border-[1.5px] border-gray-200 py-[0.75rem] hover:outline-none focus:outline-none focus:border-gray-400 rounded-md px-[0.75rem] text-lightThemeColor font font-poppinsSemibold text-smaller md480:text-small"
+                  className="w-full bg-inherit border-[1.5px] border-gray-200 py-[0.75rem] focus:border-gray-400 rounded-md px-[0.75rem] text-lightThemeColor font font-poppinsSemibold text-smaller md480:text-small"
                   maxLength={40}
                 />
                 <span className="absolute -top-2 left-[1rem] bg-inherit px-[0.25rem] text-smaller md480:text-small">
@@ -111,7 +111,7 @@ const Contact = () => {
                   value={formik.values.subject}
                   onChange={formik.handleChange("subject")}
                   onBlur={formik.handleBlur("subject")}
-                  className="w-full bg-inherit border-[1.5px] border-gray-200 py-[0.75rem] hover:outline-none focus:outline-none focus:border-gray-400 rounded-md px-[0.75rem] text-lightThemeColor font font-poppinsSemibold text-smaller md480:text-small"
+                  className="w-full bg-inherit border-[1.5px] border-gray-200 py-[0.75rem] focus:border-gray-400 rounded-md px-[0.75rem] text-lightThemeColor font font-poppinsSemibold text-smaller md480:text-small"
                   maxLength={70}
                 />
                 <span className="absolute -top-2 left-[1rem] bg-inherit px-[0.25rem] text-smaller md480:text-small">
@@ -129,7 +129,7 @@ const Contact = () => {
                   value={formik.values.message}
                   onChange={formik.handleChange("message")}
                   onBlur={formik.handleBlur("message")}
-                  className="w-full bg-inherit border-[1.5px] border-gray-200 py-[0.75rem] hover:outline-none focus:outline-none focus:border-gray-400 rounded-md px-[0.75rem] text-lightThemeColor font font-poppinsSemibold resize-none text-smaller md480:text-small"
+                  className="w-full bg-inherit border-[1.5px] border-gray-200 py-[0.75rem] focus:border-gray-400 rounded-md px-[0.75rem] text-lightThemeColor font font-poppinsSemibold resize-none text-smaller md480:text-small"
                 />
                 <span className="absolute -top-2 left-[1rem] bg-inherit px-[0.25rem] text-smaller md480:text-small">
                   Message
@@ -149,7 +149,7 @@ const Contact = () => {
               </div>
             </form>
           </div>
-          <div className="w-[100%] md480:max-w-[80%] md:max-w-[60%] pt-[1rem] pb-[3rem]">
+          <div className="w-[100%] pt-[1rem] pb-[3rem] md480:max-w-[80%] md800:max-w-[70%] lg1023:max-w-[50%]">
             <div className="flex justify-between w-full items-center text-textColor font-poppinsLight">
               <a
                 href="https://wa.me/254700119134"

@@ -29,7 +29,7 @@ const ResetPassword = () => {
     },
   });
   return (
-    <FadeInAnimation>
+    <FadeInAnimation delay={true}>
       <div className="custom_container page">
         <Breadcrumb pageTitle={"Reset Password"} />
         <PageTitler title={"Reset Password"} />

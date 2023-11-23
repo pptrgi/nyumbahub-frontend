@@ -31,7 +31,7 @@ const ForgotPassword = () => {
     },
   });
   return (
-    <FadeInAnimation>
+    <FadeInAnimation delay={true}>
       <div className="custom_container page">
         <Breadcrumb pageTitle={"Forgot Password"} />
         <PageTitler title={"Forgot Password"} />

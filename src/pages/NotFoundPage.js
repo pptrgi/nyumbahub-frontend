@@ -5,9 +5,9 @@ import FadeInAnimation from "../components/FadeInAnimation";
 
 const NotFoundPage = () => {
   return (
-    <FadeInAnimation>
-      <>
-        <PageTitler title={"404 Page"} />
+    <>
+      <PageTitler title={"404 Page"} />
+      <FadeInAnimation delay={true}>
         <div className="flex justify-center items-center w-full min-h-[80vh] py-[4.5rem] md800:pt-[12rem] md800:pb-[4rem]">
           <div className="flex flex-col space-y-[2rem] md480:space-y-[3rem]">
             <div className="flex flex-col space-y-[0.75rem] md480:space-y-[1rem]">
@@ -28,8 +28,8 @@ const NotFoundPage = () => {
             </div>
           </div>
         </div>
-      </>
-    </FadeInAnimation>
+      </FadeInAnimation>
+    </>
   );
 };
 

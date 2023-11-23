@@ -1,4 +1,3 @@
-import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import * as yup from "yup";
@@ -40,12 +39,13 @@ const ChangePassword = () => {
             values,
           })
         );
+        // resetForm()
       }
       // Remember to reset the form fields
     },
   });
   return (
-    <FadeInAnimation>
+    <FadeInAnimation delay={true}>
       <div className="custom_container page">
         <Breadcrumb pageTitle={"Change Password"} />
         <PageTitler title={"Change Password"} />

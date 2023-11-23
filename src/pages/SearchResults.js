@@ -36,7 +36,7 @@ const SearchResults = () => {
         <Preloader />
       ) : (
         <div className="custom_container pt-[5rem] pb-[3rem] md800:pt-[11rem]">
-          <h3 className="font-poppinsLight text-default  text-center text-lightThemeColor md480:text-h3">
+          <h3 className="font-poppinsLight text-default text-center text-lightThemeColor mb-[1rem] md800:mb-[1.5rem] md480:text-h3">
             Search results
           </h3>
           <div className="grid grid-cols-4 items-center md480:px-[2rem]">

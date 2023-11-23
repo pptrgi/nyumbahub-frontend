@@ -30,7 +30,7 @@ const EditProfile = () => {
   };
 
   return (
-    <FadeInAnimation>
+    <FadeInAnimation delay={true}>
       <div className="custom_container page mb-[5rem]">
         <Breadcrumb pageTitle={"Edit Profile"} />
         <PageTitler title={"Manage Account"} />

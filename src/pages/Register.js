@@ -47,7 +47,7 @@ const Register = () => {
     },
   });
   return (
-    <FadeInAnimation>
+    <FadeInAnimation delay={true}>
       <div className="custom_container page">
         <Breadcrumb pageTitle={"Register"} />
         <PageTitler title={"Register"} />

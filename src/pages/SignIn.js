@@ -44,7 +44,7 @@ const SignIn = () => {
   });
 
   return (
-    <FadeInAnimation>
+    <FadeInAnimation delay={true}>
       <div className="custom_container page">
         <Breadcrumb pageTitle={"Sign In"} />
         <PageTitler title={"Sign In"} />
