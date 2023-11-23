@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { baseURL, assignHeaders } from "../../utils/axiosConfig";
+import { baseURL, assignHeaders } from "../../utils/axiosSetup";
 
 // The server couples status code with json body for all responses(successful and unsuccessful requests).
 // The returned status code defines if the request was successful or not. Thus createAsyncThunk() will accept even unsuccessful request's response data as payload without its knowledge
