@@ -28,6 +28,7 @@ module.exports = {
         lightGrayCTA: "#f3f5f7",
         darkLightGrayCTA: "#b8c2cc",
         wishlistHeartColor: "#DC143C",
+        darkBlueColor: "#004274",
       },
       screens: {
         xs320: { max: "320px" },
