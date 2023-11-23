@@ -222,6 +222,23 @@ const Footer = () => {
                       </a>
                     </span>
                   </div>
+                  <div className="pb-[1rem] md480:pb-0">
+                    <a
+                      href="https://buymeacoffee.com/ptrgitonga"
+                      className="flex space-x-2 items-center "
+                    >
+                      <span className="block md480:hidden">Buy us a</span>
+                      <span className="hidden md480:block">
+                        Support us by a
+                      </span>
+                      <img
+                        src="/images/buymeacoffee_logo.png"
+                        alt="Buy Peter a Coffee"
+                        className="h-[20px]"
+                      />
+                      <span>of Coffee</span>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
