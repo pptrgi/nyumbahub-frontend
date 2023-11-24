@@ -71,7 +71,7 @@ body {
 }
 
 .section {
-  @apply pt-[4rem] px-[1.25rem];
+  @apply pt-[4rem] px-[0.5rem] md800:px-[0.75rem] lg1023:px-[1.25rem];
 }
 
 .page {
