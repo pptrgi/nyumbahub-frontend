@@ -10,7 +10,7 @@ import FadeInAnimation from "../FadeInAnimation";
 const CTASection = () => {
   return (
     <FadeInAnimation>
-      <section className="mt-[4rem mb-[3rem] lg1023:mx-[2rem]">
+      <section className="my-[4rem] lg1023:mx-[2rem]">
         <div className="custom_container py-[2rem] px-[0.75rem] bg-lightGrayCTA md480:py-[3rem] lg1023:py-[3.5rem] lg1129:py-[3.75rem] md480:px-[1.5rem] lg1023:px-[2.25rem] lg1120:px-[2.5rem]">
           <div className="flex justify-center items-center">
             <div className="flex flex-col justify-between items-center gap-[2rem] w-full md480:flex-row md480:gap-[0.75rem] lg1023:gap-[2rem]">
