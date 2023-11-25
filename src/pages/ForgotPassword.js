@@ -36,7 +36,7 @@ const ForgotPassword = () => {
         <Breadcrumb pageTitle={"Forgot Password"} />
         <PageTitler title={"Forgot Password"} />
         <div className="flex justify-center items-center w-full min-h-[70vh]">
-          <div className="flex flex-col gap-[2rem]">
+          <div className="flex flex-col items-center gap-[2rem]">
             <div className="flex flex-col justify-center items-center gap-[0.5rem]">
               <h3 className="text-center font-poppinsRegular text-lightThemeColor text-default md480:text-h3">
                 Ask to set new Password
