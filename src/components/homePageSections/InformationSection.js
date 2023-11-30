@@ -13,7 +13,7 @@ const InformationSection = () => {
             </span>
             <div className="flex flex-col items-center space-y-[0.75rem] md480:items-start md800:space-y-[1rem]">
               <h4 className="text-lightThemeColor font-poppinsSemibold text-center md800:text-h3">
-                We tour NyumbaHub website for your first tour
+                We tour NyumbaHub website for your first tour with us
               </h4>
               <p className="text-textColor font-poppinsLight text-smaller max-w-2xl md480:text-small md800:leading-5">
                 NyumbaHub is a vacant houses finding service developed by Lifen
