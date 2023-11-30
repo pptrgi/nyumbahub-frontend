@@ -19,7 +19,7 @@ const HamburgerMenu = ({
     <div
       className={
         showHamMenu
-          ? "absolute top-0 w-3/4 min-h-screen bg-bodyColor text-textColor font-poppinsRegular px-[1rem] overflow-y-auto py-[2rem]"
+          ? "absolute top-0 w-3/4 min-h-screen bg-bodyColor text-textColor font-poppinsRegular px-[1rem] overflow-y-auto py-[2rem] shadow-xl md480:w-[60%]"
           : "hidden"
       }
     >
