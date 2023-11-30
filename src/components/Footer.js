@@ -2,12 +2,12 @@ import { Link } from "react-router-dom";
 import {
   PiWhatsappLogo,
   PiLinkedinLogo,
-  PiTwitterLogo,
   PiFacebookLogo,
   PiPhone,
   PiEnvelope,
 } from "react-icons/pi";
 import { FaExternalLinkAlt } from "react-icons/fa";
+import { RiTwitterXFill } from "react-icons/ri";
 
 import FadeInAnimation from "./FadeInAnimation";
 
@@ -208,7 +208,7 @@ const Footer = () => {
                     </span>
                     <span className="hover:text-gray-400">
                       <a href="https://twitter.com/ptrgitonga">
-                        <PiTwitterLogo />
+                        <RiTwitterXFill />
                       </a>
                     </span>
                     <span className="hover:text-gray-400">

@@ -3,19 +3,20 @@ import { useSelector } from "react-redux";
 import {
   PiWhatsappLogo,
   PiLinkedinLogo,
-  PiTwitterLogo,
   PiFacebookLogo,
   PiArrowsClockwise,
   PiHeart,
   PiUser,
   PiList,
 } from "react-icons/pi";
+import { RiTwitterXFill } from "react-icons/ri";
 
 import DropdownMenu from "./DropdownMenu";
 import ActiveHeaderLink from "./ActiveHeaderLink";
 import HamburgerMenu from "./HamburgerMenu";
 import AccountPanel from "./AccountPanel";
 import useClickOutsideToClose from "../hooks/useClickOutsideToClose";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [showHamMenu, setShowHamMenu] = useState(false);
@@ -80,7 +81,7 @@ const Header = () => {
               </span>
               <span className="hover:text-gray-400">
                 <a href="https://twitter.com/ptrgitonga">
-                  <PiTwitterLogo />
+                  <RiTwitterXFill />
                 </a>
               </span>
               <span className="hover:text-gray-400">
@@ -98,9 +99,11 @@ const Header = () => {
         </div>
         <div className="bg-darkThemeColor border-t-[1px] border-gray-400">
           <div className="custom_container flex justify-between py-[1.25rem] text-bodyColor">
-            <span className="font-poppinsSemibold text-h2 font-mediumWeight">
-              NyumbaHub
-            </span>
+            <Link to={"/"}>
+              <h2 className="font-poppinsSemibold text-h2 font-mediumWeight">
+                NyumbaHub
+              </h2>
+            </Link>
             <div className="flex items-center space-x-[1rem] tracking-wider lg1023:space-x-[1.5rem]">
               <ActiveHeaderLink
                 toWhere={"compare"}
