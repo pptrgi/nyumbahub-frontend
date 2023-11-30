@@ -11,6 +11,7 @@ import {
   IoLogoWhatsapp,
 } from "react-icons/io5";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
+
 import Breadcrumb from "../components/Breadcrumb";
 import GeneralCard from "../components/propertyCards/GeneralCard";
 import {
@@ -187,7 +188,7 @@ const PropertyDetailPage = () => {
                               <img
                                 key={index}
                                 src={image?.imageUrl}
-                                className="h-full object-cover min-w-[100px] md480:min-w-[120px] md800:min-w-[130px] lg1023:min-w-[150px]"
+                                className="h-full object-cover min-w-[100px] hover:scale-105 transition duration-300 md480:min-w-[120px] md800:min-w-[130px] lg1023:min-w-[150px]"
                                 alt="NyumbaHub House Image"
                               />
                             )}
