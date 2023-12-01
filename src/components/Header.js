@@ -9,7 +9,7 @@ import {
   PiUser,
   PiList,
 } from "react-icons/pi";
-import { RiTwitterXFill } from "react-icons/ri";
+import { RiTwitterXLine } from "react-icons/ri";
 
 import DropdownMenu from "./DropdownMenu";
 import ActiveHeaderLink from "./ActiveHeaderLink";
@@ -81,7 +81,7 @@ const Header = () => {
               </span>
               <span className="hover:text-gray-400">
                 <a href="https://twitter.com/ptrgitonga">
-                  <RiTwitterXFill />
+                  <RiTwitterXLine />
                 </a>
               </span>
               <span className="hover:text-gray-400">
