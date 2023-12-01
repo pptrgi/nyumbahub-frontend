@@ -169,12 +169,12 @@ const PropertyDetailPage = () => {
                     <div className="flex items-center gap-[2px] w-full h-[250px] md480:h-[230px] md800:h-[240px]">
                       <img
                         src={property?.images[0]?.imageUrl}
-                        className="w-full h-full object-cover md480:w-1/2"
+                        className="w-full h-full object-cover hover:scale-105 transition duration-300 md480:w-1/2"
                         alt="NyumbaHub House Image"
                       />
                       <img
                         src={property?.images[1]?.imageUrl}
-                        className="hidden w-1/2 h-full object-cover md480:block"
+                        className="hidden w-1/2 h-full object-cover hover:scale-105 transition duration-300 md480:block"
                         alt="NyumbaHub House Image"
                       />
                     </div>
