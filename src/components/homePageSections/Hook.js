@@ -90,9 +90,12 @@ const Hook = () => {
                 </div>
               </div>
               <div>
-                <span className="px-[2rem] py-[0.75rem] border-[1.8px] text-white/80 border-lightGrayCTA rounded-md font-poppinsLight truncate hover:text-darkBlueColor hover:bg-white/80 md480:px-[1.25rem] md800:px-[1.75rem] lg1023:px-[2rem]">
-                  <a href="https://pgitonga.vercel.app">Explore Services</a>
-                </span>
+                <a
+                  href="https://pgitonga.vercel.app"
+                  className="px-[2rem] py-[0.75rem] border-[1.8px] text-white/80 border-lightGrayCTA rounded-md font-poppinsLight truncate hover:text-darkBlueColor hover:bg-white/80 md480:px-[1.25rem] md800:px-[1.75rem] lg1023:px-[2rem]"
+                >
+                  Explore Services
+                </a>
               </div>
             </div>
           </div>
