@@ -169,12 +169,12 @@ const PropertyDetailPage = () => {
                     <div className="flex items-center gap-[2px] w-full h-[250px] md480:h-[230px] md800:h-[240px]">
                       <img
                         src={property?.images[0]?.imageUrl}
-                        className="w-full h-full object-cover hover:scale-105 transition duration-300 md480:w-1/2"
+                        className="w-full h-full object-cover hover:scale-95 transition duration-300 md480:w-1/2"
                         alt="NyumbaHub House Image"
                       />
                       <img
                         src={property?.images[1]?.imageUrl}
-                        className="hidden w-1/2 h-full object-cover hover:scale-105 transition duration-300 md480:block"
+                        className="hidden w-1/2 h-full object-cover hover:scale-95 transition duration-300 md480:block"
                         alt="NyumbaHub House Image"
                       />
                     </div>
@@ -188,7 +188,7 @@ const PropertyDetailPage = () => {
                               <img
                                 key={index}
                                 src={image?.imageUrl}
-                                className="h-full object-cover min-w-[100px] hover:scale-105 transition duration-300 md480:min-w-[120px] md800:min-w-[130px] lg1023:min-w-[150px]"
+                                className="h-full object-cover min-w-[100px] hover:scale-95 transition duration-300 md480:min-w-[120px] md800:min-w-[130px] lg1023:min-w-[150px]"
                                 alt="NyumbaHub House Image"
                               />
                             )}
@@ -469,7 +469,7 @@ const PropertyDetailPage = () => {
                   <div className="group w-1/3 cursor-pointer">
                     <a
                       href="tel:254700119134"
-                      className="flex flex-col justify-center items-center gap-[0.125rem] w-full bg-ctaColor py-[0.5rem] rounded-[1rem]  group-hover:bg-darkThemeColor md480:py-[1rem] md480:flex-row md480:gap-4 md480:rounded-[1.25rem]"
+                      className="flex flex-col justify-center items-center gap-[0.125rem] w-full bg-ctaColor py-[0.5rem] rounded-[1rem]  group-hover:bg-darkThemeColor transition duration-300 md480:py-[1rem] md480:flex-row md480:gap-4 md480:rounded-[1.25rem]"
                     >
                       <span className="hidden text-h2 md480:block">
                         <IoCallSharp />
@@ -483,7 +483,7 @@ const PropertyDetailPage = () => {
                   <div className="group w-1/3 cursor-pointer">
                     <a
                       href={`https://wa.me/254700119134?text=Hi%20NyumbaHub%2C%0A%0AI%27m%20interested%20in%20property%20${encodedPropertyName}`}
-                      className="flex flex-col justify-center items-center gap-[0.125rem] w-full bg-ctaColor py-[0.5rem] rounded-[1rem]  group-hover:bg-darkThemeColor md480:py-[1rem] md480:flex-row md480:gap-4 md480:rounded-[1.25rem]"
+                      className="flex flex-col justify-center items-center gap-[0.125rem] w-full bg-ctaColor py-[0.5rem] rounded-[1rem]  group-hover:bg-darkThemeColor transition duration-300 md480:py-[1rem] md480:flex-row md480:gap-4 md480:rounded-[1.25rem]"
                     >
                       <span className="hidden text-h2 md480:block">
                         <IoLogoWhatsapp />
@@ -497,7 +497,7 @@ const PropertyDetailPage = () => {
                   <div className="group w-1/3 cursor-pointer">
                     <a
                       href={`mailto:lifencreatives@gmail.com?subject=Enquiring%20About%20A%20Property&body=Hello%20NyumbaHub%2C%0A%0AI%20am%20enquiring%20about%20a%20property%20that%20I%27m%20interested%20in%2E%0A%0AYou%20call%20it%20${encodedPropertyName}%0A%0ARegards`}
-                      className="flex flex-col justify-center items-center gap-[0.125rem] w-full bg-ctaColor py-[0.5rem] rounded-[1rem]  group-hover:bg-darkThemeColor md480:py-[1rem] md480:flex-row md480:gap-4 md480:rounded-[1.25rem]"
+                      className="flex flex-col justify-center items-center gap-[0.125rem] w-full bg-ctaColor py-[0.5rem] rounded-[1rem]  group-hover:bg-darkThemeColor transition duration-300 md480:py-[1rem] md480:flex-row md480:gap-4 md480:rounded-[1.25rem]"
                     >
                       <span className="hidden text-h2 md480:block">
                         <IoPaperPlaneSharp />
