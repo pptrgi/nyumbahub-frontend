@@ -247,11 +247,16 @@ const Footer = () => {
             <div className="custom_container pt-[2rem] pb-[3rem] text-bodyColor text-smaller md480:text-small">
               <div className="flex flex-col-reverse justify-between gap-[1rem] w-full md480:gap-0 md480:flex-row">
                 <div className="flex justify-center items-center w-full md480:justify-start md480:items-start md480:w-2/3">
-                  <span>
-                    &#169; 2023{" "}
-                    <span className="text-ctaColor">Lifen Creatives</span>. All
-                    Rights Reserved
-                  </span>
+                  <div>
+                    &#169; {new Date().getFullYear()}{" "}
+                    <a
+                      href="https://pgitonga.vercel.app"
+                      className="text-ctaColor hover:text-ctaColor/80"
+                    >
+                      Lifen Creatives
+                    </a>
+                    . All Rights Reserved
+                  </div>
                 </div>
                 <div className="flex justify-center items-center w-full md480:justify-end md480:items-end md480:w-1/3">
                   <div className="flex justify-between items-center w-full">
