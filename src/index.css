@@ -14,35 +14,6 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Remove horizontal scrollbar in Chrome, Safari and newer Edge */
-::-webkit-scrollbar {
-  display: none;
-}
-/* Remove horizontal scrollbar in Firefox */
-* {
-  scrollbar-width: none;
-}
-
-/* Remove the increment and decrement arrow buttons in the number input fields */
-/* In Chrome and Safari */
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-}
-input[type="number"] {
-  /* In Firefox */
-  -moz-appearance: none;
-
-  /* In Edge */
-  appearance: none;
-}
-
-/* Change the text-highlighting color */
-::selection {
-  background-color: #00aeff;
-  color: #fafafa;
-}
-
 @layer base {
   @font-face {
     font-family: "PoppinsRegular";
@@ -82,6 +53,7 @@ input {
   @apply font-poppinsLight text-textColor focus:outline-none hover:outline-none;
 }
 
+/* Account panel square symbol */
 #account-panel-tag ::before {
   content: "";
   position: absolute;
@@ -91,4 +63,45 @@ input {
   width: 20px;
   background-color: white;
   transform: rotate(45deg);
+}
+
+/* Change the text-highlighting color */
+::selection {
+  background-color: #00aeff;
+  color: #fafafa;
+}
+
+/* Hide the horizontal scrollbar in Chrome, Safari and newer Edge */
+::-webkit-scrollbar:horizontal {
+  display: none;
+  overflow-x: scroll;
+}
+::-webkit-scrollbar,
+::-webkit-scrollbar-track {
+  border-radius: 999px;
+  width: 0.65rem;
+  height: 0.2rem;
+  background-color: #f3f5f7;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #2a3445;
+  border-radius: 999px;
+}
+/* Hide horizontal scrollbar in Firefox */
+/* * {
+  scrollbar-width: none;
+} */
+
+/* Remove the increment and decrement arrow buttons in the number input fields */
+/* In Chrome and Safari */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+input[type="number"] {
+  /* In Firefox */
+  -moz-appearance: none;
+
+  /* In Edge */
+  appearance: none;
 }
