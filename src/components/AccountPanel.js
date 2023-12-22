@@ -6,10 +6,17 @@ import {
   PiNotePencil,
   PiEyeSlash,
 } from "react-icons/pi";
+
 import { signOutUserAC } from "../reduxFeatures/users/userSlice";
 
 const AccountPanel = ({ userDetails, closeAccountPanel = () => {} }) => {
   const dispatch = useDispatch();
+
+  // sign the user out and close the account panel
+  const handleUserSignout = () => {
+    dispatch(signOutUserAC());
+    closeAccountPanel();
+  };
 
   return (
     <>
@@ -72,7 +79,7 @@ const AccountPanel = ({ userDetails, closeAccountPanel = () => {} }) => {
 
               <div className="group">
                 <div
-                  onClick={(e) => closeAccountPanel()}
+                  onClick={(e) => handleUserSignout()}
                   className="flex items-center space-x-3 text-ctaColor group-hover:text-red-500 cursor-pointer"
                 >
                   <span className="text-default">
