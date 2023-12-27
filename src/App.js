@@ -1,26 +1,28 @@
+import { lazy } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Layout from "./components/Layout";
-import Home from "./pages/Home";
-import Wishlist from "./pages/Wishlist";
-import SearchResults from "./pages/SearchResults";
-import SignIn from "./pages/SignIn";
-import Register from "./pages/Register";
-import ForgotPassword from "./pages/ForgotPassword";
-import ResetPassword from "./pages/ResetPassword";
-import AllProperties from "./pages/AllProperties";
-import OneType from "./pages/OneType";
-import OneCategory from "./pages/OneCategory";
-import PropertyDetailPage from "./pages/PropertyDetailPage";
-import Contact from "./pages/Contact";
-import CompareProperties from "./pages/CompareProperties";
-import PrivacyPolicy from "./pages/PrivacyPolicy";
-import TermsOfService from "./pages/TermsOfService";
-import EditProfile from "./pages/EditProfile";
-import ChangePassword from "./pages/ChangePassword";
 import { PrivateRoute } from "./components/routeTypes/PrivateRoute";
 import { OpenRoute } from "./components/routeTypes/OpenRoute";
-import NotFoundPage from "./pages/NotFoundPage";
+import { lazyLoading } from "./utils/lazyLoading";
+const Home = lazy(() => import("./pages/Home.js"));
+const Wishlist = lazy(() => import("./pages/Wishlist.js"));
+const SearchResults = lazy(() => import("./pages/SearchResults.js"));
+const SignIn = lazy(() => import("./pages/SignIn.js"));
+const Register = lazy(() => import("./pages/Register.js"));
+const ForgotPassword = lazy(() => import("./pages/ForgotPassword.js"));
+const ResetPassword = lazy(() => import("./pages/ResetPassword.js"));
+const AllProperties = lazy(() => import("./pages/AllProperties.js"));
+const OneType = lazy(() => import("./pages/OneType.js"));
+const OneCategory = lazy(() => import("./pages/OneCategory.js"));
+const PropertyDetailPage = lazy(() => import("./pages/PropertyDetailPage.js"));
+const Contact = lazy(() => import("./pages/Contact.js"));
+const CompareProperties = lazy(() => import("./pages/CompareProperties.js"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy.js"));
+const TermsOfService = lazy(() => import("./pages/TermsOfService.js"));
+const EditProfile = lazy(() => import("./pages/EditProfile.js"));
+const ChangePassword = lazy(() => import("./pages/ChangePassword.js"));
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage.js"));
 
 function App() {
   // Create the application's data router
