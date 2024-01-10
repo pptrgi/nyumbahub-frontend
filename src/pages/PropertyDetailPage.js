@@ -448,7 +448,7 @@ const PropertyDetailPage = () => {
               Related Properties
             </h2>
             {similarProperties?.length !== 0 ? (
-              <div className="grid grid-cols-1 items-center gap-2 md480:grid-cols-2 md800:grid-cols-2 md800:gap-4 lg1023:grid-cols-3">
+              <div className="flex flex-wrap items-center gap-2 md800:gap-4">
                 {similarProperties?.slice(0, 3).map((property, index) => {
                   return <GeneralCard key={index} property={property} />;
                 })}

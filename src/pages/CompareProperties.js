@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { PiTrash } from "react-icons/pi";
+
 import Breadcrumb from "../components/Breadcrumb";
 import { removeFromCompare } from "../reduxFeatures/properties/propertySlice";
 import { formatDate } from "../utils/dateFormatter";

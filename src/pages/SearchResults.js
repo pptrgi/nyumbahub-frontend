@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+
 import Pagination from "../components/Pagination";
 import SortOptions from "../components/SortOptions";
 import { getAllProperties } from "../reduxFeatures/properties/propertySlice";

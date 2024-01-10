@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { PiTextColumns, PiTextAlignJustify } from "react-icons/pi";
 import { IoOptionsOutline } from "react-icons/io5";
+
 import Breadcrumb from "../components/Breadcrumb";
 import SortOptions from "../components/SortOptions";
 import { getOneType } from "../reduxFeatures/types/typeSlice";

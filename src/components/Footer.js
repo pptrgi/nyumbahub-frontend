@@ -39,7 +39,7 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          <div className="custom_container">
+          <div className="custom_container lg1120:w-full">
             <div className="grid grid-cols-12 items-start gap-2">
               <div className="flex flex-col space-y-[0.5rem] items-start col-span-6 md480:col-span-3">
                 <span className="font-poppinsRegular text-bodyColor font-mediumWeight">

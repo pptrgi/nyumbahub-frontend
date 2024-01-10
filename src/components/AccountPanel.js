@@ -21,17 +21,17 @@ const AccountPanel = ({ userDetails, closeAccountPanel = () => {} }) => {
   return (
     <>
       <div
-        className="absolute top-0 -right-4 z-30 flex flex-col items-start text-textColor font-poppinsRegular shadow-md bg-white rounded-md mt-[2rem] w-[200px] px-[1rem] pt-[2.5rem] pb-[1.5rem] md800:right-0 md480:w-[220px]"
+        className="absolute top-0 -right-4 z-30 flex_col items-start text-textColor font-poppinsRegular shadow-md bg-white rounded-md mt-[2rem] w-[200px] px-[1rem] pt-[2.5rem] pb-[1.5rem] md800:right-0 md480:w-[220px]"
         id="account-panel-tag"
       >
         {userDetails ? (
-          <div className="flex flex-col w-full">
-            <div className="flex justify-center items-center w-full">
-              <div className="flex flex-col space-y-2">
+          <div className="flex_col w-full">
+            <div className="flex_center w-full">
+              <div className="flex_col space-y-2">
                 <span className="capitalize">{`Hello ${userDetails?.firstName}`}</span>
               </div>
             </div>
-            <div className="flex flex-col space-y-[0.75rem] mt-[2rem]">
+            <div className="flex_col space-y-[0.75rem] mt-[2rem]">
               <div className="group">
                 <Link
                   to="/edit-profile"
@@ -93,7 +93,7 @@ const AccountPanel = ({ userDetails, closeAccountPanel = () => {} }) => {
             </div>
           </div>
         ) : (
-          <div className="flex flex-col w-full">
+          <div className="flex_col w-full">
             <div className="flex justify-between items-center w-full font-mediumWeight">
               <Link
                 to="/signin"
@@ -110,7 +110,7 @@ const AccountPanel = ({ userDetails, closeAccountPanel = () => {} }) => {
                 Register
               </Link>
             </div>
-            <div className="flex flex-col space-y-[0.75rem] mt-[2rem] text-textColor">
+            <div className="flex_col space-y-[0.75rem] mt-[2rem] text-textColor">
               <div className="flex items-center space-x-3 pointer-events-none opacity-30">
                 <span className="text-h3">
                   <PiNotePencil />

@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+
 import Breadcrumb from "../components/Breadcrumb";
 import LimitedCard from "../components/propertyCards/LimitedCard";
 import { getUserWishlistAC } from "../reduxFeatures/users/userSlice";
@@ -39,7 +40,8 @@ const Wishlist = () => {
             Properties in your wishlist
           </h3>
           {properties?.length > 0 ? (
-            <div className="grid grid-cols-1 items-center gap-2 md480:grid-cols-2 md800:grid-cols-2 md800:gap-4 lg1023:grid-cols-3">
+            // <div className="grid grid-cols-1 items-center gap-2 md480:grid-cols-2 md800:grid-cols-2 md800:gap-4 lg1023:grid-cols-3">
+            <div className="flex flex-wrap items-center gap-2 md800:gap-4">
               {properties?.map((property, index) => {
                 return <LimitedCard key={index} property={property} />;
               })}
