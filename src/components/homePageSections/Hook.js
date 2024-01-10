@@ -7,18 +7,18 @@ const Hook = () => {
     <FadeInAnimation>
       <section className="custom_container pt-[4rem] px-[0.5rem] lg1023:px-[1.5rem]">
         <div className="grid grid-cols-1 gap-y-1 items-center w-full md480:grid-cols-6 md480:gap-x-1 lg1023:gap-x-2">
-          <div className="bg-gray-300 text-textColor flex justify-center items-center py-[1.75rem] px-[0.5rem] h-[270px] col-span-1 rounded-[1rem] md480:py-[2rem] md480:h-[300px] md800:h-[280px] md480:col-span-2">
-            <div className="flex flex-col justify-between items-center w-full h-full">
-              <div className="flex flex-col justify-center items-center space-y-[1.5rem]">
+          <div className="hook_card bg-gray-300 text-textColor">
+            <div className="hook_card-contentbuttonwrapper">
+              <div className="hook_card-contentwrapper">
                 <span className="font-poppinsLight text-h3 text-bodyColor">
                   NyumbaHub
                 </span>
-                <div className="flex flex-col space-y-[0.5rem] justify-center items-center w-full">
-                  <div className="flex flex-col space-y-[0.5rem] mb-[1rem]">
+                <div className="flex_col_center space-y-[0.5rem] w-full">
+                  <div className="flex_col space-y-[0.5rem] mb-[1rem]">
                     <span className="font-poppinsSemibold text-default tracking-wider">
                       Support 24/7
                     </span>
-                    <div className="flex justify-center items-center w-full">
+                    <div className="flex_center w-full">
                       <span className="w-[70px] py-[1.5px] rounded-full bg-ctaColor" />
                     </div>
                   </div>
@@ -30,7 +30,7 @@ const Hook = () => {
               <div>
                 <Link
                   to="/contact"
-                  className="px-[2rem] py-[0.75rem] border-[1.8px] border-textColor rounded-md font-poppinsLight truncate hover:bg-textColor hover:text-gray-300 md480:px-[1.25rem] md800:px-[1.75rem] lg1023:px-[2rem]"
+                  className="hook_card-button border-textColor hover:bg-textColor hover:text-gray-300"
                 >
                   Try Our Service
                 </Link>
@@ -38,18 +38,18 @@ const Hook = () => {
             </div>
           </div>
 
-          <div className="bg-lightThemeColor text-darkLightGrayCTA flex justify-center items-center py-[1.75rem] px-[0.5rem] h-[280px] col-span-1 rounded-[1rem] md480:py-[2rem] md480:h-[320px] md800:h-[300px] md480:col-span-2">
-            <div className="flex flex-col justify-between items-center w-full h-full">
-              <div className="flex flex-col justify-center items-center space-y-[1.5rem]">
+          <div className="hook_card bg-lightThemeColor text-darkLightGrayCTA">
+            <div className="hook_card-contentbuttonwrapper">
+              <div className="hook_card-contentwrapper">
                 <span className="font-poppinsLight text-h3 text-bodyColor">
                   NyumbaHub
                 </span>
-                <div className="flex flex-col space-y-[0.5rem] justify-center items-center w-full">
-                  <div className="flex flex-col space-y-[0.5rem] mb-[1rem]">
+                <div className="flex_col_center space-y-[0.5rem] w-full">
+                  <div className="flex_col space-y-[0.5rem] mb-[1rem]">
                     <span className="font-poppinsSemibold text-default tracking-wider">
                       Trust Culture
                     </span>
-                    <div className="flex justify-center items-center w-full">
+                    <div className="flex_center w-full">
                       <span className="w-[70px] py-[1.5px] rounded-full bg-ctaColor" />
                     </div>
                   </div>
@@ -61,7 +61,7 @@ const Hook = () => {
               <div>
                 <Link
                   to="/all-properties"
-                  className="px-[2rem] py-[0.75rem] border-[1.8px] border-darkLightGrayCTA rounded-md font-poppinsLight truncate hover:bg-darkLightGrayCTA hover:text-lightThemeColor md480:px-[1.25rem] md800:px-[1.75rem] lg1023:px-[2rem]"
+                  className="hook_card-button border-darkLightGrayCTA hover:bg-darkLightGrayCTA hover:text-lightThemeColor"
                 >
                   Sell, Rent or Buy
                 </Link>
@@ -69,18 +69,18 @@ const Hook = () => {
             </div>
           </div>
 
-          <div className="bg-darkBlueColor flex justify-center items-center py-[1.75rem] px-[0.5rem] h-[280px] col-span-1 rounded-[1rem] md480:py-[2rem] md480:h-[300px] md800:h-[270px] md480:col-span-2">
-            <div className="flex flex-col justify-between items-center w-full h-full">
-              <div className="flex flex-col justify-center items-center space-y-[1.5rem]">
+          <div className="hook_card bg-darkBlueColor">
+            <div className="hook_card-contentbuttonwrapper">
+              <div className="hook_card-contentwrapper">
                 <span className="font-poppinsLight text-h3 text-bodyColor">
                   NyumbaHub
                 </span>
-                <div className="flex flex-col space-y-[0.5rem] justify-center items-center w-full">
-                  <div className="flex flex-col space-y-[0.5rem] mb-[1rem]">
+                <div className="flex_col_center space-y-[0.5rem]">
+                  <div className="flex_col space-y-[0.5rem] mb-[1rem]">
                     <span className="font-poppinsSemibold text-default tracking-wider text-white/90">
                       Other Services
                     </span>
-                    <div className="flex justify-center items-center w-full">
+                    <div className="flex_center w-full">
                       <span className="w-[70px] py-[1.5px] rounded-full bg-ctaColor" />
                     </div>
                   </div>
@@ -92,7 +92,7 @@ const Hook = () => {
               <div>
                 <a
                   href="https://pgitonga.vercel.app"
-                  className="px-[2rem] py-[0.75rem] border-[1.8px] text-white/80 border-lightGrayCTA rounded-md font-poppinsLight truncate hover:text-darkBlueColor hover:bg-white/80 md480:px-[1.25rem] md800:px-[1.75rem] lg1023:px-[2rem]"
+                  className="hook_card-button text-white/80 border-lightGrayCTA rounded-md hover:text-darkBlueColor hover:bg-white/80"
                 >
                   Explore Services
                 </a>

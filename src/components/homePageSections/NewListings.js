@@ -51,20 +51,20 @@ const NewListings = () => {
   return (
     <FadeInAnimation>
       <section className="custom_container section">
-        <div className="flex flex-col justify-between md480:flex-row md480:mb-[1.5rem]">
-          <h3 className="font-poppinsSemibold text-h3 text-darkThemeColor mb-[1.5rem] md480:mb-0">
+        <div className="properties_section-container">
+          <h3 className="properties_section-heading">
             The Most Recent Listings
           </h3>
-          <div className="flex justify-end items-end mb-[0.75rem] md480:mb-0">
+          <div className="flex_end mb-[0.75rem] md480:mb-0">
             <div className="flex items-center space-x-3">
               <span
-                className="px-[0.5rem] py-[0.25rem] bg-lightThemeColor text-bodyColor text-default rounded-md font-semibolded cursor-pointer group"
+                className="group properties_section-arrow"
                 onClick={scrollLeft}
               >
                 <PiArrowLeft className="group-hover:-translate-x-1" />
               </span>
               <span
-                className="px-[0.5rem] py-[0.25rem] bg-lightThemeColor text-bodyColor text-default rounded-md font-semibolded cursor-pointer group"
+                className="group properties_section-arrow"
                 onClick={scrollRight}
               >
                 <PiArrowRight className="group-hover:translate-x-1" />
@@ -79,7 +79,7 @@ const NewListings = () => {
             {properties?.length > 0 ? (
               <div
                 id="scrollNewListingCards"
-                className="flex items-center gap-2 overflow-x-auto w-full scroll-smooth md800:gap-4"
+                className="properties_section-slider"
               >
                 {properties?.slice(0, visible).map((property, index) => {
                   return (
@@ -90,11 +90,11 @@ const NewListings = () => {
                     />
                   );
                 })}
-                <div className="flex justify-center items-center">
+                <div className="flex_center">
                   {showButton && (
                     <button
                       onClick={handleShowMore}
-                      className="text-bodyColor bg-ctaColor px-[1.5rem] py-[0.75rem] w-full hover:bg-darkThemeColor"
+                      className="properties_section-morebtn"
                     >
                       More
                     </button>
@@ -102,8 +102,8 @@ const NewListings = () => {
                 </div>
               </div>
             ) : (
-              <div className="flex justify-center items-center w-full h-[20vh]">
-                <div className="flex justify-center items-center">
+              <div className="flex_center w-full h-[20vh]">
+                <div className="flex_center">
                   <h3 className="font-poppinsLight text-h3 md480:text-h2">
                     No Newly Listed Properties Yet
                   </h3>
