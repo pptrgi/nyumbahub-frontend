@@ -105,3 +105,59 @@ input[type="number"] {
   /* In Edge */
   appearance: none;
 }
+
+/* REUSABLE CLASSES */
+/* layout */
+.flex_col {
+  @apply flex flex-col;
+}
+.flex_col_center {
+  @apply flex flex-col justify-center items-center;
+}
+.flex_center {
+  @apply flex justify-center items-center;
+}
+.flex_end {
+  @apply flex justify-end items-end;
+}
+
+/* properties sections */
+.properties_section-container {
+  @apply flex flex-col justify-between md480:flex-row md480:mb-[1.5rem];
+}
+.properties_section-heading {
+  @apply font-poppinsSemibold text-h3 text-darkThemeColor mb-[1.5rem] md480:mb-0;
+}
+.properties_section-arrow {
+  @apply px-[0.5rem] py-[0.25rem] bg-lightThemeColor text-bodyColor text-default rounded-md font-semibolded cursor-pointer;
+}
+.properties_section-slider {
+  @apply flex items-center gap-2 overflow-x-auto w-full scroll-smooth md800:gap-4;
+}
+.properties_section-morebtn {
+  @apply text-bodyColor bg-ctaColor px-[1.5rem] py-[0.75rem] w-full hover:bg-darkThemeColor;
+}
+
+/* hook cards */
+.hook_card {
+  @apply flex justify-center items-center py-[1.75rem] px-[0.5rem] h-[270px] col-span-1 rounded-[1rem] md480:py-[2rem] md480:h-[300px] md800:h-[280px] md480:col-span-2;
+}
+.hook_card-contentbuttonwrapper {
+  @apply flex flex-col justify-between items-center w-full h-full;
+}
+.hook_card-contentwrapper {
+  @apply flex flex-col justify-center items-center space-y-[1.5rem];
+}
+.hook_card-button {
+  @apply px-[2rem] py-[0.75rem] border-[1.8px] rounded-md font-poppinsLight truncate md480:px-[1.25rem] md800:px-[1.75rem] lg1023:px-[2rem];
+}
+
+/* property cards */
+
+/* auth pages */
+
+/* auth form fields */
+
+/* account panel links */
+
+/* properties single category and type */
