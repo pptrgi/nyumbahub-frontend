@@ -148,7 +148,7 @@ const Register = () => {
                   <p className="text-tiny text-textColor leading-tight font-poppinsLight mt-[0.75rem] md480:text-smaller">
                     By creating an account, you accept our{" "}
                     <span className="text-ctaColor hover:text-darkThemeColor">
-                      <Link to="/privacy-policy">Terms of Service</Link>
+                      <Link to="/terms-of-service">Terms of Service</Link>
                     </span>{" "}
                     and acknowledge our{" "}
                     <span className="text-ctaColor hover:text-darkThemeColor">
