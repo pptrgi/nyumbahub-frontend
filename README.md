@@ -20,7 +20,7 @@ More about the backend [see the NyumbaHub API's readMe](https://github.com/pptrg
 
 #### Frontend
 
-The application's frontend includes an aesthetic, functional and easy to use fully responsive UI emploting code-splitting and lazy loading to boost performance.
+The application's frontend includes an aesthetic, functional and easy to use fully responsive UI employing code-splitting and lazy loading to boost performance.
 
 With a defined layout for all pages in this application, React Router handles routing, helps pass state via a route in some parts of the application, and, not forgetting page scrolling.
 
@@ -63,7 +63,7 @@ Also included in the application is the well-outlined terms of service in the Te
 
 **Frontend Features**
 
-- Code-splitting and lazy loading
+- Code-splitting and Lazy loading
 - State management
 - Fully responsive
 - Private and open routes
