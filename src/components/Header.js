@@ -185,10 +185,12 @@ const Header = () => {
             >
               <PiList />
             </span>
-            <span className="block text-default font-poppinsSemibold md480:hidden">
+            <Link
+              to={"/"}
+              className="text-default font-poppinsSemibold md480:text-h3"
+            >
               NyumbaHub
-            </span>
-            <span className="hidden text-h3 md480:block">NyumbaHub</span>
+            </Link>
           </div>
 
           <div className="flex items-center gap-x-[1rem] xs360:gap-x-[0.925rem] md480:gap-x-[1.25rem]">
