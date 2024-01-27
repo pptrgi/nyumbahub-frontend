@@ -21,7 +21,7 @@ const AccountPanel = ({ userDetails, closeAccountPanel = () => {} }) => {
   return (
     <>
       <div
-        className="absolute top-0 -right-4 z-30 flex_col items-start text-textColor font-poppinsRegular shadow-md bg-white rounded-md mt-[2rem] w-[200px] px-[1rem] pt-[2.5rem] pb-[1.5rem] md800:right-0 md480:w-[220px]"
+        className="absolute top-0 -right-4 z-30 flex_col items-start text-textColor font-poppinsRegular shadow-md bg-white rounded-lg mt-[2rem] w-[200px] px-[1rem] pt-[2.5rem] pb-[1.5rem] md800:right-0 md480:w-[220px]"
         id="account-panel-tag"
       >
         {userDetails ? (
@@ -110,7 +110,7 @@ const AccountPanel = ({ userDetails, closeAccountPanel = () => {} }) => {
                 Register
               </Link>
             </div>
-            <div className="flex_col space-y-[0.75rem] mt-[2rem] text-textColor">
+            <div className="flex_col space-y-[0.5rem] mt-[2rem] text-textColor">
               <div className="flex items-center space-x-3 pointer-events-none opacity-30">
                 <span className="text-h3">
                   <PiNotePencil />
