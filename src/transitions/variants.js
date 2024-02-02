@@ -1,4 +1,4 @@
-export const fadeInStaggerVariants = {
+export const fadeOutStaggerVariants = {
   hidden: {
     opacity: 0,
   },
@@ -12,15 +12,16 @@ export const fadeInStaggerVariants = {
   },
 };
 
-export const menuSlideInVariants = {
+export const accountPanelVariants = {
   hidden: {
-    x: "-100vw",
+    opacity: 0,
   },
   visible: {
-    x: 0,
+    opacity: 1,
     transition: {
-      type: "spring",
-      stiffness: 30,
+      type: "tween",
+      duration: 0.2,
+      delay: 0.2,
       ease: "easeInOut",
     },
   },
