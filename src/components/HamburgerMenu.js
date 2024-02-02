@@ -17,11 +17,9 @@ const HamburgerMenu = ({
 }) => {
   return (
     <div
-      className={
-        showHamMenu
-          ? "absolute top-0 w-3/4 min-h-screen bg-bodyColor text-textColor font-poppinsRegular px-[1rem] overflow-y-auto py-[2rem] shadow-xl md480:w-[60%]"
-          : "hidden"
-      }
+      className={`absolute top-0 ${
+        showHamMenu ? "left-0" : "-left-[100%]"
+      } w-3/4 min-h-screen bg-bodyColor text-textColor font-poppinsRegular px-[1rem] overflow-y-auto py-[2rem] shadow-xl md480:w-[60%] transition-all duration-500`}
     >
       <div className="flex flex-col justify-start items-start mt-[2rem]">
         <div className="flex justify-center items-center w-full mb-[4rem]">
