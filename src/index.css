@@ -52,6 +52,9 @@ body {
 input {
   @apply font-poppinsLight text-textColor focus:outline-none hover:outline-none;
 }
+textarea {
+  @apply focus:outline-none hover:outline-none;
+}
 
 /* Account panel square symbol */
 #account-panel-tag ::before {
@@ -150,6 +153,11 @@ input[type="number"] {
 }
 .hook_card-button {
   @apply px-[2rem] py-[0.75rem] border-[1.8px] rounded-md font-poppinsLight truncate md480:px-[1.25rem] md800:px-[1.75rem] lg1023:px-[2rem];
+}
+
+/* contact input field */
+.contact_input {
+  @apply px-[0.75rem] py-[0.75rem] rounded-md w-full bg-inherit text-lightThemeColor font-poppinsSemibold text-smaller border-[1.5px] border-gray-200 hover:border-gray-400 focus:border-gray-400 md480:text-small;
 }
 
 /* property cards */
