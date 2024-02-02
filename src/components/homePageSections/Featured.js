@@ -5,7 +5,7 @@ import { PiArrowLeft, PiArrowRight } from "react-icons/pi";
 import SpecificCard from "../propertyCards/SpecificCard";
 import { getFeaturedCategory } from "../../reduxFeatures/categories/categorySlice";
 import FetchingSpinners from "../FetchingSpinners";
-import FadeInAnimation from "../FadeInAnimation";
+import FadeOutAnimation from "../FadeOutAnimation";
 
 const Featured = () => {
   const [visible, setVisible] = useState(3);
@@ -49,7 +49,7 @@ const Featured = () => {
   };
 
   return (
-    <FadeInAnimation>
+    <FadeOutAnimation>
       <section className="custom_container section">
         <div className="properties_section-container">
           <h3 className="properties_section-heading">
@@ -113,7 +113,7 @@ const Featured = () => {
           </>
         )}
       </section>
-    </FadeInAnimation>
+    </FadeOutAnimation>
   );
 };
 

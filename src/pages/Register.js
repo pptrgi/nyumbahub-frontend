@@ -8,7 +8,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import AuthInputTemplate from "../components/AuthInputTemplate";
 import { registerUserAC } from "../reduxFeatures/users/userSlice";
 import PageTitler from "../components/PageTitler";
-import FadeInAnimation from "../components/FadeInAnimation";
+import FadeOutAnimation from "../components/FadeOutAnimation";
 
 // Define the schema for the user register form input fields
 const registerSchema = yup.object({
@@ -47,7 +47,7 @@ const Register = () => {
     },
   });
   return (
-    <FadeInAnimation delay={true}>
+    <FadeOutAnimation delay={true}>
       <div className="custom_container page">
         <Breadcrumb pageTitle={"Register"} />
         <PageTitler title={"Register"} />
@@ -161,7 +161,7 @@ const Register = () => {
           </div>
         </div>
       </div>
-    </FadeInAnimation>
+    </FadeOutAnimation>
   );
 };
 

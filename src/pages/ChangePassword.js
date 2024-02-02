@@ -8,7 +8,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import AuthInputTemplate from "../components/AuthInputTemplate";
 import { changePasswordAC } from "../reduxFeatures/users/userSlice";
 import PageTitler from "../components/PageTitler";
-import FadeInAnimation from "../components/FadeInAnimation";
+import FadeOutAnimation from "../components/FadeOutAnimation";
 
 // Define the schema for the change-password form input fields
 const changePassSchema = yup.object({
@@ -45,7 +45,7 @@ const ChangePassword = () => {
     },
   });
   return (
-    <FadeInAnimation delay={true}>
+    <FadeOutAnimation delay={true}>
       <div className="custom_container page">
         <Breadcrumb pageTitle={"Change Password"} />
         <PageTitler title={"Change Password"} />
@@ -110,7 +110,7 @@ const ChangePassword = () => {
           </div>
         </div>
       </div>
-    </FadeInAnimation>
+    </FadeOutAnimation>
   );
 };
 

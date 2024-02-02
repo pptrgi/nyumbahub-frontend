@@ -7,7 +7,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import { removeFromCompare } from "../reduxFeatures/properties/propertySlice";
 import { formatDate } from "../utils/dateFormatter";
 import PageTitler from "../components/PageTitler";
-import FadeInAnimation from "../components/FadeInAnimation";
+import FadeOutAnimation from "../components/FadeOutAnimation";
 
 const CompareProperties = () => {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ const CompareProperties = () => {
   );
 
   return (
-    <FadeInAnimation delay={true}>
+    <FadeOutAnimation delay={true}>
       <div className="custom_container page">
         <Breadcrumb pageTitle={"Compare"} />
         <PageTitler title={"Compare"} />
@@ -128,7 +128,7 @@ const CompareProperties = () => {
           </div>
         )}
       </div>
-    </FadeInAnimation>
+    </FadeOutAnimation>
   );
 };
 

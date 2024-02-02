@@ -5,11 +5,11 @@ import {
   PiPhoneFill,
 } from "react-icons/pi";
 
-import FadeInAnimation from "../FadeInAnimation";
+import FadeOutAnimation from "../FadeOutAnimation";
 
 const CTASection = () => {
   return (
-    <FadeInAnimation>
+    <FadeOutAnimation>
       <section className="my-[4rem] lg1023:mx-[2rem]">
         <div className="custom_container py-[2rem] px-[0.75rem] bg-lightGrayCTA md480:py-[3rem] lg1023:py-[3.5rem] lg1129:py-[3.75rem] md480:px-[1.5rem] lg1023:px-[2.25rem] lg1120:px-[2.5rem]">
           <div className="flex justify-center items-center">
@@ -45,7 +45,7 @@ const CTASection = () => {
           </div>
         </div>
       </section>
-    </FadeInAnimation>
+    </FadeOutAnimation>
   );
 };
 

@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { sendForm } from "@emailjs/browser";
 import * as yup from "yup";
 import { useFormik } from "formik";
@@ -7,7 +7,7 @@ import { PiWhatsappLogo, PiEnvelope, PiPhone } from "react-icons/pi";
 
 import Breadcrumb from "../components/Breadcrumb";
 import PageTitler from "../components/PageTitler";
-import FadeInAnimation from "../components/FadeInAnimation";
+import FadeOutAnimation from "../components/FadeOutAnimation";
 
 // Define the schema for the contact form input fields
 const contactFormSchema = yup.object({
@@ -54,7 +54,7 @@ const Contact = () => {
   });
 
   return (
-    <FadeInAnimation delay={true}>
+    <FadeOutAnimation delay={true}>
       <div className="custom_container page">
         <Breadcrumb pageTitle={"Contact"} />
         <PageTitler title={"Contact Us"} />
@@ -75,7 +75,7 @@ const Contact = () => {
                   value={formik.values.name}
                   onChange={formik.handleChange("name")}
                   onBlur={formik.handleBlur("name")}
-                  className="w-full bg-inherit border-[1.5px] border-gray-200 py-[0.75rem] focus:border-gray-400 rounded-md px-[0.75rem] text-lightThemeColor font font-poppinsSemibold text-smaller md480:text-small"
+                  className="contact_input"
                   maxLength={40}
                 />
                 <span className="absolute -top-2 left-[1rem] bg-inherit px-[0.25rem] text-smaller md480:text-small">
@@ -93,7 +93,7 @@ const Contact = () => {
                   value={formik.values.email}
                   onChange={formik.handleChange("email")}
                   onBlur={formik.handleBlur("email")}
-                  className="w-full bg-inherit border-[1.5px] border-gray-200 py-[0.75rem] focus:border-gray-400 rounded-md px-[0.75rem] text-lightThemeColor font font-poppinsSemibold text-smaller md480:text-small"
+                  className="contact_input"
                   maxLength={40}
                 />
                 <span className="absolute -top-2 left-[1rem] bg-inherit px-[0.25rem] text-smaller md480:text-small">
@@ -111,7 +111,7 @@ const Contact = () => {
                   value={formik.values.subject}
                   onChange={formik.handleChange("subject")}
                   onBlur={formik.handleBlur("subject")}
-                  className="w-full bg-inherit border-[1.5px] border-gray-200 py-[0.75rem] focus:border-gray-400 rounded-md px-[0.75rem] text-lightThemeColor font font-poppinsSemibold text-smaller md480:text-small"
+                  className="contact_input"
                   maxLength={70}
                 />
                 <span className="absolute -top-2 left-[1rem] bg-inherit px-[0.25rem] text-smaller md480:text-small">
@@ -129,7 +129,7 @@ const Contact = () => {
                   value={formik.values.message}
                   onChange={formik.handleChange("message")}
                   onBlur={formik.handleBlur("message")}
-                  className="w-full bg-inherit border-[1.5px] border-gray-200 py-[0.75rem] focus:border-gray-400 rounded-md px-[0.75rem] text-lightThemeColor font font-poppinsSemibold resize-none text-smaller md480:text-small"
+                  className="contact_input resize-none"
                 />
                 <span className="absolute -top-2 left-[1rem] bg-inherit px-[0.25rem] text-smaller md480:text-small">
                   Message
@@ -197,7 +197,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
-    </FadeInAnimation>
+    </FadeOutAnimation>
   );
 };
 

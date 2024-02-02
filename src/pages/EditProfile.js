@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import Breadcrumb from "../components/Breadcrumb";
 import { editUserProfileAC } from "../reduxFeatures/users/userSlice";
 import PageTitler from "../components/PageTitler";
-import FadeInAnimation from "../components/FadeInAnimation";
+import FadeOutAnimation from "../components/FadeOutAnimation";
 
 const EditProfile = () => {
   const dispatch = useDispatch();
@@ -30,7 +30,7 @@ const EditProfile = () => {
   };
 
   return (
-    <FadeInAnimation delay={true}>
+    <FadeOutAnimation delay={true}>
       <div className="custom_container page mb-[5rem]">
         <Breadcrumb pageTitle={"Edit Profile"} />
         <PageTitler title={"Manage Account"} />
@@ -118,7 +118,7 @@ const EditProfile = () => {
           </form>
         </div>
       </div>
-    </FadeInAnimation>
+    </FadeOutAnimation>
   );
 };
 

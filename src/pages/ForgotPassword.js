@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import * as yup from "yup";
 import { useFormik } from "formik";
@@ -7,7 +6,7 @@ import { toast } from "react-toastify";
 import Breadcrumb from "../components/Breadcrumb";
 import AuthInputTemplate from "../components/AuthInputTemplate";
 import PageTitler from "../components/PageTitler";
-import FadeInAnimation from "../components/FadeInAnimation";
+import FadeOutAnimation from "../components/FadeOutAnimation";
 
 // Define the schema for the forgot-password form input fields
 const forgotPassSchema = yup.object({
@@ -31,7 +30,7 @@ const ForgotPassword = () => {
     },
   });
   return (
-    <FadeInAnimation delay={true}>
+    <FadeOutAnimation delay={true}>
       <div className="custom_container page">
         <Breadcrumb pageTitle={"Forgot Password"} />
         <PageTitler title={"Forgot Password"} />
@@ -88,7 +87,7 @@ const ForgotPassword = () => {
           </div>
         </div>
       </div>
-    </FadeInAnimation>
+    </FadeOutAnimation>
   );
 };
 

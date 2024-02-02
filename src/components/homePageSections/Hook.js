@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 
-import FadeInAnimation from "../FadeInAnimation";
+import FadeOutAnimation from "../FadeOutAnimation";
 
 const Hook = () => {
   return (
-    <FadeInAnimation>
+    <FadeOutAnimation>
       <section className="custom_container pt-[4rem] px-[0.5rem] lg1023:px-[1.5rem]">
         <div className="grid grid-cols-1 gap-y-1 items-center w-full md480:grid-cols-6 md480:gap-x-1 lg1023:gap-x-2">
           <div className="hook_card bg-gray-300 text-textColor">
@@ -101,7 +101,7 @@ const Hook = () => {
           </div>
         </div>
       </section>
-    </FadeInAnimation>
+    </FadeOutAnimation>
   );
 };
 

@@ -5,7 +5,7 @@ import { PiArrowLeft, PiArrowRight } from "react-icons/pi";
 import GeneralCard from "../propertyCards/GeneralCard";
 import { getAllProperties } from "../../reduxFeatures/properties/propertySlice";
 import FetchingSpinners from "../FetchingSpinners";
-import FadeInAnimation from "../FadeInAnimation";
+import FadeOutAnimation from "../FadeOutAnimation";
 
 const RandomProperties = () => {
   const dispatch = useDispatch();
@@ -48,7 +48,7 @@ const RandomProperties = () => {
   };
 
   return (
-    <FadeInAnimation>
+    <FadeOutAnimation>
       <section className="custom_container section">
         <div className="properties_section-container">
           <h3 className="properties_section-heading">
@@ -93,7 +93,7 @@ const RandomProperties = () => {
           </>
         )}
       </section>
-    </FadeInAnimation>
+    </FadeOutAnimation>
   );
 };
 

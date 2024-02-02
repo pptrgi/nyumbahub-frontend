@@ -9,11 +9,11 @@ import {
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { RiTwitterXLine } from "react-icons/ri";
 
-import FadeInAnimation from "./FadeInAnimation";
+import FadeOutAnimation from "./FadeOutAnimation";
 
 const Footer = () => {
   return (
-    <FadeInAnimation>
+    <FadeOutAnimation>
       <footer className="flex flex-col">
         <div className="bg-lightThemeColor flex flex-col gap-[2rem]">
           <div className="custom_container py-[2rem] border-b-[1.5px] border-gray-100 lg1023:w-full">
@@ -276,7 +276,7 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-    </FadeInAnimation>
+    </FadeOutAnimation>
   );
 };
 

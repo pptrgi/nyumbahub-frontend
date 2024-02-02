@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import Breadcrumb from "../components/Breadcrumb";
 import AuthInputTemplate from "../components/AuthInputTemplate";
 import PageTitler from "../components/PageTitler";
-import FadeInAnimation from "../components/FadeInAnimation";
+import FadeOutAnimation from "../components/FadeOutAnimation";
 
 // Define the schema for the reset-password form input fields
 const resetPassSchema = yup.object({
@@ -29,7 +29,7 @@ const ResetPassword = () => {
     },
   });
   return (
-    <FadeInAnimation delay={true}>
+    <FadeOutAnimation delay={true}>
       <div className="custom_container page">
         <Breadcrumb pageTitle={"Reset Password"} />
         <PageTitler title={"Reset Password"} />
@@ -94,7 +94,7 @@ const ResetPassword = () => {
           </div>
         </div>
       </div>
-    </FadeInAnimation>
+    </FadeOutAnimation>
   );
 };
 

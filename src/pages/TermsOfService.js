@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 
 import PageTitler from "../components/PageTitler";
-import FadeInAnimation from "../components/FadeInAnimation";
+import FadeOutAnimation from "../components/FadeOutAnimation";
 
 const TermsOfService = () => {
   return (
     <>
       <PageTitler title={"Terms of Service"} />
-      <FadeInAnimation delay={true}>
+      <FadeOutAnimation delay={true}>
         <div className="custom_container pt-[5rem] pb-[3rem] md800:pt-[11rem]">
           <div className="flex justify-center items-center mb-[3rem]">
             <h2 className="font-poppinsSemibold text-h3 text-darkThemeColor text-center md480:text-h2">
@@ -154,7 +154,7 @@ const TermsOfService = () => {
             understood and agreed to these terms of service.
           </p>
         </div>
-      </FadeInAnimation>
+      </FadeOutAnimation>
     </>
   );
 };
