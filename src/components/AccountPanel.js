@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import {
   PiQuestion,
   PiSignOut,
@@ -8,6 +9,7 @@ import {
 } from "react-icons/pi";
 
 import { signOutUserAC } from "../reduxFeatures/users/userSlice";
+import { accountPanelVariants } from "../transitions/variants";
 
 const AccountPanel = ({ userDetails, closeAccountPanel = () => {} }) => {
   const dispatch = useDispatch();
@@ -20,7 +22,10 @@ const AccountPanel = ({ userDetails, closeAccountPanel = () => {} }) => {
 
   return (
     <>
-      <div
+      <motion.div
+        variants={accountPanelVariants}
+        initial="hidden"
+        animate="visible"
         className="absolute top-0 -right-4 z-30 flex_col items-start text-textColor font-poppinsRegular shadow-md bg-white rounded-lg mt-[2rem] w-[200px] px-[1rem] pt-[2.5rem] pb-[1.5rem] md800:right-0 md480:w-[220px]"
         id="account-panel-tag"
       >
@@ -144,7 +149,7 @@ const AccountPanel = ({ userDetails, closeAccountPanel = () => {} }) => {
             </div>
           </div>
         )}
-      </div>
+      </motion.div>
     </>
   );
 };
